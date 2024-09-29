@@ -1,0 +1,228 @@
+# Copyright (c) 2024 by Daeridanii
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Successors: Ghosts 0 Incident"
+	landing
+	invisible
+	source
+		attributes "successor"
+		not attributes "quiet" "uninhabited"
+	to offer
+		has "trusted by the successors"
+		date 9 25
+	on offer
+		event "successors: ghosts incident"
+		event "successors: ghosts stage 1" 26
+		log "Learned of an incident on a moon controlled by House Kaatrij that revealed portions of a hidden base."
+		conversation
+			`The usual orderly structure of the spaceport's activity lies in pieces. Throngs of merchants, travelers, and military officers alike crowd around displays in the port, their shops and vessels left behind. It is uncomfortably quiet - the only voice you hear above a whisper is that of a news announcer, writhing in your ears as the translation device rearranges the sound, word by word.`
+			`	"... incident has laid bare aught what noble House Kaatrij hath labor'd t'leave concealed. The moon, long though lifeless, barren, raw, now show'th the spill-ed guts of some long-conceal'd base. View, fellows! See it seethe beneath the light!"`
+			`	The display changes to show an overhead view of a sandy moon. Tucked in a valley between ochre dunes is a bloom of distorted metal and intermittent light, the shape of a long arc stretching for maybe a kilometer across the surface. Near the ends, the image shimmers and warps before the whole thing is obscured by a Kaatrij warship flying into view - it's not clear whether the distortion is actually present or just a fault of the transmission.`
+			branch "seen this before"
+				has "event: war begins"
+			label continue
+			`	Whatever the cause, it's clear that House Kaatrij has been caught out.`
+				decline
+			label "seen this before"
+			`	The similarities to the immediate aftermath of the bombing of Geminus and Martini are striking. Though it's unclear what - or who - caused this incident, this could easily incite even greater conflict between the Houses.`
+				goto continue
+
+
+
+mission "Successors: Ghosts 0a1 QSI"
+	# Note the naming convention: "Successors: Ghosts" is the narrative arc. "0" represents the stage of the arc. "a" represents a branch occuring at that specific stage. "1" represents the mission number in that specific branch. "QSI" is a one-word abbreviation of what's going on in the mission, to make the missions more identifiable.
+	landing
+	invisible
+	source "Qasa-Sija-Iri"
+	to offer
+		has "successors: ghosts stage 0"
+		not "successors: ghosts restriction lifted"
+	on offer
+		conversation
+			`Immediately after you enter the moon's atmosphere, your communication system springs to life.`
+			`	"Unauthorized vessel! Cease thine approach and return to orbit! This world is under crisis jurisdiction of House Kaatrij and no civilian craft are permitted.`
+			choice
+				`	(Do as they say.)`
+					flee
+				`	"I'm an ally of House Kaatrij!"`
+					to display
+						has "successors kaatrij patron"
+					goto ally
+				`	"I'm not interested in your base, I just want to land elsewhere."`
+					goto elsewhere
+				`	(Continue anyway.)`
+
+			label proceed
+			`	You cut the communication channel and proceed anyway. For a moment, all seems well, but soon your sensors detect weapons fire from emplacements on the surface and the underbelly of your ship is lanced by a barrage of hypervelocity spikes.`
+			branch fragile
+				has "flagship shields" + "flagship hull" < 25000
+			branch medium
+				has "flagship shields" + "flagship hull" < 85000
+			`	The shots ram against your ship's shields with punishing ferocity, but the <ship> holds fast under the onslaught. However, the heavy fire greatly disturbs your flight path and it becomes increasingly clear that you won't be able to land regardless of your vessel's durability.`
+				flee
+			label medium
+			`	The shots ram against your ship's shields, rapidly wearing them down and disturbing your flight pattern enough that you have no choice but to return to orbit. The batteries stop firing once you clear the atmosphere, fortunately.`
+				flee
+			label fragile
+			`	Your ship's shields go down after the first few shots and it doesn't even take the full volley to destroy your vessel entirely.`
+				die
+
+			label ally
+			`	"Thou art denied, for thou lack authorization writ. Converse with thy superior if this is in error, and return only when thou can'st present it. Now return to orbit, on pain of death, ally or no."`
+			action
+				set "successors: ghosts ally referred"
+				log "Attempted to land on Qasa-Sija-Iri but was denied for lack of authorization. Instructed to converse with a superior to acquire authorization to land."
+			choice
+				`	(Return to orbit.)`
+					flee
+				`	(Continue anyway.)`
+					goto proceed
+
+			label elsewhere
+			`	"Irrelevant. No civilian vessels are permitted here. Return to orbit, on pain of death."`
+			choice
+				`	(Return to orbit.)`
+					flee
+				`	(Continue anyway.)`
+					goto proceed
+
+mission "Successors: Ghosts 0a1 QSI Restrict"
+	landing
+	invisible
+	to offer
+		has "Successors: Ghosts 0a1 QSI: offered"
+	on offer
+		event "successors: ghosts restrict"
+			decline
+
+mission "Successors: Ghosts 0a2 Authorization"
+	priority
+	source
+		government "House Kaatrij"
+	to offer
+		has "successors kaatrij patron"
+		has "successors: ghosts stage 0"
+		not "successors: ghosts restriction lifted"
+	on offer
+		conversation
+			`Though the Kaatrij spaceport is usually quiet, its patrons speaking in hushed whispers, today it is utterly soundless. The very few Successors who go about their business inside do so without a word and stick to only the most filmily-hydrated pathways such that they leave only the most minute of splashes in their wake.`
+			`	Near the center of the landing wing is a concierge of sorts; a tall, burnt orange Successor splayed atop a seat of sculpted rocks before a collection of panels.`
+			choice
+				`	(Go to them.)`
+				`	(Go about your business as usual.)`
+					decline
+			`	As you approach, they push themself off the rocks and into the surrounding puddle. "Hello, noble traveler," they say, "But ask me naught 'bout this House's recent business, for I have naught to give on it."`
+			choice
+				`	"Can you help me get authorization to approach the moon?"`
+				`	"That's okay. Can you help me find Saajret?"`
+					goto saajret
+			`	The concierge gently rubs a spot on one of the panels, as if trying to remove a stain. "'But ask me naught!' I say, and already my words are as ash and fall unheard. To put it plain, then: no, and never. Make still thy lust for knowledge."`
+			choice
+				`	"Could you help me find Saajret, then?"`
+					goto saajret
+				`	"I tried to land there and they told me to seek authorization."`
+					to display
+						has "successors: ghosts ally referred"
+					goto referred
+				`	(Leave and go about your business.)`
+					decline
+
+			label referred
+			`	"That I cannot give," they say, "nor would I do so if empowered."`
+			choice
+				`	"Could you help me find Saajret, then?"`
+					goto saajret
+				`	(Leave and go about your business.)`
+					decline
+
+			label saajret
+			`	The concierge makes a noise like humming, but lower and more musical. "Perhaps. A friend, or companion of yours? But I require more than their third name, traveler."`
+			choice
+				`	"Saajret, of Somber Sejra."`
+					goto "saajret of somber sejra"
+				`	"I don't know them by any other names."`
+			`	"A rose! A rose," they say, "by any other name would smell as sweet. Not so close a friend, I suppose. But I suppose too much, methinks."`
+			choice
+				`	"Wait! What about 'Saajret, of Somber Sejra?'"`
+					goto "saajret of somber sejra"
+				`	(Leave and go about your business.)`
+					decline
+			
+			label "saajret of somber sejra"
+			`	"Ah." Their skin shifts to a deep pink, but only for a moment. They pull a long column of metal from the panel in front of them, examining it closely for a time before returning their attention to you. "If thou know'th them well enough to speak of, then 'tis sure thou can'st appreciate the stresses on their time. But," they say, glittering, "I shall notify them of thy desire to meet, and I shall give them thy name and this - " they produce a data-sphere of the sort you've seen the Successors use before " - and if they wish to engage thee, then they may."`
+			choice
+				`	"My name is <first> <last>."`
+					goto end
+				`	"Thank you."`
+				`	"That's not good enough. I need to speak with them now."`
+					goto impatient
+			label "who are you"
+			`	"Indeed. And what is thy name?"`
+			choice
+				`	"<first> <last>."`
+			label end
+			action
+				log "Attempted to get in contact with Saajret, of Somber Sejra. Recieved a data-sphere from a House Kaatrij spaceport concierge and was informed that Saajret will make contact on their own time, if at all."
+				event "successors: ghosts saajret contact" 9
+			`	The concierge rolls the sphere around at the tip of two of their arms for a little while, then proffer it to you. You feel gentle ripples on the surface of the metal, like fingerprints. The concierge then slowly returns to their prior position atop the stone seat, slithering over the wet rocks and draping themself atop them.`
+				decline
+
+			label impatient
+			`	"Mayhaps, mayhaps. But is thy need echoed by their want, or is it but an arrow pointing to a void?"`
+			choice
+				`	"Okay, I'm sorry, please just give them my name."`
+					goto "who are you"
+				`	"Do you ever speak in anything other than riddles?"`
+			`	The concierge examines another metallic cylinder projecting from their station. "Today? No." They push the cylinder back and return to their prior position atop the stone seat.`
+				decline
+
+mission "Successors: Ghosts 0a3 Saajret"
+	landing
+	invisible
+	source
+		attributes "successor"
+	to offer
+		has "successors: ghosts saajret contact"
+	on offer
+		conversation
+			`Shortly after you land on <origin>, the Successor data-sphere you recieved from the House Kaatrij concierge springs to life. It displays a short message, text-only:`
+			`	'Tis good of thee, captain, that thou sought me out upon learning of this recent incident. Thine instincts do thee justice. Nonetheless, I've naught to give thee. The matter underway is of Kaatrij and does not pertain to thee nor the other Houses. If thou well-regards this House, keep clear of this. Enjoy our fruitful world, assist our grateful citizens, be regaled by what gifts we yet may give. Do not pry. This I beseech you, for our sake and for thine: do not be tempted by our secrets' jaws.`
+			`	This I myself attest as V- E- Saajret, of Somber Sejra.`
+				decline
+
+
+
+mission "Successors: Ghosts 0b1 Transport"
+mission "Successors: Ghosts 0b2 Transport"
+
+
+
+mission "Successors: Ghosts 0c Student"
+	name "Return Successor student home"
+	description "A Successor student studying on <origin> wants to go home to <destination> after the incident on Qasa-Sija-Iri. Their family will pay you on arrival."
+	source "Raaqa-Puan-Uuoru"
+	destination "Kasi-Osolaa-Sossa"
+	passengers 1
+	clearance
+	to offer
+		has "successors: ghosts stage 0"
+		random < 60
+	on offer
+		conversation
+			``
+	on visit
+		dialog "You have landed on <destination>, but [THE STUDENT] is on an escort out of the system."
+	on complete
+		payment 47600
+		conversation
+			``

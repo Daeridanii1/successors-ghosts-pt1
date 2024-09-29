@@ -1,0 +1,25 @@
+# Copyright (c) 2024 by Daeridanii
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+event "successors: ghosts incident"
+	set "successors: ghosts stage 0"
+	planet "Qasa-Sija-Iri"
+		description `Until recently, this moon was an utterly unremarkable uninhabited world within House Kaatrij's sphere of influence. However, near the south pole, the exposed guts of a strange facility now twinkle and shimmer half-enveloped in the moon's sands. A large military presence by House Kaatrij repels any closer inspection, but regardless, it seems that Qasa-Sija-Iri is not quite as uninhabited as it immediately appeared.`
+
+event "successors: ghosts restrict"
+	planet "Qasa-Sija-Iri"
+		government "House Kaatrij"
+		"required reputation" 999
+
+event "successors: ghosts stage 1"
+	set "successors: ghosts stage 1"
