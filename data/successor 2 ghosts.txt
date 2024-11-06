@@ -203,11 +203,12 @@ mission "Successors: Ghosts 0a3 Saajret"
 
 
 mission "Successors: Ghosts 0b1 Transport"
+	name ""
 mission "Successors: Ghosts 0b2 Transport"
 
 
-
 mission "Successors: Ghosts 0c Student"
+	minor
 	name "Return Successor student home"
 	description "A Successor student studying on <origin> wants to go home to <destination> after the incident on Qasa-Sija-Iri. Their family will pay you on arrival."
 	source "Raaqa-Puan-Uuoru"
@@ -216,13 +217,127 @@ mission "Successors: Ghosts 0c Student"
 	clearance
 	to offer
 		has "successors: ghosts stage 0"
-		random < 60
 	on offer
 		conversation
-			``
+			`In <origin>'s spaceport, you spot a smallish Successor staring wistfully at the list of departures - after the incident on House Kaatrij's moon, flights offworld have been consistently packed. While you're looking, the Successor catches your gaze and glides over to talk to you, taking unusual care to remain within the watery channels that web over the terminal floor.`
+			`	"Thou'rt that alien captain, surely," they say, and make a curious grunting noise as they look at you. "Never thought thou were't so... small? No matter. Thou hast a ship, yes? A vessel?"`
+			choice
+				`	"Yes, I do. A little cramped, but I don't mind it."`
+					to display
+						and
+							has "flagship attribute: bunks" <= 20
+							not "outfit (installed): Luxury Accommodations"
+					goto cramped
+				`	"Yes, I do. It's quite spacious, in fact."`
+					to display
+						or
+							has "flagship attribute: bunks" > 20
+							has "outfit (installed): Luxury Accommodations"			
+					goto spacious			
+				`	"Of course."`
+			
+			`	The Successor makes a soft noise like humming for a couple of moments. "Fine, fine," they say, "fine. Can'st thou transport me offworld? I must go back home; I can pay upon arrival - surely that interests thee?"`
+				goto transportation
+			label cramped
+			`	"Ugh!" they intone. "Thou must be like an Ejrn in its burrow! Bleh!" They take a moment to compose themself. "Regardless of the... limited dimensions of thy craft, I am forced to ask of thee transportation. Can'st thou provide it? I can pay upon arrival."`
+				goto transportation
+			label spacious
+			`	"We shall see about that," they say, taking a moment to compose themself. "Regardless of my... distaste, I am forced to ask of thee transportation. Can'st thou provide it? I can pay upon arrival."`
+			label transportation
+			choice
+				`	"Sure, where do you need to go?"`
+				`	"You'll have to find someone else to take you."`
+					goto no
+			
+			`	"Hm, hm," they say, "<planet>, in the <system> system, if thou'rt unfamiliar. Kaatrij speaks so much of scholarship and learning, but haven't learned enough to even hide their secrets? Better a student at home, I start to think." They pause wistfully before continuing with an "Ugh!" and then "show me to thy ship."`
+				accept
+			label no
+			`	They contort their skin into wrinkles of disgust. "Ugh! Benighted creature! Fine! Go drool over the outfitter or whatever it is thou prefers."`
+				decline
 	on visit
-		dialog "You have landed on <destination>, but [THE STUDENT] is on an escort out of the system."
+		dialog "You land on <planet>, but realize that your escort carrying the Successor student hasn't entered the system yet. Better depart and wait for it."
 	on complete
 		payment 47600
 		conversation
 			``
+
+mission "Successors: Ghosts 1a1a Transport"
+	description "A scientist from House Seineq needs to get to <destination> by <date> to assist their House after the incident on its ally House Kaatrij's moon."
+
+mission "Successors: Ghosts 1a1b Cargo"
+	description "<tons> tons of living metal growth plates belonging to House Seineq need to get to <destination> by <date> to assist their ally House Kaatrij after the incident on its moon."
+
+mission "Successors: Ghosts 1a1c Mixed"
+	description "An starship engineer from House Seineq and their <tons> tons of equipment need to get to <destination> by <date> to assist their House's ally, House Kaatrij, after the incident on its moon."
+
+mission "Successors: Ghosts 1a2 Sensors"
+	description "House Seineq is concerned that the incident at Qasa-Sija-Iri may be the doing of parties from the other side of the wormhole, and have asked you to deploy a net of sensors in <waypoints>."
+	on complete
+		set "successors: jump drive monitoring"
+
+mission "Successors: Ghosts 1a3 Investigate"
+	description "Investigators from House Seineq want you to report back your dealings with the other High Houses."
+
+
+
+# As appropriate, these should be able to offer before 1a3 Investigate
+mission "Successors: Ghosts 1b1 Aqrabe" # Mission chain
+	on complete
+		"successors: ghosts houses dealt with" ++
+		set "successors: ghosts dealt with aqrabe"
+
+mission "Successors: Ghosts 1c1 Chydiyi" # Mission chain
+	on complete
+		"successors: ghosts houses dealt with" ++
+		set "successors: ghosts dealt with chydiyi"
+		outfit "Rubies" 5
+
+outfit "Rubies"
+	plural "Rubies"
+	category "Minerals"
+	cost 300000
+	thumbnail "outfit/unknown"
+	"flotsam sprite" "effect/flotsam yottrite"
+	"installable" -1
+	description "Brilliantly cut gem-quality rubies, blood-red and of uncommon size and vibrance. Though smaller gemstones can be grown without much hassle in the modern era, ones of this size remain both rare and stunning enough to fetch a commanding price in almost any market."
+
+mission "Successors: Ghosts 1d1 Myurej" # Mission chain
+	on complete
+		"successors: ghosts houses dealt with" ++
+		set "successors: ghosts dealt with myurej"
+
+mission "Successors: Ghosts 1d1 Sioeora" # Mission chain
+	on complete
+		"successors: ghosts houses dealt with" ++
+		set "successors: ghosts dealt with sioeora"
+
+mission "Successors: Ghosts 1e1 People's Houses" # Mission chain
+	on complete
+		"successors: ghosts houses dealt with" ++
+		set "successors: ghosts dealt with people's houses"
+
+mission "Successors: Ghosts 1f1 Sieasej" # Mission chain
+	on complete
+		"successors: ghosts houses dealt with" ++
+		set "successors: ghosts dealt with sioeora"
+
+mission "Successors: Ghosts 1g1 Kaatrij" # Mission chain
+	on complete
+		"successors: ghosts houses dealt with" ++
+		set "successors: ghosts dealt with kaatrij"
+
+
+
+mission "Successors: Ghosts 1a4 Report"
+	to offer
+		has "successors: ghosts houses dealt with" >= 3
+		or
+			has "successors: ghosts dealt with chydiyi"
+			has "successors: ghosts dealt with myurej"
+			has "successors: ghosts dealt with kaatrij"
+	on complete
+		payment 1000000
+
+mission "Successors: Ghosts 1a5 Destroyed"
+	on offer
+		log "The base on [planet] from which House Seineq organized their investigation has been destroyed, along with the JD monitoring equipment."
