@@ -1,4 +1,4 @@
-# Copyright (c) 2024 by Daeridanii
+# Copyright (c) 2025 by Daeridanii
 #
 # Endless Sky is free software: you can redistribute it and/or modify it under the
 # terms of the GNU General Public License as published by the Free Software
@@ -259,23 +259,108 @@ mission "Successors: Ghosts 0c Student"
 	on complete
 		payment 47600
 		conversation
-			``
+			`TODO: End Successors: Ghosts 0c Student`
 
 mission "Successors: Ghosts 1a1a Transport"
+	name "Scientist to <destination>"
+	destination "Shassa-Wyra-Orrou"
 	description "A scientist from House Seineq needs to get to <destination> by <date> to assist their House after the incident on its ally House Kaatrij's moon."
+	source
+		attributes "successor"
+		not government "House Kaatrij"
+		not attributes "uninhabited"
+	passengers 1
+	to offer
+		has "successors: ghosts stage 1"
+		random < 30
 
 mission "Successors: Ghosts 1a1b Cargo"
+	name "Aid supplies to <destination>"
+	destination "Shassa-Wyra-Orrou"
 	description "<tons> tons of living metal growth plates belonging to House Seineq need to get to <destination> by <date> to assist their ally House Kaatrij after the incident on its moon."
+	source
+		attributes "successor"
+		not government "House Kaatrij"
+		not attributes "uninhabited"
+	cargo "Living metal plates" 12
+	to offer
+		has "successors: ghosts stage 1"
+		random < 30
 
 mission "Successors: Ghosts 1a1c Mixed"
+	name "Engineer to <destination>"
+	destination "Shassa-Wyra-Orrou"
 	description "An starship engineer from House Seineq and their <tons> tons of equipment need to get to <destination> by <date> to assist their House's ally, House Kaatrij, after the incident on its moon."
+	source
+		attributes "successor"
+		not government "House Kaatrij"
+		not attributes "uninhabited"
+	passengers 1
+	cargo "Repair equipment" 4
+	to offer
+		has "successors: ghosts stage 1"
+		random < 30
 
 mission "Successors: Ghosts 1a2 Sensors"
+	source "Shassa-Wyra-Orrou"
 	description "House Seineq is concerned that the incident at Qasa-Sija-Iri may be the doing of parties from the other side of the wormhole, and have asked you to deploy a net of sensors in <waypoints>."
+	cargo "Successor sensor drones" 6
+	to offer
+		or
+			has "Successors: Ghosts 1a1a Transport: done"
+			has "Successors: Ghosts 1a1b Cargo: done"
+			has "Successors: Ghosts 1a1c Mixed: done"
+	on offer
+		conversation
+			`It's not long after you return to the spaceport that you are approached by a distinctly stressed-looking Successor who curtly instructs you to follow them to a small side room. You wait there for a minute or two, trying your best to avoid the overhead mist generators, before a pair of Successors enter from the same door you did, and introduce themselves to you.`
+			`	"Captain, captain, we lament thy wait. I am Sijra and this," they say, gesturing to the other, "is Rijatet." Rijatet offers a short splay of the arms on hearing their name. "We represent House Seineq here."`
+			choice
+				`	"How is Seineq connected to all this?"`
+				`	"Why are we meeting here?"`
+			`	"Our ally, Kaatrij," says Sijra, "has ceased their internal messages to us, and the rest of the New. But even if they do not wish to share, we can derive our own answers well enough."`
+			`	"This was an attack," says Rijatet. Their voice is low and rumbly, like rocks rolling down a hill. "Kaatrij would not close up otherwise. They do not trust the other Houses. They never have. They think another House has wounded them."`
+			`	"And thou, captain, thou art a... free element. Thy place in this can't be eas'ly divined. We can handle one alien, and their host, but cans't be sure thyself is all we have to reckon with." Waves of color run over Sijra's body, and one of their legs twitches gently against the floor.`
+			choice
+				`	"Are you saying you think this is some prelude to alien invasion?"`
+				`	"Are you saying you think that another House attacked Kaatrij?"`
+			`	Sijra wriggles. "No. Not necessarily. Just that we are in need of information and wish to ensure that thou cans't be relied upon to provide it. So," says Sijra, "we have for thee a task. We will load sensors onto thy craft that can be deployed'n the other side of the wormhole, 'round the disconnected stars where our ships can't travel. If this is the work of some meddling alien force thinking cloaks and a jump drive make them gods, then we will know it, and we will show them their folly.`
+			choice
+				`	"And what if it isn't?"`
+					goto isnt
+				`	"So you can penetrate cloaks?"`
+					goto cloaks
+				`	"And what if I refuse?"`
+					goto refuse
+			label isnt
+			`	"Then," Sijra says, "we shall have to determine which of our Houses is threatening war."`
+			choice
+				`	"Very well, I'll deploy your sensors."`
+					goto yes
+				`	"I'm not interested in being a part of this."`
+					goto refuse
+			label cloaks
+			`	Pink spots break out over Rijatet's body. "We would not tell thee either way. But never in thirty thousand years have we or our Predecessors met a race with drives like yours that could camouflage their imprint on the weave of space. Listen well enough, and when they jump, it will always be there."`
+			choice
+				`	"Very well, then, I'll deploy your sensors."`
+					goto yes
+				`	"I'm not interested in being a part of this."`
+					goto refuse
+			label refuse
+			`	"We won't cage thee, Captain," says Sijra. "Thou art not our vassal, nor our responsibility. But each day of this disruption, thy liability to thy patron - to the Houses all - grows. An alien swims into our pool and soon after, a House is bombed? Thou art an article of suspicion and concern. An opportunity like this will not come again for thee, methinks."`
+			choice
+				`	"Very well, then, I'll deploy your sensors."`
+					goto yes
+				`	"I'm still not interested in being part of this."`
+			`	Sijra and Rijatet each turn a slightly different shade of blue. "Very well," says Sijra. "Farewell."`
+				decline
+			label yes
+			`	Both of the two seem to relax a bit when you say this, their arms showing a little more slack. Sijra notes down something on a metallic pad that they take out of their outfit, before informing you that they've ordered the sensor drones to be transferred to the <ship>. "Once thy task is done, Captain, return here and we shall have thy next opportunity for usefulness."`
+				accept
 	on complete
 		set "successors: jump drive monitoring"
 
 mission "Successors: Ghosts 1a3 Investigate"
+	source "Shassa-Wyra-Orrou"
 	description "Investigators from House Seineq want you to report back your dealings with the other High Houses."
 
 
@@ -340,4 +425,4 @@ mission "Successors: Ghosts 1a4 Report"
 
 mission "Successors: Ghosts 1a5 Destroyed"
 	on offer
-		log "The base on [planet] from which House Seineq organized their investigation has been destroyed, along with the JD monitoring equipment."
+		log "The base on Shassa-Wyra-Orrou from which House Seineq organized their investigation has been destroyed, along with the jump drive monitoring equipment."
