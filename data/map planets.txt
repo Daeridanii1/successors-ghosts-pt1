@@ -1,0 +1,4 @@
+planet "Exotic Metal Garden"
+	attributes predecessor station uninhabited
+	landscape land/space6
+	description `Eerily quiet, the small habitable areas of this station are dominated by the view of a tangled nest of enormous metallic ribbons that stretch away from the Kasii-Cavasaa star. Deep in the bowels of the facility, these are spooled into strings of exotic stellar metal which, despite their small size, are improbably heavy and uncomfortably cold to the touch. Having not been harvested in many hundreds of years, the spools are silent and still - apart from a single one, which slowly revolves and holds almost no material.`

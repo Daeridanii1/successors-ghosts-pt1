@@ -1,0 +1,90 @@
+mission "Successors: Ghosts Incident 1 Transport"
+	minor
+	name "Transport relief materials to <destination>"
+	source
+		government "House Aqrabe" "House Seineq"
+	destination "Raaqa-Puan-Uuoru"
+	cargo "Humidity regulators" 16
+	clearance
+	to offer
+		has "successors: ghosts incident"
+	on offer
+		conversation 
+			`You take on relief materials from <origin> that need to get to <destination>.`
+	on complete
+		payment 45000
+		conversation 
+			`You are given <payment> credits for delivering the materials and are directed to the spaceport to transport some citizens offworld.`
+
+mission "Successors: Ghosts Incident 2 Transport"
+	minor
+	name "Transport Kaatrij citizens offworld"
+	source "Raaqa-Puan-Uuoru"
+	destination
+			distance 1 3
+			government "House Aqrabe" "House Seineq" "Successor"
+	passengers 13
+	to offer
+		has "Ghosts Incident 1 Transport: done"
+	on offer
+		conversation
+			`Several citizens of House Kaatrij ask you to take them offworld to <destination>.`
+	on complete
+		payment 55000
+		conversation
+			`You are paid <payment> credits for transporting the Successors.`
+
+
+mission "Successors: Ghosts Incident 1 Student"
+	minor
+	name "Return Successor student home"
+	description "A Successor student studying on <origin> wants to go home to <destination> after the incident on Qasa-Sija-Iri. Their family will pay you on arrival."
+	source "Raaqa-Puan-Uuoru"
+	destination "Kasi-Osolaa-Sossa"
+	passengers 1
+	clearance
+	to offer
+		has "successors: ghosts incident"
+	on offer
+		conversation
+			`In <origin>'s spaceport, you spot a smallish Successor staring wistfully at the list of departures - after the incident on House Kaatrij's moon, flights offworld have been consistently packed. While you're looking, the Successor catches your gaze and glides over to talk to you, taking unusual care to remain within the watery channels that web over the terminal floor.`
+			`	"Thou'rt that alien captain, surely," they say, and make a curious grunting noise as they look at you. "Never thought thou were't so... small? No matter. Thou hast a ship, yes? A vessel?"`
+			choice
+				`	"Yes, I do. A little cramped, but I don't mind it."`
+					to display
+						and
+							has "flagship attribute: bunks" <= 20
+							not "outfit (installed): Luxury Accommodations"
+					goto cramped
+				`	"Yes, I do. It's quite spacious, in fact."`
+					to display
+						or
+							has "flagship attribute: bunks" > 20
+							has "outfit (installed): Luxury Accommodations"			
+					goto spacious			
+				`	"Of course."`
+			
+			`	The Successor makes a soft noise like humming for a couple of moments. "Fine, fine," they say, "fine. Can'st thou transport me offworld? I must go back home; I can pay upon arrival - surely that interests thee?"`
+				goto transportation
+			label cramped
+			`	"Ugh!" they intone. "Thou must be like an Ejrn in its burrow! Bleh!" They take a moment to compose themself. "Regardless of the... limited dimensions of thy craft, I am forced to ask of thee transportation. Can'st thou provide it? I can pay upon arrival."`
+				goto transportation
+			label spacious
+			`	"We shall see about that," they say, taking a moment to compose themself. "Regardless of my... distaste, I am forced to ask of thee transportation. Can'st thou provide it? I can pay upon arrival."`
+			label transportation
+			choice
+				`	"Sure, where do you need to go?"`
+				`	"You'll have to find someone else to take you."`
+					goto no
+			
+			`	"Hm, hm," they say, "<planet>, in the <system> system, if thou'rt unfamiliar. Kaatrij speaks so much of scholarship and learning, but haven't learned enough to even hide their secrets? Better a student at home, I start to think." They pause wistfully before continuing with an "Ugh!" and then "show me to thy ship."`
+				accept
+			label no
+			`	They contort their skin into wrinkles of disgust. "Ugh! Benighted creature! Fine! Go drool over the outfitter or whatever it is thou prefers."`
+				decline
+	on visit
+		dialog "You land on <planet>, but realize that your escort carrying the Successor student hasn't entered the system yet. Better depart and wait for it."
+	on complete
+		payment 47600
+		conversation
+			`TODO: End Successors: Ghosts 0c Student`

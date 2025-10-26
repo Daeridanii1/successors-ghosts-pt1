@@ -1,0 +1,19 @@
+ship "Vujlet" "Vujlet (Stellar)"
+	outfits
+
+		`"Nnesa" Fusion Core`
+		"Primary Power Reserve"
+		`"Jaase" Shield Cortex`
+		"Successor Cooling" 2
+		"Multimodal Armor: Keystone"
+
+		`"Chyyra" Inductive Thruster`
+		`"Chyyra" Inductive Steering`
+		`"Chyyra" Inductive Reverser`
+		"Hyperdrive"
+
+		"Radiant Shield Shunt"
+	gun
+	gun
+	gun
+	gun
