@@ -3,17 +3,73 @@ ship "Vujlet" "Vujlet (Stellar)"
 
 		`"Nnesa" Fusion Core`
 		"Primary Power Reserve"
-		`"Jaase" Shield Cortex`
+		`"Ej" Shield Cortex`
 		"Successor Cooling" 2
 		"Multimodal Armor: Keystone"
 
 		`"Chyyra" Inductive Thruster`
 		`"Chyyra" Inductive Steering`
-		`"Chyyra" Inductive Reverser`
 		"Hyperdrive"
+		"Successor Fuel Sail"
+
+		"Cargo Expansion" 2
 
 		"Radiant Shield Shunt"
 	gun
 	gun
 	gun
 	gun
+
+ship "Vujlet" "Vujlet (Stellar Light Armor)"
+	outfits
+
+		`"Nnesa" Fusion Core`
+		"Primary Power Reserve"
+		`"Ej" Shield Cortex`
+		"Successor Cooling" 2
+		"Multimodal Armor: Light"
+
+		`"Chyyra" Inductive Thruster`
+		`"Chyyra" Inductive Steering`
+		"Hyperdrive"
+		"Successor Fuel Sail"
+
+		"Cargo Expansion" 2
+
+		"Radiant Shield Shunt"
+	gun
+	gun
+	gun
+	gun
+
+ship "Seiitej" "Seiitej (Keystone)"
+	outfits
+		`"Ojet" Bimodal Coilgun` 4
+
+		`"Ryuit" Fusion Core`
+		"Auxiliary Power Reserve" 3
+		`"Jaase" Shield Cortex`
+		"Successor Cooling"
+		"Multimodal Armor: Light"
+		"Kinetic Rail Rifle" 15
+
+		`"Veusa" Inductive Thruster`
+		`"Veusa" Inductive Steering`
+		"Hyperdrive"
+
+		"Quantum Keystone"
+
+ship "Seiitej" "Seiitej (Armor Keystone)"
+	outfits
+		`"Ojet" Bimodal Coilgun` 4
+
+		`"Ryuit" Fusion Core`
+		"Auxiliary Power Reserve" 3
+		`"Jaase" Shield Cortex`
+		"Successor Cooling"
+		"Multimodal Armor: Keystone"
+		"Kinetic Rail Rifle" 15
+
+		`"Veusa" Inductive Thruster`
+		`"Veusa" Inductive Steering`
+		"Hyperdrive"

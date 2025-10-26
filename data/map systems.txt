@@ -1,5 +1,5 @@
-system "Kasii-Cavaasa"
-    add object "Exotic Metal Garden"
-		sprite planet/station-weapon-a0
+system Kasii-Cavaasa
+	add object "Exotic Metal Garden"
+		sprite planet/exotic-metal-garden
 		distance 80
 		period 10

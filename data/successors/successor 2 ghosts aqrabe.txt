@@ -2,7 +2,7 @@ mission "Successors: Ghosts Aqrabe 1"
 	name "Keystone delivery"
 	source "Kasii-Cavasaa-Oa"
 	destination "Kasii-Cavasaa-Oa"
-	description "House Aqrabe wants 50 tons of quantum keystones at <destionation>."
+	description "House Aqrabe wants 50 tons of quantum keystones at <destination>."
 	to offer
 		or
 			and
@@ -60,8 +60,8 @@ mission "Successors: Ghosts Aqrabe 1"
 				accept
 	to complete
 		or
-			has "outfit: Quantum Keystone" >= 50
-			has "outfit: Quantum Key Stone" >= 50
+			has "Successors: Ghosts Aqrabe Remnant: offered"
+			has "Successors: Ghosts Aqrabe Hai: offered"
 	on complete
 		log "Delivered a shipment of quantum keystones to House Aqrabe for study and installation on their ships."
 
@@ -79,11 +79,11 @@ conversation "successor keystone delivery"
 	`	As they begin directing ground crews to offload the keystones, Tilra turns to you for a moment and requests that you meet them back at the spaceport by the end of the day: "thine assistance might be a boon to us in the next part of this journey," they say.`
 
 mission "Successors: Ghosts Aqrabe Remnant"
+	landing
 	destination "Kasii-Cavasaa-Oa"
 	to fail
 		has "Successors: Ghosts Aqrabe Hai: done"
 	to offer
-		has "outfit: Quantum Key Stone" >= 50
 		has "Successors: Ghosts Aqrabe 1: offered"
 	on offer
 		conversation "successor keystone delivery"
@@ -91,11 +91,11 @@ mission "Successors: Ghosts Aqrabe Remnant"
 		payment 1200000
 
 mission "Successors: Ghosts Aqrabe Hai"
+	landing
 	destination "Kasii-Cavasaa-Oa"
 	to fail
 		has "Successors: Ghosts Aqrabe Remnant: done"
 	to offer
-		has "outfit: Quantum Keystone" >= 50
 		has "Successors: Ghosts Aqrabe 1: offered"
 	on offer
 		conversation "successor keystone delivery"
@@ -104,6 +104,7 @@ mission "Successors: Ghosts Aqrabe Hai"
 
 
 mission "Successors: Ghosts Aqrabe 2"
+	name "Keystone testing"
 	source "Kasii-Cavasaa-Oa"
 	stopover "Myiara-Aret-Iir"
 	destination "Kasii-Cavasaa-Oa"
@@ -137,6 +138,7 @@ mission "Successors: Ghosts Aqrabe 2"
 		log "Escorted a keystone-equipped and multimodal armor ship through the Successors' wormhole."
 
 mission "Successors: Ghosts Aqrabe 3"
+	name "Visit stellar garden"
 	source "Kasii-Cavasaa-Oa"
 	stopover "Exotic Metal Garden"
 	destination "Kasii-Cavasaa-Oa"
@@ -157,7 +159,7 @@ mission "Successors: Ghosts Aqrabe 3"
 	on stopover
 		conversation
 			branch "no shields"
-				has "flagship shields" <= 0
+				"flagship shields" <= 0
 			`Your ship protests even as you near Kasii-Cavaasa, alarms ringing incessantly and heat meters spiking. The stellar metal garden is still little more than a dot against the roiling mass of the star. As you descend to it, the cockpit grows uncomfortably hot and is thick with the scent of ozone; Tilra looks even more miserable than you in the heat. Suddenly, something happens with the shields, and the intense heat of the star begins scouring bits of the <ship>'s hull. Tilra finally speaks: "Enough, captain. We shall have to regroup and find a different strategy."`
 			choice
 				`	(Retreat.)`
@@ -174,11 +176,12 @@ mission "Successors: Ghosts Aqrabe 3"
 				flee
 	on complete
 		conversation
-			`Tilra has spent most of the journey holed away, poring over data gathered from your stardiving expedition, but it's not long after the <ship>'s landing gear touch the ground of the <destination> spaceport that they are out and about, stretching their arms in the air. They remain nearby until you've finished post-flight checks and thank you for transporting them, now surrounded by several scholarly-dressed Successors. Before they head off, they ask you to return to the spaceport by sundown.`
+			`Tilra has spent most of the journey holed away, poring over data gathered from your stardiving expedition, but it's not long after the <ship>'s landing gear touch the ground of the <planet> spaceport that they are out and about, stretching their arms in the air. They remain nearby until you've finished post-flight checks and thank you for transporting them, now surrounded by several scholarly-dressed Successors. Before they head off, they ask you to return to the spaceport by sundown.`
 			`	Shortly before you depart into the port yourself, you overhear some of the ground crew remarking on the <ship>'s scorched hull.`
 		log "Attempted to retrieve stellar metal from Predecessor space for House Aqrabe, but was driven back by the intense heat."
 
 mission "Successors: Ghosts Aqrabe 4"
+	name "Pick up ship from Kaatrij"
 	clearance
 	source "Kasii-Cavasaa-Oa"
 	destination "Raaqa-Puan-Uuoru"
@@ -213,27 +216,29 @@ mission "Successors: Ghosts Aqrabe 4"
 				goto end
 			label end
 			`	"Oh," Tilra says just before you leave, "and also, Kaatrij wishes to send along an observer. Perhaps they have cause to be suspicious. Ugh, perhaps they're just suspicious by nature."`
+				accept
 
 mission "Successors: Ghosts Aqrabe 5"
+	name "Return to Kasii-Cavasaa-Oa"
 	landing
 	source "Raaqa-Puan-Uuoru"
 	destination "Kasii-Cavasaa-Oa"
 	npc save
 		government "House Kaatrij"
 		personality escort unconstrained launching
-		ship "Vujlet (Stellar)" "Nnesa ti-a-Oj"
+		ship "Vujlet (Stellar Light Armor)" "Nnesa ti-a-Oj"
 	on offer
 		conversation
 			`The Raaqa-Puan-Uuoru spaceport is drenched when you arrive, deep in the throes of a massive rainstorm, its sail-like projections flapping in the wind and streaming with water. From your landing pad, a series of automated guides direct you to a hangar built into a circular depression in the ground; the top of it closes over like a bubble, translucent and disconcertingly springy against the elements. You can see the blurry silhouette of a Vujlet parked inside as you enter through the side door.`
 			`	Near the entrance to the hangar, a data-sphere gently warbles, waiting for your touch. As you pick it up, it regurgitates its message:`
 			branch friendly
 				has "successors kaatrij patron"
-			`	Please bear well this craft, captain. Thou hast been an ally to us, and our own allies, this far, so Kaatrij offers thee this gift in amity. Use it well.`
-			`	This I myself attest as K- I- Saajret, of Somber Sejra.`
+			`	"Please bear well this craft, captain. Thou hast been an ally to us, and our own allies, this far, so Kaatrij offers thee this gift in amity. Use it well.`
+			`	This I myself attest as K- I- Saajret, of Somber Sejra."`
 				goto introduction
 			label friendly
-			`	Apologies, dear captain, that I have not come to see thee in the flesh. Would that our allies in the New have been treating thee kindly, with all due openness and clarity. We offer this to thee, in amity. Use it well.`
-			`	This I myself attest as K- I- Saajret, of Somber Sejra.`
+			`	"Apologies, dear captain, that I have not come to see thee in the flesh. Would that our allies in the New have been treating thee kindly, with all due openness and clarity. We offer this to thee, in amity. Use it well.`
+			`	This I myself attest as K- I- Saajret, of Somber Sejra."`
 			label introduction
 			`	A single Successor emerges from the side of the craft; their outfit does not resemble that of an archivist so much as that of a soldier, with armor-woven fabrics and a kinetic rifle held at their side. "Captain <first> <last>?" they say, and when you confirm, continue, "I shall accompany thee as an observer."`
 			choice
@@ -243,13 +248,14 @@ mission "Successors: Ghosts Aqrabe 5"
 			`	"Thine expectation is no longer accurate," they reply, not belying any emotion.`
 				goto end
 			`	They show you onboard. The interior of Successor military ships looks much different from their civilian craft - the bridge is buried deep in the center of the craft under layers of armor, a small, circular room with a water-filled pool in the center and liquid-metal displays ringing the edges. Similarly compact living quarters and operational spaces fan out from it, each one well-equipped.`
-			`	"Do not neglect to install that jump drive of thine," Kaatrij's observer says before you leave.`
+			`	After you've had a look around, Kaatrij's observer esorts you off the vessel. "I and a Kaatrij crew shall pilot the vessel to Aqrabe. Once there, thou shoulds't install thy jump drive aboard."`
+				accept
 	on visit
 		dialog "You have returned to Kasii-Cavasaa-Oa, but the Vujlet you are escorting has not yet arrived."
 	on complete
 		give ship "Vujlet (Stellar)" "Nnesa ti-a-Oj"
 		conversation
-			`Both your ship and the Vujlet are directed to an enormous outfitting bay at <destination>'s spaceport, easily large enough for both craft ten times over. As you disembark, you notice several Successors are entering the landed Vujlet with large carts of equipment in tow, much of which is locked away in unmarked metallic cases. Notably, Kaatrij's representative remains onboard, keeping their distance from the Aqrabe ground crews. Tilra spots you from an overhanging balcony and waves you over.`
+			`Both your ship and the Vujlet are directed to an enormous outfitting bay at <planet>'s spaceport, easily large enough for both craft ten times over. As you disembark, you notice several Successors are entering the landed Vujlet with large carts of equipment in tow, much of which is locked away in unmarked metallic cases. Notably, Kaatrij's representative remains onboard, keeping their distance from the Aqrabe ground crews. Tilra spots you from an overhanging balcony and waves you over.`
 			`	"A lovely craft, is it not, Captain? Thou hast not flown one of our martial craft before, hast thou?."`
 			choice
 				`	"A ship is a ship, really."`
@@ -265,37 +271,45 @@ mission "Successors: Ghosts Aqrabe 5"
 							has "ship model (all): Ojde" > 0
 							has "ship model (all): Stolsaqra" > 0
 					goto experienced
-			`	Tilra makes a short humming sound. "Perhaps," they say.`
+			`	Tilra makes a short humming sound. "Perhaps," they say. "Thou shalt have the opportunity to decide for thyself soon enough."`
 				goto next
 			label experienced
-			`	Tilra ripples with an emotion that's difficult to place.`
+			`	Tilra ripples with an emotion that's difficult to place, one tinted with shades of pride.`
 			label next
 			`	The re-armoring process begins soon after, massive metallic arms folding down from the top of the bay to scan over the surface of the ship. At certain points, flying drones emerge from the sides of the hangar to dispense some additional material onto the vessel or to perform scans - after a while of watching, Tilra suggests that you meet them back here in the spaceport in three hours, so that you can prepare in the meantime.`
 
 mission "Successors: Ghosts Aqrabe 6"
+	name "Visit exotic metal garden again"
 	source "Kasii-Cavasaa-Oa"
 	destination "Exotic Metal Garden"
+	deadline
+	deadline 2
 	passengers 2
 	to offer
 		has	"Successors: Ghosts Aqrabe 5: done"
 	on offer
 		conversation
-			`You meet Tilra and House Kaatrij's observer back in the hangar bay with the specially-equipped Vujlet, which now gleams all over with an oily, iridescent sheen.`
-	on complete
-		conversation
-			``
+			`You meet Tilra and House Kaatrij's observer back in the hangar bay with the specially-equipped Vujlet, which now gleams all over with an oily, iridescent sheen. Tilra and the observer are in the middle of a heated conversation; you catch a bit of something ending " - foolish to trust an alien," from the observer.`
+			`	Tilra waves you over. "Good, captain. Our ally was just expressing the importance of thy promptness in this task. Kaatrij longs not to be parted from their trinket for long."`
+			`	"Fine," you say. "Anything else I need to know?"`
+			`	The observer looks you over with an emotionless gaze. "Our efforts shall protect the craft from the star's heat, but little else. 'T'would be wise not to linger in the Tangles."`
+			`	Tilra rubs their arms together and an pulse of electric blue passes over them. "Time to go, then, captain!"`
+				accept
 
 mission "Successors: Ghosts Aqrabe 7"
 	name "Return to Kasii-Cavasaa-Oa"
 	landing
 	source "Exotic Metal Garden"
 	destination "Kasii-Cavasaa-Oa"
-	cargo "Stellar metal" 30
+	deadline
+	deadline 2
+	cargo "Stellar metal" 40
 	passengers 2
 	to offer
 		has	"Successors: Ghosts Aqrabe 6: done"
+	on offer
 		conversation
-			`Several minutes pass after landing before the hull of the <ship> has cooled enough to make it safe for exit - despite the Successors' loaned technology, the ship's armor still glows red-hot. The interior of the garden's loading bay is cavernous, the tangled metal strands drawn inside onto giant spools each many meters in diameter.`
+			`Several minutes pass after landing before the hull of the <ship> has cooled enough to make it safe for exit - despite Kaatrij's loaned technology, the ship's armor still glows red-hot. The interior of the garden's loading bay is cavernous, the tangled metal strands drawn inside onto giant spools each many meters in diameter.`
 			`	Your crew gets to work under the supervision of Tilra and Kaatrij's observer, removing small bits of metal from the rolls and carting them, one by one, onto the ship. Soon, Tilra calls you over to a side section of the facility, and points out one of spools - unlike the others, this one is entirely empty.`
 			`	"It would seem to me that our visit here is not the first, Captain," they say.`
 			choice
@@ -309,17 +323,18 @@ mission "Successors: Ghosts Aqrabe 7"
 			`	Tilra shudders with color. "Were we fortunate, 'twas the Quarg or some of their nature, inspecting here in solitude. But lacking fortune, it may be that Kaatrij's aggressor seeks this bounty too - and has beaten us to it."`
 			label asked
 			`	"Either way," they say, "we must hasten back t'bring this news to Aqrabe."`
+				accept
 	on enter "Kasii-Cavaasa"
 		dialog `As you take off from the stellar metal garden, your ship's proximity alarms begin to sound. Another ship is taking off too - and its weapons are aimed right at you!`
 	npc evade
 		ship "Hasur, Vowsworn" "Hasur-riita 4-1"
 		government "Solitude Enforcer" 
-		personality entering heroic nemesis unconstrained
+		personality launching heroic nemesis unconstrained
 	on complete
 		outfit "Radiant Shield Shunt" -1
 		event "successors: ghosts keystones finished" 50
 		conversation
-			`You set the ship down on <destination> in the midst of a sea of dockworkers, who begin removing the precious stellar metal from the <ship>'s cargo hold almost immediately. Tilra, after entering a bit of data on their pad, finally relaxes, quietly reciting a series of harsh-sounding and apparently untranslatable words.`
+			`You set the ship down on <planet> in the midst of a sea of dockworkers, who begin removing the precious stellar metal from the <ship>'s cargo hold almost immediately, under the watchful gaze of the Kaatrij observer. Tilra, after entering a bit of data on their pad, finally relaxes, quietly reciting a series of harsh-sounding and apparently untranslatable words.`
 			`	"What sort of ship was that?" you ask them, eliciting a long groan and a wave of oily black over their skin.`
 			`	"This is what we earn for tearing up a nest; going where we shouldn't," they say. "'Twas a drone, an automated guardian from the days that garden was new. No doubt meant to chase off interlopers, as ourselves. But-"`
 			choice
@@ -329,9 +344,18 @@ mission "Successors: Ghosts Aqrabe 7"
 			`	"Thou hast done us a duty, nonetheless. Thou shalt see thine account flusher soon."`
 			choice
 				`	"What about this ship? Do I get to keep it?"`
-					goto keep
-			`	Tilra nods. "Before we left, I heard from the "`
-		payment 250000
+					goto ship
+				`	"What happens now?"`
+			label now
+			`	"Now we put this bounty to work, captain. I and the others here have a long task before us: I believe we shall be able to split up the keystones and amplify their effects with the stellar metal - tis only a matter of how much and how well. There's little thou can do to assist now, though I'll be sure to note thy helpfulness to Aqrabe in this task."`
+			choice
+				`	"What about this ship? Do I get to keep it?`
+			label ship
+			`	Tilra nods. "Before we left, I heard from our fleet liason with Kaatrij. The ship lacks weapons or anything too perilous for thou to keep, and Kaatrij has no doubt already started removing their device. Thou might'st consider it a bonus to thy fee, a favor from the House to thee."`
+			label end
+			`	The two of you are interrupted by Kaatrij's observer, who informs the two of you that the metal offloading is complete. Tilra, eager to get started on the next phase of their project, leaves with them, offering you a quick bow and pleasant "goodbye."`
+			`	A few minutes later, you are notified that you have received a payment of <payment> credits from House Aqrabe.`
+		payment 400000
 		"successors: ghosts houses dealt with" ++
 		set "successors: ghosts dealt with aqrabe"
 		log "Retrieved stellar metal for House Kaatrij using a specially-equipped vessel, narrowly escaping pursuing warships."

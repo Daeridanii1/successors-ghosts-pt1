@@ -27,8 +27,8 @@ mission "Successors: Ghosts Wedding 0"
 		attributes "successor"
 		not attributes "quiet" "uninhabited"
 	to offer
-		has "event: successors ghosts intial timer"
-		random < 10
+		has "event: successors: ghosts initial timer"
+	#	random < 20
 	on offer
 		log "Learned of an upcoming wedding between some of the scions of Houses Chydiyi and Myurej."
 		conversation
@@ -52,11 +52,11 @@ mission "Successors: Ghosts Incident 0"
 		attributes "successor"
 		not attributes "quiet" "uninhabited"
 	to offer
-		has "event: successors ghosts intial timer"
-		random < 10
+		has "event: successors: ghosts initial timer"
+	#	random < 20
 	on offer
 		event "successors: ghosts incident"
-		event "successors: ghosts stage 1" 26
+		event "successors: ghosts stage 1" 5
 		log "Learned of an incident on a moon controlled by House Kaatrij that revealed portions of a hidden base."
 		conversation
 			`The usual orderly structure of the spaceport's activity lies in pieces. Throngs of merchants, travelers, and military officers alike crowd around displays in the port, their shops and vessels left behind. It is uncomfortably quiet - the only voice you hear above a whisper is that of a news announcer, writhing in your ears as the translation device rearranges the sound, word by word.`
@@ -77,6 +77,7 @@ mission "Successors: Ghosts QSI 1"
 	landing
 	invisible
 	source "Qasa-Sija-Iri"
+	repeat
 	to offer
 		not "successors: ghosts restriction lifted"
 	on offer
@@ -251,6 +252,7 @@ mission "Successors: Ghosts Seineq 1 Transport"
 	on offer
 		conversation
 			`You pick up a scientist from House Seineq who wants to get to <destination>.`
+				accept
 	on complete
 		payment 40000
 		conversation
@@ -258,12 +260,12 @@ mission "Successors: Ghosts Seineq 1 Transport"
 
 mission "Successors: Ghosts Seineq 1 Cargo"
 	name "Aid supplies to <destination>"
-	destination "Shassa-Wyra-Orrou"
 	description "<tons> tons of living metal growth plates belonging to House Seineq need to get to <destination> by <date> to assist their ally House Kaatrij after the incident on its moon."
 	source
 		attributes "successor"
 		not government "House Kaatrij"
 		not attributes "uninhabited"
+	destination "Shassa-Wyra-Orrou"
 	cargo "Living metal plates" 12
 	to offer
 		has "successors: ghosts stage 1"
@@ -274,6 +276,7 @@ mission "Successors: Ghosts Seineq 1 Cargo"
 	on offer
 		conversation
 			`You take on cargo from House Seineq that needs to get to <destination>.`
+				accept
 	on complete
 		payment 40000
 		conversation
@@ -298,6 +301,7 @@ mission "Successors: Ghosts Seineq 1 Mixed"
 	on offer
 		conversation
 			`You take on cargo from House Seineq that needs to get to <destination>.`
+				accept
 	on complete
 		payment 40000
 		conversation
@@ -409,7 +413,7 @@ mission "Successors: Ghosts Investigate"
 			`	"Then in providing it, thou may'st see things our forces might not be privy to."`
 			choice
 				`	"Are you asking me to spy for you?"`
-				goto spy
+					goto spy
 				`	"Get to the point, please."`
 			`	Sirja moves their head a little closer to you. "If and when another House contracts thee for some purpose that thou suspects in any way, make note of it. Tell us and we shall pay thee a fair sum for thy time and effort."`
 				goto decision
