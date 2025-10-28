@@ -276,7 +276,63 @@ mission "Successors: Ghosts Aqrabe 5"
 			label experienced
 			`	Tilra ripples with an emotion that's difficult to place, one tinted with shades of pride.`
 			label next
-			`	The re-armoring process begins soon after, massive metallic arms folding down from the top of the bay to scan over the surface of the ship. At certain points, flying drones emerge from the sides of the hangar to dispense some additional material onto the vessel or to perform scans - after a while of watching, Tilra suggests that you meet them back here in the spaceport in three hours, so that you can prepare in the meantime.`
+			`	The re-armoring process begins soon after, massive metallic arms folding down from the top of the bay to scan over the surface of the ship. At certain points, flying drones emerge from the sides of the hangar to dispense some additional material onto the vessel or to perform scans, projecting shape after shape onto the warbling hull in many-colored laser light. After a while of watching, Tilra leans over to you. "The process will take some more hours," they say. "The armor to cross the wormhole is a more complicated kind than the others. I'll leave thee to thine own pursuits for now - though, I plan to go among the statue garden for a while, and if it pleases thee, thou may'st join me there."`
+			choice
+				`	"I'd be happy to."`
+				`	"Thanks, but I have my own preparations to make."`
+					goto alone
+			`	The statue garden isn't very far from the outfitting bay where the Vujlet is parked. It's a circular area, cut out of the structure of the spaceport and exposed to the elements - the early-morning light shines through the light snowfall and glitters on the eerie metallic forms of the statues. Most of them are purely abstract, but one in every ten or so has some organic form emerging from the smooth metal as if it were trapped behind a sheet: leaves of plants, faces of animals, or even what look like Successor body parts.`
+			`	"I'm curious, captain," Tilra says. "What motivates thee to do this? Flying into a star, I mean to say. Last we visited, 'twas on thine own ship that thou knowest well - now, thou placeth thy life in alien engineering thou'st never seem perform. Why consider it?"`
+			choice
+				`	"I've done other dangerous things before and they've always worked out."`
+					goto lucky
+				`	"I've seen enough of Successor engineering to be confident in it."`
+					goto confident
+				`	"Maybe I like the danger."`
+			`	"Danger, danger," Tilra says, rolling the word around in their mouth. "Our youths will dream of being valiant pilots, proving their valor in strings of peril, and then in adulthood instead awake to find themselves at the helm of a cargo ship disguised as something diff'rent by House armor. Perhaps I understand that for thee, captain."`
+				goto hbu
+			label lucky
+			`	A mirthful blush passes over Tilra. "No doubt thou hast," they say. "To've traveled as far as thou hast, through such perilous voids... let us hope thy luck holds, then, captain."`
+				goto hbu
+			label confident
+			`	"Truly?" Tilra says. They look around at the sculptures, taking them in. "That's fair for thee. We may not be what we were long ago, but we do retain some subtle arts. Thou'rt right, if it matters, to trust us in this. Nothing endures as long as we have by being fickle."`
+			label hbu
+			`	"And you," you ask, "why are you doing this?"`
+			`	Tilra hums a long drone as they contemplate. "We've a tradition here - at least at Aqrabe, but I know others've sim'lar ones, too. In the late hour of their life, a parent's children will decide for them a task they are t'accomplish: a work of art to make, a journey to travel, a change of the self to effect, or another of that sort. Much of our lives are formed already by the acts and station of our ancestors, so 'tis fair t'offer some shaping to our progeny in return."`
+			`	"So your children are asking you to fly into a star?"`
+			`	An explosion of humor consumes Tilra, and they lean against one of the statues for support. "No, no," they say, "I'm far too young, and 'twouldn't be the right thing to ask, besides. No, I mention it because the task I decided for my eldest parent is this around us." They gesture to the sculptures. "For ten years they formed the pillars standing here and now, even dead, a bit of their existence lingers 'tween those, and in the air. If we succeed, then likewise parts of us shall live in the future of this House."`
+			choice
+				`	"I can understand wanting to make a difference."`
+					goto difference
+				`	"Do you really think the scions of the House will be that grateful?"`
+			`	"'Tisn't about gratitude, nor about the scions. 'Tis a matter of... continuity. Our lives are waves upon the bright shore, shaped by predecessors, shaping consequents. Over the eons, names become words in the common language, and are then chosen again as names as new children become adults. In a thousand years, thy name may become the word for those 'keystones' of thine, and in a thousand more, it could be invoked by a new cohort in a new world."`
+			choice
+				`	"That seems a little far-fetched."`
+					goto far-fetched
+				`	"I wouldn't mind that."`
+					goto egoist
+				`	"Sometimes I worry they'll be invoking it as a curse. The Successors haven't done right by everyone, after all."`
+					to display
+						has "Successors: People's Houses: First Contact: offered"
+			action
+				set "successors confronted tilra"
+			`	Tilra looks down at you with interest. "Perhaps I guess what thou mean'st, but tell me more, if it pleases thee."`
+			`	"Well," you say, "the People's Houses don't seem happy with their lot, nor do the Predecessor planets I've seen look very comfortable. Not that humans don't have our own problems, but it seems like even thousands of years of 'waves upon the bright shore' haven't made the Successors totally enlightened. Supplying you with keystones might help us both right now, but who knows what'll come of it in the future?"`
+			`	A spark of anger flashes over Tilra's face, but only briefly, and they seem to push their skin back to its most neutral color. "There's no undoing what's already wrought," they say. "Sad as it might be." They pause for a moment. "I'll hope to see thee in the spaceport nonetheless, captain."`
+				goto end
+			label far-fetched
+			`	Mirth once again sparkles Tilra's skin. "Probably so," they say, and after a pause, "my thanks to thee for joining me, captain. Thou should'st prepare now - join us back at the spaceport when thou'rt ready."`
+				goto end
+			label egoist
+			`	Tilra keeps a contemplative look on their face. "Somehow I suspected that," they say, and after a pause, "my thanks to thee for joining me, captain. Thou should'st prepare now - join us back at the spaceport when thou'rt ready."`
+				goto end
+			label difference
+			`	"It's quite a feeling," they say, "isn't it?" They pause for a short while, looking up at the sky. The clouds overhead are starting to part and the snowfall is thinning. You notice for the first time that the ground is slightly heated - none of the snow that's falling has accumulated, instead just melting away into tiny channels in the rock. "My thanks to thee for joining me, captain," says Tilra. "Thou should'st prepare now - join us back at the spaceport when thou'rt ready."`
+				goto end
+			label alone
+			`	"Of course. Join me back here in the spaceport, then, four hours hence."`
+			label end
+			`	With that, Tilra heads off. You should make sure that the Vujlet you have been loaned is equipped for the upcoming voyage.`
 
 mission "Successors: Ghosts Aqrabe 6"
 	name "Visit exotic metal garden again"
@@ -343,17 +399,22 @@ mission "Successors: Ghosts Aqrabe 7"
 			`	"Such a thing should not be. No House would've left a craft like that behind to molder, not for the sake of some petty metal. Heirlooms of that age are precious - I cannot see why such a thing should be so eas'ly discarded." They finally relax a bit, and the black wave subsides.`
 			`	"Thou hast done us a duty, nonetheless. Thou shalt see thine account flusher soon."`
 			choice
+				`	"What happens now?"`
 				`	"What about this ship? Do I get to keep it?"`
 					goto ship
-				`	"What happens now?"`
 			label now
 			`	"Now we put this bounty to work, captain. I and the others here have a long task before us: I believe we shall be able to split up the keystones and amplify their effects with the stellar metal - tis only a matter of how much and how well. There's little thou can do to assist now, though I'll be sure to note thy helpfulness to Aqrabe in this task."`
 			choice
 				`	"What about this ship? Do I get to keep it?`
 			label ship
 			`	Tilra nods. "Before we left, I heard from our fleet liason with Kaatrij. The ship lacks weapons or anything too perilous for thou to keep, and Kaatrij has no doubt already started removing their device. Thou might'st consider it a bonus to thy fee, a favor from the House to thee."`
+			branch confronted
+				has "successors confronted tilra"
+				goto end
+			label confronted
+			`	Tilra turns to go away but stops themself. "I've an apology to offer thee 'fore we part, captain," they say. "I showed thee some disrespect when we spoke before leaving. 'Tis strange to be accused by one so foreign to our ways. But we've been cut off a long time now, I think, hearing only from ourselves and the ghosts of others. Greater things are moving than either of us now, but thou may'st trust that I'll be careful with our treasure. I can promise thee nothing more, but thou'rt right to remind me of that, at least."`
 			label end
-			`	The two of you are interrupted by Kaatrij's observer, who informs the two of you that the metal offloading is complete. Tilra, eager to get started on the next phase of their project, leaves with them, offering you a quick bow and pleasant "goodbye."`
+			`	The two of you are interrupted by Kaatrij's observer, who informs the two of you that the metal offloading is complete. Tilra, ready to get started on the next phase of their project, leaves with them, offering you a quick bow and courteous "goodbye."`
 			`	A few minutes later, you are notified that you have received a payment of <payment> credits from House Aqrabe.`
 		payment 400000
 		"successors: ghosts houses dealt with" ++
