@@ -3,3 +3,9 @@ system Kasii-Cavaasa
 		sprite planet/exotic-metal-garden
 		distance 80
 		period 10
+
+system Avasaa-Novaa
+	add object "Inti-Arat"
+		sprite planet/rhea
+		distance 3991
+		period 5639

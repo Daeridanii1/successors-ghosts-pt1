@@ -26,6 +26,16 @@ event "successors: ghosts restrict"
 event "successors: ghosts stage 1"
 	set "successors: ghosts stage 1"
 
+event "successors: ghosts star unrestrict"
+	planet "Exotic Metal Garden"
+	remove attributes "requires: starlining"
+
+event "successors: ghosts star restrict"
+	planet "Exotic Metal Garden"
+	add attributes "requires: starlining"
+
 event "successors: ghosts keystones finished"
 	planet Kasii-Cavasaa-Oa
 		add outfitter "Harmonic Keystone"
+
+event "successors: ghosts probes destroyed"

@@ -88,7 +88,7 @@ mission "Successors: Ghosts Aqrabe Remnant"
 	on offer
 		conversation "successor keystone delivery"
 		outfit "Quantum Key Stone" -50
-		payment 1200000
+		payment 12300000
 
 mission "Successors: Ghosts Aqrabe Hai"
 	landing
@@ -100,7 +100,7 @@ mission "Successors: Ghosts Aqrabe Hai"
 	on offer
 		conversation "successor keystone delivery"
 		outfit "Quantum Keystone" -50
-		payment 1200000
+		payment 900000
 
 
 mission "Successors: Ghosts Aqrabe 2"
@@ -108,11 +108,12 @@ mission "Successors: Ghosts Aqrabe 2"
 	source "Kasii-Cavasaa-Oa"
 	stopover "Myiara-Aret-Iir"
 	destination "Kasii-Cavasaa-Oa"
+	passengers 1
 	to offer
 		has "Successors: Ghosts Aqrabe 1: done"
 	on offer
 		conversation
-			log "People" "Tilra" ""
+			log "People" "Tilra" "Tilra is an engineer belonging to the Successor House Aqrabe."
 			`Tilra meets you in a tucked-away part of the spaceport that's filled with strange statuary, where they stand in conversation with a small group of Successors. They brighten as they see you approach and offer a perfunctory splay of the arms. "Captain, captain," they say. "Thou returneth with no time to squander. We mean to ply a journey of understanding cross the wormhole; one fellow captain here means to use one of thy keystones, the other, our weft-weaving armor. Thy own craft would be valuable as a place to gather data from the other two, to see how they perform across the rift."`
 			choice
 				`	"Couldn't you do that without me?"`
@@ -142,9 +143,11 @@ mission "Successors: Ghosts Aqrabe 3"
 	source "Kasii-Cavasaa-Oa"
 	stopover "Exotic Metal Garden"
 	destination "Kasii-Cavasaa-Oa"
+	passengers 1
 	to offer
 		has	"Successors: Ghosts Aqrabe 2: done"
 	on offer
+		event "successors: ghosts star unrestrict"
 		conversation
 			`"Good news for thee, Captain, for all of us. The data from our expedition hath revealed some measure of the mystery of thy stones. They're oscillators of a sort, ones that sing in tune with the wavers of the wormhole..." Tilra stops for a moment. "But we will have time to discuss that later. For now, what thou needs know is this: with the right materials, we may be able to magnify their effect. Hast though visited Kasii-Cavaasa?"`
 			choice
@@ -157,6 +160,7 @@ mission "Successors: Ghosts Aqrabe 3"
 			`	Purple dots spot Tilra's face. "Not 'into,' not strictly. But yes, I do not know if thy craft is worthy to the task. We shall have to see for ourselves what is possible."`
 				accept
 	on stopover
+		event "successors: ghosts star restrict"
 		conversation
 			branch "no shields"
 				"flagship shields" <= 0
@@ -195,7 +199,7 @@ mission "Successors: Ghosts Aqrabe 4"
 				`	"So is that it for this?"`
 			`	"Fortunately," they continue, "we may be able to outfit one of our own craft for this purpose. Or rather, one of House Kaatrij's."`
 			`	They offer the pad to you. It displays a schematic that you struggle to make any sense of; some small device is shown implanted in a Vujlet, its long tendrils snaking into various ship systems like some sort of infection. If you were to make a guess at its function, you might describe it as some sort of cloaking device - it's clearly shown reflecting and refracting light somehow, but the details of what exactly it is achieving escape your reckoning.`
-			`	"I've conferred with our fleet liason," says Tilra, "who conferred with Kaatrij's, and they've agree to dispense thee with a modified Vujlet." They pause before adding, in a softer and more cynical tone, "no doubt extracting some favor from Aqrabe along the way. We need thee to retrieve it from <stopovers> and bring it back here for outfitting. Once prepared with our armor and thy jump drive, we may return to Kasii-Cavaasa."`
+			`	"I've conferred with our fleet liason," says Tilra, "who conferred with Kaatrij's, and they've agree to dispense thee with a modified Vujlet." They pause before adding, in a softer and more cynical tone, "no doubt extracting some favor from Aqrabe along the way. We need thee to retrieve it from <planet stopovers> and bring it back here for outfitting. Once prepared with our armor and thy jump drive, we may return to Kasii-Cavaasa."`
 			choice
 				`	"These look like some complex modifications."`
 					goto suspicious

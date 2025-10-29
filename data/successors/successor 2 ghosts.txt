@@ -477,12 +477,6 @@ mission "Successors: Ghosts People's Houses 1"
 		"successors: ghosts houses dealt with" ++
 		set "successors: ghosts dealt with people's houses"
 
-mission "Successors: Ghosts Sieasej 1"
-	on complete
-		"successors: ghosts houses dealt with" ++
-		set "successors: ghosts dealt with sioeora"
-
-
 # Report and reward
 
 mission "Successors: Ghosts Report 1"
@@ -500,8 +494,25 @@ mission "Successors: Ghosts Report 2"
 	to offer
 		has "event: successors: ghosts stage 2"
 	on offer
+		event "successors: ghosts probes destroyed"
 		log "The base on Shassa-Wyra-Orrou from which House Seineq organized their investigation has been destroyed, along with the jump drive monitoring equipment."
 
+mission "Successors: Ghosts Wedding 1"
+	to offer
+		has "event: successors: ghosts probes destroyed"
+	destination "Aava-Aasa-Khora"
+	on complete
+		log "Attended the wedding between scions of Houses Chydiyi and Myurej. Was presented with a license to purchase advanced Successor technology."
+		conversation
+			`Aava-Aasa-Khora's monorail system is as efficient and quiet as it was before, shuttling you off to another one of the numerous installations dotting the planet's surface. You are eventually deposited at the lobby of one that looks remarkably similar to the one you visited when you were presented the Successor license; it's large and richly decorated, the walls a riot of color and form that is as ostentatious as it is impressive. A gentle mist issues from apertures on the vaulted ceiling and long golden threads trail downwards, writhing around particular Successors and eventually, you.`
+			`	The thread inspects your face and clothing for a short time before it speaks in a soft, synthesized voice. "Greetings, Captain <first> <last>! Thou'rt authorized to attend the ceremony this afternoon and, following, a special meeting of the locally-gathered Houses." The voice continues for a while, providing you with information on which rooms to visit and how you are to find your way there.`
+			choice
+				`	(Attend the wedding.)`
+				`	(Wait around until the later meeting.)`
+					goto skipped
+			`	While most Successors are waiting outside the entrance to what must be a massive room, you are instead guided to an inconspicuous and out-of-the-way door, guarded by a pair of Successor soldiers. Neither one reacts to your attempt to pass, and as you step behind the door, it becomes clear why you aren't lining up with the general public: that massive room is entirely filled with water, a gigantic sphere with lights, platforms, and countless seats all built within it. A few small rooms like the one you now stand in are built into the walls like little transparent air bubbles at the shore of a great sea.`
+			`	You are joined by three other Successors after a few minutes, each of whom takes their place in the little room. The ceremony begins shortly after. From apertures in the bottom of the sphere, legions of soldiers emerge, half wearing the colors of House Chydiyi and the other half of House Myurej.`
+			label skipped
 
 # Suspicion
 
@@ -516,7 +527,7 @@ mission "Successors: Ghosts Suspicion 1"
 	on offer
 		log "Approached by a strange Successor. They told me about the hunting practices of the elusive self-camouflaging Kijran-Khora, who eluded House Kaatrij, and wished me happy sightseeing at an unspecified set of rings."
 		conversation
-			`Soon after you shut down the <ship>'s systems for landing, here, you are approached by a Successor who seems to have been waiting, nipping at a skewered piece of food.`
+			`Soon after you shut down the <ship>'s systems for landing, you are approached by a Successor who seems to have been waiting, nipping at a skewered piece of food.`
 			`	"Captain, captain," they say, "fraught and darkling times we live in, no? They remind me - ah, dost thou know of the hunting practices of the Kijra-Khora?"`
 			choice
 				`	"A little too well, actually."`
@@ -603,7 +614,7 @@ mission "Successors: Ghosts Suspicion 3"
 			label end
 			`	"What troubles this one most, though," says the Quarg, "is that this watching post of ours was laid bare to see at all. We made ourselves rancid to the Myiara for their own good, stole away their precious creations, worked with those of them who would help us to tear down so much of what they had built, sealed them away - all so they would not have the means to recreate their folly in a later age. That this deception of ours has come to light may drive them even further from what they were, undo even the meager gains they have wrought in their exile. For all their wrong, that would still be a cause for lament."`
 			`	With that, the Quarg offers you a gentle bow. "Goodbye now, Captain," they say, and quietly walk away.`
-		decline
+				decline
 	on decline
 		log "Spoke with the Quarg, who revealed that they have kept a base on Qasa-Sija-Iri to monitor the Successors. It has remained cloaked by House Kaatrij, who has collaborated with the Quarg since the collapse of the Predecessors."
 
@@ -613,3 +624,22 @@ mission "Successors: Ghosts Suspicion 1a"
 		has "successors: ghosts suspicion" >= 7
 	on complete
 		set "successors: ghosts dealt with seineq"
+
+mission "Successors: Ghosts Suspicion 4"
+	landing
+	invisible
+	to offer
+		has "Successors: Ghosts Suspicion 3: offered"
+		has "successors: ghosts houses dealt with" >= 1
+		#random < 15
+	destination "Inti-Arat"
+	on enter
+		system
+			attributes predecessor
+		dialog ``
+	on enter "Avasaa-Novaa"
+		dialog `After entering the system, you deploy the Successor sensor drones. After drifting out of your ship's cargo bay, they use small thrusters to disperse themselves across the system until they eventually recede from your ship's scanners.`
+		set "successors: jump drive monitoring"
+	on complete
+		conversation
+			`The <ship> skims over the planetoid's surface, scanning for the source of the mysterious signal - after a couple of minutes, you pinpoint it to a small crater. Upon approaching, you finally get a good look at the origin: a Successor ship is crashed against one of the crater walls.`
