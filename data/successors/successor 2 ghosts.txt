@@ -378,26 +378,58 @@ mission "Successors: Ghosts Seineq 2"
 		payment 25000
 		log "Deployed Successor sensor drones on the far side of their wormhole to scan for ships using jump drives, cloaked or not."
 
+
 mission "Successors: Ghosts Seineq 2a Sioeora"
 	landing
 	name "Inform House Sioeora"
-	destination "Staja-Kella-Oa"
-	description "After being asked to deploy sensor drones by House Seineq, it might be prudent to speak with your patron House."
+	description "Contact House Sioeora about Seineq asking you to investigate."
+	source
+		attributes successor
+		not attributes uninhabited
 	to offer
 		has "successors sioeora patron"
 		has "Successors: Ghosts Seineq 2: offered"
-	description "Report back to House Sioeora about Seineq asking you to investigate."
+	to complete
+		has "event: successors: ghosts message delay"
+	on offer
+		conversation "successor house contact"
+	on complete
+		conversation
+			`Once you have landed, your ship's communications system chirps with a new message delivered from House Sioeora:`
+			`	Honored captain <first> <last>, Sioeora one again calls thee 'ally' with pride and confidence for thy discretion and fair judgement. Thou may'st proceed as thou pleasest with Seineq's scheme - it concerns us little what they plan to do in sealed-off space, so long's they recognize Sioeora and the rest shall keep our eyes upon their actions. Should Seineq, in foolishness, resolve to some act of aggression, they shall find we and our allies eager to correct their errant course.`
+			`	In confirmation of this message, I do myself attest: I- C- N-, on behalf of honored scion Riijaaora E- Sioeora of their noble House.`
+
 
 mission "Successors: Ghosts Seineq 2b Kaatrij"
 	landing
 	name "Inform House Kaatrij"
-	destination "Raaqa-Puan-Uuoru"
-	description "After being asked to deploy sensor drones by House Seineq, it might be prudent to speak with your patron House."
+	description "Contact House Kaatrij about Seineq asking you to investigate."
+	source
+		attributes successor
+		not attributes uninhabited
 	to offer
 		has "successors kaatrij patron"
 		has "Successors: Ghosts Seineq 2: offered"
-	description "Report back to House Kaatrij about Seineq asking you to investigate."
+	to complete
+		has "event: successors: ghosts message delay"
+	on offer
+		conversation "successor house contact"
+	on complete
+		conversation
+			`Once you have landed, your ship's communications system chirps with a new message delivered from House Kaatrij:`
+			`	<first> <last>, our thanks for thy contact. It has been received amicably. Because of a recent accident on a territorial possession of House Kaatrij, many missives we receive currently go unanswered. Should thou not receive further contact on this matter, we implore thee to stay thy disappointment.`
 
+
+conversation "successor house contact"
+	`After you were asked to deploy sensor drones by House Seineq, it might be prudent to contact your patron House to update them about this development.`
+	choice
+		`	(Yes.)`
+		`	(No.)`
+			decline
+	action
+		event "successors: ghosts message delay" 4
+	`	You find your way to the local spaceport's communication hub, where you rent one of the Successors' data-spheres to encode your message for delivery to House <successor patron>. When you're done, you submerge the data-sphere into a liquid-metal bath that pushes it around for a few moments before spitting it back at you, quietly chirping "missive sent."`
+	accept
 
 
 mission "Successors: Ghosts Investigate"
@@ -433,66 +465,36 @@ mission "Successors: Ghosts Investigate"
 			`	"Excellent!" says Rijtatet. "In that case, Sijra and I have nothing further for thee. We shall call thee back when we are ready for thy report."`
 				decline
 
-
-# House mission chains
-
-mission "Successors: Ghosts Myurej 1"
-	source "Raaqa-Kvelq-Ryuit"
-	to offer
-		or
-			has "Successors: Ghosts Chydiyi 1: done"
-			has "Successors: Ghosts Sioeora 1: done"
-	on complete
-		"successors: ghosts houses dealt with" ++
-		set "successors: ghosts dealt with myurej"
-
-mission "Successors: Ghosts Sioeora 1"
-	source "Staja-Kella-Oa"
-	to offer
-		or
-			and
-				has "successors: ghosts stage 1"
-				has "successors sioeora patron"
-				random < 15
-			and
-				has "successors sioeora patron"
-				has "Successors: Ghosts Investigate: offered"
-			and
-				or
-					has "Successors: Ghosts Chydiyi 1: done"
-					has "Successors: Ghosts Myurej 1: done"
-	on complete
-		"successors: ghosts houses dealt with" ++
-		set "successors: ghosts dealt with sioeora"
-
-mission "Successors: Ghosts People's Houses 1"
-	source "Kasii-Tuur-Saqru"
-	to offer
-		or
-			and
-				has "successors: ghosts stage 1"
-				random < 15
-			has "Successors: Ghosts Investigate: offered"
-	on complete
-		"successors: ghosts houses dealt with" ++
-		set "successors: ghosts dealt with people's houses"
-
 # Report and reward
 
 mission "Successors: Ghosts Report 1"
+	source
+		attributes successor
+	destination "Shassa-Wyra-Orrou"
 	to offer
-		has "successors: ghosts houses dealt with" >= 3
-		or
-			has "successors: ghosts dealt with chydiyi"
-			has "successors: ghosts dealt with myurej"
-			has "successors: ghosts dealt with kaatrij"
+		has "successors: ghosts houses dealt with" >= 2
+	on offer
+		conversation
+			`You should go check in with House Seineq about the Houses that asked you for help.`
 	on complete
+		conversation
+			`House Seineq pays you and thanks you for your efforts. You should stick around for a few days to see if anyone needs anything else.`
 		event "successors: ghosts stage 2" 10
 		payment 1000000
 
 mission "Successors: Ghosts Report 2"
+	source
+		attributes successor
+		not attributues uninhabited
+	destination Yoqqa-Vasa-Vasa
 	to offer
 		has "event: successors: ghosts stage 2"
+	on offer
+		conversation
+			`News report: The base on Shassa-Wyra-Orrou from which House Seineq organized their investigation has been destroyed, along with the jump drive monitoring equipment. You are summoned to Yoqqa-Vasa-Vasa.`
+	on complete
+		conversation
+			`House Seineq is appreciative of your concern but has no record of such a base or your involvement with it.`
 	on offer
 		event "successors: ghosts probes destroyed"
 		log "The base on Shassa-Wyra-Orrou from which House Seineq organized their investigation has been destroyed, along with the jump drive monitoring equipment."
@@ -639,7 +641,27 @@ mission "Successors: Ghosts Suspicion 4"
 		dialog ``
 	on enter "Avasaa-Novaa"
 		dialog `After entering the system, you deploy the Successor sensor drones. After drifting out of your ship's cargo bay, they use small thrusters to disperse themselves across the system until they eventually recede from your ship's scanners.`
-		set "successors: jump drive monitoring"
 	on complete
 		conversation
 			`The <ship> skims over the planetoid's surface, scanning for the source of the mysterious signal - after a couple of minutes, you pinpoint it to a small crater. Upon approaching, you finally get a good look at the origin: a Successor ship is crashed against one of the crater walls.`
+			`	Though the main spaceframe is intact, the armor has been pierced in several places by what must have been exceptionally high-powered kinetic weapons.`
+			choice
+				`	(Land and investigate.)`
+				`	(Leave it be.)`
+					goto end
+			`	You set your own ship down beside the lifeless Successor vessel and prepare an extravehicular suit to take a look inside. Though the dense material of the Successor airlock takes a long time to cut through, it eventually gives way and reveals the dark interior of the alien ship. You proceed down a compact, glossy corridor, lit only by the head-mounted lights of your suit and the rapidly-dwindling starlight of the hole you cut through the airlock; eventually, as you turn a corner, you enter into a small, circular room with a terminal on one of the walls. A neat cylindrical path has been punched out of the ceiling and floor - looking up through it, you can see the stars; looking down, you can see the sepia sand of the planet.`
+			`	The terminal is the only source of color; in the darkness, the dim bluish light of a small screen displays an immobile digital ring, about half-filled in. It grows brighter as you approach, and suddenly a distorted voice worms its way into your ears: "Power failure. Self-destruction incomplete. Systems 'Sosrue' and 'Kijra' remain intact. Transfering armor maintenance reserves into main grid."`
+			choice
+				`	"Display system 'Sosrue.'"`
+				`	"Display system 'Kijra.'"`
+				`	(Leave.)`
+					goto leave
+			`	The terminal pauses for a moment before making a harsh noise. "Authorization failure."`
+			choice
+				`	(Use your ship's outfit scanner to scan the crashed vessel.)`
+					to display
+						"flagship attribute: outfit scan power" > 0
+				`	(Explore elsewhere.)`
+					goto elsewhere
+			`	The familiar warble of the <ship>'s outfit scanning comes through the radio link, and after a few moments, you get a full inventory of the crashed ship's outfits. Most of them are standard, but two stand out: one is a jump drive, and the other is something you haven't seen before - the scanner can't even get a good lock on it. After a few minutes of trying to triangulate the rogue signal to a specific part of the ship, you piece together a hazy mess of readings in the engineering section down a corridor to your left.`
+			label end
