@@ -1,0 +1,104 @@
+mission "Successors: Ghosts Myurej 1"
+	name "Stolen wedding gift"
+	source Raaqa-Kvelq-Ryuit
+	destination Kasii-Tuur-Saqru
+	to offer
+		or
+			and
+				has "Successors: Ghosts 0 Wedding: offered"
+				random < 15
+			and
+				has "Successors: Ghosts 0 Wedding: offered"
+				has "Successors: Ghosts Investigation: offered"
+	on offer
+		conversation
+			`A warlord belonging to the People's Houses has hijacked a transport carrying wedding gifts for the upcoming wedding between scions of Houses Myurej and Chydiyi.`
+	on complete
+		conversation
+			`The missing gifts are nowhere to be seen on Kasii-Tuur-Saqru, thought they might be kept on one of the neighboring stations.`
+
+mission "Successors: Ghosts Myurej 2"
+	landing
+	name "Search for missing gifts"
+	source Kasii-Tuur-Saqru
+	destination Myiara-Sola-Tej
+	to offer
+		has "Successors: Ghosts Myurej 1: active"
+	on complete
+		conversation
+			`The missing transport isn't here, either, so you'll have to try the other station.`
+
+mission "Successors: Ghosts Myurej 3"
+	landing
+	name "Search for missing gifts"
+	source Myiara-Sola-Tej
+	destination Vade-Osolaa-Kaska
+	to offer
+		has "Successors: Ghosts Myurej 2: active"
+	on complete
+		conversation
+			`You've defeated the People's Houses warlord but they didn't have the missing transport.`
+
+mission "Successors: Ghosts Myurej 4"
+	name "Return to Myurej"
+	source Vade-Osolaa-Kaska
+	destination Raaqa-Kvelq-Ryuit
+	to offer
+		has "Successors: Ghosts Myurej 3: done"
+	on offer
+		conversation
+			`You need to go back to <destination> to decide what you're going to do now.`
+	on complete
+		conversation
+			`House Myurej is angry with you for losing the wedding gifts, and are asking you to make up for it by retrieving an alternative from a vault in Predecessor space.`
+
+mission "Successors: Ghosts Myurej 5"
+	name "Locate hidden vault"
+	source Raaqa-Kvelq-Ryuit
+	stopover Kella-Uuoru-Sossa
+	destination Uuoru-Veldt-Stir
+	to offer
+		has "Successors: Ghosts Myurej 4: done"
+	on offer
+		conversation
+			`Are you ready to go?`
+	on stopover
+		conversation
+			`You've grabbed the item but are being pursued by Predecessor warships.`
+	on complete
+		payment 100000
+		conversation
+			`You hand over the item and are paid.`
+
+mission "Successors: Ghosts Myurej 6"
+	name "Return to Myurej"
+	source
+		attributes successor
+		not attributes uninhabited
+	destination Raaqa-Kvelq-Ryuit
+	to offer
+		has "Successors: Ghosts Myurej 5: done"
+		random < 15
+	on offer
+		conversation
+			`The scions of Myurej want you back on <destination>.`
+	on complete
+		conversation
+			`Myurej wants you to transport a couple of items to Aava-Aasa-Khora, where the wedding will take place.`
+
+mission "Successors: Ghosts Myurej 7"
+	name "Return to Myurej"
+	source Raaqa-Kvelq-Ryuit
+	destination Aava-Aasa-Khora
+	cargo "Wedding supplies" 30
+	to offer
+		has "Successors: Ghosts Myurej 6: done"
+	on offer
+		conversation
+			`Let's go!`
+	on complete
+		conversation
+			`The scions apologize for treating you so harshly (in their own supercilious way) and graciously extend a wedding invitation to you.`
+		"successors: ghosts houses dealt with" ++
+		set "successors: ghosts dealt with myurej"
+
