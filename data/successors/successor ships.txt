@@ -1,0 +1,93 @@
+ship "Ejniisde-Khora"
+	plural "Ejniisden-Khora"
+	sprite "ship/ejniisde-khora"
+	thumbnail "thumbnail/ejniisde-khora"
+	attributes
+		licenses
+			"Successor"
+		category "Medium Warship"
+		"cost" 4100000
+		"shields" 4240
+		"hull" 28650
+		"required crew" 29
+		"bunks" 44
+		"mass" 612
+		"drag" 4.9
+		"heat dissipation" 0.6
+		"fuel capacity" 700
+		"cargo space" 40
+		"outfit space" 355
+		"weapon capacity" 146
+		"engine capacity" 100
+		weapon
+			"blast radius" 100
+			"shield damage" 1000
+			"hull damage" 500
+			"hit force" 1500
+	outfits
+		"Overcharged Pulse Laser" 5
+		"Overcharged Laser Turret" 3
+
+		`1-"Uurau" Betavoltaic Cell`
+		`OC-"Mavra" Betavoltaic Cell` 3
+		"Auxiliary Power Reserve"
+		"Primary Power Reserve"
+		`"Ej" Shield Cortex`
+
+		`"Veldt" Combat Scanner`
+		"Successor Cooling"
+
+		`"Veusa" Inductive Thruster`
+		`"Chyyra" Inductive Steering`
+		"Hyperdrive"
+
+		"Outfits Expansion"
+
+		"Kinetic Rail Rifle" 15
+
+	gun 0 -106
+	gun 18 -35
+	gun -18 -35
+	gun 22 -30
+	gun -18 -35
+	turret 0 24
+		over
+	turret 22 10
+		over
+	turret -22 10
+		over
+	engine 25 67
+		zoom .8
+	engine -25 67
+		zoom .8
+	"steering engine" 7 -83
+		zoom .5
+		over
+		left
+		angle 270
+	"steering engine" -7 -83
+		zoom .5
+		over
+		right
+		angle 90
+	"steering engine" -6 99
+		zoom .5
+		left
+		angle 90
+	"steering engine" 6 99
+		zoom .5
+		right
+		angle 270
+	"reverse engine" 26 -22
+		zoom .8
+	"reverse engine" -26 -22
+		zoom .8
+	leak "leak" 50 50
+	leak "flame" 30 80
+	explode "tiny explosion" 18
+	explode "small explosion" 36
+	explode "medium explosion" 24
+	explode "large explosion" 8
+	"final explode" "final explosion medium"
+	description `Only very few figures within the largely destitute People's Houses have the resources to assemble such an extensively-modified vessel. The comfortable passenger quarters of the stock Ejniisde have been replaced with barracks and the star liner's lightweight hull has been laid over with heavy, multi-layered armor that shields a substantially expanded weapons suite.`
+	description `	The construction of illegal warships such as these by the People's Houses has been a noted concern in many recent councils between the High Houses, prompting an increase in the size and prominence of their own military fleets.`

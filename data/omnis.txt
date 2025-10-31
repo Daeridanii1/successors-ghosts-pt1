@@ -1,3 +1,6 @@
 outfitter "successors"
 	"Harmonic Keystone"
 	"Radiant Shield Shunt"
+
+shipyard "successors"
+	"Ejniisde-Khora"
