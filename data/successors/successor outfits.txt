@@ -28,7 +28,7 @@ outfit "Radiant Shield Shunt"
 	series "Functional Unique"
 	index 11010
 	"cost" 16000000
-	thumbnail "outfit/small successor shield"
+	thumbnail "outfit/radiant shield shunt"
 	"mass" 16
 	"outfit space" -16
 	"heat protection" 8
