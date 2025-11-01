@@ -3,7 +3,7 @@ outfit "High Houses License"
 	category "Licenses"
 	series "Licenses"
 	index 11020
-	thumbnail "outfit/successor license"
+	thumbnail "outfit/high houses license"
 	description "The High Houses produce most of the advanced technology present in Successor space, and restrict its purchase to only those individuals and groups who substantially support their interests. This glittering pin of the Successors' much-beloved red gold is connected to a vast web of thoroughly-argued treaties and complex inter-House laws - some dating back thousands of years. These all serve to ensure that, at least in times of peace and stability, alien vassals such as yourself can expect each of the Houses to furnish them with the equipment that this enables them to buy - not just the House that offered it to them. After all, the security considerations involved in selling weapons to a single vassal of another House are outweighed by the rampant profits that dealing in these very expensive ships and outfits are sure to bring."
 
 
