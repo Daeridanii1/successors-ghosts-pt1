@@ -1,4 +1,4 @@
-name "Successors Ghosts development plugin"
+name "Successors: Ghosts Part 1"
 about "The next portion of the Successors storyline, being developed in plugin form because I don't want to resolve merge conflicts every week. DO NOT USE with a save that you care about!"
 authors
     Daeridanii
