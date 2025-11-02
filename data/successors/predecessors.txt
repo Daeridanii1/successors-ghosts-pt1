@@ -28,14 +28,14 @@ ship "Resja, of the Nine Eyes"
 		"shield generation multiplier" 1
 		"high shield permeability" 1
 		"low shield permeability" 1
-		# Resja is furious, and shall not be stopped by anything but damage.
-		"heat protection" 4
-		"ion protection" 4
-		"scramble protection" 4
-		"slowing protection" 4
-		"corrosion protection" 4
-		"discharge protection" 4
-		"burn protection" 4
+		# Their permeable shields won't stop special damage, so this makes these ships less vulnerable to it.
+		"heat protection" 1
+		"ion protection" 1
+		"scramble protection" 1
+		"slowing protection" 1
+		"corrosion protection" 1
+		"discharge protection" 1
+		"burn protection" 1
 		# For protection against missiles
 		"radar jamming" 80
 		"optical jamming" 80
@@ -106,14 +106,14 @@ ship "Hasur, Vowsworn"
 		"shield generation multiplier" 1
 		"high shield permeability" 1
 		"low shield permeability" 1
-		# Hasur is furious, and shall not be stopped by anything but damage.
-		"heat protection" 4
-		"ion protection" 4
-		"scramble protection" 4
-		"slowing protection" 4
-		"corrosion protection" 4
-		"discharge protection" 4
-		"burn protection" 4
+		# Their permeable shields won't stop special damage, so this makes these ships less vulnerable to it.
+		"heat protection" 1
+		"ion protection" 1
+		"scramble protection" 1
+		"slowing protection" 1
+		"corrosion protection" 1
+		"discharge protection" 1
+		"burn protection" 1
 		# For protection against missiles
 		"radar jamming" 80
 		"optical jamming" 80
@@ -145,6 +145,75 @@ ship "Hasur, Vowsworn"
 	engine 0 38
 	description `One would think that, immured deep within those hostile, rotting abcesses of the stars, the constructs of that foolish race would prove themselves inadequate; that their artificial minds would splinter and falter and crumble like their so-false flesh, festering on the bone. And yet they remain, eternally dying but never dead, consumed by programmed rage and unknowable perception. The constructs will keep their promises, interloper:`
 	description `	They'll kill you. They'll do it quick.`
+
+ship "Queru, Luminous Gaze"
+	plural "Querun, Luminous Gazes"
+	sprite "ship/queru luminous gaze"
+	thumbnail "thumbnail/queru luminous gaze"
+	"never disabled"
+	attributes
+		category "Light Warship"
+		"cost" 55000000
+		"shields" 4200
+		"hull" 32500
+		"required crew" 0
+		"bunks" 10
+		"mass" 260
+		"drag" 3.2
+		"heat dissipation" 0.65
+		"fuel capacity" 400
+		"cargo space" 10
+		"outfit space" 360
+		"weapon capacity" 116
+		"engine capacity" 60
+		"hull repair rate" 1.25
+		"hull energy" 1.75
+		"hull heat" 1.75
+		"multimodal armor" 1
+		"exclusive: Hasur" 1
+		"unremovable" -1
+		# Hasur uses their shields for attack, not defense.
+		"shield generation multiplier" 1
+		"high shield permeability" 1
+		"low shield permeability" 1
+		# Their permeable shields won't stop special damage, so this makes these ships less vulnerable to it.
+		"heat protection" 1
+		"ion protection" 1
+		"scramble protection" 1
+		"slowing protection" 1
+		"corrosion protection" 1
+		"discharge protection" 1
+		"burn protection" 1
+		# For protection against missiles
+		"radar jamming" 80
+		"optical jamming" 80
+		weapon
+			"blast radius" 100
+			"shield damage" 1000
+			"hull damage" 500
+			"hit force" 1500
+	outfits
+	outfits
+		`"Torji," Lethal Sight`
+
+		`Hyperdrive`
+		`Crimson Halo`
+		`Sensate Flesh`
+		`Visions of Rime`
+
+		`Radiant Soul`
+		`Primary Power Reserve`
+
+		`Hasur Engine Block`
+
+		`Multimodal Armor: Regen`
+	gun 0 -70
+		under
+	turret 32 -21
+	turret -32 -21
+	engine 0 38
+	description `Queru came last, and was the most inspired of the three, eviscerating at a distance before it could even be seen. For their part, Resja hated it - but by then, Resja's fate had been long sealed.`
+
 
 outfit `"Iasa," Lethal Word`
 	category "Guns"
@@ -209,12 +278,42 @@ outfit "kis long range"
 		"shield damage" 400
 		"hull damage" 650
 
+outfit `"Torji," Lethal Sight`
+	category "Guns"
+	series "Guns"
+	index 11060
+	cost 7500000
+	thumbnail "outfit/bimodal coilgun"
+	"mass" 106
+	"outfit space" -106
+	"weapon capacity" -106
+	"gun ports" -1
+	weapon
+		sprite "projectile/sjeja kinetic lance"
+		#sound "bimodal"
+		#"hit effect" "bimodal impact"
+		#"fire effect" "lethal word haze"
+		"inaccuracy" 3
+		"velocity" 40
+		"lifetime" 45
+		"reload" 12
+		"firing energy" 260
+		"firing heat" 680
+		"firing shields" 155
+		"firing force" 200
+		"shield damage" 320
+		"hull damage" 355
+		"slowing damage" 1.4
+		"hit force" 200
+	description `Like a cold and ravenous beast, the frightful Kis tears through the defenses of anything that dares stride close enough to its jaws. At long range this weapon loses its high shield penetration but continues to output respectable damage, encouraging retreat while continuing to harry foes.`
+
+
 outfit `Crimson Halo`
 	category "Systems"
 	series "Shields"
-	index 11120
+	index 11050
 	cost 8550000
-	thumbnail "outfit/unknown"
+	thumbnail "outfit/crimson halo"
 	"mass" 31
 	"outfit space" -31
 	"shield generation" 6.6
