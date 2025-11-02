@@ -73,3 +73,14 @@ ship "Seiitej" "Seiitej (Armor Keystone)"
 		`"Veusa" Inductive Thruster`
 		`"Veusa" Inductive Steering`
 		"Hyperdrive"
+
+ship "Ejniisde-Khora" "Ejniisde-Khora (Bombed)"
+	add attributes
+		weapon
+			"blast radius" 150
+			"shield damage" 3000
+			"hull damage" 1500
+			"hit force" 3000
+	explode "large explosion" 8
+	explode "huge explosion"
+	"final explode" "final explosion large"

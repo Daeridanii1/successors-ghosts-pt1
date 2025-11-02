@@ -7,11 +7,11 @@ mission "Successors: Ghosts Myurej 1"
 	to offer
 		or
 			and
-				has "Successors: Ghosts 0 Wedding: offered"
+				has "Successors: Ghosts Wedding 0: offered"
 				random < 40
 			and
-				has "Successors: Ghosts 0 Wedding: offered"
-				has "Successors: Ghosts Investigation: offered"
+				has "Successors: Ghosts Wedding 0: offered"
+				has "Successors: Ghosts Investigate: offered"
 	on offer
 		conversation
 			`While walking in the spaceport here, you are pulled aside by a pair of House Myurej military officers. "Come with us," one says, "thou shan't be harmed, but thou hast a private meeting waiting thou needeth attend."`
@@ -105,87 +105,90 @@ mission "Successors: Ghosts Myurej 2"
 	source Kasii-Tuur-Saqru
 	stopover Vade-Osolaa-Kaska
 	stopover Myiara-Sola-Tej
+	destination Kasii-Tuur-Saqru
 	to offer
 		has "Successors: Ghosts Myurej 1: done"
 	on complete
 		conversation
-			`You pick up the scanners from <planet>.`
+			`Your princess is in another castle.`
 
 mission "Successors: Ghosts Myurej 3"
 	landing
-	name "Deploy cargo scanners"
+	name "Track down Riiria"
 	destination Maspa-Viir-Kella
 	to offer
 		has "Successors: Ghosts Myurej 2: done"
-	stopover "Chyyra-Raaqa-Tuur"
-	stopover "Giiq-Oj-Sol"
+		#has "visited planet: Mapa-Viir-Kella"
 	on stopover
 		conversation
 		`You set up the last of the scanners; now you have to wait for Riiria's ship to appear.`
 
 mission "Successors: Ghosts Myurej 4"
 	landing
-	name "Confront Riiria"
+	name "Confront Riiria and return to <destination>"
 	destination Raaqa-Kvelq-Ryuit
 	to offer
-		has "Successors: Ghosts Myurej 3: done"
+		or
+			has "Successors: Ghosts Myurej 3: done"
 	npc board
 		government `People's Houses (Hostile)`
-		personality staying target
-		system "Luue-Saqru"
-		ship "Ejniisde-Khora" "Riiria-i-Nnesan"
+		personality staying target launching heroic
+		system "Osolaa-Uuoru"
+		ship "Ejniisde-Khora (Bombed)" "Riiria-i-Nnesan"
 		conversation
 			`You board the <npc> and approach the cargo bay but are thrown back by an explosion inside. Soon the ship itself is coming apart...`
-			launch
-	npc disable
+				launch
+	npc
 		government `People's Houses (Hostile)`
-		personality staying target
-		system "Luue-Saqru"
+		personality staying launching
+		system "Osolaa-Uuoru"
 		ship "Kvelqde-Khora" "Kijria-Sol"
 		ship "Kvelqde-Khora" "Aret-I"
 		ship "Kvelqde-Khora" "Nosola-o-Kasja"
 		ship "Kvelqde-Khora" "Saqra-Vasa"
-	to offer
-		has "event: successors: people's houses scan delay"
-
-mission "Successors: Ghosts Myurej 5"
-	name "Return to Myurej"
-	destination Raaqa-Kvelq-Ryuit
-	to offer
-		has "Successors: Ghosts Myurej 4: done"
-	on offer
-		conversation
-			`Riiria, the People's Houses warlord has been killed, and you haven't retrieved any of the wedding gifts you were hired to acquire. House Myurej calls you and summons you back to <destination>.`
 	on complete
 		conversation
 			`House Myurej is angry with you for losing the wedding gifts, and are asking you to make up for it by retrieving an alternative from a vault in Predecessor space.`
 
-mission "Successors: Ghosts Myurej 6"
+mission "Successors: Ghosts Myurej 5"
 	name "Locate hidden vault"
 	source Raaqa-Kvelq-Ryuit
-	stopover Kella-Uuoru-Sossa
-	destination Uuoru-Veldt-Stir
+	destination Kella-Uuoru-Sossa
 	to offer
-		has "Successors: Ghosts Myurej 5: done"
+		has "Successors: Ghosts Myurej 4: done"
 	on offer
 		conversation
 			`Are you ready to go?`
-	on stopover
+				accept
+	on complete
 		conversation
 			`You've grabbed the item but are being pursued by Predecessor warships.`
-	on complete
-		payment 100000
-		conversation
-			`You hand over the item and are paid.`
+	#on complete
+	#	payment 100000
+	#	conversation
+	#		`You hand over the item and are paid.`
 
-mission "Successors: Ghosts Myurej 7"
+mission "Successors: Ghosts Myurej 6"
+	landing
+	priority
+	name "Flee back to <destination>"
+	source Kella-Uuoru-Sossa
+	destination Raaqa-Kvelq-Ryuit
+	to offer
+		has "Successors: Ghosts Myurej 5: done"
+	npc evade
+		ship "Queru, Luminous Gaze" "Kis, Lamenting 9-3"
+		government "Solitude Enforcer" 
+		personality launching heroic nemesis unconstrained
+
+mission "Successors: Ghosts Myurej 6"
 	name "Return to Myurej"
 	source
 		attributes successor
 		not attributes uninhabited
 	destination Raaqa-Kvelq-Ryuit
 	to offer
-		has "Successors: Ghosts Myurej 6: done"
+		has "Successors: Ghosts Myurej 5: done"
 		random < 15
 	on offer
 		conversation
@@ -194,13 +197,13 @@ mission "Successors: Ghosts Myurej 7"
 		conversation
 			`Myurej wants you to transport a couple of items to Aava-Aasa-Khora, where the wedding will take place.`
 
-mission "Successors: Ghosts Myurej 8"
+mission "Successors: Ghosts Myurej 7"
 	name "Return to Myurej"
 	source Raaqa-Kvelq-Ryuit
 	destination Aava-Aasa-Khora
 	cargo "Wedding supplies" 30
 	to offer
-		has "Successors: Ghosts Myurej 7: done"
+		has "Successors: Ghosts Myurej 6: done"
 	on offer
 		conversation
 			`Let's go!`
