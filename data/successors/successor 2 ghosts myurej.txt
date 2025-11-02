@@ -1,64 +1,172 @@
 mission "Successors: Ghosts Myurej 1"
-	name "Stolen wedding gift"
+	landing
+	name "Track down stolen wedding gifts"
+	description "Look for a stolen shipment of wedding gifts meant for House Myurej on <destination>."
 	source Raaqa-Kvelq-Ryuit
 	destination Kasii-Tuur-Saqru
 	to offer
 		or
 			and
 				has "Successors: Ghosts 0 Wedding: offered"
-				random < 15
+				random < 40
 			and
 				has "Successors: Ghosts 0 Wedding: offered"
 				has "Successors: Ghosts Investigation: offered"
 	on offer
 		conversation
-			`A warlord belonging to the People's Houses has hijacked a transport carrying wedding gifts for the upcoming wedding between scions of Houses Myurej and Chydiyi.`
+			`While walking in the spaceport here, you are pulled aside by a pair of House Myurej military officers. "Come with us," one says, "thou shan't be harmed, but thou hast a private meeting waiting thou needeth attend."`
+			choice
+				`	(Go with them.)`
+				`	(Run away.)`
+					goto run
+			`	The two take you to a dense nest of shops and hotels on a hill overlooking one of the massive spaceport's loading docks; it lies what must be more than a hundred meters below. A web of canals interleaves the regularly-misted streets, and looking inside, you can see groups of Successors swimming in various directions, occasionally emerging onto the terrestrial paths and shaking off water from the hydrophobic fabrics of their clothing. You are led to a small, comfortable-looking hotel overlooking one of these canals, and deposited in a medium-sized oblong room, divided roughly in half by an oily-colored fabric screen. The guards motion for you to sit on a chair on one side of it, and you comply.`
+			`	From the other side of the screen comes a slow voice that your translation device duly rearranges into your language: "Captain <first> <last>, I believe?"`
+			choice
+				`	"Yes?"`
+				`	"Who's asking?"`
+			`	"House Myurej longs to exercise thy services. Something belonging to us was stolen. Thou shalt be compensated for its safe return. Doth this interest thee?" The screen shimmers in one long, glittery wave. Behind you, one of the guards shuffles.`
+			`	"You're going to have to give me more than that," you say.`
+			`	The wave rebounds off the far wall and retraces its way back down the screen. "Hast thou before entered into the bonds of matrimony?" the voice says. Before you can respond, it continues. "'Tis customary, when one doth, for the celebrants to render some minor gifts upon the duly unified, a commemmoration of the families' intertwining evermore. To steal such trinkets would be a base and wretched act - a child-race as yours should still concieve of that." The wave continues to echo, back and forth. "A certain knave'f the so-called People's Houses thought it wise to thus insult this happy House, on the eve of another day of joy, no doubt thinking with a dead mind they lay beyond our reach. Bring back our gifts, and we shall pay thee..." The voice pauses for a while, as if away in thought. "And perhaps thou wilt have earned a favor, though alien thou might'st be."`
+			choice
+				`	"Why ask me?"`
+				`	"How much are you going to pay me?"`
+					goto pay
+				`	"All right, I'll do it."`
+					goto yes
+				`	"Sorry, but I don't want any part of this."`
+					goto no
+			branch kaatrij
+				has "successors kaatrij patron"
+			`	"Riijaaora of House Sioeora speaks well of thee, dost thou know? Thy reliability, thy strength of will. They say thou'rt capable of this task, and we know thou'rt uniquely suited to it. Shalt thou accept?"`
+				goto "follow up"
+			label kaatrij
+			`	"After thou fail'd Sioeora as thou did'st, thinks thee? Nonetheless, thou'rt more suitable to our needs than any other. Shoulds't thou decline, we shall simply move on to the next. So, shalt thou accept?"`
+				goto "follow up"
+			label pay
+			`	The voice hums briefly. "four hundred thousand credits," they say, "not to be negotiated. Dost thou accept?"`
+			label "follow up"
+			choice
+				`	"All right, I'll do it."`
+				`	"Sorry, but I don't want any part of this."`
+					goto no
+			label yes
+			action
+				log "People" "Riiria" "One of the most influential members of the People's Houses of the Successors. They personally control a substantial portion of Kasii-Tuur-Saqru via a mix of charismatic leadership and brute strength. Suspected of hijacking a transport of gifts for the upcoming wedding between scions of Houses Myurej and Chydiyi."
+			`	The shimmering wave seems like it's losing energy now, growing slower and fainter with each cycle back and forth. "Excellent," says the voice. "The quarry thou should'st seek on Kasii-Tuur-Saqru is by name Riiria, a well-known thief and useful fool. Should'st thy own powers of searching fail thee, we've a friend of the House there too, a sharp-eyed merchant captain eager to get involved in things they think to be rewarding. Our agents here shall see thou recieves their details at thy ship." You hear the rustling of fabric and the faint wet slithering of a Successor moving. The guards behind you relax and, as you turn to look at them, they gesture towards the door. Before you leave, the voice speaks one last time. "Do not fail us, captain."`
+			`	You are escorted back to the edge of the residential area by the guards, who leave you to find your own way back to your ship. As the ground crew finish up their refueling and maintenance of the <ship>, one of them hands you a data-sphere containing information about Riiria and House Myurej's contact on Kasii-Tuur-Saqru.`
+				accept
+
+			label run
+			`	Kicking a stone to the side to distract the pair, you dash into the crowd before they can stop you. It's probably lucky that they didn't shoot you for that.`
+				decline
+			label no
+			`	The voice gives a long hum but says no more. After a couple moments you hesitantly get up and, when the guards make no motion to prevent you, you leave.`
+				decline
 	on complete
 		conversation
-			`The missing gifts are nowhere to be seen on Kasii-Tuur-Saqru, thought they might be kept on one of the neighboring stations.`
+			`You guide the <ship> into the crowded spaceport of <planet>, narrowly avoiding a collision with one of a wing of armored-up Kvelqden rocketing out of the docking section.`
+			choice
+				`	(Seek out Myurej's contact.)`
+					goto contact
+				`	(Look around for yourself first.)`
+			action
+				"successors: ghosts suspicion" ++
+			`	Exploring the visitor-accessible part of the station is an unusual experience - there's a striking contrast between the presence of all the advanced technologies of the Successors and the fact that so many of them are in such disrepair. You've seen Successor constructions that are hundreds or even thousands of years old in better condition than those here. You try to talk to a few of the Successors around here about Riiria, but they all quickly dismiss you, most without even saying a word.`
+			`	Eventually you find your way to a shop of some sort, what looks like a gutted Myaede bolted to the station's structure and filled with displays of fabric and ship parts, all attended to by about a dozen small robots running on tracks on the ceiling. They follow you around like a school of fish - a couple of them have some ominous-looking apertures on their front. Suddenly, you hear the edited sound of Successor speech behind one of the displays of what looks like engine injectors. A small screen is projecting an image of a speaking Successor:`
+			`	"...violence against Kaatrij is about us, too, siblings! The only one of the Houses bothers t'give us the cant of an arm? For long the Old've wanted us gone entire, and believe me, this'll be the start'f it! Well, 'f they come for us, Riiria will make them bleed like I always do!" The transmission cuts out there, and with no further leads on Riiria's location, you decide to track down Myurej's contact.`
+			label contact
+			`	The Myurej merchant captain turns out to be almost a kilometer down the station's perimeter among some loading docks that station control apparently doesn't send unfamiliar ships to. They're directing several members of their crew to offload some crates - one of them has been dropped and has spilled out a collection of unfamiliar metal baubles.`
+			choice
+				`	"I'm Captain <first> <last>. Myurej sent me."`
+					goto introduce
+				`	"What are those things?"`
+			`	"What cares thou? Thou'rt in the way, go off." They wave you away.`
+			`	"Fine," you say. "Captain <first> <last>. Myurej sent me."`
+			label introduce
+			`	A wave of red and black bristles over their skin. "Of course," they say. "I should've guessed. Come to send me on some wild quest for some bit of finery, is it? Some golden child lost their favorite jewel?"`
+			`	"Well, sort of," you say. "All I need from you is the location of Riiria. They stole something from the House that they want back."`
+			`	"Predictable," they say. "Some blow to pride and they get a knave like thee to crawl in the mud."`
+			choice
+				`	"Just get to the point."`
+					goto point
+				`	"Why are you so angry?"`
+			`	"No, not angry," they say. "Tired. They pay me to change my routes, I accept. They pay me to talk to the fools they send to me, I accept. They pay me to transport unknowables, and I lap it up. Thought the family connection would make things easier, but what dost thou do when that 'family's just after thee for thy use to them?" They let the colors of anger subside and gently rub three of their arms together.`
+			label point
+			`	"Fine. I hear that Riiria's hiding out among the hollow stations 'round our neighbor stars. They're good to hide if thou hast stolen something, brilliant hard to scan a sleeping ship among the broken spires. If thou wish to find them, there's thy start." The Successor pauses to look at one of the boxes being unloaded and makes an exasperated noise.`
+			choice
+				`	"Thank you."`
+				`	"Finally."`
+			`	Color once again bristles over their skin, but only for a moment. "Now go 'fore the two of us are seen together," they say, and wave you away.`
 
 mission "Successors: Ghosts Myurej 2"
 	landing
-	name "Search for missing gifts"
+	priority
+	name "Search uninhabited stations"
 	source Kasii-Tuur-Saqru
-	destination Myiara-Sola-Tej
+	stopover Vade-Osolaa-Kaska
+	stopover Myiara-Sola-Tej
 	to offer
-		has "Successors: Ghosts Myurej 1: active"
+		has "Successors: Ghosts Myurej 1: done"
 	on complete
 		conversation
-			`The missing transport isn't here, either, so you'll have to try the other station.`
+			`You pick up the scanners from <planet>.`
 
 mission "Successors: Ghosts Myurej 3"
 	landing
-	name "Search for missing gifts"
-	source Myiara-Sola-Tej
-	destination Vade-Osolaa-Kaska
+	name "Deploy cargo scanners"
+	destination Maspa-Viir-Kella
 	to offer
-		has "Successors: Ghosts Myurej 2: active"
-	on complete
+		has "Successors: Ghosts Myurej 2: done"
+	stopover "Chyyra-Raaqa-Tuur"
+	stopover "Giiq-Oj-Sol"
+	on stopover
 		conversation
-			`You've defeated the People's Houses warlord but they didn't have the missing transport.`
+		`You set up the last of the scanners; now you have to wait for Riiria's ship to appear.`
 
 mission "Successors: Ghosts Myurej 4"
-	name "Return to Myurej"
-	source Vade-Osolaa-Kaska
+	landing
+	name "Confront Riiria"
 	destination Raaqa-Kvelq-Ryuit
 	to offer
 		has "Successors: Ghosts Myurej 3: done"
+	npc board
+		government `People's Houses (Hostile)`
+		personality staying target
+		system "Luue-Saqru"
+		ship "Ejniisde-Khora" "Riiria-i-Nnesan"
+		conversation
+			`You board the <npc> and approach the cargo bay but are thrown back by an explosion inside. Soon the ship itself is coming apart...`
+			launch
+	npc disable
+		government `People's Houses (Hostile)`
+		personality staying target
+		system "Luue-Saqru"
+		ship "Kvelqde-Khora" "Kijria-Sol"
+		ship "Kvelqde-Khora" "Aret-I"
+		ship "Kvelqde-Khora" "Nosola-o-Kasja"
+		ship "Kvelqde-Khora" "Saqra-Vasa"
+	to offer
+		has "event: successors: people's houses scan delay"
+
+mission "Successors: Ghosts Myurej 5"
+	name "Return to Myurej"
+	destination Raaqa-Kvelq-Ryuit
+	to offer
+		has "Successors: Ghosts Myurej 4: done"
 	on offer
 		conversation
-			`You need to go back to <destination> to decide what you're going to do now.`
+			`Riiria, the People's Houses warlord has been killed, and you haven't retrieved any of the wedding gifts you were hired to acquire. House Myurej calls you and summons you back to <destination>.`
 	on complete
 		conversation
 			`House Myurej is angry with you for losing the wedding gifts, and are asking you to make up for it by retrieving an alternative from a vault in Predecessor space.`
 
-mission "Successors: Ghosts Myurej 5"
+mission "Successors: Ghosts Myurej 6"
 	name "Locate hidden vault"
 	source Raaqa-Kvelq-Ryuit
 	stopover Kella-Uuoru-Sossa
 	destination Uuoru-Veldt-Stir
 	to offer
-		has "Successors: Ghosts Myurej 4: done"
+		has "Successors: Ghosts Myurej 5: done"
 	on offer
 		conversation
 			`Are you ready to go?`
@@ -70,14 +178,14 @@ mission "Successors: Ghosts Myurej 5"
 		conversation
 			`You hand over the item and are paid.`
 
-mission "Successors: Ghosts Myurej 6"
+mission "Successors: Ghosts Myurej 7"
 	name "Return to Myurej"
 	source
 		attributes successor
 		not attributes uninhabited
 	destination Raaqa-Kvelq-Ryuit
 	to offer
-		has "Successors: Ghosts Myurej 5: done"
+		has "Successors: Ghosts Myurej 6: done"
 		random < 15
 	on offer
 		conversation
@@ -86,13 +194,13 @@ mission "Successors: Ghosts Myurej 6"
 		conversation
 			`Myurej wants you to transport a couple of items to Aava-Aasa-Khora, where the wedding will take place.`
 
-mission "Successors: Ghosts Myurej 7"
+mission "Successors: Ghosts Myurej 8"
 	name "Return to Myurej"
 	source Raaqa-Kvelq-Ryuit
 	destination Aava-Aasa-Khora
 	cargo "Wedding supplies" 30
 	to offer
-		has "Successors: Ghosts Myurej 6: done"
+		has "Successors: Ghosts Myurej 7: done"
 	on offer
 		conversation
 			`Let's go!`
