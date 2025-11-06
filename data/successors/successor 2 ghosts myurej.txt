@@ -92,25 +92,30 @@ mission "Successors: Ghosts Myurej 1"
 				`	"Why are you so angry?"`
 			`	"No, not angry," they say. "Tired. They pay me to change my routes, I accept. They pay me to talk to the fools they send to me, I accept. They pay me to transport unknowables, and I lap it up. Thought the family connection would make things easier, but what dost thou do when that 'family's just after thee for thy use to them?" They let the colors of anger subside and gently rub three of their arms together.`
 			label point
-			`	"Fine. I hear that Riiria's hiding out among the hollow stations 'round our neighbor stars. They're good to hide if thou hast stolen something, brilliant hard to scan a sleeping ship among the broken spires. If thou wish to find them, there's thy start." The Successor pauses to look at one of the boxes being unloaded and makes an exasperated noise.`
+			`	"Fine. I hear that Riiria's hiding out among the hollow stations 'round our neighbor stars. They're good to hide if thou hast stolen something, brilliant hard to scan a sleeping ship among the broken spires. The northerly one... Vade-Osolaa-Kaska, I recall, tis a favorite spot for Riiria and their type. Were I thee, I'd crawl there first." The Successor pauses to look at one of the boxes being unloaded and makes an exasperated noise. "Not that being thee is aught I would prefer, mind."`
 			choice
 				`	"Thank you."`
 				`	"Finally."`
-			`	Color once again bristles over their skin, but only for a moment. "Now go 'fore the two of us are seen together," they say, and wave you away.`
+			`	Color once again bristles over their skin, but only for a moment. "Now go 'fore the two of us are seen together," they say, and wave you away. You find your way back to your own ship and mark the nearby uninhabited station on your map.`
 
 mission "Successors: Ghosts Myurej 2"
 	landing
 	priority
-	name "Search uninhabited stations"
+	name "Search <destination>"
 	source Kasii-Tuur-Saqru
-	stopover Vade-Osolaa-Kaska
-	stopover Myiara-Sola-Tej
-	destination Kasii-Tuur-Saqru
+	destination Vade-Osolaa-Kaska
 	to offer
 		has "Successors: Ghosts Myurej 1: done"
-	on complete
+	on stopover
 		conversation
-			`Your princess is in another castle.`
+			`You enter <planet>'s vast spaceport to find it almost deserted. There is, however, plenty of evidence to support your contact's suggestion. A number of empty but recently-opened cargo containers are strewn against one of the far walls of the space; beside one of them there's even a small cache of what looks like personal gear: a durable fabric pack, a small sidearm, even some packages of dried food. Someone must have left here in a hurry.`
+			choice
+				`	(Rummage through the pack.)`
+				`	(Prepare to leave.)`
+					goto end
+			`	`
+			label end
+			`	If Riiria isn't at this station, they might be at the other one to the south, so you head back to your ship and enter the coordinates on your map.`
 
 mission "Successors: Ghosts Myurej 3"
 	landing
@@ -118,18 +123,19 @@ mission "Successors: Ghosts Myurej 3"
 	destination Maspa-Viir-Kella
 	to offer
 		has "Successors: Ghosts Myurej 2: done"
-		#has "visited planet: Mapa-Viir-Kella"
+		has "visited planet: Mapa-Viir-Kella"
 	on stopover
 		conversation
 		`You set up the last of the scanners; now you have to wait for Riiria's ship to appear.`
 
 mission "Successors: Ghosts Myurej 4"
 	landing
-	name "Confront Riiria and return to <destination>"
+	name "Return to <destination>"
+	source Maspa-Viir-Kella
 	destination Raaqa-Kvelq-Ryuit
 	to offer
 		or
-			has "Successors: Ghosts Myurej 3: done"
+			has "Successors: Ghosts Myurej 2: done"
 	npc board
 		government `People's Houses (Hostile)`
 		personality staying target launching heroic
