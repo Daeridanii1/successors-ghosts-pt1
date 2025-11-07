@@ -204,15 +204,16 @@ mission "Successors: Ghosts Myurej 4"
 				`	(Attack them while you have the element of surprise.)`
 				`	(Try to negotiate.)`
 			`	As you bring your own vessel closer, you are suddenly thrown off course by a strong gust of wind. Though you regain attitude control only a moment later, it's long enough for Riiria's ships to detect you and prepare for launch...`
-			launch
+				launch
 	npc board
 		government `People's Houses (Hostile)`
 		personality staying target launching heroic
 		system "Osolaa-Uuoru"
 		ship "Ejniisde-Khora (Bombed)" "Riiria-i-Nnesan"
 		conversation
-			`You bring the <ship> alongside Riiria's disabled vessel, careful to line up one of your airlocks with the ship's cargo hatch. As you walk through your vessel's interior to prepare to start cutting through the hatch, however, the <ship> is rocked by an explosion that seems like it comes from the airlock. Seconds later, another one goes off, and then another. Racing back to your ship's bridge, you detatch from the detonating vessel just as another explosion rips through its cargo bay, no doubt destroying the precious cargo you've gone to so much effort to track down.`
+			`You bring your ship alongside Riiria's disabled vessel, careful to line up one of your airlocks with the ship's cargo hatch. As you walk through your vessel's interior to prepare to start cutting through the hatch, however, your ship is rocked by an explosion that seems like it comes from the airlock. Seconds later, another one goes off, and then another. Racing back to your ship's bridge, you detatch from the detonating vessel just as another explosion rips through its cargo bay, no doubt destroying the precious cargo you've gone to so much effort to track down.`
 				launch
+### Need better way to prompt return to Myurej
 	npc
 		government `People's Houses (Hostile)`
 		personality staying launching
@@ -286,32 +287,113 @@ mission "Successors: Ghosts Myurej 5"
 	name "Locate hidden vault"
 	source Raaqa-Kvelq-Ryuit
 	destination Kella-Uuoru-Sossa
+	passengers 3
 	to offer
 		has "Successors: Ghosts Myurej 4: done"
 	on offer
 		conversation
-			`Are you ready to go?`
+			`You wait around in the spaceport in a low, columned area. Circular depressions in the ground hold pools of water, and occasionally a Successor will come along and slither into one for a few minutes before getting on with their business. After a while, you are met by what must be an envoy of House Myurej, a tall Successor wearing the same colors as their military officers, albeit in a somewhat less martial outfit. Two soldiers flank them. "Captain <last>?" they say. "How excellent to meet thee."`
+			choice
+				`	"Yes. And you are?"`
+					goto hello
+				`	"You seem more polite than the rest of Myurej."`
+			`	"I'm not sure what thou mean'st. I harbor no ill will to thee, for certain."`
+			label hello
+			`	They bow gently. "I am Ijaset. I contribute to Myurej's efforts t'explore beyond the wormhole."`
+			`	"And your friends?" you say, gesturing to the soldiers.`
+			`	Blue spots run over Ijaset's skin; you realize it's the first time you've seen a color display by a member of Myurej. "They are here to assure the success of our task."`
+			label questions
+			choice
+				`	"Can you tell me more about our mission?"`
+					goto mission
+				`	"What exactly are your efforts to explore beyond the wormhole?"`
+					to display
+						not "Successors: efforts"
+					goto efforts
+				`	"Seems like the guards are more of an implied threat."`
+					to display
+						not "Successors: threat"
+					goto threat
+			label efforts
+			action
+				set "Successors: efforts"
+			`	Ijaset relaxes and leans against a column, looking over the nearest pool. "Probes, for the most part. They're small enough to bring to speed with a planetary coilgun, and after a couple of years go by, we get some data back. In years past, some of the nearer stars lay more connected than they are now, and we could send whole ships. But never as far as Myurej now requests us go."`
+				goto questions
+			label threat
+			action
+				set "Successors: threat"
+			`	The soldiers shuffle in place a little bit, and Ijaset stiffens. "The Houses need not threaten thee, <last>. They get what they want without such things; they've had eons to learn to do that."`
+				goto questions
+			label mission
+			action
+				clear "Successors: animal"
+				clear "Successors: others"
+			`	"Myurej seeks to send us to <planet>," they say. "I've been fashioned with the location and key to a hidden vault 'pon the surface. Inside, Myurej's Predecessors kept a bevy of things ineffable, but we need not retrieve much. Today, all they ask of us is a collection of jewelry contained within." They pause and let a collection of colors emerge over them. A gentle breeze whistles through the columns. "The smallest things presage the grandest journeys," they say. "Let us go to thy craft and begin with haste."`
 				accept
 	on complete
 		conversation
-			`You've grabbed the item but are being pursued by Predecessor warships.`
-	#on complete
-	#	payment 100000
-	#	conversation
-	#		`You hand over the item and are paid.`
+			`You set down the <ship> on the outskirts of one of the smaller cities on <planet>. The buildings are in remarkably good condition for having stood here thousands of years - most of them, at least, because several have been leveled by weapons fire. The entire easternmost quarter of the city has been reduced to rubble; twisted spars of metal rise up where buildings once did and stone plazas lie shattered in the dust and sun.`
+			`	Ijaset leads you, along with the two Myurej soldiers, to an area that's a curious reflection of the columned pool area of the Myurej spaceport, though here all the water has long since evaporated. The one here is larger, too, and as you walk through the forest of white pillars, it becomes more and more difficult to see back to your ship in the distance.`
+			`	Eventually, Ijaset stops on the edge of one of the depressions. "Tis here," they say, emotionless, and point directions to the two guards. They check something against a datapad they produce from their clothing, and then glide over to one of the columns, extending three arms to feel around the circumference of it. Shortly after, something clicks, and a rumbling suddenly starts below you, growing louder and louder until it stops and an aperture opens in the middle of the depression. A tunnel yawns deep into the ground.`
+			choice
+				`	"That's a long way down."`
+					goto down
+				`	"Why put a vault in a place like this?"`
+			`	Ijaset hums. "'Twas once a reserved quarter for the highborn of Myurej, this. Secret to those outside, but known to those who weren't. Then, as now, knowledge was a matter of position."`
+			label down
+			`	You go to look over the edge, and Ijaset joins you. "We should expect a long journey," they say. "'Twas meant to be shielded from just such a bombardment as came to pass."`
+			`	The four of you make your way down the tunnel, which seems to go down into the planet for kilometers. The dark metal walls grow warm to the touch, and the slippery floor proves more treacherous for you than for the Successors - you have to catch yourself on the rail several times. Eventually you come to an enormous spherical room, large enough that the far wall fades into darkness even as a shaft above you lets in an impossibly-penetrating beam of sunlight. And ringing the walls are thousands upon thousands of circular insets, each one many meters in diameter, each one with a panel on the front taking - no doubt - a unique data-sphere.`
+			choice
+				`	"I had no idea the Houses had this much."`
+				`	"We can't be here just for jewelry, can we?"`
+			`	"Myurej had dozens of these vaults," Ijaset says. "Most not here, not on the homeworld. Ships, weapons, great riches grown in the heart of stars... all should be preserved, lest the Quarg or some other despoilers have come to empty them. Today we come for trinkets, so tomorrow we can come for the rest."`
+			choice
+				`	"Let's just focus on what we're here for."`
+					goto next
+				`	"With the contents of a vault like this, any of the Houses could dominate the others, couldn't it?"`
+			`	One of the soldiers says something to Ijaset, loud enough for you to hear, but in a dialect your translation device doesn't pick up. They nod. "Kaatrij wounded, the People's Houses in disarray, even fair Myurej soon to be drawn ever closer to Chydiyi. 'Tis a time of change and the uncertain. With the contents of a vault as this, any of the Houses could make their own certainty."`
+			label next
+			`	Ijaset confers with their datapad and leads the three of you a couple of degrees along the great room's circumference, stopping in front of one of the insets. They produce from a pocket a gilded data-sphere that they press into its face, and you watch as the golden strands encircling it lay themselves out on the front of the surface, forming a fractal web of glittering metal. When they finally stop moving, the whole face of the inset liquefies, gold and all. Behind it lies a deep circular room stacked with elegant wooden boxes. The four of you enter and Ijaset collects a few small items, most no larger than your hand. They give most to the soldiers, but reserve three or four to carry themself.`
+			`	"That's it?" you say.`
+			`	"Indeed," says Ijaset. "A shame to leave the rest, I know, but if it's stayed a thousand years, it shall bear another one."`
+			`	You all retreat from the vault room; Ijaset first, followed by you and then the soldiers. As their last trailing arm slides over the threshold, the face of the vault reforms as quickly as it had melted, the golden strands retract back to the data-sphere, and the whole room is left as it was before. As you prepare to go back up, however, something sharp pings in your ear.`
+			choice
+				`	"What is that?"`
+				`	"Did you hear that?"`
+			`	Ijaset looks over at you with a shade of concern on their face. They open their mouth, but nothing understandable comes out - just the same sharply flowing language you heard from the Successors before you acquired the translation device. Then, a second later, there's another sharp feeling and their words are reshaped. " - thine ears? Can'st thou... now, I see it. We must leave now, <last>."`
+			`	The vault is shaken by the deep and distant sound of something breaking. Your translation device seems to be mostly back to normal, but something isn't quite right, as if it's trying to reshape some deep environmental noise in the background. It's hard to concentrate. There's another blast of sound, and you follow the three Successors back up the tunnel. It seems even longer now than it did before.`
+			`	Just as you emerge into the sunlight, something slams into the ground in the distance and you are thrown onto the stone. As you get back up, you hear Ijaset shouting a word that your translation device can't translate. A couple of seconds later, you see what it was that knocked you down: a brilliant stream of plasma illuminates the sky as a hypervelocity projectile strikes one of the buildings in the city. The air stinks of ozone.`
+			choice
+				`	(Run for your ship.)`
+					goto run
+				`	(Radio for your ship to come pick you up.)`
+					to display
+						has "flagship attribute: shields"
+			`	You quickly transmit new landing coordinates for the <ship> and its repulsors kick up the dust as another building in the city is leveled. As it nears the columned area, the orbital weapon fires again, this time targeting your ship. Its shields flash as they shatter the projectile, the shards of which tear through a swath of columns to your left. As you dash aboard the landing ramp with the Successors right behind you, another impact knocks your vessel to the side and you prepare to fly into orbit while your ship's shields still hold.`
+				launch
+			label run
+			`	You run back through the field of columns as the bombardment continues. Some of the impacts feel like they're getting closer the farther you run, but eventually you make it back to where you landed the <ship> and hurry inside with Myurej's agents right behind you. As you make your way to the bridge, another impact strikes dangerously close to your landing area, and you prepare to fly into orbit while you still can.`
+				launch
 
 mission "Successors: Ghosts Myurej 6"
 	landing
 	priority
-	name "Flee back to <destination>"
+	name "Flee back to Successor space"
 	source Kella-Uuoru-Sossa
-	destination Raaqa-Kvelq-Ryuit
+	destination Uuoru-Veldt-Stir
+	passengers 3
 	to offer
 		has "Successors: Ghosts Myurej 5: done"
 	npc evade
 		ship "Queru, Luminous Gaze" "Kis, Lamenting 9-3"
+		ship "Queru, Luminous Gaze" "Maki, Recalling 11-2"
 		government "Solitude Enforcer" 
-		personality launching heroic nemesis unconstrained
+		personality waiting heroic nemesis unconstrained vindictive
+	on enter "Myruet-Kvelq"
+		dialog `Ijaset instructs you to land on the uninhabited world here to hand over the Predecessor artifacts.`
+	on complete
+		conversation
+			`The <ship> comes to rest on the gentle hills of <planet> next to an unassuming-looking Myaede freighter.`
 
 mission "Successors: Ghosts Myurej 7"
 	name "Return to Myurej"
