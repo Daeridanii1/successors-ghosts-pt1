@@ -53,13 +53,13 @@ mission "Successors: Ghosts Incident 1 Student"
 				`	"Yes, I do. A little cramped, but I don't mind it."`
 					to display
 						and
-							has "flagship attribute: bunks" <= 20
+							"flagship attribute: bunks" <= 20
 							not "outfit (installed): Luxury Accommodations"
 					goto cramped
 				`	"Yes, I do. It's quite spacious, in fact."`
 					to display
 						or
-							has "flagship attribute: bunks" > 20
+							"flagship attribute: bunks" > 20
 							has "outfit (installed): Luxury Accommodations"			
 					goto spacious			
 				`	"Of course."`

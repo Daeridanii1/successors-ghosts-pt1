@@ -112,13 +112,13 @@ mission "Successors: Ghosts Aqrabe 2"
 	to offer
 		has "Successors: Ghosts Aqrabe 1: done"
 	on offer
+		log "People" "Tilra" "Tilra is an engineer belonging to the Successor House Aqrabe."
 		conversation
-			log "People" "Tilra" "Tilra is an engineer belonging to the Successor House Aqrabe."
 			`Tilra meets you in a tucked-away part of the spaceport that's filled with strange statuary, where they stand in conversation with a small group of Successors. They brighten as they see you approach and offer a perfunctory splay of the arms. "Captain, captain," they say. "Thou returneth with no time to squander. We mean to ply a journey of understanding cross the wormhole; one fellow captain here means to use one of thy keystones, the other, our weft-weaving armor. Thy own craft would be valuable as a place to gather data from the other two, to see how they perform across the rift."`
 			choice
 				`	"Couldn't you do that without me?"`
 				`	"Where exactly are we going?"`
-					goto short
+					goto destination
 			`	Tilra shimmers with mirth. "Of course," they say. "But were we to find ourselves with questions, needing knowledge that though might'st provide, 'twould be val'ble to have thee at our sides then. We plan to convene upon the dusty world just the other side of the gate; I shall hope to see thee there."`
 				accept
 			label destination
@@ -250,7 +250,7 @@ mission "Successors: Ghosts Aqrabe 5"
 				`	"Very well."`
 					goto end
 			`	"Thine expectation is no longer accurate," they reply, not belying any emotion.`
-				goto end
+			label end
 			`	They show you onboard. The interior of Successor military ships looks much different from their civilian craft - the bridge is buried deep in the center of the craft under layers of armor, a small, circular room with a water-filled pool in the center and liquid-metal displays ringing the edges. Similarly compact living quarters and operational spaces fan out from it, each one well-equipped.`
 			`	After you've had a look around, Kaatrij's observer esorts you off the vessel. "I and a Kaatrij crew shall pilot the vessel to Aqrabe. Once there, thou shoulds't install thy jump drive aboard."`
 				accept
@@ -266,14 +266,14 @@ mission "Successors: Ghosts Aqrabe 5"
 				`	"It's not my first Successor craft, you know."`
 					to display
 						or
-							has "ship model (all): Ejniisde" > 0
-							has "ship model (all): Kvelqde" > 0
-							has "ship model (all): Kvelqde-Khora" > 0
-							has "ship model (all): Myaede" > 0
-							has "ship model (all): Nnaatej" > 0
-							has "ship model (all): Nnesaarau" > 0
-							has "ship model (all): Ojde" > 0
-							has "ship model (all): Stolsaqra" > 0
+							has "ship model (all): Ejniisde"
+							has "ship model (all): Kvelqde"
+							has "ship model (all): Kvelqde-Khora"
+							has "ship model (all): Myaede"
+							has "ship model (all): Nnaatej"
+							has "ship model (all): Nnesaarau"
+							has "ship model (all): Ojde"
+							has "ship model (all): Stolsaqra"
 					goto experienced
 			`	Tilra makes a short humming sound. "Perhaps," they say. "Thou shalt have the opportunity to decide for thyself soon enough."`
 				goto next
@@ -412,12 +412,11 @@ mission "Successors: Ghosts Aqrabe 7"
 				`	"What about this ship? Do I get to keep it?`
 			label ship
 			`	Tilra nods. "Before we left, I heard from our fleet liason with Kaatrij. The ship lacks weapons or anything too perilous for thou to keep, and Kaatrij has no doubt already started removing their device. Thou might'st consider it a bonus to thy fee, a favor from the House to thee."`
-			branch confronted
-				has "successors confronted tilra"
-				goto end
+			branch "not confronted"
+				not "successors confronted tilra"
 			label confronted
 			`	Tilra turns to go away but stops themself. "I've an apology to offer thee 'fore we part, captain," they say. "I showed thee some disrespect when we spoke before leaving. 'Tis strange to be accused by one so foreign to our ways. But we've been cut off a long time now, I think, hearing only from ourselves and the ghosts of others. Greater things are moving than either of us now, but thou may'st trust that I'll be careful with our treasure. I can promise thee nothing more, but thou'rt right to remind me of that, at least."`
-			label end
+			label "not confronted"
 			`	The two of you are interrupted by Kaatrij's observer, who informs the two of you that the metal offloading is complete. Tilra, ready to get started on the next phase of their project, leaves with them, offering you a quick bow and courteous "goodbye."`
 			`	A few minutes later, you are notified that you have received a payment of <payment> credits from House Aqrabe.`
 		payment 400000

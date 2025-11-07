@@ -98,9 +98,9 @@ mission "Successors: Ghosts QSI 1"
 			label proceed
 			`	You cut the communication channel and proceed anyway. For a moment, all seems well, but soon your sensors detect weapons fire from emplacements on the surface and the underbelly of your ship is lanced by a barrage of hypervelocity spikes.`
 			branch fragile
-				has "flagship shields" + "flagship hull" < 25000
+				"flagship shields" + "flagship hull" < 25000
 			branch medium
-				has "flagship shields" + "flagship hull" < 85000
+				"flagship shields" + "flagship hull" < 85000
 			`	The shots ram against your ship's shields with punishing ferocity, but the <ship> holds fast under the onslaught. However, the heavy fire greatly disturbs your flight path and it becomes increasingly clear that you won't be able to land regardless of your vessel's durability.`
 				flee
 			label medium
@@ -472,7 +472,7 @@ mission "Successors: Ghosts Report 1"
 		attributes successor
 	destination "Shassa-Wyra-Orrou"
 	to offer
-		has "successors: ghosts houses dealt with" >= 2
+		"successors: ghosts houses dealt with" >= 2
 	on offer
 		conversation
 			`You should go check in with House Seineq about the Houses that asked you for help.`
@@ -485,7 +485,7 @@ mission "Successors: Ghosts Report 1"
 mission "Successors: Ghosts Report 2"
 	source
 		attributes successor
-		not attributues uninhabited
+		not attributes uninhabited
 	destination Yoqqa-Vasa-Vasa
 	to offer
 		has "event: successors: ghosts stage 2"
@@ -524,7 +524,7 @@ mission "Successors: Ghosts Suspicion 1"
 		attributes "successor"
 		not attributes "uninhabited"
 	to offer
-		has "successors: ghosts suspicion" >= 5
+		"successors: ghosts suspicion" >= 5
 		has "First Contact: Quarg: offered"
 	on offer
 		log "Approached by a strange Successor. They told me about the hunting practices of the elusive self-camouflaging Kijran-Khora, who eluded House Kaatrij, and wished me happy sightseeing at an unspecified set of rings."
@@ -538,7 +538,7 @@ mission "Successors: Ghosts Suspicion 1"
 			choice
 				`	"I'm not sure I understand."`
 				`	"Oh, I think I see what you mean."`
-				goto clever
+					goto clever
 			`	"Perhaps thou shalt come to, in time. If thou truly mean to unravel this thyself, 'twill take cunning from thee. So reflect, Captain, and I wish thee pleasant sightseeing. The rings, I hear, are in a class of beauty all their own." They eye the last bit of skewered seafood before nipping it off the stick, and wish you goodbye before disappearing into the spaceport.`
 				decline
 			label clever
@@ -550,7 +550,7 @@ mission "Successors: Ghosts Suspicion 2"
 	source "Qasa-Sija-Iri"
 	to offer
 		has "Successors: Ghosts Suspicion 1: offered"
-		has "flagship attribute: cloak" > 0
+		has "flagship attribute: cloak"
 	on offer
 		conversation
 			`As you enter orbit over <origin>, you can see that House Kaatrij continues to occupy the planet's surface, scanning and intercepting any ships that might attempt to land.`
@@ -623,22 +623,21 @@ mission "Successors: Ghosts Suspicion 3"
 mission "Successors: Ghosts Suspicion 1a"
 	source "Yoqqa-Vasa-Vasa"
 	to offer
-		has "successors: ghosts suspicion" >= 7
+		"successors: ghosts suspicion" >= 7
 	on complete
 		set "successors: ghosts dealt with seineq"
 
 mission "Successors: Ghosts Suspicion 4"
-	landing
-	invisible
+	entering
+	source
+		attributes "predecessor"
 	to offer
 		has "Successors: Ghosts Suspicion 3: offered"
-		has "successors: ghosts houses dealt with" >= 1
-		#random < 15
+		"successors: ghosts houses dealt with" >= 1
+		random < 15
 	destination "Inti-Arat"
-	on enter
-		system
-			attributes predecessor
-		dialog ``
+	on accept
+		dialog `You receieve a strange message.`
 	on enter "Avasaa-Novaa"
 		dialog `After entering the system, you deploy the Successor sensor drones. After drifting out of your ship's cargo bay, they use small thrusters to disperse themselves across the system until they eventually recede from your ship's scanners.`
 	on complete
@@ -655,13 +654,26 @@ mission "Successors: Ghosts Suspicion 4"
 				`	"Display system 'Sosrue.'"`
 				`	"Display system 'Kijra.'"`
 				`	(Leave.)`
-					goto leave
+					goto end
 			`	The terminal pauses for a moment before making a harsh noise. "Authorization failure."`
 			choice
 				`	(Use your ship's outfit scanner to scan the crashed vessel.)`
 					to display
-						"flagship attribute: outfit scan power" > 0
+						has "flagship attribute: outfit scan power"
 				`	(Explore elsewhere.)`
 					goto elsewhere
 			`	The familiar warble of the <ship>'s outfit scanning comes through the radio link, and after a few moments, you get a full inventory of the crashed ship's outfits. Most of them are standard, but two stand out: one is a jump drive, and the other is something you haven't seen before - the scanner can't even get a good lock on it. After a few minutes of trying to triangulate the rogue signal to a specific part of the ship, you piece together a hazy mess of readings in the engineering section down a corridor to your left.`
+			label elsewhere
+			`	`
 			label end
+
+mission "Successors: Ghosts Suspicion 5"
+	landing
+	source
+		attributes "successor"
+		not attributes "uninhabited"
+	to offer
+		has "successors: Ghosts Suspicion 4: done"
+	on offer
+		conversation
+			`Soon after you shut down the <ship>'s systems for landing, you are approached by a Successor who seems to have been waiting, nipping at a skewered piece of food.`

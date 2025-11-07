@@ -30,11 +30,11 @@ event "successors: ghosts message delay"
 
 event "successors: ghosts star unrestrict"
 	planet "Exotic Metal Garden"
-	remove attributes "requires: starlining"
+		remove attributes "requires: starlining"
 
 event "successors: ghosts star restrict"
 	planet "Exotic Metal Garden"
-	add attributes "requires: starlining"
+		add attributes "requires: starlining"
 
 event "successors: ghosts keystones finished"
 	planet Kasii-Cavasaa-Oa
