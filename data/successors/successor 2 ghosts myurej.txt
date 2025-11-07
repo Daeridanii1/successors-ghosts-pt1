@@ -106,57 +106,183 @@ mission "Successors: Ghosts Myurej 2"
 	destination Vade-Osolaa-Kaska
 	to offer
 		has "Successors: Ghosts Myurej 1: done"
-	on stopover
+	on complete
 		conversation
 			`You enter <planet>'s vast spaceport to find it almost deserted. There is, however, plenty of evidence to support your contact's suggestion. A number of empty but recently-opened cargo containers are strewn against one of the far walls of the space; beside one of them there's even a small cache of what looks like personal gear: a durable fabric pack, a small sidearm, even some packages of dried food. Someone must have left here in a hurry.`
 			choice
 				`	(Rummage through the pack.)`
 				`	(Prepare to leave.)`
 					goto end
-			`	`
+			action
+				"successors: ghosts suspicion" ++
+			`	Inside you find, among the odds and ends of this Successor's belongings, a still-warm data-sphere. It springs to life as you touch it, relaying its most recent message:`
+			`	"Riiria says the Houses shan't find us here, that they see these wretched hulks as icons'f their folly they daren't touch. They're right, I know, and yet I shudder most at thinking of that alien the Houses're so fond'f using. Riirira says fools're much more fearsome than the wise."`
+			`	The message ends there, and you can't quite figure out how to access the rest of the data on the sphere, so you leave it be.`
 			label end
 			`	If Riiria isn't at this station, they might be at the other one to the south, so you head back to your ship and enter the coordinates on your map.`
 
 mission "Successors: Ghosts Myurej 3"
 	landing
-	name "Track down Riiria"
-	destination Maspa-Viir-Kella
+	name "Continue the search"
+	source Vade-Osolaa-Kaska
+	destination Myiara-Sola-Tej
 	to offer
 		has "Successors: Ghosts Myurej 2: done"
-		has "visited planet: Mapa-Viir-Kella"
-	on stopover
+	on complete
 		conversation
-		`You set up the last of the scanners; now you have to wait for Riiria's ship to appear.`
+			`Not longer after you guide the <ship> through this station's docking aperture, you see parked on one of the disused landing pads a clearly unpowered Successor freighter. It's in poor condition; much of the hull armor has been removed and a hole has been bored down through the top right over the generator bay.`
+			`	Fortunately, your ship's scanners are still able to identify its identification number, and you scrabble for House Myurej's data-sphere to check it against the data Myurej provided you. This is the ship you were sent to find, you determine.`
+			choice
+				`	(Use your cargo scanner to identify its cargo.)`
+					to display
+						has "flagship attribute: cargo scan power"
+				`	(Check its cargo yourself.)`
+					goto self
+			`	Unsurprisingly, the ship's cargo bays have been picked clean and whatever wedding gifts you have been sent to retrieve aren't here. The scanner is able to interface with an unshielded, barely-powered terminal inside the hulk, however, and relays to you the ship's most recent cargo manifest:`
+			``
+				goto manifest
+			label self
+			`	You disembark the <ship> and walk into the ripped-open cargo bay of the Ojde to confirm what already seems likely: any trace of the ship's cargo has been removed. You are able to access an independently-powered terminal inside the bay, however, and as it burbles to life, it shows you the ship's most recent cargo manifest:`
+			``
+			label manifest
+			`		37 tons assorted gifts (common)`
+			`		4 tons red gold jewelry`
+			`		9 tons programmed water (for Council pools)`
+			`		3 tons ceremonial weapons`
+			`		9 tons rare animals (in stasis, require constant power supply)`
+			`		16 tons high-pressure lux filters (require pressurized environment)`
+			``
+			`	Though most of the items don't tell you much, the last one seems like it could be a clue, and you press the terminal for details:`
+			`	"House-built luxury filter units designed for undersea oxygen extraction and programming. Disperses mood-lightening particles with variable concentration. Must be kept in high-pressure environment to avoid damage. 8 million credits per unit."`
+			branch mvk
+				has "visited planet: Maspa-Viir-Kella"
+			`	As you disconnect from the terminal, you think about any planets nearby that might fit the storage requirements of these filters, but nothing comes to mind. It looks like you'll have to check the nearby worlds manually.`
+				goto end
+			label mvk
+			`	As you disconnect from the terminal, you think about any planets nearby that might fit the storage requirements of these filters, and one springs to mind: Maspa-Viir-Kella, an uninhabited world in the Osolaa-Uuoru system to the north. Landing there before was a challenge on account of the dense atmosphere; if the elusive Riirira is storing their spoils somehwere, that would be a good place for it.`
+			label end
+
+
+mission "Successors: Ghosts Myurej 4 Direct"
+	landing
+	name "Track down Riiria"
+	source Vade-Osolaa-Kaska
+	destination Maspa-Viir-Kella
+	to offer
+		has "Successors: Ghosts Myurej 3: done"
+		has "visited planet: Maspa-Viir-Kella"
+
+mission "Successors: Ghosts Myurej 3 Checking"
+	landing
+	name "Track down Riiria"
+	source Vade-Osolaa-Kaska
+	stopover Maspa-Viir-Kella
+	stopover Vyraa-Giiq-Sora
+	stopover Khosa-Kella-Oa
+	stopover Chyyra-Raaqa-Tuur
+	stopover Giiq-Oj-Sol
+	stopover Giiq-Sou-Kella
+	complete at
+		planet
+			Maspa-Viir-Kella
+	to offer
+		has "Successors: Ghosts Myurej 4: done"
+		not "visited planet: Maspa-Viir-Kella"
 
 mission "Successors: Ghosts Myurej 4"
 	landing
-	name "Return to <destination>"
+	name "Defeat Riiria and return to <planet>"
 	source Maspa-Viir-Kella
 	destination Raaqa-Kvelq-Ryuit
 	to offer
 		or
-			has "Successors: Ghosts Myurej 2: done"
+			has "Successors: Ghosts Myurej 3: done"
+	on offer
+		conversation
+			`The <ship>'s scanners spring to life not long after you enter <origin>'s atmosphere, pinging several unidentified ships in a nearby valley under the shroud of the thick clouds. As the winds buffet your ship, you check the scan readings you're receiving against the data that Myurej provided you, and they seem to match, at least for the largest of the vessels.`
+			choice
+				`	(Attack them while you have the element of surprise.)`
+				`	(Try to negotiate.)`
+			`	As you bring your own vessel closer, you are suddenly thrown off course by a strong gust of wind. Though you regain attitude control only a moment later, it's long enough for Riiria's ships to detect you and prepare for launch...`
+			launch
 	npc board
 		government `People's Houses (Hostile)`
 		personality staying target launching heroic
 		system "Osolaa-Uuoru"
 		ship "Ejniisde-Khora (Bombed)" "Riiria-i-Nnesan"
 		conversation
-			`You board the <npc> and approach the cargo bay but are thrown back by an explosion inside. Soon the ship itself is coming apart...`
+			`You bring the <ship> alongside Riiria's disabled vessel, careful to line up one of your airlocks with the ship's cargo hatch. As you walk through your vessel's interior to prepare to start cutting through the hatch, however, the <ship> is rocked by an explosion that seems like it comes from the airlock. Seconds later, another one goes off, and then another. Racing back to your ship's bridge, you detatch from the detonating vessel just as another explosion rips through its cargo bay, no doubt destroying the precious cargo you've gone to so much effort to track down.`
 				launch
 	npc
 		government `People's Houses (Hostile)`
 		personality staying launching
 		system "Osolaa-Uuoru"
-		ship "Kvelqde-Khora" "Kijria-Sol"
-		ship "Kvelqde-Khora" "Aret-I"
-		ship "Kvelqde-Khora" "Nosola-o-Kasja"
-		ship "Kvelqde-Khora" "Saqra-Vasa"
+		ship "Kvelqde-Khora" "Akja-o-Riiria"
+		ship "Kvelqde-Khora" "Miti-o-Riiria"
+		ship "Kvelqde-Khora" "Kaska-Kisiri"
+		ship "Kvelqde-Khora" "Tesja-qii"
 	on complete
 		conversation
-			`House Myurej is angry with you for losing the wedding gifts, and are asking you to make up for it by retrieving an alternative from a vault in Predecessor space.`
+			`Traffic control directs you a restricted part of the <planet> spaceport where the bare industry of the public areas gives way to Myurej ostentation. The <ship> settles down on a bronze-edged landing pad, and as you disembark, the armed and armored guards direct you to one of the adjoining buildings. Inside, the room you are led to is divided in much the same way as the previous time you met with House Myurej; a long black screen waves in front of you, and you wait for the voice to begin.`
+			`	"We gave thee a simple task," it says. "Yet it seems even aught so basic eludes thee." They pause for a moment.`
+			branch sioeora
+				has "successors sioeora patron"
+			`	"Mayhaps we should have learned from thy failure with Sioeora. Thou hast a habit, it seems to us."`
+			label sioeora
+			choice
+				`	"I had nothing to do with Riiria's ship exploding."`
+				`	"It seems to me like you're the one who needs to apologize."`
+					goto angry
+				`	"I'm sorry."`
+					goto grovel
+			`	The screen ripples colorlessly. "What careth we? If we had sent another, would it still have been so?"`
+				goto again
+			label angry
+			`	The screen ripples, dark and menacing. "Taking missions as these is what thou dost, is it not so? Is it common among lesser aliens as thee to berate one's clients for daring t'offer employ?"`
+				goto again
+			label grovel
+			`	The screen ripples, lightless as tar. "We care little for thy apologies," says the voice, "but 'tis good that thou hast some cognizance of thine inability."`
+			label again
+			`	Suddenly, a wave of color springs across the screen. When the voice continues, there's something in it you can't quite place. "Thou could undo this failure for us, though, Captain. Find us some replacement for the things thou hast lost in thy folly. Thou could'st still earn our coin, our gratitude. Surely thou shoulds't leap at this."`
+			choice
+				`	"Are you kidding me? I'm done with you."`
+				`	"Fine. Tell me more."`
+					goto more
+			`	Something pulses in your ears, driving a momentary prick of pain deep into your head; you realize it's the translation device, picking up on something else in the room, some other bit of language stuck in the background. It feels like it's coming from the screen itself. The voice interrupts it. "We know what thou desirith, Captain," it says. "To be a part of the events to come, thou shalt need the backing of the Houses. None comes to pass in this space without our blessing. Cry and bark as thou must, thou still requirith us."`
+			choice
+				`	"Then tell me what you want, and I'll decide if it's worth my time."`
+					goto more
+				`	"What is that sound?"`
+			`	You feel it again, this time much more subtle. You can't shake the feeling that it's like something has noticed you. "Do not distract thyself, Captain," says the voice, and the pressure lifts.`
+			`	"Fine," you say, "just tell me what you want so I can decide if I want any more to do with you."`
+			label more
+			`	"Like before," the voice says, "when Sioeora asked their favor of thee, we've aught we wish to reclaim from the gyre of the Shroud. Nothing to upset thy delicate ethics - naught but trinkets from when the House was young. 'Twould make a fair consolation to us, and we would forgive thee, and thou would'st know the beneficence of this House."`
+			branch "not met solitude enforcers"
+				not "Successors: Ghosts Aqrabe 7: offered"
+			`	"Certain some drone warship isn't going to come after me as soon as I grab your trinkets?" you say, recalling the experience with House Aqrabe. This seems to catch the voice off guard, if only a little, and it takes a moment before it replies. "Any encounter thou hast met once before, thou should'st surely be unafraid of facing again."`
+			label "not met solitude enforcers"
+			choice
+				`	"I don't appreciate being treated as disposable."`
+					to display
+						has "Successors: Ghosts Aqrabe 7: offered"
+				`	"All right, I'll do it. But you'd better hold up your end of the bargain."`
+					goto yes
+				`	"I'm done with this."`
+					goto no
+			`	"Thou'rt not a tool to be thrown away, Captain, but to be cultivated, polished to a gleam. We would not send thee to thy death - how benefits the House in that? Return to the spaceport here when thou'rt ready to begin thy task."`
+				goto end
+			label yes
+			`	"We shall," says the voice, "we always do. Return to the spaceport when thou'rt ready to begin."`
+				goto end
+			label no
+			action
+				log "Declined to take on additional mission for House Myurej to retrieve Predecessor artifacts. Can return to the Raaqa-Kvelq-Ryuit spaceport to accept it at a later date."
+			`	"As thou saith," says the voice. "When thou changeth thy mind, return to the spaceport here to begin."`
+			label end
+			`	You exit the room with the screen and return to the landing pad with your ship.`
 
 mission "Successors: Ghosts Myurej 5"
+	priority
 	name "Locate hidden vault"
 	source Raaqa-Kvelq-Ryuit
 	destination Kella-Uuoru-Sossa
@@ -187,29 +313,29 @@ mission "Successors: Ghosts Myurej 6"
 		government "Solitude Enforcer" 
 		personality launching heroic nemesis unconstrained
 
-mission "Successors: Ghosts Myurej 6"
+mission "Successors: Ghosts Myurej 7"
 	name "Return to Myurej"
 	source
 		attributes successor
 		not attributes uninhabited
 	destination Raaqa-Kvelq-Ryuit
 	to offer
-		has "Successors: Ghosts Myurej 5: done"
+		has "Successors: Ghosts Myurej 6: done"
 		random < 15
 	on offer
 		conversation
 			`The scions of Myurej want you back on <destination>.`
 	on complete
 		conversation
-			`Myurej wants you to transport a couple of items to Aava-Aasa-Khora, where the wedding will take place.`
+			`Myurej wants you to transport a couple of items to Iyra-Ijasa-Iret, where the wedding will take place.`
 
-mission "Successors: Ghosts Myurej 7"
+mission "Successors: Ghosts Myurej 8"
 	name "Return to Myurej"
 	source Raaqa-Kvelq-Ryuit
-	destination Aava-Aasa-Khora
+	destination Iyra-Ijasa-Iret
 	cargo "Wedding supplies" 30
 	to offer
-		has "Successors: Ghosts Myurej 6: done"
+		has "Successors: Ghosts Myurej 7: done"
 	on offer
 		conversation
 			`Let's go!`
