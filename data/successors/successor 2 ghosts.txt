@@ -546,16 +546,18 @@ mission "Successors: Ghosts Suspicion 1"
 				decline
 
 mission "Successors: Ghosts Suspicion 2"
+	priority
 	landing
 	source "Qasa-Sija-Iri"
 	to offer
 		has "Successors: Ghosts Suspicion 1: offered"
-		has "flagship attribute: cloak"
 	on offer
 		conversation
 			`As you enter orbit over <origin>, you can see that House Kaatrij continues to occupy the planet's surface, scanning and intercepting any ships that might attempt to land.`
 			choice
 				`	(Cloak.)`
+					to activate
+						has "flagship attribute: cloak"
 					goto cloaked
 				`	(Continue down.)`
 				`	(Leave.)`
@@ -569,7 +571,7 @@ mission "Successors: Ghosts Suspicion 2"
 			`	As you once saw in the news broadcast, the outline of it is an enormous circle several kilometers in radius. Though the shimmering effect is now gone and some of the damage has been repaired, much of it still remains visible and there appears to be ongoing work on the damaged sections - House Kaatrij-registered freighters land on temporary landing pads and offload massive amounts of materials, some familiar, some not.`
 			`	Most striking of all, however, is the appearance of some familiar-looking dark metal and purple lighting in the damaged section of the base; it's hard to be certain, but it bears a distinct resemblance to Quarg technology. Perhaps the Quarg might be able to provide some answers about what's been going on.`
 			`	Not long after you see this, a thin sandstorm starts to roll in, and you take the <ship> back up to orbit before the mysterious absence of airborne grit gives your ship away.`
-				decline
+				launch
 	on complete
 		log "Approached the base on Qasa-Sija-Iri while under cloak. Its design vaguely resembles Quarg construction - perhaps they have some answers about what's been going on with the Successors."
 
@@ -609,7 +611,8 @@ mission "Successors: Ghosts Suspicion 3"
 				`	"It's hard to believe they were ever so unified."`
 				`	"You saw them as equals to yourselves?"`
 			`	A demeanor of great reflection passes over the Quarg, and then is gone just as quickly. "The Myiara were like... children, just beginning to concieve of and adopt the responsibilities that lie beyond youth. Full of cleverness and arrogance still, but borne aloft by a new-blooming capacity to see beyond themselves and their own base concerns."`
-			`	"How did you keep yourself hidden from them for so long?"`
+			choice
+				`	"How did you keep yourself hidden from them for so long?"`
 			label hiding
 			`	"Hiding indeed does not come naturally to us," the Quarg says. "With no other have we had need to conceal ourselves. One of their houses, when it knew what they had done, agreed to work with us to preserve their species. They were most skilled in matters of illusion, and shared their cloaks with us to obscure our presence."`
 				goto end
@@ -618,6 +621,7 @@ mission "Successors: Ghosts Suspicion 3"
 			`	With that, the Quarg offers you a gentle bow. "Goodbye now, Captain," they say, and quietly walk away.`
 				decline
 	on decline
+		set "successors: myiara name"
 		log "Spoke with the Quarg, who revealed that they have kept a base on Qasa-Sija-Iri to monitor the Successors. It has remained cloaked by House Kaatrij, who has collaborated with the Quarg since the collapse of the Predecessors."
 
 mission "Successors: Ghosts Suspicion 1a"
@@ -632,14 +636,14 @@ mission "Successors: Ghosts Suspicion 4"
 	source
 		attributes "predecessor"
 	to offer
-		has "Successors: Ghosts Suspicion 3: offered"
+		has "Successors: Ghosts Suspicion 3: declined"
 		"successors: ghosts houses dealt with" >= 1
 		random < 15
 	destination "Inti-Arat"
 	on accept
 		dialog `You receieve a strange message.`
 	on enter "Avasaa-Novaa"
-		dialog `After entering the system, you deploy the Successor sensor drones. After drifting out of your ship's cargo bay, they use small thrusters to disperse themselves across the system until they eventually recede from your ship's scanners.`
+		dialog `The source of the signal is revealed to be coming from a planetoid in the system.`
 	on complete
 		conversation
 			`The <ship> skims over the planetoid's surface, scanning for the source of the mysterious signal - after a couple of minutes, you pinpoint it to a small crater. Upon approaching, you finally get a good look at the origin: a Successor ship is crashed against one of the crater walls.`
