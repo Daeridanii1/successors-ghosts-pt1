@@ -101,14 +101,15 @@ mission "Successors: Ghosts Myurej 1"
 mission "Successors: Ghosts Myurej 2"
 	landing
 	priority
-	name "Search <destination>"
+	name "Search <planet>"
+	description "Following information from Myurej's contact, look for Riiria at <destination>."
 	source Kasii-Tuur-Saqru
 	destination Vade-Osolaa-Kaska
 	to offer
 		has "Successors: Ghosts Myurej 1: done"
 	on complete
 		conversation
-			`You enter <planet>'s vast spaceport to find it almost deserted. There is, however, plenty of evidence to support your contact's suggestion. A number of empty but recently-opened cargo containers are strewn against one of the far walls of the space; beside one of them there's even a small cache of what looks like personal gear: a durable fabric pack, a small sidearm, even some packages of dried food. Someone must have left here in a hurry.`
+			`You enter <planet>'s vast spaceport to find it almost deserted. There is, however, plenty of evidence to support your contact's suggestion. A number of empty but recently-opened cargo containers are strsewn against one of the far walls of the space; beside one of them there's even a small cache of what looks like personal gear: a durable fabric pack, a small sidearm, even some packages of dried food. Someone must have left here in a hurry.`
 			choice
 				`	(Rummage through the pack.)`
 				`	(Prepare to leave.)`
@@ -124,6 +125,7 @@ mission "Successors: Ghosts Myurej 2"
 mission "Successors: Ghosts Myurej 3"
 	landing
 	name "Continue the search"
+	description "Having not found Riiria at <origin>, look for them at <destination>."
 	source Vade-Osolaa-Kaska
 	destination Myiara-Sola-Tej
 	to offer
@@ -163,10 +165,11 @@ mission "Successors: Ghosts Myurej 3"
 			label end
 
 
-mission "Successors: Ghosts Myurej 4 Direct"
+mission "Successors: Ghosts Myurej 3 Direct"
 	landing
 	name "Track down Riiria"
-	source Vade-Osolaa-Kaska
+	description "Based on the clues gathered at <origin>, go to confront Riiria at <destination>."
+	source Myiara-Sola-Tej
 	destination Maspa-Viir-Kella
 	to offer
 		has "Successors: Ghosts Myurej 3: done"
@@ -175,23 +178,26 @@ mission "Successors: Ghosts Myurej 4 Direct"
 mission "Successors: Ghosts Myurej 3 Checking"
 	landing
 	name "Track down Riiria"
-	source Vade-Osolaa-Kaska
+	description "The clues you gathered at <origin> indicate that Riiria is likely hiding out on a planet in western Successor space."
+	source Myiara-Sola-Tej
 	stopover Maspa-Viir-Kella
 	stopover Vyraa-Giiq-Sora
-	stopover Khosa-Kella-Oa
 	stopover Chyyra-Raaqa-Tuur
 	stopover Giiq-Oj-Sol
 	stopover Giiq-Sou-Kella
 	complete at
-		planet
+		planet 
 			Maspa-Viir-Kella
+	to fail
+		has "flagship planet: Maspa-Viir-Kella"
 	to offer
-		has "Successors: Ghosts Myurej 4: done"
+		has "Successors: Ghosts Myurej 3: done"
 		not "visited planet: Maspa-Viir-Kella"
 
 mission "Successors: Ghosts Myurej 4"
 	landing
-	name "Defeat Riiria and return to <planet>"
+	name "Defeat Riiria and return"
+	description "Retrieve the stolen wedding gifts from Riiria and return to House Myurej at <destination>."
 	source Maspa-Viir-Kella
 	destination Raaqa-Kvelq-Ryuit
 	to offer
@@ -379,6 +385,7 @@ mission "Successors: Ghosts Myurej 6"
 	landing
 	priority
 	name "Flee back to Successor space"
+	description "Escape the warships attacking you and regroup in Successor space."
 	source Kella-Uuoru-Sossa
 	destination Uuoru-Veldt-Stir
 	passengers 3
@@ -418,6 +425,7 @@ mission "Successors: Ghosts Myurej 6"
 mission "Successors: Ghosts Myurej 7"
 	landing
 	name "Return to Myurej"
+	description "Return to House Myurej at <destination> to find out if they have anything more for you."
 	source
 		attributes successor
 		not attributes uninhabited
@@ -434,7 +442,8 @@ mission "Successors: Ghosts Myurej 7"
 
 mission "Successors: Ghosts Myurej 8"
 	landing
-	name "Return to Myurej"
+	name "Deliver wedding supplies"
+	description "A dockworker at <origin> has directed you to deliver <tons> of wedding supplies for House Myurej to <destination>."
 	source Raaqa-Kvelq-Ryuit
 	destination Iyra-Ijasa-Iret
 	cargo "Wedding supplies" 5
