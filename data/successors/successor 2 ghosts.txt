@@ -633,32 +633,43 @@ mission "Successors: Ghosts Suspicion 1a"
 
 mission "Successors: Ghosts Suspicion 4"
 	entering
+	name "Investigate mysterious signal"
 	source
 		attributes "predecessor"
 	to offer
 		has "Successors: Ghosts Suspicion 3: declined"
-		"successors: ghosts houses dealt with" >= 1
+		has "successors: ghosts houses dealt with"
 		random < 15
 	destination "Inti-Arat"
-	on accept
-		dialog `You receieve a strange message.`
+	on offer
+		conversation
+			`Not long after you enter this system, your communication array blinks to life, reporting that you are receiving a hail. When you try to play it, however, there is nothing but silence; upon inspection, it appears that it's nothing but an empty carrier wave originating from somewhere in the Shroud.`
+			`	Though determining the origin of the signal proves to be quite a challenge in this distorted region of space, you eventually establish that it's coming from the <system> system.`
+				accept
 	on enter "Avasaa-Novaa"
-		dialog `The source of the signal is revealed to be coming from a planetoid in the system.`
-	on complete
+		dialog `Now that you are closer, your ship's scanners determine that the signal is coming from an uninhabited planetoid in this system.`
+
+mission "Successors: Ghosts Suspicion 5"
+	landing
+	clearance `Though traffic control initially rebuffs you, as soon as you inform them that you have property of the House that you intend to return, they direct you to a landing pad at the main spaceport.`
+	name "Confront House Kaatrij"
+	source "Inti-Arat"
+	destination "Raaqa-Puan-Uurou"
+	on offer
 		conversation
 			`The <ship> skims over the planetoid's surface, scanning for the source of the mysterious signal - after a couple of minutes, you pinpoint it to a small crater. Upon approaching, you finally get a good look at the origin: a Successor ship is crashed against one of the crater walls.`
-			`	Though the main spaceframe is intact, the armor has been pierced in several places by what must have been exceptionally high-powered kinetic weapons.`
+			`	Though the main spaceframe is intact, the armor has been pierced in several places by what must have been exceptionally high-powered kinetic weapons. Around it are strewn fragments of twisted metal; some of these match the armor tone of modern Successor ships, while others seem to more closely resemble the armor of the Predecessor drone ships you've recently encountered in the Shroud.`
 			choice
 				`	(Land and investigate.)`
 				`	(Leave it be.)`
-					goto end
+					decline
 			`	You set your own ship down beside the lifeless Successor vessel and prepare an extravehicular suit to take a look inside. Though the dense material of the Successor airlock takes a long time to cut through, it eventually gives way and reveals the dark interior of the alien ship. You proceed down a compact, glossy corridor, lit only by the head-mounted lights of your suit and the rapidly-dwindling starlight of the hole you cut through the airlock; eventually, as you turn a corner, you enter into a small, circular room with a terminal on one of the walls. A neat cylindrical path has been punched out of the ceiling and floor - looking up through it, you can see the stars; looking down, you can see the sepia sand of the planet.`
-			`	The terminal is the only source of color; in the darkness, the dim bluish light of a small screen displays an immobile digital ring, about half-filled in. It grows brighter as you approach, and suddenly a distorted voice worms its way into your ears: "Power failure. Self-destruction incomplete. Systems 'Sosrue' and 'Kijra' remain intact. Transfering armor maintenance reserves into main grid."`
+			`	The terminal is the only source of color; in the darkness, the dim bluish light of a small screen displays an immobile digital ring, about half-filled in. It grows brighter as you approach, and suddenly a distorted voice worms its way into your ears: "Power failure. Self-destruction incomplete. Systems 'Sosrue' and 'Kijra' remain intact. Transfering armor maintenance reserves into main grid. Estimate two days to completion."`
 			choice
 				`	"Display system 'Sosrue.'"`
 				`	"Display system 'Kijra.'"`
 				`	(Leave.)`
-					goto end
+					decline
 			`	The terminal pauses for a moment before making a harsh noise. "Authorization failure."`
 			choice
 				`	(Use your ship's outfit scanner to scan the crashed vessel.)`
@@ -666,16 +677,148 @@ mission "Successors: Ghosts Suspicion 4"
 						has "flagship attribute: outfit scan power"
 				`	(Explore elsewhere.)`
 					goto elsewhere
-			`	The familiar warble of the <ship>'s outfit scanning comes through the radio link, and after a few moments, you get a full inventory of the crashed ship's outfits. Most of them are standard, but two stand out: one is a jump drive, and the other is something you haven't seen before - the scanner can't even get a good lock on it. After a few minutes of trying to triangulate the rogue signal to a specific part of the ship, you piece together a hazy mess of readings in the engineering section down a corridor to your left.`
+			`	The familiar warble of the <ship>'s outfit scanning comes through the radio link, and after a few moments, you get a full inventory of the crashed ship's outfits. Most of them are standard, but two stand out: one is a jump drive, and the other is something you haven't seen before - the scanner can't even get a good lock on it. After a few minutes of trying to triangulate the rogue signal to a specific part of the ship, you piece together a hazy mess of readings in the engineering section near the ship's stern.`
 			label elsewhere
-			`	`
-			label end
+			`	You retrace your steps through the dark corridors, eventually finding your way to the ship's engineering bay, which appears mostly intact. A small indicator light on the reactor blinks dimly, illuminating in red flashes something warped and shimmering in the darkness. Your eyes defy you as you cast your headlamps over it; it's impossible to focus on, or to determine where exactly the edges of the object are, and as it continues to shimmer, you realize that this is a cloaking device.`
+			branch "skip pug cloak"
+				not "outfit (all): Cloaking Device"
+			`	Though it's unlike the portable cloaks you've come into contact with, fused and connected with the inside of the ship with a variety of almost organic-looking projections, the way it eludes the eye is undeniably similar.`
+			label "skip pug cloak"
+			`	On a table beside the cloaking device sits a Successor data-sphere. In a dark corner, you think you see a lifeless suckered arm.`
+			choice
+				`	(Pick it up.)`
+				`	(Leave.)`
+					decline
+			`	The sphere springs to life with a familiar splash, and replays its message:`
+			`	"The scanners now have heard a drive ripping through the Shroud a dozen times yet. First near the south, as if 'twere testing the relic, seeing its worthiness again after an age - and then more northerly each time after. The Enforcers here too grow agitated, now several times disturbed, by our quarry first and then our visitor. They have, we believe, repelled the despoilers for a time, but have grown addled in their isolation, lost reason and focus, and shall not stand 'gainst an heirloom warship for long.`
+			`	Kaatrij now requests we make contact with them, transmit the empty signal to summon one so that we may peer into its faded mind. Doing so exposes us, should our foe be nearby also, but 'tis a necessary risk should we intend to stall them any more."`
+			`	You pocket the data-sphere and make your way out of the shipwreck. If House Kaatrij has some answers about what's going on, this sort of data might be just what you need to get an audience with them.`
+				accept
+	on complete
+		conversation
+			`	<planet>'s spaceport today is enjoying a fine morning drizzle, the small droplets sticking to the fluttering sails of the building. You visit the concierge at the landing wing and explain that you encountered a crashed ship and wanted to return some data from it, though you don't specify where exactly you found it. Their skin speckles blue with surprise, and they ask you to wait while they contact the proper authorities.`
+			branch "met saajret"
+				has "successor kaatrij patron"
+			`	Several hours later, a group of Successors arrive and approach you; the lead individual wears a simple black, coccoon-like outfit, while the rest appear to be Kaatrij soldiers.`
+			`	The lead individual bows gently to you as green sparkles dot their skin. "Captain <first> <last>?" they say. When you indicate affirmatively, they continue. "I am Saajret, of Somber Sejra, an envoy of the noble scions of House Kaatrij. Thou say'st thou hast something of ours to return?"`
+				goto return
+			label "met saajret"
+			`	Several hours later, a group of Successors arrive and approach you; you recognize the lead individual as Saajret, of Somber Sejra, the archivist who gave you the translation device. The rest appear to be Kaatrij soldiers.`
+			`	Saajret bows gently and a wave of many colors flits across their body. "'Twould seem I've an ongoing habit of testing thy patience, Captain. Thou say'st thou hast something of ours to return?"`
+			label return
+			choice
+				`	"You're quite difficult to get in touch with."`
+					to display
+						or
+							has "Successors: Ghosts Seineq 2b Kaatrij: done"
+							has "Successors: Ghosts QSI 3: offered"
+				`	"Not until I get some answers."`
+					goto answers
+			`	Saajret hums and eyes you carefully. "The demands on mine time have multiplied since last we spoke. And with our noble House thus wounded, some in Kaatrij have held thee with some suspicion, noting thy promptly-timed arrival. Returning a lost thing of ours to us would help thee, methinks. Shall thee do so?"`
+			choice
+				`	"Not until I get some answers."`
+			label answers
+			`	The soldiers in the back shuffle and Saajret quiets them with an outstretched arm. "No," they say. "'Twould be a boon to us to know what thou knoweth. But not here, where many ears may prick up t'listen. Come with us, and thou shalt get the answers thou seeks."`
+			`	Saajret leads you to one of the ships waiting at the port; though the frame is clearly that of a Vujlet, many of the externally-visible systems appear to have been rearranged or replaced. Inside, you sit around a table in the ship's crew quarters, Saajret opposite you, still flanked by Kaatrij's soldiers, one of whom blocks the door into the corridor outside.`
+			`	"I take it," they say, "that thou retrieve'd this item from the Shroud. A stricken craft, correct?"`
+			choice
+				`	"Yes."`
+					goto yes
+				`	"Maybe."`
+			`	A red tinge creeps up Saajret's skin. "Play not thy games, Captain."`
+			choice
+				`	"Fine, yes."`
+			label yes
+			`	Saajret visibly relaxes and a wave of blue engulfs them. They say something your translator can't quite identify. "What is't that thou retriev'd?"`
+			`	"A data-sphere, that's all."`
+			`	"And had'st thou any indication that another might find the ship you took it from?"`
+			choice
+				`	"It was set to self-destruct in two days."`
+				`	"I don't think so."`
+			`	They hum. "We shall have to verify that against your ship's logs. But if thou'rt truthful... perhaps we've avoided yet another crisis, for a time." They gesture to one of the soldiers, who leaves the room. "Now, while we wait, I promised I would answer some questions of your own."`
+			label questions
+			choice
+				`	"What happens next?"`
+					to display
+						has "Successors: attack"
+						has "Successors: drone"
+						has "Successors: quarg"
+						has "Successors: cloak"
+						has "Successors: base"
+					goto next
+				`	"Do you know who attacked your base?"`
+					to display
+						not "Successors: attack"
+					goto attack
+				`	"Are you behind the drone ships in Predecessor space?"`
+					to display
+						not "Successors: drone"
+					goto drone
+				`	"What is the situation with the Quarg?"`
+					to display
+						not "Successors: quarg"
+					goto quarg
+				`	"How much cloaking technology do you actually have?"`
+					to display
+						not "Successors: cloak"
+						has "Successors: attack"
+					goto cloak
+				`	"Who was it that told me to visit your base under cloak?"`
+					to display
+						not "Successors: base"
+					goto base
 
-mission "Successors: Ghosts Suspicion 5"
+			label attack
+			`	"'Twas one of the High Houses, but which exactly, we do not know for certain." Saajret contemplates for a moment, running one of their arms over the table. "Each of the Houses keeps a few heirloom warships from the time of the old empire, and most dare not bring them from the gilded vaults where they lie, for they are far too precious to risk in petty conflicts. Yet another still fielded one of theirs, raided the moon, killed hundreds, all to steal a single cloaking unit. Now they flit about unseen."`
+				goto questions
+
+			label drone
+			`	Saajret's skin ripples with hollow mirth. "Not precisely," they say. "'Twere creations of an ally of the House, a bold shipwright of Sejra, to forbid intruders from the plunder of what we left behind. Even Quarg craft were lost 'tween the tearing of the stars; they could not remove all the follies we had made. So Sejra and we elected to make one more."`
+				goto questions
+
+			label quarg
+			`	"It grows more dire as the days pass. They wish to intervene, unwilling to risk the new use of those drives that tore our space apart on a ship we cannot seem to catch. We wish to resolve this on our own, to show we've the capacity to solve our own problems 'thout them in the open."`
+				goto questions
+
+			label cloak
+			branch "stellar metal"
+				has "successors: ghosts dealt with aqrabe"
+			`	"I shan't tell thee exactly," Saajret says. "We've more than we've let on, for certain."`
+				goto questions
+			label "stellar metal"
+			`	"I shan't tell thee exactly," Saajret says. "Thy retrieval of the stellar metal for Aqrabe has been a boon to us in that, though."`
+				goto questions
+
+			label base
+			`	Saajret's skin speckles with colors of surprise. "That is not known to me," they say. "Though 'tis curious that thou were't told this. Perhaps some agent'f the aggressor House thought seeing our deception close would galvanize thee against us."`
+				goto questions
+
+			label next
+			`	The Kaatrij soldier that left earlier now returns and they make a quick gesture to Saajret, who rises a bit in their seat when they see it. "Thy ship's logs confirm what thou told us of our craft. 'Twould have been destroyed days ago, blessedly. Now," they say, "we must decide what is to be done with thee. Naught I've told thee should be unknown to our enemy, nor would repeating it to the public bring much favor to thee, so in that, thou art not to be fear'd. No, neither can we ignore thee any longer."`
+			`	Saajret gets up and slithers around the room, a bit like pacing. They dispatch one of the soldiers again with another short gesture. "Seineq contacted thee earlier, dids't they not?"`
+			choice
+				`	"Yes."`
+				`	"Yes, they wanted me to report back on my dealings with the Houses."`
+			`	They hum. "Thou should'st complete thy business with them, telling them of what thou hast done for the Houses - a good number, enough not to raise suspicion, at least a pair. Excluding this one, we hope. And when thou hast left their orbit, we would have thee come to Qasa-Sija-Iri. We've a task ideal for thee; mayhaps with it, we'll bring this crisis one step closer to a close."`
+			choice
+				`	"All right."`
+					goto help
+				`	"I'm not sure I'm cut out for this cloak-and-dagger stuff."`
+			`	Saajret burbles with humor. "Possibly not," they say. "But thou'rt mired in it now."`
+			label help
+			`	Saajret reclines against the wall and motion for the guard blocking the door to leave. As you get up, they speak again. "Oh! And would'st thou kindly return the item from our ship? A data-sphere, I would guess."`
+			choice
+				`	(Hand over the sphere.)`
+					goto end
+				`	"I think I'll keep it."`
+			`	Before you can say anything more, one of the guards raises their rifle and shoots you.`
+				die
+			label end
+			`	"Our thanks, Captain," they say. "May we meet again when thy business with Seineq is complete."`
+
+mission "Successors: Ghosts Suspicion 6"
 	landing
-	source
-		attributes "successor"
-		not attributes "uninhabited"
+	source "Inti-Arat"
 	to offer
 		has "successors: Ghosts Suspicion 4: done"
 	on offer
