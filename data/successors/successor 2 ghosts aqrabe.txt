@@ -385,6 +385,7 @@ mission "Successors: Ghosts Aqrabe 7"
 			`	"Either way," they say, "we must hasten back t'bring this news to Aqrabe."`
 				accept
 	on enter "Kasii-Cavaasa"
+		"successors: ghosts met solitude enforcers" ++
 		dialog `As you take off from the stellar metal garden, your ship's proximity alarms begin to sound. Another ship is taking off too - and its weapons are aimed right at you!`
 	npc evade
 		ship "Hasur, Vowsworn" "Hasur-riita 4-1"
@@ -395,7 +396,7 @@ mission "Successors: Ghosts Aqrabe 7"
 		event "successors: ghosts keystones finished" 50
 		conversation
 			`You set the ship down on <planet> in the midst of a sea of dockworkers, who begin removing the precious stellar metal from the <ship>'s cargo hold almost immediately, under the watchful gaze of the Kaatrij observer. Tilra, after entering a bit of data on their pad, finally relaxes, quietly reciting a series of harsh-sounding and apparently untranslatable words.`
-			`	"What sort of ship was that?" you ask them, eliciting a long groan and a wave of oily black over their skin.`
+			`	"Do you know something about those ships?" you ask them, eliciting a long groan and a wave of oily black over their skin.`
 			`	"This is what we earn for tearing up a nest; going where we shouldn't," they say. "'Twas a drone, an automated guardian from the days that garden was new. No doubt meant to chase off interlopers, as ourselves. But-"`
 			choice
 				`	"What is it?"`
