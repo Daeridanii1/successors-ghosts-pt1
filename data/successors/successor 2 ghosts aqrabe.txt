@@ -233,7 +233,7 @@ mission "Successors: Ghosts Aqrabe 5"
 		ship "Vujlet (Stellar Light Armor)" "Nnesa ti-a-Oj"
 	on offer
 		conversation
-			`The Raaqa-Puan-Uuoru spaceport is drenched when you arrive, deep in the throes of a massive rainstorm, its sail-like projections flapping in the wind and streaming with water. From your landing pad, a series of automated guides direct you to a hangar built into a circular depression in the ground; the top of it closes over like a bubble, translucent and disconcertingly springy against the elements. You can see the blurry silhouette of a Vujlet parked inside as you enter through the side door.`
+			`The <origin> spaceport is drenched when you arrive, deep in the throes of a massive rainstorm, its sail-like projections flapping in the wind and streaming with water. From your landing pad, a series of automated guides direct you to a hangar built into a circular depression in the ground; the top of it closes over like a bubble, translucent and disconcertingly springy against the elements. You can see the blurry silhouette of a Vujlet parked inside as you enter through the side door.`
 			`	Near the entrance to the hangar, a data-sphere gently warbles, waiting for your touch. As you pick it up, it regurgitates its message:`
 			branch friendly
 				has "successors kaatrij patron"

@@ -26,7 +26,15 @@ event "successors: ghosts restrict"
 event "successors: ghosts stage 1"
 	set "successors: ghosts stage 1"
 
+event "successors: ghosts unrestrict"
+	planet "Qasa-Sija-Iri"
+		"required reputation" 2
+		add spaceport `Kaatrij's hidden base`
+		add outfitter `Successor Basics`
+
 event "successors: ghosts message delay"
+
+event "successors: ghosts seineq attacked"
 
 event "successors: ghosts star unrestrict"
 	planet "Exotic Metal Garden"

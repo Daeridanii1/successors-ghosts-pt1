@@ -91,3 +91,97 @@ ship "Ejniisde-Khora"
 	"final explode" "final explosion medium"
 	description `Only very few figures within the largely destitute People's Houses have the resources to assemble such an extensively-modified vessel. The comfortable passenger quarters of the stock Ejniisde have been replaced with barracks and the star liner's lightweight hull has been laid over with heavy, multi-layered armor that shields a substantially expanded weapons suite.`
 	description `	The construction of illegal warships such as these by the People's Houses has been a noted concern in many recent councils between the High Houses, prompting an increase in the size and prominence of their own military fleets.`
+
+ship "Vujlet-Usaqri" # Lit. "The bird [one] will not find"
+	plural "Vujleten-Usaqri"
+	sprite "ship/vujlet modified"
+	thumbnail "thumbnail/vujlet modified"
+	attributes
+		licenses
+			"House Kaatrij"
+		category "Light Warship"
+		"cost" 10350000
+		"shields" 4200
+		"hull" 16300
+		"required crew" 4
+		"bunks" 6
+		"mass" 245
+		"drag" 3.8
+		"heat dissipation" .65
+		"fuel capacity" 600
+		"cargo space" 10
+		"outfit space" 280
+		"weapon capacity" 105
+		"engine capacity" 85
+		"multimodal armor" 1
+		"hull repair rate" 0.815
+		"hull energy" 1.18
+		"hull heat" 1.18
+		"cloak" 0.02
+		"cloaking fuel" 0.04
+		"cloaking shields" 4.0
+		weapon
+			"blast radius" 100
+			"shield damage" 1000
+			"hull damage" 500
+			"hit force" 1500
+	outfits
+		`"Ojet" Bimodal Coilgun` 2
+
+		`"Nnesa" Fusion Core`
+		"Auxiliary Power Reserve"
+		`"Jaase" Shield Cortex`
+		"Successor Cooling"
+		`"Veldt" Combat Scanner`
+		"Multimodal Armor: Light"
+		"Successor Fuel Sail"
+		"Fuel Pod"
+		"Kinetic Rail Rifle" 2
+
+		`"Chyyra" Inductive Thruster`
+		`"Chyyra" Inductive Steering`
+		`"Aqra" Inductive Reverser`
+		"Hyperdrive"
+
+	gun -6 -46 `"Ojet" Bimodal Coilgun`
+	gun 6 -46 `"Ojet" Bimodal Coilgun`
+	gun -9 -30
+	gun 9 -30
+	engine -16 49
+		zoom .9
+	engine 16 49
+		zoom .9
+	"reverse engine" -16 -6
+		zoom .9
+		over
+	"reverse engine" 16 -5
+		zoom .9
+		over
+	"steering engine" -4 -53
+		right
+		angle 90
+		zoom .5
+		over
+	"steering engine" 4 -53
+		left
+		angle 270
+		zoom .5
+		over
+	"steering engine" -28 34
+		left
+		angle 90
+		zoom .5
+		over
+	"steering engine" 28 34
+		right
+		angle 270
+		zoom .5
+		over
+	leak "leak" 50 50
+	leak "flame" 30 80
+	explode "tiny explosion" 18
+	explode "small explosion" 36
+	explode "medium explosion" 24
+	explode "large explosion" 8
+	"final explode" "final explosion medium"
+	description `The first prototype cloaks produced by the old House Kaatrij nearly eighteen hundred years ago were far from the adaptable and reliable technology they are today, each one consuming the power output of a large fusion reactor. It was only once the House's engineers started to incorporate a ship's shielding into the cloak's operation that they managed to make it truly practical; hence, even today, the efficient cloak of the Vujlet-Usaqri relies on a steady stream of shield energy to operate. Because of this, this modified variant of the Vujlet features a higher-capacity shield grid and more crew to maintain it.`

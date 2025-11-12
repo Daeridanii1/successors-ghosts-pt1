@@ -433,11 +433,13 @@ conversation "successor house contact"
 
 
 mission "Successors: Ghosts Investigate"
+	invisible
 	source "Shassa-Wyra-Orrou"
 	description "Investigators from House Seineq want you to report back your dealings with the other High Houses."
 	to offer
 		has "Successors: Ghosts Seineq 2: done"
 	on offer
+		event "successors: ghosts seineq attacked" 40
 		conversation
 			`Immediately after you enter the spaceport, a Successor there directs you to the same room in which you met with Sijra and Rijatet before, and just as before, the two of them enter a few minutes later.`
 			`	"A pleasure t'see thee again after thy fruitful voyage, Captain," says Sijra. They wriggle under one of the mist generators. "We've a second task for thee. Thou art, as we explained before, a more neutral being here. If another House were to contact thee and ask for help as we have-"`
@@ -460,61 +462,25 @@ mission "Successors: Ghosts Investigate"
 				decline
 			label yes
 			action
-				set "successors: investigating for seineq"
 				log "Accepted an offer by House Seineq to report back my dealings with the other Houses, and whether I observe anything incriminating."
 			`	"Excellent!" says Rijtatet. "In that case, Sijra and I have nothing further for thee. We shall call thee back when we are ready for thy report."`
 				decline
 
-# Report and reward
-
-mission "Successors: Ghosts Report 1"
+mission "Successors: Ghosts Seineq Attacked"
+	invisible
+	landing
 	source
 		attributes successor
-	destination "Shassa-Wyra-Orrou"
+		not attributes uninhabited quiet
+		not planet "Shassa-Wyra-Orrou"
 	to offer
-		"successors: ghosts houses dealt with" >= 2
+		has "event: successors: ghosts seineq attacked"
 	on offer
 		conversation
-			`You should go check in with House Seineq about the Houses that asked you for help.`
-	on complete
-		conversation
-			`House Seineq pays you and thanks you for your efforts. You should stick around for a few days to see if anyone needs anything else.`
-		event "successors: ghosts stage 2" 10
-		payment 1000000
-
-mission "Successors: Ghosts Report 2"
-	source
-		attributes successor
-		not attributes uninhabited
-	destination Yoqqa-Vasa-Vasa
-	to offer
-		has "event: successors: ghosts stage 2"
-	on offer
-		conversation
-			`News report: The base on Shassa-Wyra-Orrou from which House Seineq organized their investigation has been destroyed, along with the jump drive monitoring equipment. You are summoned to Yoqqa-Vasa-Vasa.`
-	on complete
-		conversation
-			`House Seineq is appreciative of your concern but has no record of such a base or your involvement with it.`
-	on offer
-		event "successors: ghosts probes destroyed"
-		log "The base on Shassa-Wyra-Orrou from which House Seineq organized their investigation has been destroyed, along with the jump drive monitoring equipment."
-
-mission "Successors: Ghosts Wedding 1"
-	to offer
-		has "event: successors: ghosts probes destroyed"
-	destination "Aava-Aasa-Khora"
-	on complete
-		log "Attended the wedding between scions of Houses Chydiyi and Myurej. Was presented with a license to purchase advanced Successor technology."
-		conversation
-			`Aava-Aasa-Khora's monorail system is as efficient and quiet as it was before, shuttling you off to another one of the numerous installations dotting the planet's surface. You are eventually deposited at the lobby of one that looks remarkably similar to the one you visited when you were presented the Successor license; it's large and richly decorated, the walls a riot of color and form that is as ostentatious as it is impressive. A gentle mist issues from apertures on the vaulted ceiling and long golden threads trail downwards, writhing around particular Successors and eventually, you.`
-			`	The thread inspects your face and clothing for a short time before it speaks in a soft, synthesized voice. "Greetings, Captain <first> <last>! Thou'rt authorized to attend the ceremony this afternoon and, following, a special meeting of the locally-gathered Houses." The voice continues for a while, providing you with information on which rooms to visit and how you are to find your way there.`
-			choice
-				`	(Attend the wedding.)`
-				`	(Wait around until the later meeting.)`
-					goto skipped
-			`	While most Successors are waiting outside the entrance to what must be a massive room, you are instead guided to an inconspicuous and out-of-the-way door, guarded by a pair of Successor soldiers. Neither one reacts to your attempt to pass, and as you step behind the door, it becomes clear why you aren't lining up with the general public: that massive room is entirely filled with water, a gigantic sphere with lights, platforms, and countless seats all built within it. A few small rooms like the one you now stand in are built into the walls like little transparent air bubbles at the shore of a great sea.`
-			`	You are joined by three other Successors after a few minutes, each of whom takes their place in the little room. The ceremony begins shortly after. From apertures in the bottom of the sphere, legions of soldiers emerge, half wearing the colors of House Chydiyi and the other half of House Myurej.`
-			label skipped
+			`As you disembark into this planet's spaceport, you can feel a new and heightened tension in the air. In an unsettling mirror of the immediate aftermath of the attack on Kaatrij's base, the Successors here all stand crowded around the spaceport's screens, watching as news comes in of a second attack. This time, however, the image shown on the displays is one you recognize: it's the base on Shassa-Wyra-Orrou from which you worked with House Seineq.`
+			`	"...reports, yet confirmed, that several ships were seen, soonafter retreating under veil of cloak," the reporter on the displays says. "Much suspicion now falls to noble House Kaatrij for using such technol'gies in the past, ones they once had sworn they left behind."`
+			`	The Successors around the screen murmur and slither around each other. As the broadcast goes on and the crowd grows and the first casualty numbers begin to come in, the overlapping translated speech in your ears starts to smear together; you find yourself stumbling against a wall in the spaceport, only able to get up once you've momentarily plucked the translation device from your jacket.`
+				decline
 
 # Suspicion
 
@@ -624,13 +590,6 @@ mission "Successors: Ghosts Suspicion 3"
 		set "successors: myiara name"
 		log "Spoke with the Quarg, who revealed that they have kept a base on Qasa-Sija-Iri to monitor the Successors. It has remained cloaked by House Kaatrij, who has collaborated with the Quarg since the collapse of the Predecessors."
 
-mission "Successors: Ghosts Suspicion 1a"
-	source "Yoqqa-Vasa-Vasa"
-	to offer
-		"successors: ghosts suspicion" >= 7
-	on complete
-		set "successors: ghosts dealt with seineq"
-
 mission "Successors: Ghosts Suspicion 4"
 	entering
 	name "Investigate mysterious signal"
@@ -695,6 +654,7 @@ mission "Successors: Ghosts Suspicion 5"
 			`	You pocket the data-sphere and make your way out of the shipwreck. If House Kaatrij has some answers about what's going on, this sort of data might be just what you need to get an audience with them.`
 				accept
 	on complete
+		"reputation: House Kaatrij" >?= 2
 		conversation
 			`	<planet>'s spaceport today is enjoying a fine morning drizzle, the small droplets sticking to the fluttering sails of the building. You visit the concierge at the landing wing and explain that you encountered a crashed ship and wanted to return some data from it, though you don't specify where exactly you found it. Their skin speckles blue with surprise, and they ask you to wait while they contact the proper authorities.`
 			branch "met saajret"
@@ -742,7 +702,7 @@ mission "Successors: Ghosts Suspicion 5"
 					to display
 						has "Successors: attack"
 						has "Successors: drone"
-						has "Successors: quarg"
+						has "Successors: seineq"
 						has "Successors: cloak"
 						has "Successors: base"
 					goto next
@@ -750,14 +710,18 @@ mission "Successors: Ghosts Suspicion 5"
 					to display
 						not "Successors: attack"
 					goto attack
+				`	"Did you attack House Seineq?"`
+					to display
+						has "Successors: attack"
+						has "Successors: drone"
+						has "Successors: cloak"
+						has "Successors: base"
+						not "Successors: seineq"
+					goto seineq
 				`	"Are you behind the drone ships in Predecessor space?"`
 					to display
 						not "Successors: drone"
 					goto drone
-				`	"What is the situation with the Quarg?"`
-					to display
-						not "Successors: quarg"
-					goto quarg
 				`	"How much cloaking technology do you actually have?"`
 					to display
 						not "Successors: cloak"
@@ -772,12 +736,12 @@ mission "Successors: Ghosts Suspicion 5"
 			`	"'Twas one of the High Houses, but which exactly, we do not know for certain." Saajret contemplates for a moment, running one of their arms over the table. "Each of the Houses keeps a few heirloom warships from the time of the old empire, and most dare not bring them from the gilded vaults where they lie, for they are far too precious to risk in petty conflicts. Yet another still fielded one of theirs, raided the moon, killed hundreds, all to steal a single cloaking unit. Now they flit about unseen."`
 				goto questions
 
-			label drone
-			`	Saajret's skin ripples with hollow mirth. "Not precisely," they say. "'Twere creations of an ally of the House, a bold shipwright of Sejra, to forbid intruders from the plunder of what we left behind. Even Quarg craft were lost 'tween the tearing of the stars; they could not remove all the follies we had made. So Sejra and we elected to make one more."`
+			label seineq
+			`	There's a pause as Saajret pushes one of their arm tips against the edge of the table and looks away. The remaining guard eyes you and adjusts their grip on their weapon slightly. "Thou'rt fair to ask it," they say. "No," they say, "'twas not Kaatrij that struck them. Once our cloak was stolen, our 'lusive foe had all 'twas needed t'frame us of that trait'rous blow: t'let themselves been seen with signs that we alone had once posses'd."`
 				goto questions
 
-			label quarg
-			`	"It grows more dire as the days pass. They wish to intervene, unwilling to risk the new use of those drives that tore our space apart on a ship we cannot seem to catch. We wish to resolve this on our own, to show we've the capacity to solve our own problems 'thout them in the open."`
+			label drone
+			`	Saajret's skin ripples with hollow mirth. "Not precisely," they say. "'Twere creations of an ally of the House, a bold shipwright of Sejra, to forbid intruders from the plunder of what we left behind. Even Quarg craft were lost 'tween the tearing of the stars; they could not remove all the follies we had made. So Sejra and we elected to make one more."`
 				goto questions
 
 			label cloak
@@ -794,19 +758,22 @@ mission "Successors: Ghosts Suspicion 5"
 				goto questions
 
 			label next
+			action
+				clear "Successors: attack"
+				clear "Successors: drone"
+				clear "Successors: seineq"
+				clear "Successors: cloak"
+				clear "Successors: base"
 			`	The Kaatrij soldier that left earlier now returns and they make a quick gesture to Saajret, who rises a bit in their seat when they see it. "Thy ship's logs confirm what thou told us of our craft. 'Twould have been destroyed days ago, blessedly. Now," they say, "we must decide what is to be done with thee. Naught I've told thee should be unknown to our enemy, nor would repeating it to the public bring much favor to thee, so in that, thou art not to be fear'd. No, neither can we ignore thee any longer."`
-			`	Saajret gets up and slithers around the room, a bit like pacing. They dispatch one of the soldiers again with another short gesture. "Seineq contacted thee earlier, dids't they not?"`
-			choice
-				`	"Yes."`
-				`	"Yes, they wanted me to report back on my dealings with the Houses."`
-			`	They hum. "Thou should'st complete thy business with them, telling them of what thou hast done for the Houses - a good number, enough not to raise suspicion, at least a pair. Excluding this one, we hope. And when thou hast left their orbit, we would have thee come to Qasa-Sija-Iri. We've a task ideal for thee; mayhaps with it, we'll bring this crisis one step closer to a close."`
+			`	Saajret gets up and slithers around the room, a bit like pacing. They dispatch one of the soldiers again with another short gesture. "Seineq contacted thee earlier, dids't they not? Thou set some probes within the Shroud, yes?"`
+			`	You nod affirmatively, and an unfamiliar combination of colors flits across Saajret's skin as they regard you. "Thou should'st come with us, methinks, to where this all began." They gesture upwards. "The moon Qasa-Sija-Iri. I've a task ideal for thee that I'd induct thee t'there, should'st I be able to bring Kaatrij's warriors onside. Mayhaps with that, we'll bring this crisis one step closer to a close."`
 			choice
 				`	"All right."`
 					goto help
-				`	"I'm not sure I'm cut out for this cloak-and-dagger stuff."`
-			`	Saajret burbles with humor. "Possibly not," they say. "But thou'rt mired in it now."`
+				`	"I wouldn't mind some details."`
+			`	They burble with humor. "Likely not," they say. "But if I fail to bring Kaatrij's trust to thee, better for thee to know little than more."`
 			label help
-			`	Saajret reclines against the wall and motion for the guard blocking the door to leave. As you get up, they speak again. "Oh! And would'st thou kindly return the item from our ship? A data-sphere, I would guess."`
+			`	Saajret reclines against the wall and motion for the guard blocking the door to leave. As you get up, they speak again. "Oh! And would'st thou kindly return the item from our ship?" They extend a long arm.`
 			choice
 				`	(Hand over the sphere.)`
 					goto end
@@ -814,13 +781,48 @@ mission "Successors: Ghosts Suspicion 5"
 			`	Before you can say anything more, one of the guards raises their rifle and shoots you.`
 				die
 			label end
-			`	"Our thanks, Captain," they say. "May we meet again when thy business with Seineq is complete."`
+			`	"Our thanks, Captain," they say, tucking the sphere away. "Thou should'st return to thy own craft. I'll see thou gets authorization for the blockade."`
 
 mission "Successors: Ghosts Suspicion 6"
 	landing
-	source "Inti-Arat"
+	name "Meet House Kaatrij"
+	description "Meet with House Kaatrij at <destination> as they put their plans for you into action."
+	source "Raaqa-Puan-Uuoru"
+	destination "Qasa-Sija-Iri"
 	to offer
-		has "successors: Ghosts Suspicion 4: done"
-	on offer
+		has "Successors: Ghosts Suspicion 5: done"
+	npc save
+		government `House Kaatrij`
+		personality launching heroic
+		ship "Vujlet-Usaqri" "o-Sapi, Brilliant Voice"
+	on complete
 		conversation
-			`Soon after you shut down the <ship>'s systems for landing, you are approached by a Successor who seems to have been waiting, nipping at a skewered piece of food.`
+			`You once again descend to the dusty moon, though this time with the authorization to pass through the blockade. The ring-shaped base is now nowhere to be seen, but as you proceed to your landing coordinates, a shimmering aperture opens in the sand to reveal an advanced landing bay. As you set the <ship> down inside it, the top closes up again, sealing you off from the outside.`
+			`	The inside of the facility is a strange mixture of Successor and Quarg styling; the bulk of the structure is made of Quarg materials and the various interfaces and bits of equipment are clearly Quarg technology, but Successor - or to the Quarg, Myiaran - gold threads line the ceiling and floors of the corridors. Both Quarg and Myiara, most of whom wear Kaatrij's colors, walk through the spacious halls.`
+			`	One Quarg lopes over to you when it sees you, intoning slowly. "You are the visitor the one called Saajret wished to speak to, are you not?"`
+			choice
+				`	"Yes, I am."`
+					goto saajret
+				`	"This is an incredible place."`
+			`	The Quarg makes a clucking noise. "Why would you not believe it? Strange. Saajret waits for you."`
+			`	It leads you a short distance through the facility, often looking over at you with some curiosity, before finally leaving you outside a gleaming white door.`
+			`	On the other side, Saajret and a number of other members of House Kaatrij stand along with a single Quarg.`
+
+# Intermission
+
+mission "Successors: Ghosts Wedding 1"
+	to offer
+		has "event: successors: ghosts probes destroyed"
+	destination "Iyra-Ijasa-Iret"
+	on complete
+		log "Attended the wedding between scions of Houses Chydiyi and Myurej. Was presented with a license to purchase advanced Successor technology."
+		conversation
+			`Aava-Aasa-Khora's monorail system is as efficient and quiet as it was before, shuttling you off to another one of the numerous installations dotting the planet's surface. You are eventually deposited at the lobby of one that looks remarkably similar to the one you visited when you were presented the Successor license; it's large and richly decorated, the walls a riot of color and form that is as ostentatious as it is impressive. A gentle mist issues from apertures on the vaulted ceiling and long golden threads trail downwards, writhing around particular Successors and eventually, you.`
+			`	The thread inspects your face and clothing for a short time before it speaks in a soft, synthesized voice. "Greetings, Captain <first> <last>! Thou'rt authorized to attend the ceremony this afternoon and, following, a special meeting of the locally-gathered Houses." The voice continues for a while, providing you with information on which rooms to visit and how you are to find your way there.`
+			choice
+				`	(Attend the wedding.)`
+				`	(Wait around until the later meeting.)`
+					goto skipped
+			`	While most Successors are waiting outside the entrance to what must be a massive room, you are instead guided to an inconspicuous and out-of-the-way door, guarded by a pair of Successor soldiers. Neither one reacts to your attempt to pass, and as you step behind the door, it becomes clear why you aren't lining up with the general public: that massive room is entirely filled with water, a gigantic sphere with lights, platforms, and countless seats all built within it. A few small rooms like the one you now stand in are built into the walls like little transparent air bubbles at the shore of a great sea.`
+			`	You are joined by three other Successors after a few minutes, each of whom takes their place in the little room. The ceremony begins shortly after. From apertures in the bottom of the sphere, legions of soldiers emerge, half wearing the colors of House Chydiyi and the other half of House Myurej.`
+			label skipped

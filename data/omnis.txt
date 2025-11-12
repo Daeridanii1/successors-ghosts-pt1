@@ -4,3 +4,4 @@ outfitter "successors"
 
 shipyard "successors"
 	"Ejniisde-Khora"
+	"Vujlet-Usaqri"
