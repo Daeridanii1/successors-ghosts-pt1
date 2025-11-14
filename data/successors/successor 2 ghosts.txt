@@ -79,7 +79,7 @@ mission "Successors: Ghosts QSI 1"
 	source "Qasa-Sija-Iri"
 	repeat
 	to offer
-		not "successors: ghosts restriction lifted"
+		not "Successors: Ghosts Suspicion 1: offered"
 	on offer
 		conversation
 			`Immediately after you enter the moon's atmosphere, your communication system springs to life.`
@@ -613,8 +613,11 @@ mission "Successors: Ghosts Suspicion 5"
 	clearance `Though traffic control initially rebuffs you, as soon as you inform them that you have property of the House that you intend to return, they direct you to a landing pad at the main spaceport.`
 	name "Confront House Kaatrij"
 	source "Inti-Arat"
-	destination "Raaqa-Puan-Uurou"
+	destination "Raaqa-Puan-Uuoru"
+	to offer
+		has "Successors: Ghosts Suspicion 4: done"
 	on offer
+		event "successors: ghosts unrestrict"
 		conversation
 			`The <ship> skims over the planetoid's surface, scanning for the source of the mysterious signal - after a couple of minutes, you pinpoint it to a small crater. Upon approaching, you finally get a good look at the origin: a Successor ship is crashed against one of the crater walls.`
 			`	Though the main spaceframe is intact, the armor has been pierced in several places by what must have been exceptionally high-powered kinetic weapons. Around it are strewn fragments of twisted metal; some of these match the armor tone of modern Successor ships, while others seem to more closely resemble the armor of the Predecessor drone ships you've recently encountered in the Shroud.`
@@ -733,18 +736,26 @@ mission "Successors: Ghosts Suspicion 5"
 					goto base
 
 			label attack
+			action
+				set "Successors: attack"
 			`	"'Twas one of the High Houses, but which exactly, we do not know for certain." Saajret contemplates for a moment, running one of their arms over the table. "Each of the Houses keeps a few heirloom warships from the time of the old empire, and most dare not bring them from the gilded vaults where they lie, for they are far too precious to risk in petty conflicts. Yet another still fielded one of theirs, raided the moon, killed hundreds, all to steal a single cloaking unit. Now they flit about unseen."`
 				goto questions
 
 			label seineq
+			action
+				set "Successors: seineq"
 			`	There's a pause as Saajret pushes one of their arm tips against the edge of the table and looks away. The remaining guard eyes you and adjusts their grip on their weapon slightly. "Thou'rt fair to ask it," they say. "No," they say, "'twas not Kaatrij that struck them. Once our cloak was stolen, our 'lusive foe had all 'twas needed t'frame us of that trait'rous blow: t'let themselves been seen with signs that we alone had once posses'd."`
 				goto questions
 
 			label drone
+			action
+				set "Successors: drone"
 			`	Saajret's skin ripples with hollow mirth. "Not precisely," they say. "'Twere creations of an ally of the House, a bold shipwright of Sejra, to forbid intruders from the plunder of what we left behind. Even Quarg craft were lost 'tween the tearing of the stars; they could not remove all the follies we had made. So Sejra and we elected to make one more."`
 				goto questions
 
 			label cloak
+			action
+				set "Successors: cloak"
 			branch "stellar metal"
 				has "successors: ghosts dealt with aqrabe"
 			`	"I shan't tell thee exactly," Saajret says. "We've more than we've let on, for certain."`
@@ -754,6 +765,8 @@ mission "Successors: Ghosts Suspicion 5"
 				goto questions
 
 			label base
+			action
+				set "Successors: base"
 			`	Saajret's skin speckles with colors of surprise. "That is not known to me," they say. "Though 'tis curious that thou were't told this. Perhaps some agent'f the aggressor House thought seeing our deception close would galvanize thee against us."`
 				goto questions
 
@@ -793,7 +806,7 @@ mission "Successors: Ghosts Suspicion 6"
 		has "Successors: Ghosts Suspicion 5: done"
 	npc save
 		government `House Kaatrij`
-		personality launching heroic
+		personality launching heroic escort
 		ship "Vujlet-Usaqri" "o-Sapi, Brilliant Voice"
 	on complete
 		conversation
@@ -802,18 +815,152 @@ mission "Successors: Ghosts Suspicion 6"
 			`	One Quarg lopes over to you when it sees you, intoning slowly. "You are the visitor the one called Saajret wished to speak to, are you not?"`
 			choice
 				`	"Yes, I am."`
-					goto saajret
+					#goto saajret
 				`	"This is an incredible place."`
 			`	The Quarg makes a clucking noise. "Why would you not believe it? Strange. Saajret waits for you."`
 			`	It leads you a short distance through the facility, often looking over at you with some curiosity, before finally leaving you outside a gleaming white door.`
 			`	On the other side, Saajret and a number of other members of House Kaatrij stand along with a single Quarg.`
 
+mission "Successors: Ghosts Suspicion 7"
+	landing
+	name "Destroy sensor probes"
+	source "Qasa-Sija-Iri"
+	waypoint "Khasola-Ryuit"
+	waypoint "Eta Carinae"
+	waypoint "Avasaa-Novaa"
+	to offer
+		has "Successors: Ghosts Suspicion 6: done"
+	on offer
+		conversation
+			`[Saajret wants you to destroy the sensor probes that you set up in Predecessor space because Kaatrij has no idea who is receiving the data from them - even though the base nominally of House Seineq has been destroyed, they're not sure that their attacker didn't organize their setup.]`
+				accept
+	on complete
+		dialog `[You've destroyed all the sensor probes except the one in Kasii-Sola.]`
+
+mission "Successors: Ghosts Suspicion 8"
+	entering
+	name "Destroy final sensor probe"
+	waypoint "Kasii-Sola"
+	destination "Qasa-Sija-Iri"
+	to offer
+		has "Successors: Ghosts Suspicion 7: done"
+	on enter "Kasii-Sola"
+		conversation
+			`[As you enter this system, you notice the appearance of a half-cloaked station in close orbit of the sun. Saajret discourages you from investigating it now, asking that you return to Successor space first to confer with Kaatrij. You destroy the last sensor probe.]`
+				accept
+
+
+mission "Successors: Ghosts Suspicion 9"
+	landing
+	name "Investigate mysterious station"
+	source "Qasa-Sija-Iri"
+	destination "Ijra-Ea, Shimmering Veil"
+	to offer
+		has "Successors: Ghosts Suspicion 8: done"
+	npc save
+		government `House Kaatrij`
+		personality launching heroic
+		ship "Vujlet-Usaqri" "o-Sapi, Brilliant Voice"
+	on offer
+		conversation
+			`[Saajret confers with you about the appearance of the citadel. It is Kaatrij's equivalent of Myurej's underground vault; they have kept it hidden since the time of their Predecessors by keeping it cloaked, but somehow Kaatrij's attacker seems to have gotten hold of its location and raided it. Saajret suspects a traitor on the inside. You and Saajret are going to it to assess the damage while the rest of Kaatrij convenes with the Quarg to decide how to proceed.]`
+				accept
+	on complete
+		conversation
+			`[You and Saajret breach the citadel, finding it mostly intact, with Kaatrij's attacker unable to penetrate the bulk of its security. As you go deeper inside, your translation device malfunctions and you begin to lose your balance and coordination; as you go to take it off, it hits something in your inner ear as you hear the voice of the Solitude Enforcers. Eventually you manage to rip it off and escape from the station, unable to understand Saajret. You flee from Resja, of the Nine Eyes (or try  to fight them, I guess.)]`
+
+mission "Successors: Ghosts Suspicion 10"
+	landing
+	name "Flee to Successor space"
+	source "Ijra-Ea, Shimmering Veil"
+	destination "Qasa-Sija-Iri"
+	to offer
+		has "Successors: Ghosts Suspicion 9: done"
+	npc evade
+		ship "Resja, of the Nine Eyes" "Resja, Fury 16-11"
+		government "Solitude Enforcer" 
+		personality waiting heroic nemesis unconstrained vindictive launching
+
+# Maybe an additional mission in-between here?
+
+mission "Successors: Ghosts Suspicion 11"
+	landing
+	name "Set up cloak detectors"
+	source "Qasa-Sija-Iri"
+	destination "Myiara-Aret-Iir"
+	cargo "Cloak detection node" 10
+	to offer
+		has "Successors: Ghosts Suspicion 10: done"
+		has "flagship attribute: cloak"
+	npc save
+		government "House Kaatrij"
+		personality launching heroic escort
+		ship "Vujlet-Usaqri (Keystone)"
+		ship "Vujlet-Usaqri (Keystone)"
+		ship "Vujlet-Usaqri (Keystone)"
+		ship "Vujlet-Usaqri (Keystone)"
+		ship "Vujlet-Usaqri (Keystone)"
+	on offer
+		conversation
+			`[Kaatrij and the Quarg agree that the raiding of Predecessor space has to stop, and the best way to do that is to catch the ship using Kaatrij's stolen cloaking device; most likely an heirloom warship. To that end, the Quarg provide Kaatrij with several devices to disrupt cloaks, which you and Kaatrij will set up around the wormhole in order to catch the ship that started this whole thing. Reinforcements will most likely be hot on its tail as soon as it is attacked.]`
+				accept
+	on enter "Oublaa-Khora"
+		dialog `As you exit the wormhole, you trigger the release of the cloak detector from your ship's cargo bay. The metal orb floats into position at the wormhole's edge before disappearing from view entirely as its cloaking armor activates. Apparently satisfied, Saajret directs you to land on the nearby planet.`
+	on complete
+		conversation
+			`Once the rest of House Kaatrij's fleet has deployed their own cloak detectors, the fleet of Vujleten follow you into <planet>'s atmosphere, bedding down in the shadow of an ancient weather control tower to shield them from the dust. Several of the Myiara inside exit to inspect the tower's functioning and after a few minutes return. They bring long fuel hoses out of their ships and connect them to ports on the tower's side; one by one, the flock of Vujleten shimmer and then disappear as their own cloaks engage.`
+			`	As one of the crew of the Kaatrij ships links the <ship>'s own fuel tank to the tower's reserves, Saajret slithers onto the bridge and greets you. "Now, it seems, we wait," they say. Black and white patterns of dots dance across their face, whirling around each other and occasionally splashing apart.`
+			choice
+				`	"What makes you think they'll even come back this way?"`
+					goto retreat
+				`	"How long will we be able to stay here?"`
+			`	Saajret tilts their head to the side as the whirling colors slow. "Some few days, at most. The tower's fuel has mostly long since gone, and we drink now only the last dregs of it. I think we shall not need to, though," they say. "Soon after leaving, Kaatrij pulled its fleets from Aaura-Kaska, circled them around our core. 'Tis an invitation to the wormhole, we should think - fewer scans, fewer edits to one's course."`
+				goto trap
+			label retreat
+			`	Saajret's skin sparkles with satisfaction. "Soon after leaving, Kaatrij pulled its fleets from Aaura-Kaska, circled them around our core. 'Tis an invitation to the wormhole, we should think - fewer scans, fewer edits to one's course. Open we leave the gate, and now something wicked this way comes."`
+			label trap
+			`	"Won't they think it could be a trap?"`
+			`	"Perhaps." Outside, a gust of wind throws up enough grit to leave tiny blue flashes agianst the shields of one of the cloaked Vuljeten. "We've become our own quarries, though, isolated from our allies, no longer fearsome in scale. Surprise," they say, "is only worth so much."`
+			`	Saajret excuses themself there, offering you a short bow and splay of the arms. With nothing left to do but wait, you and your crew work to prepare the <ship> for the forthcoming battle.`
+			choice
+				`	(Wait.)`
+			`	In the early morning of the following day, an alarm rings on the bridge of the <ship>. Your sensors pick up the annihilation of countless antiprotons against the shields of a cloaked ship emerging from the wormhole and soon after, a new contact blinks into existence as its cloak fails. The radios between your ship and Kaatrij's spring to life as you all cut loose your fuel cables and take off.`
+				launch
+
+
+mission "Successors: Ghosts Suspicion 12"
+	landing
+	name "Defeat the incoming fleet"
+	source "Myiara-Aret-Iir"
+	destination "Qasa-Sija-Iri"
+	to offer
+		has "Successors: Ghosts Suspicion 11: done"
+	npc kill
+		government `Solitude Enforcer`
+		personality waiting heroic target
+		ship "Valkkyiara-Khorasaqra" "Ijahti-Khora"
+	npc
+		government "House Kaatrij"
+		personality launching heroic escort
+		ship "Vujlet-Usaqri (Keystone)"
+		ship "Vujlet-Usaqri (Keystone)"
+		ship "Vujlet-Usaqri (Keystone)"
+		ship "Vujlet-Usaqri (Keystone)"
+		ship "Vujlet-Usaqri (Keystone)"
+	on complete
+		payment 1000000
+		conversation
+			`[Saajret congratulates you on prevailing against the fleet. They pay you for everything you've done for the House and tell you that when the Houses next convene, probably at the still-upcoming wedding, Kaatrij will propose you be given the rights to purchase weapons. Though not every House will support it, Kaatrij, Seineq, Myurej, and Aqrabe all have reason to trust you, and so the proposal is likely to pass.]`
+
 # Intermission
 
-mission "Successors: Ghosts Wedding 1"
+mission "Successors: Ghosts Wedding"
 	to offer
-		has "event: successors: ghosts probes destroyed"
+		has "Successors: Ghosts Suspicion 12: done"
 	destination "Iyra-Ijasa-Iret"
+	on offer
+		conversation
+			`[You recieve an invitation to the wedding of scions of Houses Chydiyi and Myurej at <destination>.]`
 	on complete
 		log "Attended the wedding between scions of Houses Chydiyi and Myurej. Was presented with a license to purchase advanced Successor technology."
 		conversation
@@ -826,3 +973,16 @@ mission "Successors: Ghosts Wedding 1"
 			`	While most Successors are waiting outside the entrance to what must be a massive room, you are instead guided to an inconspicuous and out-of-the-way door, guarded by a pair of Successor soldiers. Neither one reacts to your attempt to pass, and as you step behind the door, it becomes clear why you aren't lining up with the general public: that massive room is entirely filled with water, a gigantic sphere with lights, platforms, and countless seats all built within it. A few small rooms like the one you now stand in are built into the walls like little transparent air bubbles at the shore of a great sea.`
 			`	You are joined by three other Successors after a few minutes, each of whom takes their place in the little room. The ceremony begins shortly after. From apertures in the bottom of the sphere, legions of soldiers emerge, half wearing the colors of House Chydiyi and the other half of House Myurej.`
 			label skipped
+
+mission "Successors: Ghosts Black Box"
+	landing
+	invisible
+	source
+		government "House Kaatrij"
+	to offer
+		has `outfit: "Resja" Memory Recorder`
+		has "Successors: Ghosts Wedding: done"
+	on offer
+		conversation
+			`[The data recorder you retrieved from Resja can be decoded by Kaatrij. When you do so, you get a little bit of lore about the history of the drone ships and how they were used in the last great inter-Houses war. A memory-stripped version of the recorder can be kept as a trophy.]`
+				decline

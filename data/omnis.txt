@@ -4,4 +4,8 @@ outfitter "successors"
 
 shipyard "successors"
 	"Ejniisde-Khora"
+	"Hasur, Vowsworn"
+	"Resja, of the Nine Eyes"
+	"Queru, Luminous Gaze"
+	"Valkkyiara-Khorasaqra"
 	"Vujlet-Usaqri"

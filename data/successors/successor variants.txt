@@ -84,3 +84,147 @@ ship "Ejniisde-Khora" "Ejniisde-Khora (Bombed)"
 	explode "large explosion" 8
 	explode "huge explosion"
 	"final explode" "final explosion large"
+
+ship "Vujlet-Usaqri" "Vujlet-Usaqri (Keystone)"
+	outfits
+		`"Ojet" Bimodal Coilgun` 2
+
+		`"Nnesa" Fusion Core`
+		"Auxiliary Power Reserve"
+		`"Jaase" Shield Cortex`
+		"Successor Cooling"
+		"Multimodal Armor: Regen"
+		"Successor Fuel Sail"
+		"Fuel Pod"
+		"Kinetic Rail Rifle" 2
+
+		"Harmonic Keystone"
+
+		`"Chyyra" Inductive Thruster`
+		`"Chyyra" Inductive Steering`
+		`"Aqra" Inductive Reverser`
+		"Hyperdrive"
+
+ship "Vujlet-Usaqri" "Vujlet-Usaqri (Jump)"
+	outfits
+		`"Ojet" Bimodal Coilgun` 2
+
+		`"Nnesa" Fusion Core`
+		"Auxiliary Power Reserve"
+		`"Jaase" Shield Cortex`
+		"Successor Cooling"
+		"Multimodal Armor: Regen"
+		"Successor Fuel Sail"
+		"Fuel Pod"
+		"Kinetic Rail Rifle" 2
+
+		"Harmonic Keystone"
+
+		`"Chyyra" Inductive Thruster`
+		`"Chyyra" Inductive Steering`
+		`"Aqra" Inductive Reverser`
+		"Jump Drive"
+
+ship "Aaulqra" "Aaulqra (Armor Keystone)"
+	outfits
+		`"Ojet" Bimodal Coilgun` 4
+		`"Sjeja" Kinetic Lance`
+		"High-Velocity Spike" 20
+
+		`"Uoret" Fusion Core`
+		`3-"Kaska" Betavoltaic Cell`
+		`"Jaase" Shield Cortex`
+		"Multimodal Armor: Keystone"
+		"Successor Cooling"
+
+		`"Chyyra" Inductive Thruster`
+		`"Chyyra" Inductive Steering`
+		`"Veusa" Inductive Reverser`
+		"Hyperdrive"
+	gun
+	gun `"Sjeja" Kinetic Lance`
+	gun `"Ojet" Bimodal Coilgun`
+	gun `"Ojet" Bimodal Coilgun`
+	gun `"Ojet" Bimodal Coilgun`
+	gun `"Ojet" Bimodal Coilgun`
+	turret
+	turret
+
+ship "Aaulqra" "Aaulqra (Keystone)"
+	outfits
+		`"Ojet" Bimodal Coilgun` 4
+		`"Sjeja" Kinetic Lance`
+		"High-Velocity Spike" 20
+
+		`"Uoret" Fusion Core`
+		`3-"Kaska" Betavoltaic Cell`
+		`"Jaase" Shield Cortex`
+		"Multimodal Armor: Light"
+		"Successor Cooling"
+
+		"Harmonic Keystone"
+
+		`"Chyyra" Inductive Thruster`
+		`"Chyyra" Inductive Steering`
+		`"Veusa" Inductive Reverser`
+		"Hyperdrive"
+	gun
+	gun `"Sjeja" Kinetic Lance`
+	gun `"Ojet" Bimodal Coilgun`
+	gun `"Ojet" Bimodal Coilgun`
+	gun `"Ojet" Bimodal Coilgun`
+	gun `"Ojet" Bimodal Coilgun`
+	turret
+	turret
+
+ship "Kaskhorade" "Kaskhorade (Armor Keystone)"
+	outfits
+		`"Ojet" Bimodal Coilgun` 2
+		`"Sjeja" Kinetic Lance` 2
+		"High-Velocity Spike" 40
+		"Bimodal Coilgun Turret"
+
+		`"Uoret" Fusion Core`
+		"Auxiliary Power Reserve"
+		`"Jaase" Shield Cortex`
+
+		"Successor Cooling"
+		"Multimodal Armor: Keystone"
+		"Kinetic Rail Rifle" 25
+
+		`"Veusa" Inductive Thruster`
+		`"Veusa" Inductive Steering`
+		`"Veusa" Inductive Reverser`
+		"Hyperdrive"
+
+ship "Veusade" "Veusade (Armor Keystone)"
+	outfits
+		"Drag Cannon" 8
+
+		`"Ryuit" Fusion Core`
+		"Auxiliary Power Reserve" 2
+		`"Jaase" Shield Cortex`
+		"Successor Cooling"
+		"Multimodal Armor: Keystone"
+
+		"Kinetic Rail Rifle" 5
+
+		`"Veusa" Inductive Thruster`
+		`"Veusa" Inductive Steering`
+		"Hyperdrive"
+
+ship "Vujlet" "Vujlet (Keystone)"
+	outfits
+		`"Ojet" Bimodal Coilgun` 4
+
+		`"Nnesa" Fusion Core`
+		"Auxiliary Power Reserve" 2
+		`"Ej" Shield Cortex`
+		"Successor Cooling"
+		"Multimodal Armor: Heavy"
+
+		"Harmonic Keystone"
+
+		`"Chyyra" Inductive Thruster`
+		`"Chyyra" Inductive Steering`
+		"Hyperdrive"
