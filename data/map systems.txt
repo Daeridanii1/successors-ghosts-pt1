@@ -9,3 +9,9 @@ system Avasaa-Novaa
 		sprite planet/rhea
 		distance 3991
 		period 5639
+
+system Kasii-Sola
+	add object "Ijra-Ea, Shimmering Veil"
+		sprite "planet/station predecessor 1"
+		distance 2000
+		period 5000

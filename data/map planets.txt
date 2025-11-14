@@ -8,3 +8,9 @@ planet "Inti-Arat"
 	attributes predecessor uninhabited
 	landscape land/canyon05
 	description `A cold and lifeless rock.`
+
+planet "Ijra-Ea, Shimmering Veil"
+	attributes predecessor uninhabited
+	landscape land/station42
+	description `Desolation is the price of hubris.`
+	government Predecessor
