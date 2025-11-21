@@ -808,22 +808,11 @@ mission "Successors: Ghosts Suspicion 6"
 		government `House Kaatrij`
 		personality launching heroic escort
 		ship "Vujlet-Usaqri" "o-Sapi, Brilliant Voice"
-	on complete
-		conversation
-			`You once again descend to the dusty moon, though this time with the authorization to pass through the blockade. The ring-shaped base is now nowhere to be seen, but as you proceed to your landing coordinates, a shimmering aperture opens in the sand to reveal an advanced landing bay. As you set the <ship> down inside it, the top closes up again, sealing you off from the outside.`
-			`	The inside of the facility is a strange mixture of Successor and Quarg styling; the bulk of the structure is made of Quarg materials and the various interfaces and bits of equipment are clearly Quarg technology, but Successor - or to the Quarg, Myiaran - gold threads line the ceiling and floors of the corridors. Both Quarg and Myiara, most of whom wear Kaatrij's colors, walk through the spacious halls.`
-			`	One Quarg lopes over to you when it sees you, intoning slowly. "You are the visitor the one called Saajret wished to speak to, are you not?"`
-			choice
-				`	"Yes, I am."`
-					#goto saajret
-				`	"This is an incredible place."`
-			`	The Quarg makes a clucking noise. "Why would you not believe it? Strange. Saajret waits for you."`
-			`	It leads you a short distance through the facility, often looking over at you with some curiosity, before finally leaving you outside a gleaming white door.`
-			`	On the other side, Saajret and a number of other members of House Kaatrij stand along with a single Quarg.`
 
 mission "Successors: Ghosts Suspicion 7"
 	landing
 	name "Destroy sensor probes"
+	passengers 1
 	source "Qasa-Sija-Iri"
 	waypoint "Khasola-Ryuit"
 	waypoint "Eta Carinae"
@@ -832,7 +821,37 @@ mission "Successors: Ghosts Suspicion 7"
 		has "Successors: Ghosts Suspicion 6: done"
 	on offer
 		conversation
-			`[Saajret wants you to destroy the sensor probes that you set up in Predecessor space because Kaatrij has no idea who is receiving the data from them - even though the base nominally of House Seineq has been destroyed, they're not sure that their attacker didn't organize their setup.]`
+			`You once again descend to the dusty moon, though this time with the authorization to pass through the blockade. The ring-shaped base is now nowhere to be seen, but as you proceed to your landing coordinates, a shimmering aperture opens in the sand to reveal an advanced landing bay. As you set the <ship> down inside it, the top closes up again, sealing you off from the outside. The time wears on before you are allowed to exit the landing bay, but eventually one of the ground crew informs you that you've been granted access to some of the facility outside the bay's armored doors.`
+			`	The inside of the facility is a strange mixture of Successor and Quarg styling; the bulk of the structure is made of Quarg materials and the various interfaces and bits of equipment are clearly Quarg technology, but Successor - or to the Quarg, Myiaran - gold threads line the ceiling and floors of the corridors. Both Quarg and Myiara, all of whom wear Kaatrij's colors, walk through the spacious halls.`
+			`	One Quarg lopes over to you when it sees you, intoning slowly. "You are the visitor the one called Saajret wished to speak to, are you not?"`
+			choice
+				`	"Yes, I am."`
+					goto saajret
+				`	"This is an incredible place."`
+			`	The Quarg makes a clucking noise. "Why would you not believe it? Strange. Saajret waits for you."`
+			label saajret
+			`	It leads you a short distance through the facility, often looking over at you with some curiosity, before finally leaving you outside a gleaming white door.`
+			`	On the other side, Saajret and a number of other members of House Kaatrij stand along with a single Quarg. Several of Saajret's arms are folded about themself, and their skin shows hues of tension. They and the rest of Kaatrij splay their arms in greeting as you enter; the Quarg merely examines you.`
+			`	"This is captain <last>," says Saajret, "in the flesh. We have all noted the captain's exploits among these stars; most relevant of which, today, was the placement of scanning eyes throughout the Shroud at Seineq's past request. Their craft may jump between the stars unhinder'd, and thus may undo these as we've desir'd, 'thout the risk of exposing us evermore."`
+			`	One of the other Myiara eyes Saajret and wriggles before they speak. "Exposing us is just what the captain's presence here creates. Already the other Houses use this naif t'propel their aims against our wound. Thou hast trusted far too quickly, Saajret, think'th I."`
+			branch "sioeora"
+				has "successors sioeora patron"
+			`	At this, Saajret's skin bubbles over with emotion; something the color of excitement or satisfaction. "But note the captain's helped Kaatrij afore as well, 'thout even the promise of reward. Forget thee not."`
+			label "sioeora"
+			choice
+				`	"Why do you want me to destroy the scanners in the first place?"`
+				`	(Stay silent.)`
+					goto next
+			`	Neither Saajret nor the rest look particularly pleased that you spoke up, but Saajret eventually answers when the other members of Kaatrij give them a subtle gesture. "The scanners that thou placed note jumps of the proper sort, as made by thy craft and ours and the Quarg's alike. But the flitting of our foe, of which earlier to thee I spoke, relies on aught uncanni'r that we think evades their gaze. Thus, they reveal not the comings and goings of the guilty, but of Kaatrij ourselves. By this we think the craft thou found was snared."`
+			choice
+				`	"What do you mean, 'something uncannier?'"`
+				`	"Thank you."`
+					goto next
+			`	This time it is the Quarg who raises a long-fingered hand, and Saajret and the rest stay silent.`
+			label next
+			`	After a moment of consideration, the other Myiara who spoke before raises their voice again. "Perhaps it'is upon thy own head that this shall fall, Saajret. If the captain and thee completes your task, 'tis all the better. As thou hast already seen fit to induct them into knowledge of this," they add. "'Tis little you can do with this to worsen aught."`
+			`	The other Myiara display various motions of assent, and eventually all of them leave the room, leaving only you, Saajret, and the Quarg, who continues to look over you with interest. Eventually, it speaks, its voice rumbling much deeper than those of the Myiara. "So strange," it says in your own language, "to see one of your kind after so many years, and here, where none were meant to tread. Perhaps the threads of the universe now constrict. Despite all the Drak have done, the separations seem not to last."`
+			`	With that, it leaves too, and you are left alone with Saajret. They relax into a colorless slump, but only for a moment before they regain their prior poise.`
 				accept
 	on complete
 		dialog `[You've destroyed all the sensor probes except the one in Kasii-Sola.]`
@@ -849,6 +868,20 @@ mission "Successors: Ghosts Suspicion 8"
 			`[As you enter this system, you notice the appearance of a half-cloaked station in close orbit of the sun. Saajret discourages you from investigating it now, asking that you return to Successor space first to confer with Kaatrij. You destroy the last sensor probe.]`
 				accept
 
+mission "Successors: Saajret Remarks"
+	entering
+	invisible
+	source
+		not attributes "tangled shroud" "predecessor" "successor"
+	destination "Earth"
+	to offer
+		or
+			has "Successors: Ghosts Suspicion 7: active"
+			has "Successors: Ghosts Suspicion 8: active"
+	on offer
+		conversation
+			`[Saajret remarks on being the first Successor to leave their space or the Tangled Shroud in generations.]`
+				decline
 
 mission "Successors: Ghosts Suspicion 9"
 	landing
@@ -930,7 +963,7 @@ mission "Successors: Ghosts Suspicion 11"
 
 mission "Successors: Ghosts Suspicion 12"
 	landing
-	name "Defeat the incoming fleet"
+	name "Defeat the heirloom warship"
 	source "Myiara-Aret-Iir"
 	destination "Qasa-Sija-Iri"
 	to offer
