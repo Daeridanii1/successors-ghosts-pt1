@@ -49,3 +49,7 @@ event "successors: ghosts keystones finished"
 		add outfitter "Harmonic Keystone"
 
 event "successors: ghosts probes destroyed"
+
+event "successors: ghosts abandoned kaatrij"
+
+event "successors: military escalation"

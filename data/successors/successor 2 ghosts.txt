@@ -857,6 +857,7 @@ mission "Successors: Ghosts Suspicion 7"
 		dialog `[You've destroyed all the sensor probes except the one in Kasii-Sola.]`
 
 mission "Successors: Ghosts Suspicion 8"
+	passengers 1
 	entering
 	name "Destroy final sensor probe"
 	waypoint "Kasii-Sola"
@@ -865,8 +866,16 @@ mission "Successors: Ghosts Suspicion 8"
 		has "Successors: Ghosts Suspicion 7: done"
 	on enter "Kasii-Sola"
 		conversation
-			`[As you enter this system, you notice the appearance of a half-cloaked station in close orbit of the sun. Saajret discourages you from investigating it now, asking that you return to Successor space first to confer with Kaatrij. You destroy the last sensor probe.]`
+			`As you enter the system, your ship's sensors remark on an object that wasn't here the last time: a space station has appeared in close solar orbit. Every few seconds your lock on the station breaks before it is quickly reacquired.`
+			`	Saajret's look at examining the station is one of despair. "Wretches!" they say. "We shall need to address this upon returning. Our time is running short, Captain. Let us destroy the fourth probe with haste."`
+			choice
+				`	"You recognize that station?"`
+				`	"What's going on here?"`
+			`	Saajret hums for a moment. "Fine, fine. It's one of ours, a citadel of old Kaatrij from bygone years. 'Twas cloaked, of course. 'Til now, t'would seem; and so we are outmaneuvered again. That is why we must be quick, Captain; thou musn't delay."`
 				accept
+	on complete
+		conversation
+			`While you are presenting your landing authorization, Saajret calls for several members of Kaatrij to meet you in the docking bay; by the time you land, they are there waiting, slithering over to speak to Saajret almost immediately. The leader of this group dismisses you and Saajret, with an apologetic bow, asks you to meet them at the <planet> spaceport in an hour.`
 
 mission "Successors: Saajret Remarks"
 	entering
@@ -893,14 +902,83 @@ mission "Successors: Ghosts Suspicion 9"
 	npc save
 		government `House Kaatrij`
 		personality launching heroic
-		ship "Vujlet-Usaqri" "o-Sapi, Brilliant Voice"
+		ship "Vujlet-Usaqri (Jump)" "o-Sapi, Brilliant Voice"
 	on offer
 		conversation
-			`[Saajret confers with you about the appearance of the citadel. It is Kaatrij's equivalent of Myurej's underground vault; they have kept it hidden since the time of their Predecessors by keeping it cloaked, but somehow Kaatrij's attacker seems to have gotten hold of its location and raided it. Saajret suspects a traitor on the inside. You and Saajret are going to it to assess the damage while the rest of Kaatrij convenes with the Quarg to decide how to proceed.]`
-				accept
+			`Saajret meets with you in a small room about fifteen degrees around the ring of the cloaked facility. It's circular with a shallow pool in the middle; something similiar to moss crawls up the walls and a couple of small flowering plants poke their colorful heads up underfoot.`
+			`	"My thanks to thee for thy help so far," Saajret says. "I hope thou hast found our little shared space here comfortable enough."`
+			choice
+				`	"I have."`
+				`	"What's the situation with that station?"`
+			`	Saajret nods. "I've conferred with Kaatrij and our Quarg patrons and, for once, we are all agreed. Two tasks lie before us, with thou included if thou wilt: first, we must assess how our citadel has been plunder'd. 'Tis well-defended, and seeing as its cloak was not fully disabled, its security must remain at least partially op'rative. For this, thou might'st play a vital role, again with thy unhind'red craft."`
+			label "questions 1"
+			choice
+				`	"'Security?' Not sure I like the sound of that."`
+					goto security
+				`	"How could it have been revealed in the first place?"`
+					goto revealed
+				`	"What's the second task?"`
+					goto second
+			label security
+			action
+				set "Successors: security"
+			`	Saajret prods a flower on the floor with the tip of one of the arms. "I've been fashioned with keys to elude the station's own defenses. That which poses the most threat to us are the independent ones; thou hast before met the guardian drone ships? With the citadel reveal'd, no doubt one has already taken up residence there."`
+				goto "questions 1"
+			label revealed
+			action
+				set "Successors: revealed"
+			`	"That may be the most pertinent question that faces us all now, Captain." Many-colored waves ripple over Saajret's skin. "The location of our citadel, I am now told, was known to precious few within Kaatrij and none without. It suggests what I've suspected all along; one within Kaatrij has betrayed the House, sold our secrets to another."`
+				goto "questions 1"
+			label second
+			action
+				clear "Successors: security"
+				clear "Successors: revealed"
+			`	"Secondly," says Saajret, "'tis clear we must end this flitting about in shadow of our foe. While thou and I breach the citadel, Kaatrij and the Quarg here plan a trap to snare an heirloom warship. To destroy such a craft would be a great wound to our attacker, and would, if we are fortunate, give us some measure of their identity.`
+			choice
+				`	"How do you plan to catch it if it's cloaked?"`
+				`	"All right, what's next?"`
+					goto next
+			`	The mess of colors dotting Saajret's face resolves into a unified shade of satisfaction. "The Quarg, it seems, have certain ways to uncover such hidden craft. An old foe of theirs used a similar tactic, I'm told. Convincing them to share aught is a lifetime task for the most persuasive of diplomats, but in this instance they may help us for the sake of quieting that ship's space-ripping drive. For that," they say, "they are most eager."`
+			label next
+			`	A fine mist is emitted by ports on the ceiling, watering the plants and gathering in tiny spheres on your clothes. "We should prepare for our journey to the citadel. Equip thy craft as thou desirith, then let us depart."`
 	on complete
 		conversation
-			`[You and Saajret breach the citadel, finding it mostly intact, with Kaatrij's attacker unable to penetrate the bulk of its security. As you go deeper inside, your translation device malfunctions and you begin to lose your balance and coordination; as you go to take it off, it hits something in your inner ear as you hear the voice of the Solitude Enforcers. Eventually you manage to rip it off and escape from the station, unable to understand Saajret. You flee from Resja, of the Nine Eyes (or try  to fight them, I guess.)]`
+			`As you approach a central docking port on the citadel, alarms momentarily ring throughout the <ship>'s bridge as numerous weapon locks are detected. A moment later they cease and Saajret radios you from their own craft that it is safe to land, the shape of the Vujlet disappearing into the station's wide mouth.`
+			`	The inside is truly cavernous; the circular vault of the station's core forms an artificial sky, the landing pad for your ship a stamp-sized rectangle on its perimeter. Saajret exits from their landed ship and meets you with a pair of Kaatrij soldiers; you recognize one as having accompanied Saajret before when they interrogated you. "I've added us as allies in the station's security rolls," says Saajret. "It should permit us access below." They check a data-pad that they produce from one of their pockets, looking from the shifting metallic screen to the layout of the docking bay. Eventually, they point to one of several circular apertures on the floor. As you approach, a large elevator pod emerges from it and its doors open expectantly.`
+			choice
+				`	"What's with the Myiara and these massive constructions?"`
+				`	"How far down are we going?"`
+					goto down
+			`	Saajret is speckled with mirth and hums. "Myiara?" they say. "'Twas the Quarg that told thee this, no doubt. Ah, but to answer thy query: for Kaatrij at least, 'twas a simple matter of geometry. To cloak a station is a function of its armor, its surface - the power to feed that cloak is a function of its volume. A larger citadel was more efficient to hide away." They rub the tips of two of their arms over a data-sphere embedded in the elevator pod.`
+			choice
+				`	"How far down are we going?"`
+			label down
+			`	"We shall want to check the systems core and the vault, at least," says Saajret. "A very long way, for certain."`
+			`	The elevator takes the four of you down for several minutes; every once in a while, a window to the outside shows individual flashes of the sun setting as the station continues in its orbit. It finally stops on a platform overlooking a vast, dizzyingly-tall space, where pillars rise up for what seems like kilometers below you and terminate kilometers above. Myriad cargo containers are attached to their sides, and between them rest eight gleaming starships. Some of the designs are familiar, like polished versions of those you've seen in Successor space; others are entirely new to you.`
+			`	Saajret directs their two soldiers to set up a trio of small poles on the surface of the platform. They then radio to their ship and the poles light up, projecting barely-visible laser scanning beams throughout the vast space. After a couple of seconds, they mutter something to themself and order the soldiers to pack up the scanners.`
+			choice
+				`	"What is it?"`
+				`	"Everything here that's supposed to be?"`
+					goto everything
+			`	"Kaatrij's fortune glows today," they say. "Naught lies out of place here; all is as 'twas when Kaatrij left it long ago."`
+				goto core
+			label everything
+			`	"Fortunately," they say, "it is. Naught lies out of place; all is as 'twas when Kaatrij left it long ago."`
+			label core
+			`	You all return to the elevator and it once again begins to plunge you deeper into the citadel. You start to feel something prickling in your ear, but it is gone as soon as it began. The views of outside stop and the elevator shaft seems to grow darker and redder as the four of you travel deeper. Eventually it reaches another platform, but the door of the elevator refuses to open. Saajret enters some commands on the elevator controls, and the reason is revealed: as the elevator's door blushes transparent, you can see the corridor behind it has been perforated and torn open from outside. In the distance you can see a blast door leading into an armored, spherical construction, but that too has been blasted apart.`
+			`	Saajret mutters darkly and once again orders the soldiers to set up the scanners, and once again they project their beams, now through the transparent door and into the breached segment. A wave of black ruffles over Saajret's skin. "All but one of the station's cloaking nodes have been remov'd. So strange..." they say, "to have stolen these and yet left the vault unassailed." The wave passes, leaving only colorlessness in its wake. "We must bring this news with haste. Let us hurry back."`
+			`	All of a sudden, the station's comm system crackles to life. A rapid series of interweaving clicks emerge, and they soon shift and warp in your ears as your translation device begins to interpret them. "Interloper!" something screams, and you feel dizzy. "Despoiler! Invading wretch!"`
+			choice
+				`	(Rip off the translation device.)`
+				`	(Try to block out the sounds.)`
+			`	As soon as you move, something punches against your inner ear and you crumple to the ground. The seething voice continues, "Thou cometh again and again to raid and pillage, again and again to prod what should for all time be left in peace!" Saajret is standing over you speaking, but you can't make out their words. "First Kaatrij's little beasts, then on stars and the homeworld, and now thou cometh again with thy gleaming herald, a dread heirloom!"`
+			choice
+				`	"I'm trying to stop the thieves!"`
+				`	"How are you in my head!?"`
+			`	The rage of the artificial voice chills. "Insignificant," it says. "Thou has now passed the threshold for destruction." Something else is now interleaving with the words, something sharp and painful. You cry out in pain, and then suddenly it all stops. The pressure fades away from your head and the world resounds with silence. Saajret looks down at you, the translation device plucked from you and held in their arm. They help you to your feet and return it to you; you store it in a pocket, deactivated.`
+			`	Saajret confers with their guards for a moment, unintelligibly. "Tilruu-nne nuj. Veusa." One of them interacts with the elevator controls and the carriage starts to move upwards again.` # We need to go up now. Quickly. 
+			`	They continue talking with their guards as the elevator travels back up. The com system shrieks again to no avail. Saajret comes to speak to you, gently poking your chest with the tip of one of their arms; they say something that sounds a bit like your name. Suddenly the elevator is shaken by an impact from outside and soon after, dozens more. It finally deposits you back in the landing bay as you see the shape of a ship in the distance firing on the station. You dash back to your own ship and prepare to flee or fight.`
+				launch
 
 mission "Successors: Ghosts Suspicion 10"
 	landing
@@ -912,7 +990,11 @@ mission "Successors: Ghosts Suspicion 10"
 	npc evade
 		ship "Resja, of the Nine Eyes" "Resja, Fury 16-11"
 		government "Solitude Enforcer" 
-		personality waiting heroic nemesis unconstrained vindictive launching
+		personality heroic nemesis unconstrained vindictive launching
+	npc save
+		government `House Kaatrij`
+		personality launching coward
+		ship "Vujlet-Usaqri (Jump)" "o-Sapi, Brilliant Voice"
 
 # Maybe an additional mission in-between here?
 
@@ -972,6 +1054,8 @@ mission "Successors: Ghosts Suspicion 12"
 		government `Solitude Enforcer`
 		personality waiting heroic target
 		ship "Valkkyiara-Khorasaqra" "Ijahti-Khora"
+		on kill
+			set "Successors: Ghosts killed heirloom"
 	npc
 		government "House Kaatrij"
 		personality launching heroic escort
@@ -980,6 +1064,8 @@ mission "Successors: Ghosts Suspicion 12"
 		ship "Vujlet-Usaqri (Keystone)"
 		ship "Vujlet-Usaqri (Keystone)"
 		ship "Vujlet-Usaqri (Keystone)"
+	on offer
+		event "successors: ghosts abandoned kaatrij" 3
 	on complete
 		payment 1000000
 		conversation
@@ -996,6 +1082,7 @@ mission "Successors: Ghosts Wedding"
 			`[You recieve an invitation to the wedding of scions of Houses Chydiyi and Myurej at <destination>.]`
 	on complete
 		log "Attended the wedding between scions of Houses Chydiyi and Myurej. Was presented with a license to purchase advanced Successor technology."
+		set "license: High Houses"
 		conversation
 			`Aava-Aasa-Khora's monorail system is as efficient and quiet as it was before, shuttling you off to another one of the numerous installations dotting the planet's surface. You are eventually deposited at the lobby of one that looks remarkably similar to the one you visited when you were presented the Successor license; it's large and richly decorated, the walls a riot of color and form that is as ostentatious as it is impressive. A gentle mist issues from apertures on the vaulted ceiling and long golden threads trail downwards, writhing around particular Successors and eventually, you.`
 			`	The thread inspects your face and clothing for a short time before it speaks in a soft, synthesized voice. "Greetings, Captain <first> <last>! Thou'rt authorized to attend the ceremony this afternoon and, following, a special meeting of the locally-gathered Houses." The voice continues for a while, providing you with information on which rooms to visit and how you are to find your way there.`
@@ -1019,3 +1106,16 @@ mission "Successors: Ghosts Black Box"
 		conversation
 			`[The data recorder you retrieved from Resja can be decoded by Kaatrij. When you do so, you get a little bit of lore about the history of the drone ships and how they were used in the last great inter-Houses war. A memory-stripped version of the recorder can be kept as a trophy.]`
 				decline
+
+mission "Successors: Ghosts Abandoned Kaatrij"
+	entering
+	invisible
+	destination "Earth"
+	to complete
+		never
+	to offer
+		has "event: successors: ghosts abandoned kaatrij"
+		not "Successors: Ghosts killed heirloom"
+	on offer
+		event "successors: military escalation"
+			decline
