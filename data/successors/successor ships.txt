@@ -98,7 +98,7 @@ ship "Vujlet-Usaqri" # Lit. "The bird [one] will not find"
 	thumbnail "thumbnail/vujlet modified"
 	attributes
 		licenses
-			"House Kaatrij"
+			"Kaatrij Winged-Eye"
 		category "Light Warship"
 		"cost" 10350000
 		"shields" 4200
