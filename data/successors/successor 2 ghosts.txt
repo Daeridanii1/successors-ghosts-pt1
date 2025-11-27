@@ -1017,7 +1017,37 @@ mission "Successors: Ghosts Suspicion 11"
 		ship "Vujlet-Usaqri (Keystone)"
 	on offer
 		conversation
-			`[Kaatrij and the Quarg agree that the raiding of Predecessor space has to stop, and the best way to do that is to catch the ship using Kaatrij's stolen cloaking device; most likely an heirloom warship. To that end, the Quarg provide Kaatrij with several devices to disrupt cloaks, which you and Kaatrij will set up around the wormhole in order to catch the ship that started this whole thing. Reinforcements will most likely be hot on its tail as soon as it is attacked.]`
+			`Saajret meets you soon after you disembark, their voice once again being translated by your now-reactivated translation device. "I've no time to consult with thee immediately," they say, "but please join me once I've updated Kaatrij."`
+			choice
+				`	(Wait.)`
+			`	After a while, one of the members of House Kaatrij comes to meet you and guides you to the same conference room you were shown on your first visit to the base.`
+			`	"Ah, the captain," one of the Myiara says. "Good of thou to join us here." They are colorful and well-dressed with thin jewelled strands fluttering on the edges of their outfit. "With Saajret, of Somber Sejra's report on the Kasii-Sola citadel's plund'ring we've no time to squander." A metallic pool in the center of the room splashes and forms into a depiction of a warship, more sharp and elegant than any you've seen the Successors use.`
+			`	"Another House," they say, "has dragg'd an heirloom starship from their reliquary and set it 'gainst us, and now used it t'steal no less than five sep'rable cloaks. So long as such a craft flies free, Kaatrij shan't know peace. To catch it, the Quarg provide us on loan some tools of theirs, detectors to wrap round the wormhole's mouth and catch our quarry when next it seeks to pass through.`
+			`	Our plan's an ambush; a fleet of our own cloaked craft shall lay in wait for it and intercept it while 'tis stricken. The captain shall join them, should it please them."`
+			label questions
+			choice
+				`	"What if the fleet is disabled?"`
+					to display
+						not "Successors: lose"
+					goto lose
+				`	"What sort of fight should I expect?"`
+					to display
+						not "Successors: expect"
+					goto expect
+				`	"All right, I'm ready."`
+					goto end
+			label lose
+			action
+				set "Successors: lose"
+			`	The well-dressed Myiara nods. "We've a second plan, with crews already prepar'd. But 'tisn't thy responsibility to know it."`
+				goto questions
+			label expect
+			action
+				set "Successors: expect"
+			`	Saajret is the one who speaks now. "'Tis a proper destroyer of our Predecessors' age, most likely," they say. "Our warships in their day were second only to those of the Quarg; one could not doubt stand against a fleet of lesser craft handily."`
+				goto questions
+			label end
+			`	Saajret speaks. "I'll join thee, Captain, before we depart."`
 				accept
 	on enter "Oublaa-Khora"
 		dialog `As you exit the wormhole, you trigger the release of the cloak detector from your ship's cargo bay. The metal orb floats into position at the wormhole's edge before disappearing from view entirely as its cloaking armor activates. Apparently satisfied, Saajret directs you to land on the nearby planet.`
@@ -1067,13 +1097,17 @@ mission "Successors: Ghosts Suspicion 12"
 	on offer
 		event "successors: ghosts abandoned kaatrij" 3
 	on complete
-		payment 1000000
+		payment 10000000
 		conversation
 			`[Saajret congratulates you on prevailing against the fleet. They pay you for everything you've done for the House and tell you that when the Houses next convene, probably at the still-upcoming wedding, Kaatrij will propose you be given the rights to purchase weapons. Though not every House will support it, Kaatrij, Seineq, Myurej, and Aqrabe all have reason to trust you, and so the proposal is likely to pass.]`
 
 # Intermission
 
 mission "Successors: Ghosts Wedding"
+	landing
+	source
+		attributes "successor"
+		not attributes "uninhabited"
 	to offer
 		has "Successors: Ghosts Suspicion 12: done"
 	destination "Iyra-Ijasa-Iret"
