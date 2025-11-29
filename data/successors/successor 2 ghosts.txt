@@ -479,15 +479,23 @@ mission "Successors: Ghosts 5"
 		"successors: ghosts suspicion" >= 5
 		has "First Contact: Quarg: offered"
 	on offer
-		log "Approached by a strange Successor. They told me about the hunting practices of the elusive self-camouflaging Kijran-Khora, who eluded House Kaatrij, and wished me happy sightseeing at an unspecified set of rings."
+		log "Approached by a strange Successor who told a story about the hunting practices of the elusive self-camouflaging Kijran-Khora. These infiltrated House Kaatrij's bases long in the past. They also mentioned a place with an excellent view of rings."
 		conversation
 			`Soon after you shut down the <ship>'s systems for landing, you are approached by a Successor who seems to have been waiting, nipping at a skewered piece of food.`
 			`	"Captain, captain," they say, "fraught and darkling times we live in, no? They remind me - ah, dost thou know of the hunting practices of the Kijra-Khora?"`
+			branch unfamiliar
+				not "successor kaatrij patron"
+			`	As their voice flows through the translation device and into your inner ears, you notice a familiar quality to it, but you can't quite place where you might have heard it before.`
+			label unfamiliar
 			choice
 				`	"A little too well, actually."`
 				`	"Excuse me?"`
 			`	The Successor laughs, a quiet ruk-ruk sound. "Yes, I've heard of thy encounter with them. Beautiful beasts, aren't they? Truly aspirational. Kijran-Khora are adept at camouflage, hiding themselves beyond all but the most scrutinizing gaze before closing in on their quarry. House Kaatrij doesn't tell this much, but I once read that in the early days of their House, well-cloaked Kijran kept slipping into their towns and bases. It took them years and years to figure out how to drive the creatures out." They laugh again.`
 			choice
+				`	"Didn't House Kaatrij genetically engineer the Kijran?"`
+					to display
+						has "successor kaatrij patron"
+					goto remembered
 				`	"I'm not sure I understand."`
 				`	"Oh, I think I see what you mean."`
 					goto clever
@@ -496,6 +504,10 @@ mission "Successors: Ghosts 5"
 
 			label clever
 			`	"I knew thou would'st, Captain." They eye the last bit of skewered seafood before nipping it off the stick. "Enjoy thy trip," they say. "I hear the rings make for a class of beauty all by themselves."`
+				decline
+
+			label remembered
+			`	A warm pink shade of satisfaction spreads over the Successor's face. "Quite right," they say, smelling a bit of their speared food. "The Houses' own children! Still, 'tis often those closest to us that prove most elusive." They finally take a bite before continuing. "Pleasant sightseeing, Captain. The rings, I hear, are in a class of beauty all their own."`
 				decline
 
 mission "Successors: Ghosts 6"
@@ -525,6 +537,7 @@ mission "Successors: Ghosts 6"
 			`	Most striking of all, however, is the appearance of some familiar-looking dark metal and purple lighting in the damaged section of the base; it's hard to be certain, but it bears a distinct resemblance to Quarg technology. Perhaps the Quarg might be able to provide some answers about what's been going on.`
 			`	Not long after you see this, a thin sandstorm starts to roll in, and you take the <ship> back up to orbit before the mysterious absence of airborne grit gives your ship away.`
 				launch
+
 	on complete
 		log "Approached the base on Qasa-Sija-Iri while under cloak. Its design vaguely resembles Quarg construction - perhaps they have some answers about what's been going on with the Successors."
 
@@ -589,8 +602,11 @@ mission "Successors: Ghosts 8"
 		attributes "predecessor"
 	to offer
 		has "Successors: Ghosts 7: declined"
-		has "successors: ghosts houses dealt with"
-		random < 15
+		or
+			and
+				has "successors: ghosts houses dealt with"
+				random < 30
+			"successors: ghosts houses dealt with" >= 2
 	destination "Inti-Arat"
 	on offer
 		conversation
@@ -756,7 +772,7 @@ mission "Successors: Ghosts 9"
 			label drone
 			action
 				set "Successors: drone"
-			`	Saajret's skin ripples with hollow mirth. "Not precisely," they say. "'Twere creations of an ally of the House, a bold shipwright of Sejra, to forbid intruders from the plunder of what we left behind. Even Quarg craft were lost 'tween the tearing of the stars; they could not remove all the follies we had made. So Sejra and we elected to make one more."`
+			`	Saajret's skin ripples with hollow mirth. "Not precisely," they say. "'Twere creations of an ally of the House, a bold shipwright of Sejra, to forbid intruders from the plunder of what we left behind. Even Quarg craft were lost 'tween the tearing of the stars; they could not remove all the follies we had made. So Sejra and we elected to make one more." They look up the ceiling of the room with a contemplative expression. "Our efforts to redirect their aggression away from us... well, thou observ'd that for thyself."`
 				goto questions
 
 			label cloak
@@ -870,9 +886,18 @@ mission "Successors: Ghosts 11"
 			`	The other Myiara display various motions of assent, and eventually all of them leave the room, leaving only you, Saajret, and the Quarg, who continues to look over you with interest. Eventually, it speaks, its voice rumbling much deeper than those of the Myiara. "So strange," it says in your own language, "to see one of your kind after so many years, and here, where none were meant to tread. Perhaps the threads of the universe now constrict. Despite all the Drak have done, the separations seem not to last."`
 			`	With that, it leaves too, and you are left alone with Saajret. They relax into a colorless slump, but only for a moment before they regain their prior poise.`
 				accept
+	
+	on enter "Khasola-Ryuit"
+		dialog `Though it takes several seconds for your ship's targeting scanners to pinpoint the scanning probe you deployed earlier, they eventually find it. A single shot is all it takes to destroy it.`
 
-	on complete
-		dialog `[You've destroyed all the sensor probes except the one in Kasii-Sola.]`
+	on enter "Eta Carinae"
+		dialog `You find the scanner tucked among some particularly vibrant nebular gas. It is easily dispatched.`
+
+	on enter "Avasaa-Novaa"
+		dialog `Undoing your earlier hard work, you locate and destroy the scanner in this system.`
+
+	on waypoint
+		dialog `With this system cleared, you've destroyed all the sensor probes except the one in Kasii-Sola.`
 	
 	on fail
 		dialog phrase "successor ghosts story failed"
