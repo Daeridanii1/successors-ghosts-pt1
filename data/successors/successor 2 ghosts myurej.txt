@@ -7,11 +7,11 @@ mission "Successors: Ghosts Myurej 1"
 	to offer
 		or
 			and
-				has "Successors: Ghosts Wedding 0: offered"
+				has "Successors: Ghosts Prelude Wedding: offered"
 				random < 40
 			and
-				has "Successors: Ghosts Wedding 0: offered"
-				has "Successors: Ghosts Investigate: offered"
+				has "Successors: Ghosts Prelude Wedding: offered"
+				has "Successors: Ghosts 4: offered"
 	on offer
 		conversation
 			`While walking in the spaceport here, you are pulled aside by a pair of House Myurej military officers. "Come with us," one says, "thou shan't be harmed, but thou hast a private meeting waiting thou needeth attend."`

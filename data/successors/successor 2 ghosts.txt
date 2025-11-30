@@ -339,7 +339,7 @@ mission "Successors: Ghosts 2"
 
 			label yes
 			`	Both of the two seem to relax a bit when you say this, their arms showing a little more slack. Sijra notes down something on a metallic pad that they take out of their outfit, before informing you that they've ordered the sensor drones to be transferred to the <ship>. "Once thy task is done, Captain, return here and we shall have thy next opportunity for usefulness."`
-			`	"And of course Seineq means to make this worth your while," says Rijatet. "Thou shalt be compensated with a fee of <payment> credits upon completion. We are not at liberty to negotiate this."`
+			`	"And of course Seineq means to make this worth your while," says Rijatet. "Thou shalt be compensated with a fee of <payment> upon completion. We are not at liberty to negotiate this."`
 				accept
 	
 	on enter "Kasii-Sola"
@@ -356,8 +356,8 @@ mission "Successors: Ghosts 2"
 
 	on complete
 		conversation
-			`Docking control at the <destination> spaceport directs the <ship> to a protected, fabric-shrouded hangar on the western side of the new facility. A pair of Successor ground crew supervise the automated refueling and maintenance processes, and one of them waves you down from the cockpit, where they hand you a data-sphere. A few seconds after it touches your skin, it plays a message from Rijatet:`
-			`	"Our thanks to thee for setting the sensors, Captain. We saw their first reports only shortly after as thy own craft jumped away, and nothing since. We shall remain as watchful as we ought to be. For thine efforts, Seineq's credited thee the agreed payment of <payment> credits. If thou wish't for further, join us at the port here tonight for another task."`
+			`Docking control at the <planet> spaceport directs the <ship> to a protected, fabric-shrouded hangar on the western side of the new facility. A pair of Successor ground crew supervise the automated refueling and maintenance processes, and one of them waves you down from the cockpit, where they hand you a data-sphere. A few seconds after it touches your skin, it plays a message from Rijatet:`
+			`	"Our thanks to thee for setting the sensors, Captain. We saw their first reports only shortly after as thy own craft jumped away, and nothing since. We shall remain as watchful as we ought to be. For thine efforts, Seineq's credited thee the agreed payment of <payment>. If thou wish't for further, join us at the port here tonight for another task."`
 			`	I attest this, C- R- Rijatet.`
 		payment 223000
 		log "Deployed Successor sensor drones throughout Predecessor space to scan for ships using jump drives, cloaked or not."
@@ -365,6 +365,7 @@ mission "Successors: Ghosts 2"
 
 mission "Successors: Ghosts 3a Sioeora"
 	landing
+	invisible
 	name "Inform House Sioeora"
 	description "Contact House Sioeora about Seineq asking you to investigate."
 	source
@@ -386,6 +387,7 @@ mission "Successors: Ghosts 3a Sioeora"
 
 mission "Successors: Ghosts 3b Kaatrij"
 	landing
+	invisible
 	name "Inform House Kaatrij"
 	description "Contact House Kaatrij about Seineq asking you to investigate."
 	source
@@ -412,8 +414,8 @@ conversation "successor house contact"
 			decline
 	action
 		event "successors: ghosts message delay" 4
-	`	You find your way to the local spaceport's communication hub, where you check out one of the Successors' data-spheres to encode your message for delivery to House <successor patron>. When you're done, you submerge the data-sphere into a liquid-metal bath that pushes it around for a few moments before spitting it back at you, quietly chirping "missive sent."`
-	accept
+	`	You find your way to the local spaceport's communication hub, where you check out one of the Successors' data-spheres to encode your message for delivery to your patron House. When you're done, you submerge the data-sphere into a liquid-metal bath that pushes it around for a few moments before spitting it back at you, quietly chirping "missive sent."`
+		accept
 
 
 mission "Successors: Ghosts 4"
@@ -451,6 +453,8 @@ mission "Successors: Ghosts 4"
 				log "Accepted an offer by House Seineq to report back my dealings with the other Houses, and whether I observe anything incriminating."
 			`	"Excellent!" says Rijtatet. "In that case, Sijra and I have nothing further for thee. We shall call thee back when we are ready for thy report."`
 				decline
+
+# Needs better lead into House mission chains
 
 mission "Successors: Ghosts Seineq Attacked"
 	invisible
@@ -1186,7 +1190,9 @@ mission "Successors: Ghosts 17"
 	destination "Iyra-Ijasa-Iret"
 	on offer
 		conversation
-			`[You recieve an invitation to the wedding of scions of Houses Chydiyi and Myurej at <destination>.]`
+			`Shortly after landing here, a data-sphere is delivered to you. It jumps to life as soon as you touch it, displaying its message:`
+			`	Honored alien, thy presence we cordially request `
+			`	This I myself attest as K- I- Saajret, of Somber Sejra.`
 	on complete
 		log "Attended the wedding between scions of Houses Chydiyi and Myurej. Was presented with a license to purchase advanced Successor technology."
 		set "license: High Houses"
