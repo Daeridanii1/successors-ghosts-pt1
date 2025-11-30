@@ -31,10 +31,8 @@ outfit "Radiant Shield Shunt"
 	thumbnail "outfit/radiant shield shunt"
 	"mass" 16
 	"outfit space" -16
-	"heat protection" 8
-	"high shield permeability" 0.5
-	"low shield permeability" 0.5
-	"shield fuel" 0.02667
+	"heat protection" 5
+	"shield generation multiplier" -0.5
 	"starlining" 1
 	"unique" 1
 	description "On loan from House Aqrabe - or maybe House Kaatrij - this piece of technology is unlike anything else you've seen from the Successors. In fact, it's unlike anything you've seen, period."
