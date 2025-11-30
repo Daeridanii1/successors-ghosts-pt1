@@ -50,13 +50,12 @@ ship "Resja, of the Nine Eyes"
 		`"Iasa," Lethal Word` 9
 
 		`Hyperdrive`
-		`Crimson Halo`
-		`Sensate Flesh`
-		`Visions of Rime`
+		`"Jiita" Heirloom Shielding`
+		`Successor Cooling` 3
 
-		`Radiant Soul`
+		`"Ija" Heirloom Reactor` 2
+		`Heirloom Power Reserve`
 		`Auxiliary Power Reserve`
-		`Primary Power Reserve`
 
 		`Resja Engine Block`
 
@@ -95,7 +94,7 @@ ship "Hasur, Vowsworn"
 		"heat dissipation" 0.6
 		"fuel capacity" 400
 		"cargo space" 10
-		"outfit space" 360
+		"outfit space" 370
 		"weapon capacity" 96
 		"engine capacity" 60
 		"hull repair rate" 1.25
@@ -129,13 +128,11 @@ ship "Hasur, Vowsworn"
 		`"Kis," Lethal Wish` 4
 
 		`Hyperdrive`
-		`Crimson Halo`
-		`Sensate Flesh`
-		`Visions of Rime`
+		`"Jiita" Heirloom Shielding`
+		`Successor Cooling` 2
 
-		`Radiant Soul`
-		`Auxiliary Power Reserve`
-		`Primary Power Reserve`
+		`"Ija" Heirloom Reactor` 2
+		`Heirloom Power Reserve`
 
 		`Hasur Engine Block`
 
@@ -165,7 +162,7 @@ ship "Queru, Luminous Gaze"
 		"heat dissipation" 0.65
 		"fuel capacity" 400
 		"cargo space" 10
-		"outfit space" 365
+		"outfit space" 380
 		"weapon capacity" 116
 		"engine capacity" 60
 		"hull repair rate" 1.25
@@ -199,12 +196,11 @@ ship "Queru, Luminous Gaze"
 		`"Torji," Lethal Sight`
 
 		`Hyperdrive`
-		`Crimson Halo`
-		`Sensate Flesh`
+		`"Jiita" Heirloom Shielding`
 		`Visions of Rime`
 
-		`Radiant Soul`
-		`Primary Power Reserve`
+		`"Ija" Heirloom Reactor` 2
+		`Heirloom Power Reserve`
 
 		`Hasur Engine Block`
 
@@ -216,9 +212,10 @@ ship "Queru, Luminous Gaze"
 	engine 0 38
 	description `Queru came last, and was the most inspired of the three, eviscerating at a distance before it could even be seen. For their part, Resja hated it - but by then, Resja's fate had been long sealed.`
 
-# Solitude Enforcer Outfits
+# Solitude Enforcer Outfits (Obtainable)
 
 outfit `"Iasa," Lethal Word`
+	# 4 of these are obtainable by defeating Resja, of the Nine Eyes
 	category "Guns"
 	series "Guns"
 	index 11050
@@ -228,13 +225,14 @@ outfit `"Iasa," Lethal Word`
 	"outfit space" -17
 	"weapon capacity" -17
 	"gun ports" -1
+	unique 1
 	weapon
 		sprite "projectile/iasa"
 			"frame time" 3
 			"no repeat"
 		#sound "bimodal"
 		"hit effect" "bimodal impact"
-		#"fire effect" "lethal word haze"
+		"fire effect" "iasa fire"
 		"inaccuracy" 3
 		"velocity" 30
 		"lifetime" 16
@@ -248,7 +246,15 @@ outfit `"Iasa," Lethal Word`
 		"firing shields" 11
 	description `Resja's chosen implement of death, Iasa was a drone ship's perfect coilgun, a fearsome, hungry weapon without respect for the shields of either friends or foes. It remains remarkaly efficient, even after fifteen hundred years of waiting.`
 
+effect "iasa fire"
+	sprite "effect/emp torpedo fire"
+		"frame time" 3
+		"random start frame"
+		scale 0.5
+	lifetime 3
+
 outfit `"Kis," Lethal Wish`
+	# 2 of these are obtainable by defeating Hasur, Vowsworn
 	category "Guns"
 	series "Guns"
 	index 11060
@@ -258,6 +264,7 @@ outfit `"Kis," Lethal Wish`
 	"outfit space" -24
 	"weapon capacity" -24
 	"gun ports" -1
+	unique 1
 	weapon
 		sprite "projectile/bimodal"
 		#sound "bimodal"
@@ -282,6 +289,22 @@ outfit "kis long range"
 		"lifetime" 100
 		"shield damage" 400
 		"hull damage" 650
+
+outfit `Visions of Rime`
+	# 1 of these is obtainable by defeating Queru, Luminous Gaze
+	category "Systems"
+	series "Cooling"
+	index 11020
+	cost 5000000
+	thumbnail "outfit/unknown"
+	mass 10
+	"outfit space" -10
+	cooling 26
+	"shield generation" -0.6
+	unique 1
+	description `Radiating excess heat through a starship's shield matrix, this compact, ancient cooling system is strikingly efficient. On Resja's furious drone ships, the shield strength that this saps is all but insignificant, but on lesser craft it may come with a certain cost to endurance.`
+
+# Solitude Enforcer Outfits (Unobtainable)
 
 outfit `"Torji," Lethal Sight`
 	category "Guns"
@@ -318,7 +341,7 @@ outfit `Crimson Halo`
 	series "Shields"
 	index 11050
 	cost 8550000
-	thumbnail "outfit/crimson halo"
+	thumbnail "outfit/unknown"
 	"mass" 31
 	"outfit space" -31
 	"shield generation" 6.6
@@ -327,53 +350,13 @@ outfit `Crimson Halo`
 	"shield connection point" 1
 	description `Resja's ships didn't need shields for defence - only as fuel for attacking their foes. Thus, their favored shield cortex is an unusually powerful one, emitting a staggering amount of energy that is much less useful for intercepting damage than it is when fed back into a starship's systems.`
 
-outfit `Radiant Soul`
-	category "Power"
-	series "Generators"
-	index 11070
-	cost 22500000
-	thumbnail "outfit/unknown"
-	"mass" 94
-	"outfit space" -94
-	"energy generation" 19
-	"heat generation" 28
-	"shield energy multiplier" -0.18
-	"hull energy multiplier" -0.18
-	description `Though not substantially different from its modern derivatives, this ancient reactor of the Myiaran Predecessors has few equals for raw power. Because it was designed  for Resja's drone ships that did not require a cool and comfortable crew, it generates more heat than most Myiaran generators, extracting more energy from this additional inefficiency.`
-
-outfit `Sensate Flesh`
-	category "Systems"
-	series "Repair"
-	index 11030
-	cost 12200000
-	thumbnail "outfit/unknown"
-	"mass" 24
-	"outfit space" -24
-	"hull repair rate" 1.1
-	"hull energy" 1.4
-	"hull heat" 1.4
-	"high shield permeability" 0.05
-	description `With their shields devoted to other uses, Resja's warships relied on their dense armor to absorb incoming fire. From this repair unit, delicate strands of living metal spread out and intertwine with the layers of a ship's armor, coaxing it to regenerate from wounds much like an organic creature. These require a certain measure of shield energy to operate, however - modern craft will find that the armor longs to recieve damage even while shields are active.`
-
-outfit `Visions of Rime`
-	category "Systems"
-	series "Cooling"
-	index 11020
-	cost 5000000
-	thumbnail "outfit/unknown"
-	mass 10
-	"outfit space" -10
-	cooling 24
-	"shield generation" -0.4
-	description `Radiating excess heat through a starship's shield matrix, this compact, ancient cooling system is strikingly efficient. On Resja's furious drone ships, the shield strength that this saps is all but insignificant, but on lesser craft it may come with a certain cost to endurance.`
-
 outfit `Resja Engine Block`
 	category "Engines"
 	series "Engines"
 	index 11061
 	"unremovable" 1
 	"exclusive: Resja" -1
-	"unplunderable"
+	"unplunderable" 1
 	"cost" 3550000
 	"mass" 100
 	"outfit space" -100
