@@ -81,7 +81,8 @@ mission "Successors: Ghosts QSI 1"
 	source "Qasa-Sija-Iri"
 	repeat
 	to offer
-		not "Successors: Ghosts Suspicion 1: offered"
+		not "Successors: Ghosts 7a: done"
+		not "Successors: Ghosts 7b: done"
 	on offer
 		event "successors: ghosts restrict"
 		conversation
@@ -454,7 +455,23 @@ mission "Successors: Ghosts 4"
 			`	"Excellent!" says Rijtatet. "In that case, Sijra and I have nothing further for thee. We shall call thee back when we are ready for thy report."`
 				decline
 
-# Needs better lead into House mission chains
+
+
+mission "Successors: Ghosts Mark Houses"
+	landing
+	name "Investigate the other High Houses"
+	description "House Seineq is interested in what tasks the other Houses might offer a free agent. Their homeworlds would be a good place to find work for them."
+	to offer
+		has "Successors: Ghosts 4: declined"
+	to fail
+		has "Successors: Ghosts Aqrabe 1: offered"
+		has "Successors: Ghosts Myurej 1: offered"
+	stopover "Kasii-Cavasaa-Oa"
+	stopover "Raaqa-Kvelq-Ryuit"
+	stopover "Khora-Vasa-Reyyaa"
+	stopover "Staja-Kella-Oa"
+
+
 
 mission "Successors: Ghosts Seineq Attacked"
 	invisible
@@ -476,52 +493,218 @@ mission "Successors: Ghosts Seineq Attacked"
 
 mission "Successors: Ghosts 5"
 	landing
+	clearance
+	name "Transport equipment for Kaatrij"
+	description "Some scientific equipment belonging to House Kaatrij needs to return to <destination> by <date> as the House consolidates itself after its recent crises."
+	deadline
 	source
-		attributes "successor"
-		not attributes "uninhabited"
-		not planet "Raaqa-Puan-Uuoru"
+		government "Successor" "New Houses" # So, not the homeworlds of any of the other houses.
 	destination "Raaqa-Puan-Uuoru"
 	to offer
-		"successors: ghosts suspicion" >= 5
+		"successors: ghosts suspicion" >= 4
+		has "event: successors: ghosts seineq attacked"
+	cargo "Scientific equipment" 10
+	passengers 3
 	on offer
 		conversation
-			`[The player meets with Saajret, who is representing House Kaatrij to transport some artifacts from offworld.]`
+			branch kaatrij
+				has "successor kaatrij patron"
+			
+			`Waiting in the spaceport here as you arrive are a trio of Successors; two guards and one other individual who wears a black, cocoon-like outfit with lots of pockets. Both of the guards bear the insignia of House Kaatrij.`
+			`	The black-draped individual bows gently to you as green sparkles dot their skin. "Captain <first> <last>?" they say. When you indicate affirmatively, they continue. "I am Saajret, of Somber Sejra, an envoy of the noble scions of House Kaatrij. Kaatrij hopes that thou might'st do us a boon."`
+				goto questions
+
+			label kaatrij
+			`Waiting in spaceport here as you arrive are a trio of Successors; two guards and one other individual who you recognize as Saajret, of Somber Sejra. Kaatrij's archivist looks different from the last time you saw them; their outfit is wrapped up more tightly and the colors of their face seem muted and subdued.`
+			`	Saajret bows to you gently, green and reddish tones swirling on their skin. "Captain <first> <last>," they say, "whose patience I have tested thoroughly, it would seem. Kaatrij sends me to ask of thee a boon to us."`
+
+			label questions
+				`	"Why haven't I heard from you since the incident?"`
+					to display
+						has "successor kaatrij patron"
+					goto silence
+				`	"What sort of 'boon?'"`
+					goto boon
+				`	"Why me?"`
+			
+			label me
+			`	"Thou'rt earning thyself a reputation for efficiency and discretion," Saajret says. "And Kaatrij has need of both. Some scientific equipment here must return to the homeworld, ideally with haste. Can'st thy craft serve?"`
+				goto offer
+
+			label boon
+			`	"Thy reputation for professionalism seems well-earned, Captain," they say. "Some scientific equipment stored here must return to the homeworld with haste. Can'st thy craft serve?"`
+				goto offer
+
+			label silence
+			`	Saajret hums, colors continuing to swim over their body. Eventually, they speak. "In the wake of Kaatrij's wound, our suspicion of others was great and wide. And thou were't included in this, for these incidents came only soon after thy arrival. Some believe thou play'd some part in this, some do not." They pause for a moment, running their eyes over you. "'Tis the latter faction that offers thee this opportunity: some equipment here must return to the homeworld. A chance to demonstrate thy benevolence, mayhaps?"`
+
+			label offer
+			`	"All right. I assume the House is paying?"`
+				goto accepted
+			`	"I don't want to get involved in this."`
+
+			`	"Very well," Saajret says. "'Tis thy own choice, after all."`
+				decline
+
+			label accepted
+			`	"Of course," Saajret says. "I will see the items are loaded forthwith."`
+
+	on decline
+		dialog "successor ghosts story failed"
+	
+	on fail
+		dialog "successor ghosts story failed"
+
 	on complete
 		payment 40000
 		conversation
-			`[Saajret asks the player to return to the spaceport later so they can do another task for House Kaatrij.]`
+			branch "visited before"
+				or
+					has "successor kaatrij patron"
+					has "visited planet: Raaqa-Puan-Uuoru"
+
+			`You've heard <planet> described by outsiders as an insular and well-guarded world, but neither of those prepared you for how strikingly quiet it is. The rainy spaceport seems almost deserted, the loudest sound almost always the pattering of heavy drops on the sail-like projections overhead, only occasionally interrupted by a soft-spoken announcement about an incoming ship landing or departure. None of the Successors you transported give any indication about whether this is typical or just a result of Kaatrij's recent incidents.`
+				goto paid
+
+			label "visited before"
+			`The <planet> spaceport is caught in the midst of a gentle rainstorm and the loudest sound you hear during the time you spend there is the patter of the heavy drops overhead and the occasional whirring of the machinery the dockworkers use to unload your cargo.`
+
+			label paid
+			`	Saajret meets with you on the landing pad, informing you that you've been credited <payment> by the House for your services. Before leaving, they ask you to return to the spaceport this evening to meet with them.`
 
 
 
 mission "Successors: Ghosts 6"
+	name "Visit <planet> again"
+	description "Saajret, of Somber Sejra has been instructed by House Kaatrij to scan the wildlife on <destination>, which must be of interest to multiple of the High Houses."
 	source "Raaqa-Puan-Uuoru"
 	destination "Raaqa-Uur-Kaav"
+	passengers 1
 	to offer
 		has "Successors: Ghosts 5: done"
 	on offer
 		conversation
-			`[Saajret has been ordered by Kaatrij to go <planet> to scan the wildlife. You can question them on why you are going to this planet again.]`
+			`The black-shrouded Saajret meets you back at the spaceport as the sun is setting, joining you in a lobby area looking out on a landing pad for Kaatrij's military ships. As they start to speak, a pair of Veusaden hover to the ground in the distance, their repulsor thrusters kicking into the air drops of the everpresent rain.`
+			`	"I've managed to convince Kaatrij that thou might be helpful to us in one more task," they say. "As the situation develops, they now agree thou'rt too substantive to deny all dialogue. Dost thou remember thy prior visit to <planet>, when thou faced the Kijran?"`
+			choice
+				`	"Yes."`
+				`	"It was hard to forget."`
+			branch kaatrij
+				has "successor kaatrij patron"
+			
+			`	"My role here is... something of an archivist," Saajret says, "collecting and ordering information, items, records, of our Predecessors 'fore we left that period behind. Kaatrij believes certain data about the creatures on the old homeworld would be of use to them, and since thou now provides them the opportunity - " they spread their arms in a wide gesture, " - is willing to compensate thee for taking me there to scan them."`
+				goto choices
+
+			label kaatrij
+			`	"I'm an archivist, as I told thee before," Saajret continues. "Kaatrij believes certain data about the creatures there would be of use to them and, since thou now provides them the opportunity, shall compensate thee for taking me there to scan them."`
+
+			label choices
+			choice
+				`	"In the wake of an attack, Kaatrij's interest is in scanning plants and animals? I don't buy it."`
+					to display
+						"successors: ghosts suspicion" >= 6
+					goto suspicious
+				`	"Last time I went the wildlife wasn't very friendly."`
+					to display
+						not "Successors FC3: friend to animals"
+					goto scared
+				`	"All right."`
+					to display
+						has "Successors: FC3: friend to animals"
+					goto yes
+				`	"I have no interest in going back there."`
+			
+			`	Saajret hums. "After thy prior experience, I wonder'd if that would be the case. Very well," they say. "I'll bid thee farewell, then."`
+				decline
+				
+			label yes
+			`	"So readily accepted?" Saajret says, more than a little surprised. "Perhaps thy prior experience was not as fearful as I thought. In that case, I shall ready myself to leave and meet thee at thy craft."`
+				accept
+
+			label scared
+			`	"Indeed not," Saajret says, humming. "Thou shalt not be expected to face them again, if that concerns thee. The scans I mean to take are not invasive and would not arouse the fury of the Kijran-Khora, but thour't needed for naught but transportation there and back."`
+				goto "final choice"
+			
+			label suspicious
+			branch "kaatrij kijran"
+				has "successor kaatrij patron"
+
+			`	Saajret laughs, a quiet ruk-ruk sound that doesn't seem very mirthful. "Perhaps not," they say. "These creatures are important to the House nonetheless. They were important enough to House Sioeora to pay thee to steal, were they not?" They pause, continuing more quietly. "In their own way they are valuable to Kaatrij," they finally add. "What say'st thou to the House's offer?"`
+				goto "final choice"
+
+			label "kaatrij kijran"
+			`	Saajret laughs, a quiet ruk-ruk sound that doesn't seem very mirthful. "'Twas the Kaatrij of old that engineered them, was it not? Is it not sensible that they would be important to the House, worthy of a cast gaze even in a fraught time?" They pause for a moment, a swirl of indeterminate colors on their face. "What say'st thou to the House's offer?" they finally say.`
+				goto "final choice"
+
+			label "final choice"
+			choice
+				`	"All right, I'll do it."`
+				`	"I'm still not willing to go back."`
+					decline
+			
+			`	"Kaatrij will be pleased," says Saajret. "I shall ready myself to leave and meet thee then at thy craft."`
+				accept
+
 	on complete
 		conversation
-			`[Saajret disembarks from your ship alone and returns a short while later with the samples they needed. You can question them on how they avoided the Kijran-Khora which were so troublesome last time. Saajret asks the player to take a detour to Osolaa-Val-Mavra on their way back for additional payment.]`
-			label request
-			`	Saajret turns to go back to their quarters, then stops. "I may never get this chance again, so I'll speak now: I've a personal request to beg of thee. There's another world within the Shroud where in past my ancestors resided. 'Fore we return to Kaatrij, I'd long to see it for myself. I'd pay thee for the diversion, of course."`
+			`	You land your ship on the outskirts of the same facility you visited with Sieasej in the past; it looks much the same, though now many of the green plants have turned various shades of yellow and orange as the seasons have changed. Saajret meets you in your ship's cockpit, now dressed in a slightly different black, well-pocketed outfit. They carry a device with a rotating drum in one of their arms, probably some sort of scanner.`
+			`	"I shall keep in contact with thy craft," they say, "though I expect no problems in my expedition. Expect me back about three hours hence."`
+			`	As they leave, you are left with little to do but wait.`
 			choice
-				`	"All right."`
-					goto helped
-				`	"No."`
+				`	(Assess your ship's systems.)`
+					goto inside
+				`	(Look around outside.)`
+
+			branch "friend to animals"
+				has "Successors FC3: friend to animals"
 			
+			`	The remarkably peaceful vista conceals a feeling of unease; in the distance, you see cuts in a couple of trees, their bark leaking sap from a wound surely left by a serrated antenna. You spy what you recognize as a Kijra-riita flitting between trees; it drains a flower of nectar on a shrub and bats a twig full of dried leaves, knocking a few to the ground. Perhaps it's the same one you encountered the last time you visited.`
+				goto saajret
+
+			label "friend to animals"
+			`	It's a remarkably peaceful vista and only becomes more so as the day wears into late afternoon and the autumn color is amplified by the golden sunlight. In the distance you see what you recognize as a Kijra-riita flitting between trees; it laps nectar from a flower on a shrub and playfully bats at a twig full of dried leaves, knocking a few to the ground. Perhaps it's the same one you released the last time you visited.`
+				goto saajret
+
+			label inside
+			branch "killed riiria"
+				has "Successors: Ghosts Myurej 4: done"
+
+			`	You check over the <ship>'s various internal systems, making sure its power couplings are operating within normal parameters and taking a long moment to admire its jump drive, which hums away inside its housing, inscrutable as always.`
+				goto saajret
+
+			label "killed riiria"
+			action
+				"successors: ghosts suspicion" ++
+			`	You check over the <ship>'s various internal systems, even discovering a mysterious anomaly in one of the power consumption logs, though it's hard to track down what caused it or where it was located. Regardless, the anomaly resolved itself some time ago.`
+			
+			label saajret
+			`	Saajret soon returns as they promised, apparently unharmed. They unload their equipment in the quarters you set aside for them before returning to you in the cockpit. "It went without incident," they say, a shade of satisfaction on their skin. As they turn to go away, they catch themself, turning back around with a bit of trepidation. "I may never get this chance again, so I'll speak now: I've a personal request to beg of thee. There's another world within the Shroud where in past my ancestors resided. 'Fore we return to Kaatrij, I'd long to see it for myself. I'd pay thee for the diversion, of course."`
+			choice
+				`	"Sure, I'll take you."`
+					goto helped
+				`	"Sorry, you'll have to figure something else out."`
+			`	Saajret struggles to keep their disappointment from showing. "Very well," they manage to say before leaving.`
+				goto end
+
 			label helped
 			action
 				set "Successors: Ghosts Helped Saajret"
 			`	Saajret keeps their composure for a second before a faint pink color creeps up their face and arms. "My thanks to thee, Captain," they say. "The world is Osolaa-Val-Mavra; I'll give thee its place."`
 
+			label end
+			`	With nothing left to do here, you prepare to leave.`
+
 
 
 mission "Successors: Ghosts 7a"
+	landing
+	clearance
+	name "Detour to Osolaa-Val-Mavra"
+	description "Saajret has asked to visit <stopovers> as a personal favor, before returning home to <planet>."
 	source "Raaqa-Uur-Kaav"
 	stopover "Osolaa-Val-Mavra"
 	destination "Raaqa-Puan-Uuoru"
+	passengers 1
 	to offer
 		has "Successors: Ghosts 6: done"
 		has "Successors: Ghosts: Helped Saajret"
@@ -577,8 +760,13 @@ mission "Successors: Ghosts 7a"
 
 
 mission "Successors: Ghosts 7b"
+	landing
+	clearance
+	name "Return to <planet>"
+	description "Having declined Saajret's request for a detour, return them home to <planet>."
 	source "Raaqa-Uur-Kaav"
 	destination "Raaqa-Puan-Uuoru"
+	passengers 1
 	to offer
 		has "Successors: Ghosts 6: done"
 		not "Successors: Ghosts: Helped Saajret"
