@@ -135,6 +135,7 @@ mission "Successors: Ghosts Aqrabe 2"
 			`The two Seiitejen set down along with the <ship> along the edge of a dried lake, and Tilra immediately goes to communicate with their captains over comms. After a couple of minutes, they return to you on the bridge, noting down some data on a metallic pad. "The other craft report little issue with their journeys," they say. "And a minor quiver'f differences 'tween thy stones and our armor. But 'twill require us t'return t'make sense of them - I dare not do so here."`
 			choice
 				`	"All right, we'll leave when ready."`
+			### [NEEDS MORE]
 	on complete
 		dialog `Tilra offers a quick goodbye and asks you to meet them back in the spaceport later, once they've had time to process their data.`
 		log "Escorted a keystone-equipped and multimodal armor ship through the Successors' wormhole."
@@ -150,7 +151,7 @@ mission "Successors: Ghosts Aqrabe 3"
 	on offer
 		event "successors: ghosts star unrestrict"
 		conversation
-			`"Good news for thee, Captain, for all of us. The data from our expedition hath revealed some measure of the mystery of thy stones. They're oscillators of a sort, ones that sing in tune with the wavers of the wormhole..." Tilra stops for a moment. "But we will have time to discuss that later. For now, what thou needs know is this: with the right materials, we may be able to magnify their effect. Hast though visited Kasii-Cavaasa?"`
+			`You meet Tilra at their workshop, where they wave you inside. The scanner on their table has now been replaced by a collection of quantum keystones suspended in a variety of machines that prod and scan the stones incessantly. "Good news for thee, Captain, for all of us," Tilra says. "The data from our expedition hath revealed some measure of the mystery of thy stones. They're oscillators of a sort, ones that sing in tune with the wavers of the wormhole..." Tilra stops for a moment. "But we will have time to discuss that later. For now, what thou needs know is this: with the right materials, we may be able to magnify their effect. Hast though visited Kasii-Cavaasa?"`
 			choice
 				`	"I have."`
 				`	"Where are you going with this?"`
@@ -158,6 +159,7 @@ mission "Successors: Ghosts Aqrabe 3"
 			choice
 				`	"You want me to fly into a star? Are you crazy?"`
 				`	"Other choice."`
+				### [NEEDS MORE]
 			`	Purple dots spot Tilra's face. "Not 'into,' not strictly. But yes, I do not know if thy craft is worthy to the task. We shall have to see for ourselves what is possible."`
 				accept
 	on stopover
@@ -200,7 +202,7 @@ mission "Successors: Ghosts Aqrabe 4"
 				`	"So is that it for this?"`
 			`	"Fortunately," they continue, "we may be able to outfit one of our own craft for this purpose. Or rather, one of House Kaatrij's."`
 			`	They offer the pad to you. It displays a schematic that you struggle to make any sense of; some small device is shown implanted in a Vujlet, its long tendrils snaking into various ship systems like some sort of infection. If you were to make a guess at its function, you might describe it as some sort of cloaking device - it's clearly shown reflecting and refracting light somehow, but the details of what exactly it is achieving escape your reckoning.`
-			`	"I've conferred with our fleet liason," says Tilra, "who conferred with Kaatrij's, and they've agree to dispense thee with a modified Vujlet." They pause before adding, in a softer and more cynical tone, "no doubt extracting some favor from Aqrabe along the way. We need thee to retrieve it from <planet stopovers> and bring it back here for outfitting. Once prepared with our armor and thy jump drive, we may return to Kasii-Cavaasa."`
+			`	"I've conferred with our fleet liason," says Tilra, "who conferred with Kaatrij's, and they've agree to dispense thee with a modified Vujlet." They pause before adding, in a softer and more cynical tone, "no doubt extracting some favor from Aqrabe along the way. We need thee to retrieve it from <planet> and bring it back here for outfitting. Once prepared with our armor and thy jump drive, we may return to Kasii-Cavaasa."`
 			choice
 				`	"These look like some complex modifications."`
 					goto suspicious
@@ -343,8 +345,6 @@ mission "Successors: Ghosts Aqrabe 6"
 	name "Visit exotic metal garden again"
 	source "Kasii-Cavasaa-Oa"
 	destination "Exotic Metal Garden"
-	deadline
-	deadline 2
 	passengers 2
 	to offer
 		has	"Successors: Ghosts Aqrabe 5: done"
@@ -362,8 +362,6 @@ mission "Successors: Ghosts Aqrabe 7"
 	landing
 	source "Exotic Metal Garden"
 	destination "Kasii-Cavasaa-Oa"
-	deadline
-	deadline 2
 	cargo "Stellar metal" 40
 	passengers 2
 	to offer
