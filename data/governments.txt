@@ -1,7 +1,16 @@
 government "Solitude Enforcer"
-	"display name" "IFF ERROR"
 	swizzle 0
 	color 0 .8 0.653
+	language "Successor"
+	"player reputation" -999
+	"attitude toward"
+		"House Kaatrij" -999
+	"bribe" 0
+	"fine" 0
+
+government "High Houses (Unknown)"
+	swizzle 0
+	color 0 .8 0
 	language "Successor"
 	"player reputation" -999
 	"attitude toward"
