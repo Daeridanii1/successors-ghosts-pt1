@@ -1222,6 +1222,7 @@ mission "Successors: Ghosts 11"
 
 	on waypoint
 		dialog `With this system cleared, you've destroyed all the sensor probes except the one in Kasii-Sola.`
+		event "successors: ghosts ijra-ea decloak"
 	
 	on fail
 		dialog phrase "successor ghosts story failed"
@@ -1493,7 +1494,7 @@ mission "Successors: Ghosts 16"
 	to offer
 		has "Successors: Ghosts 15: done"
 	npc kill
-		government `Solitude Enforcer`
+		government `High Houses (Unknown)`
 		personality waiting heroic target
 		ship "Valkkyiara-Khorasaqra" "Ijahti-Khora"
 		on kill
@@ -1511,6 +1512,7 @@ mission "Successors: Ghosts 16"
 		event "successors: ghosts abandoned kaatrij" 3
 	on complete
 		payment 10000000
+		log "Fought and destroyed an heirloom warship of the High Houses with the support of House Kaatrij, likely the same ship that attacked their base on Qasa-Sija-Iri."
 		conversation
 			`	Saajret runs off soon after you land, only returning a while later with Kampa as the ground crew work on repairing the <ship>'s battle damage. The two take you to one of the rooms overlooking the landing pad.`
 			`	Kampa speaks first, their skin betraying some satisfaction. "'Tis good that thou prevail'd," they say. "'Twas a fraught battle, I trust?"`

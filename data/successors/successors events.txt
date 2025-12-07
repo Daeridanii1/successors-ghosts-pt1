@@ -53,6 +53,15 @@ event "successors: ghosts keystones finished"
 
 event "successors: ghosts probes destroyed"
 
+event "successor: ghosts ijra-ea decloak"
+	system Kasii-Sola
+		add object "Ijra-Ea, Shimmering Veil"
+			sprite "planet/station predecessor 1"
+			distance 2000
+			period 5000
+
 event "successors: ghosts abandoned kaatrij"
 
 event "successors: military escalation"
+
+event "successors: ghosts intermission timer"

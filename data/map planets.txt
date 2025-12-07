@@ -3,14 +3,8 @@ planet "Exotic Metal Garden"
 	landscape land/space6
 	description `Eerily quiet, the small habitable areas of this station are dominated by the view of a tangled nest of enormous metallic ribbons that stretch away from the Kasii-Cavasaa star. Deep in the bowels of the facility, these are spooled into strings of exotic stellar metal which, despite their small size, are improbably heavy and uncomfortably cold to the touch. Having not been harvested in many hundreds of years, the spools are silent and still - apart from a single one, which slowly revolves and holds almost no material.`
 
-planet "Inti-Arat"
-	government Uninhabited
-	attributes predecessor uninhabited
-	landscape land/canyon05
-	description `A cold and lifeless rock.`
-
 planet "Ijra-Ea, Shimmering Veil"
 	attributes predecessor uninhabited
 	landscape land/station42
-	description `Desolation is the price of hubris.`
+	description `Uncomfortably vast, this ancient citadel of House Kaatrij seems to remain in a state of partial cloaking, sections of it shimmering out of view and eluding sensors at a distance.`
 	government Predecessor
