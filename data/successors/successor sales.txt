@@ -1,2 +1,8 @@
 outfitter "Harmonic Keystone"
 	"Harmonic Keystone"
+
+outfitter "Multimodal Armor (Harmonic Keystone)"
+	"Harmonic Keystone"
+	"Multimodal Armor: Light"
+	"Multimodal Armor: Heavy"
+	"Multimodal Armor: Regen"
