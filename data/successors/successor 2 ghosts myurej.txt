@@ -255,7 +255,7 @@ mission "Successors: Ghosts Myurej 4"
 				`	"Are you kidding me? I'm done with you."`
 				`	"Fine. Tell me more."`
 					goto more
-			`	Something pulses in your ears, driving a momentary prick of pain deep into your head; you realize it's the translation device, picking up on something else in the room, some other bit of language stuck in the background. It feels like it's coming from the screen itself. The voice interrupts it. "We know what thou desirith, Captain," it says. "To be a part of the events to come, thou shalt need the backing of the Houses. None comes to pass in this space without our blessing. Cry and bark as thou must, thou still requirith us."`
+			`	Something pulses in your ears, driving a momentary prick of pain deep into your head; you realize it's the translation device, picking up on something else in the room, some other bit of imperceptible sound murmuring in the background. The voice interrupts it. "We know what thou desirith, Captain," it says. "To be a part of the events to come, thou shalt need the backing of the Houses. None comes to pass in this space without our blessing. Cry and bark as thou must, thou still requirith us."`
 			choice
 				`	"Then tell me what you want, and I'll decide if it's worth my time."`
 					goto more
