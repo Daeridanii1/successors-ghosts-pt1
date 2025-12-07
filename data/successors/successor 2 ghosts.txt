@@ -374,7 +374,7 @@ mission "Successors: Ghosts 3a Sioeora"
 		not attributes uninhabited
 	to offer
 		has "successors sioeora patron"
-		has "Successors: Ghosts 1: offered"
+		has "Successors: Ghosts 2: accepted"
 	to complete
 		has "event: successors: ghosts message delay"
 	on offer
@@ -396,7 +396,7 @@ mission "Successors: Ghosts 3b Kaatrij"
 		not attributes uninhabited
 	to offer
 		has "successors kaatrij patron"
-		has "Successors: Ghosts 1: offered"
+		has "Successors: Ghosts 2: accepted"
 	to complete
 		has "event: successors: ghosts message delay"
 	on offer
@@ -458,7 +458,8 @@ mission "Successors: Ghosts 4"
 
 
 mission "Successors: Ghosts Mark Houses"
-	landing
+	entering
+	destination "Shassa-Wyra-Orrou"
 	name "Investigate the other High Houses"
 	description "House Seineq is interested in what tasks the other Houses might offer a free agent. Their homeworlds would be a good place to find work for them."
 	to offer
@@ -466,6 +467,8 @@ mission "Successors: Ghosts Mark Houses"
 	to fail
 		has "Successors: Ghosts Aqrabe 1: offered"
 		has "Successors: Ghosts Myurej 1: offered"
+	to complete
+		never
 	stopover "Kasii-Cavasaa-Oa"
 	stopover "Raaqa-Kvelq-Ryuit"
 	stopover "Khora-Vasa-Reyyaa"
@@ -519,6 +522,7 @@ mission "Successors: Ghosts 5"
 			`	Saajret bows to you gently, green and reddish tones swirling on their skin. "Captain <first> <last>," they say, "whose patience I have tested thoroughly, it would seem. Kaatrij sends me to ask of thee a boon to us."`
 
 			label questions
+			choice
 				`	"Why haven't I heard from you since the incident?"`
 					to display
 						has "successor kaatrij patron"
@@ -539,15 +543,17 @@ mission "Successors: Ghosts 5"
 			`	Saajret hums, colors continuing to swim over their body. Eventually, they speak. "In the wake of Kaatrij's wound, our suspicion of others was great and wide. And thou were't included in this, for these incidents came only soon after thy arrival. Some believe thou play'd some part in this, some do not." They pause for a moment, running their eyes over you. "'Tis the latter faction that offers thee this opportunity: some equipment here must return to the homeworld. A chance to demonstrate thy benevolence, mayhaps?"`
 
 			label offer
-			`	"All right. I assume the House is paying?"`
-				goto accepted
-			`	"I don't want to get involved in this."`
+			choice
+				`	"All right. I assume the House is paying?"`
+					goto accepted
+				`	"I don't want to get involved in this."`
 
 			`	"Very well," Saajret says. "'Tis thy own choice, after all."`
 				decline
 
 			label accepted
 			`	"Of course," Saajret says. "I will see the items are loaded forthwith."`
+				accept
 
 	on decline
 		dialog "successor ghosts story failed"
@@ -699,17 +705,16 @@ mission "Successors: Ghosts 6"
 
 
 mission "Successors: Ghosts 7a"
-	landing
+	entering
 	clearance
 	name "Detour to Osolaa-Val-Mavra"
 	description "Saajret has asked to visit <stopovers> as a personal favor, before returning home to <planet>."
-	source "Raaqa-Uur-Kaav"
 	stopover "Osolaa-Val-Mavra"
 	destination "Raaqa-Puan-Uuoru"
 	passengers 1
 	to offer
 		has "Successors: Ghosts 6: done"
-		has "Successors: Ghosts: Helped Saajret"
+		has "Successors: Ghosts Helped Saajret"
 	on stopover
 		log "Took Saajret to the Predecessor planet Osolaa-Val-Mavra. They visited an abandoned city on the surface where an ancestor of theirs once lived, retrieving from it a data-sphere and small wooden box."
 		conversation
@@ -763,16 +768,15 @@ mission "Successors: Ghosts 7a"
 
 
 mission "Successors: Ghosts 7b"
-	landing
+	entering
 	clearance
 	name "Return to <planet>"
 	description "Having declined Saajret's request for a detour, return them home to <planet>."
-	source "Raaqa-Uur-Kaav"
 	destination "Raaqa-Puan-Uuoru"
 	passengers 1
 	to offer
 		has "Successors: Ghosts 6: done"
-		not "Successors: Ghosts: Helped Saajret"
+		not "Successors: Ghosts Helped Saajret"
 	on complete
 		log "Saajret told a story about the hunting practices of the elusive self-camouflaging Kijran-Khora. These infiltrated House Kaatrij's bases long in the past. They suggested someone might do something similar."
 		payment 140000
@@ -911,6 +915,7 @@ mission "Successors: Ghosts 10"
 	destination "Qasa-Sija-Iri"
 	to offer
 		has "Successors: Ghosts 9: declined"
+		"successors: ghosts houses dealt with" >= 2
 	on offer
 		conversation
 			`As disembark from your ship, you notice a group of Successor soldiers emerging from another craft in the spaceport, a Seiitej bearing House Kaatrij's colors. They meet you outside your own vessel, their weapons held at attention.`

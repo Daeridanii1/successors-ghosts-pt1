@@ -1,7 +1,7 @@
 ship "Vujlet" "Vujlet (Stellar)"
 	outfits
 
-		`"Nnesa" Fusion Core`
+		`3-"Kaska" Betavoltaic Cell`
 		"Primary Power Reserve"
 		`"Ej" Shield Cortex`
 		"Successor Cooling" 2
@@ -23,7 +23,7 @@ ship "Vujlet" "Vujlet (Stellar)"
 ship "Vujlet" "Vujlet (Stellar Light Armor)"
 	outfits
 
-		`"Nnesa" Fusion Core`
+		`3-"Kaska" Betavoltaic Cell`
 		"Primary Power Reserve"
 		`"Ej" Shield Cortex`
 		"Successor Cooling" 2

@@ -78,10 +78,11 @@ conversation "successor keystone delivery"
 	`	They slither forward towards you and splay their arms in the traditional gesture. "Tilra," they offer as an introduction. "I was told to expect thine arrival. Thou'st brought," and they pause to pronounce the word, "keystones, yes?"`
 	`	"I have," you say. "Fifty tons, as was requested." Tilra joins you in walking back to the <ship> to examine the cargo; when they're sufficiently satisfied that you've brought the proper amount, they pull out a data-pad and enter a couple of values. Though their eyes widen when you provide them with your receipts, they nonetheless confirm a few moments later that House Aqrabe has credited you to offset the purchase price of the keystones, plus a three hundred thousand-credit bonus.`
 	`	As they begin directing ground crews to offload the keystones, Tilra turns to you for a moment and requests that you meet them back at the spaceport by the end of the day: "thine assistance might be a boon to us in the next part of this journey," they say.`
+		decline
 
 mission "Successors: Ghosts Aqrabe Remnant"
 	landing
-	destination "Kasii-Cavasaa-Oa"
+	source "Kasii-Cavasaa-Oa"
 	to fail
 		has "Successors: Ghosts Aqrabe Hai: done"
 	to offer
@@ -93,7 +94,7 @@ mission "Successors: Ghosts Aqrabe Remnant"
 
 mission "Successors: Ghosts Aqrabe Hai"
 	landing
-	destination "Kasii-Cavasaa-Oa"
+	source "Kasii-Cavasaa-Oa"
 	to fail
 		has "Successors: Ghosts Aqrabe Remnant: done"
 	to offer
@@ -112,7 +113,9 @@ mission "Successors: Ghosts Aqrabe 2"
 	destination "Kasii-Cavasaa-Oa"
 	passengers 1
 	to offer
-		has "Successors: Ghosts Aqrabe 1: done"
+		or
+			has "Successors: Ghosts Aqrabe Remnant: declined"
+			has "Successors: Ghosts Aqrabe Hai: declined"
 	on offer
 		log "People" "Tilra" "Tilra is an engineer belonging to the Successor House Aqrabe."
 		conversation
