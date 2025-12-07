@@ -16,20 +16,23 @@ event "successors: ghosts initial timer"
 event "successors: ghosts incident"
 	set "successors: ghosts stage 0"
 	planet "Qasa-Sija-Iri"
+		government "House Kaatrij"
 		description `Until recently, this moon was an utterly unremarkable uninhabited world within House Kaatrij's sphere of influence. However, near the south pole, the exposed guts of a strange facility now twinkle and shimmer half-enveloped in the moon's sands. A large military presence by House Kaatrij repels any closer inspection, but regardless, it seems that Qasa-Sija-Iri is not quite as uninhabited as it immediately appeared.`
+			to display
+				not "successors kaatrij vassal"
 
 event "successors: ghosts restrict"
 	planet "Qasa-Sija-Iri"
 		government "House Kaatrij"
-		"required reputation" 999
+		"required reputation" 2
 
 event "successors: ghosts stage 1"
 	set "successors: ghosts stage 1"
 
 event "successors: ghosts unrestrict"
 	planet "Qasa-Sija-Iri"
-		"required reputation" 2
-		add spaceport `Kaatrij's hidden base`
+		description `Beneath the colorless sandy surface of Qasa-Sija-Iri, House Kaatrij and their Quarg patrons have built a variety of advanced bases. The one near the south pole, now recovered from its earlier attack, is the moon's primary spaceport.`
+		spaceport `The subterranean spaceport here is small but clearly well-maintained. The landing pads travel on elevators to deep below the surface - the House Kaatrij ones, at least, because Successor vessels are the only craft visible here. If the Quarg have their own craft in residence, they must be landing in a different section of the facility, or at a different base altogether.`
 		add outfitter `Successor Basics`
 
 event "successors: ghosts message delay"
