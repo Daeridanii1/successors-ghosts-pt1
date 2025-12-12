@@ -9,6 +9,7 @@ government "Solitude Enforcer"
 	"fine" 0
 
 government "High Houses (Unknown)"
+	"display name" "Unknown"
 	swizzle 0
 	color 0 .8 0
 	language "Successor"

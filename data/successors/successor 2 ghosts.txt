@@ -511,7 +511,7 @@ mission "Successors: Ghosts 5"
 	on offer
 		conversation
 			branch kaatrij
-				has "successor kaatrij patron"
+				has "successors kaatrij patron"
 			
 			`Waiting in the spaceport here as you arrive are a trio of Successors; two guards and one other individual who wears a black, cocoon-like outfit with lots of pockets. Both of the guards bear the insignia of House Kaatrij.`
 			`	The black-draped individual bows gently to you as green sparkles dot their skin. "Captain <first> <last>?" they say. When you indicate affirmatively, they continue. "I am Saajret, of Somber Sejra, an envoy of the noble scions of House Kaatrij. Kaatrij hopes that thou might'st do us a boon."`
@@ -525,7 +525,7 @@ mission "Successors: Ghosts 5"
 			choice
 				`	"Why haven't I heard from you since the incident?"`
 					to display
-						has "successor kaatrij patron"
+						has "successors kaatrij patron"
 					goto silence
 				`	"What sort of 'boon?'"`
 					goto boon
@@ -566,7 +566,7 @@ mission "Successors: Ghosts 5"
 		conversation
 			branch "visited before"
 				or
-					has "successor kaatrij patron"
+					has "successors kaatrij patron"
 					has "visited planet: Raaqa-Puan-Uuoru"
 
 			`You've heard <planet> described by outsiders as an insular and well-guarded world, but neither of those prepared you for how strikingly quiet it is. The rainy spaceport seems almost deserted, the loudest sound almost always the pattering of heavy drops on the sail-like projections overhead, only occasionally interrupted by a soft-spoken announcement about an incoming ship landing or departure. None of the Successors you transported give any indication about whether this is typical or just a result of Kaatrij's recent incidents.`
@@ -596,7 +596,7 @@ mission "Successors: Ghosts 6"
 				`	"Yes."`
 				`	"It was hard to forget."`
 			branch kaatrij
-				has "successor kaatrij patron"
+				has "successors kaatrij patron"
 			
 			action
 				log "People" "Saajret, of Somber Sejra" "Saajret, of Somber Sejra is an archivist, among other things, for the Successor High House Kaatrij. They are a member of the noble lineage of the now-defunct House Sejra, some of whose citizens were absorbed into House Kaatrij during the partial collapse of their Predecessors' society."
@@ -635,7 +635,7 @@ mission "Successors: Ghosts 6"
 			
 			label suspicious
 			branch "kaatrij kijran"
-				has "successor kaatrij patron"
+				has "successors kaatrij patron"
 
 			`	Saajret laughs, a quiet ruk-ruk sound that doesn't seem very mirthful. "Perhaps not," they say. "These creatures are important to the House nonetheless. They were important enough to House Sioeora to pay thee to steal, were they not?" They pause, continuing more quietly. "In their own way they are valuable to Kaatrij," they finally add. "What say'st thou to the House's offer?"`
 				goto "final choice"
@@ -956,11 +956,11 @@ mission "Successors: Ghosts 10"
 					goto blackmail
 				`	"The people deserve to know about this."`
 			
-			`	"Perhaps they shall one day, but neither thee nor I should decide that now. 'Tis a time far too fraught to bring such a thing to light. No," they say, one of their arms moving toward you, "but Kaatrij would be willing to offer thee an alternative: a formal relation with the House, that thou might be brought into our circle of knowledge and and receive our boons. And, of course, be subject to our directives."`
+			`	"Perhaps they shall one day, but neither thee nor I should decide that now. 'Tis a time far too fraught to bring such a thing to light. No," they say, one of their arms moving toward you, "but Kaatrij would be willing to offer thee an alternative: a formal relation with the House, that thou might be brought into our circle of knowledge and and receive our boons. And, of course, be subject to our directives, including those of silence."`
 			choice
 				`	"And what would House Sioeora think of this?"`
 					to display
-						has "successor sioeora patron"
+						has "successors sioeora patron"
 					goto sioeora
 				`	"What would that entail, exactly?"`
 					goto details
@@ -970,11 +970,11 @@ mission "Successors: Ghosts 10"
 					goto no
 
 			label blackmail
-			`	"Thou should'st be careful with such propositions, Captain," they say. Their skin remains a murky, ashen blue. "Kaatrij would be willing to offer thee an alternative, however: a formal relation with the House, that thou might be brought into our circle of knowledge and receive our boons. Of course, thou woulds't also be subject to our directives. Would'st that be sufficient reward for thine efforts?"`
+			`	"Thou should'st be careful with such propositions, Captain," they say. Their skin remains a murky, ashen blue. "Kaatrij would be willing to offer thee an alternative, however: a formal relation with the House, that thou might be brought into our circle of knowledge and receive our boons. Of course, thou woulds't also be subject to our directives, including those of silence. Would'st that be sufficient reward for thine efforts?"`
 			choice
 				`	"And what would House Sioeora think of this?"`
 					to display
-						has "successor sioeora patron"
+						has "successors sioeora patron"
 					goto sioeora
 				`	"And what would that entail, exactly?"`
 					goto details
@@ -986,11 +986,11 @@ mission "Successors: Ghosts 10"
 			label discreet
 			action
 				set "Successors: Ghosts: discreet"
-			`	"Good, Captain," they say. "Discretion suits thee well. There still remains the matter of thy future in our space, however. Kaatrij is willing to make thee an offer: a formal relation with our House, that thou might be brought into our circle of knoweldge and receive our boons. And in turn, thou would'st also be subject to our directives. An arrangement, Kaatrij believes, of mutual benefit."`
+			`	"Most discreet, Captain," they say. "But forgive me for not taking thy word alone. To that, Kaatrij is willing to make thee an offer: a formal relation with our House, that thou might be brought into our circle of knoweldge and receive our boons. And in turn, thou would'st also be subject to our directives, including those of silence. An arrangement, Kaatrij believes, of mutual benefit."`
 			choice
 				`	"And what would House Sioeora think of this?"`
 					to display
-						has "successor sioeora patron"
+						has "successors sioeora patron"
 					goto sioeora
 				`	"And what would that entail, exactly?"`
 					goto details
@@ -1018,7 +1018,7 @@ mission "Successors: Ghosts 10"
 			label yes
 			action
 				set "successors kaatrij vassal"
-				event "successors ghosts unrestrict"
+				event "successors: ghosts unrestrict"
 				"reputation: House Kaatrij" >?= 2
 			`	"Excellent," the Successor says. "I would have thee come with us, then, to the moon where this all began, our base on <planet>. There, some of thy no-doubt-pressing questions shall be answered."`
 				accept
@@ -1084,9 +1084,10 @@ mission "Successors: Ghosts 10"
 				`	(Stay silent.)`
 					goto end
 			
+			`	"Very well," Kampa says. "Thou may'st query as thou please."`
 			label questions
 			choice
-				`	"What happens next?"`
+				`	"That's all."`
 					to display
 						has "Successors: attack"
 						has "Successors: drone"
@@ -1168,7 +1169,7 @@ mission "Successors: Ghosts 11"
 		has "Successors: Ghosts 10: done"
 	on offer
 		conversation
-			`	Saajret meets you in a room overlooking your ship, once again dressed in their black pocket-laden outfit. They bow as you approach.`
+			`Saajret meets you in a room overlooking your ship, once again dressed in their black pocket-laden outfit. They bow as you approach.`
 			choice
 				`	"What's our task?"`
 					goto task
@@ -1196,7 +1197,7 @@ mission "Successors: Ghosts 11"
 						not "Successors: uncannier"
 					goto uncannier
 				`	"All right, I'm ready to go."`
-					goto next
+					accept
 
 			label uncannier
 			action
@@ -1209,12 +1210,6 @@ mission "Successors: Ghosts 11"
 				set "Successors: you"
 			`	Saajret hums. "Kaatrij does not wish that thee undertakes thy first formal mission as vassal without someone to watch over thee. And for myself particularly," they say, looking out at your ship below them, "I have spoken to thee the most, and my role as archivist of the Predecessors makes me knowledgeable of the things we may find in the blighted worlds of the Shroud."`
 				goto questions
-
-			label next
-				accept
-			action
-				clear "Successors: you"
-				clear "Successors: uncannier"
 			
 	on enter "Khasola-Ryuit"
 		dialog `Though it takes several seconds for your ship's targeting scanners to pinpoint the scanning probe you deployed earlier, they eventually find it. A single shot is all it takes to destroy it.`
@@ -1228,6 +1223,8 @@ mission "Successors: Ghosts 11"
 	on waypoint
 		dialog `With this system cleared, you've destroyed all the sensor probes except the one in Kasii-Sola.`
 		event "successors: ghosts ijra-ea decloak"
+		clear "Successors: you"
+		clear "Successors: uncannier"
 	
 	on fail
 		dialog phrase "successor ghosts story failed"
@@ -1241,7 +1238,7 @@ mission "Successors: Ghosts 12"
 	waypoint "Kasii-Sola"
 	destination "Qasa-Sija-Iri"
 	to offer
-		has "Successors: Ghosts 11: done"
+		has "event: successors: ghosts ijra-ea decloak"
 	on enter "Kasii-Sola"
 		conversation
 			`As you enter the system, your ship's sensors remark on an object that wasn't here the last time: a space station has appeared in close solar orbit. Every few seconds your lock on the station breaks before it is quickly reacquired.`
@@ -1283,7 +1280,6 @@ mission "Successors: Saajret Remarks"
 
 
 mission "Successors: Ghosts 13"
-	landing
 	name "Investigate mysterious station"
 	source "Qasa-Sija-Iri"
 	destination "Ijra-Ea, Shimmering Veil"
@@ -1340,7 +1336,8 @@ mission "Successors: Ghosts 13"
 	on complete
 		conversation
 			`As you approach a central docking port on the citadel, alarms momentarily ring throughout the <ship>'s bridge as numerous weapon locks are detected. A moment later they cease and Saajret radios you from their own craft that it is safe to land, the shape of the Vujlet disappearing into the station's wide mouth.`
-			`	The inside is truly cavernous; the circular vault of the station's core forms an artificial sky, the landing pad for your ship a stamp-sized rectangle on its perimeter. Saajret exits from their landed ship and meets you with a pair of Kaatrij soldiers; you recognize one as having accompanied Saajret before when they interrogated you. "I've added us as allies in the station's security rolls," says Saajret. "It should permit us access below." They check a data-pad that they produce from one of their pockets, looking from the shifting metallic screen to the layout of the docking bay. Eventually, they point to one of several circular apertures on the floor. As you approach, a large elevator pod emerges from it and its doors open expectantly.`
+			`	The inside is truly cavernous; the circular vault of the station's core forms an artificial sky, the landing pad for your ship a stamp-sized rectangle on its perimeter. Saajret exits from their landed ship and meets you with a pair of Kaatrij soldiers; you recognize one as having accompanied Kampa before when they interrogated you.`
+			`	"I've added us as allies in the station's security rolls," says Saajret. "It should permit us access below." They check a data-pad that they produce from one of their pockets, looking from the shifting metallic screen to the layout of the docking bay. Eventually, they point to one of several circular apertures on the floor. As you approach, a large elevator pod emerges from it and its doors open expectantly.`
 			choice
 				`	"What's with the Myiara and these massive constructions?"`
 				`	"How far down are we going?"`
@@ -1612,7 +1609,7 @@ mission "Successors: Ghosts 17"
 			`	They step back to the rim of the pool and three others take to the pool's center: Myurej, Aqrabe, and Seineq. Each one speaks in turn, variations on a phrase: "In appreciation with the captain's service to our House, we provide our assent to and recognition of this offer."`
 			`	Chydiyi's representative stays on the edge of the pool, abstaining from the discussion, but Sioeora's takes the center, glaring at you.`
 			branch "kaatrij patron"
-				has "successor kaatrij patron"
+				has "successors kaatrij patron"
 
 			`	"Despite Sioeora's generosity and patronage to the captain," Riijaaora says, "this alien sees fit to vassalize another House. We shall not recognize this relationship, nor open our outfitters to them."`
 				goto license

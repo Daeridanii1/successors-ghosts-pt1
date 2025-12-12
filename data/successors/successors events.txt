@@ -53,7 +53,7 @@ event "successors: ghosts keystones finished"
 
 event "successors: ghosts probes destroyed"
 
-event "successor: ghosts ijra-ea decloak"
+event "successors: ghosts ijra-ea decloak"
 	system Kasii-Sola
 		add object "Ijra-Ea, Shimmering Veil"
 			sprite "planet/station predecessor 1"
