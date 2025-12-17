@@ -230,7 +230,7 @@ outfit `"Iasa," Lethal Word`
 		sprite "projectile/iasa"
 			"frame time" 3
 			"no repeat"
-		#sound "bimodal"
+		sound "bimodal"
 		"hit effect" "bimodal impact"
 		"fire effect" "iasa fire"
 		"inaccuracy" 3
@@ -244,7 +244,7 @@ outfit `"Iasa," Lethal Word`
 		"hit force" 18
 		"piercing" 0.33
 		"firing shields" 11
-	description `Resja's chosen implement of death, Iasa was a drone ship's perfect coilgun, a fearsome, hungry weapon without respect for the shields of either friends or foes. It remains remarkaly efficient, even after fifteen hundred years of waiting.`
+	description `Resja's chosen implement of death, Iasa was a drone ship's perfect coilgun, a fearsome, hungry weapon without respect for the shields of either friends or foes. It remains remarkably efficient, even after fifteen hundred years of waiting.`
 
 effect "iasa fire"
 	sprite "effect/emp torpedo fire"
@@ -318,9 +318,10 @@ outfit `"Torji," Lethal Sight`
 	"gun ports" -1
 	weapon
 		sprite "projectile/sjeja kinetic lance"
-		#sound "bimodal"
-		#"hit effect" "bimodal impact"
-		#"fire effect" "lethal word haze"
+		sound "sjeja lance"
+		"fire effect" "moonbeam fleck" 2
+		"hit effect" "dragonflame debris"
+		"hit effect" "dragonflame plasma"
 		"inaccuracy" 3
 		"velocity" 40
 		"lifetime" 45
@@ -333,7 +334,7 @@ outfit `"Torji," Lethal Sight`
 		"hull damage" 355
 		"slowing damage" 1.4
 		"hit force" 200
-	description `Like a cold and ravenous beast, the frightful Kis tears through the defenses of anything that dares stride close enough to its jaws. At long range this weapon loses its high shield penetration but continues to output respectable damage, encouraging retreat while continuing to harry foes.`
+	description `Resja designed a complex loading system to enable this weapon to fire as quickly as it does. The drone ship Queru was built around it, a paired ship and weapon to surpass at range all prior designs of the Myiara.`
 
 
 outfit `Crimson Halo`
@@ -446,7 +447,7 @@ ship "Valkkyiara-Khorasaqra"
 		"engine capacity" 120
 		"spinal mount" 1
 		"ramscoop" 6
-		"multimodal armor" 2
+		"multimodal armor" 1
 		weapon
 			"blast radius" 100
 			"shield damage" 1000
@@ -460,15 +461,12 @@ ship "Valkkyiara-Khorasaqra"
 		`"Jiita" Heirloom Shielding`
 		"Successor Cooling" 3
 		`"Sarija" Heirloom Coilgun` 6
-		#"Heirloom Point Defense" 2
 		`"Tijra" Heirloom Lance`
-		`High-Velocity Spike Rack`
-		"High-Velocity Spike" 46
-		"Multimodal Armor: Heavy"
+		"High-Velocity Spike" 30
 		"Multimodal Armor: Keystone"
 
 		"Point Drive"
-		#"Stolen Cloak"
+		"Stolen Cloak (Deactivated)"
 	engine -5 69
 	engine 5 69
 	gun -31 -22
@@ -478,8 +476,8 @@ ship "Valkkyiara-Khorasaqra"
 	gun 27 -28
 	gun 21 -36
 	gun 0 -110 `"Tijra" Heirloom Lance`
-	turret 0 36 "Heirloom Point Defense"
-	turret 0 -26 "Heirloom Point Defense"
+	turret 0 36
+	turret 0 -26
 	"steering engine" -10 -65 
 		zoom .5
 		angle 90
@@ -511,7 +509,8 @@ ship "Valkkyiara-Khorasaqra"
 	explode "medium explosion" 24
 	explode "large explosion" 8
 	"final explode" "final explosion medium"
-	description "During the collapse of their Predecessors' empire, the High Houses stored away as much of their wealth and property as they could manage, including their private fleets of warships, which were ultimately passed down for over a thousand years as priceless family heirlooms. Despite being far more powerful than anything else in Successor space, these vessels almost never leave the ground, since the High Houses have no desire to risk these priceless and irreplacable ships that are so deeply intertwined with their family history."
+	description "During the collapse of their Predecessors' empire, the High Houses of the Myiara stored away as much of their wealth and property as they could manage. Included in this were their private fleets of warships, by now passed down for over a thousand years as priceless family heirlooms. Despite being far more powerful than anything else in Successor space, these vessels almost never leave the ground, since the High Houses have no desire to risk these irreplacable ships that are so deeply intertwined with their family history."
+	description `	By the time of the collapse, the Valkkyiara-Khorasaqra was already a time-proven design; a clean and elegant expression of Myiaran martial artistry. Clad in dense mirrored armor, these mostly saw action in conflicts between the Houses, using their high speed and long-ranged weapons to menace colonies and outmaneuver more lumbering warships.`
 
 # Heirloom outfits
 
@@ -572,10 +571,7 @@ outfit `"Tijra" Heirloom Lance`
 		sound "sjeja lance"
 		ammo "High-Velocity Spike"
 		icon "icon/hv spike"
-		#"fire effect" "bright hit"
 		"fire effect" "moonbeam fleck" 5
-		#"live effect" "ionball ring" 4
-		#"hit effect" "bright hit"
 		"hit effect" "dragonflame debris" 4
 		"hit effect" "dragonflame plasma" 4
 		"inaccuracy" .3
@@ -593,28 +589,6 @@ outfit `"Tijra" Heirloom Lance`
 		"ion damage" 20
 		"penetration count" 5
 	description "Among the largest and most powerful of the Predecessors' weapons, this massive coilgun propels its magnetic projectiles to a sizable fraction of the speed of light, delivering enough kinetic energy on impact to destroy a small city or alternatively, a large warship."
-
-outfit "Heirloom Point Defense"
-	category "Turrets"
-	cost 12500000
-	thumbnail "outfit/unknown"
-	"mass" 15
-	"outfit space" -15
-	"weapon capacity" -15
-	"turret mounts" -1
-	weapon
-		"hardpoint sprite" "hardpoint/point defense"
-		"hardpoint offset" 5.
-		"hit effect" "burst anti-missile"
-		"anti-missile" 25
-		"velocity" 200
-		"lifetime" 1
-		"burst count" 10
-		"burst reload" 2
-		"reload" 20
-		"firing energy" 10
-		"firing heat" 32
-	description "The Predecessors did not use missile weapons, but the foes they faced did, and so they spent a great deal of time developing highly efficient point defense systems."
 
 outfit `"Ija" Heirloom Reactor`
 	category "Power"
@@ -640,7 +614,7 @@ outfit "Heirloom Power Reserve"
 	"outfit space" -26
 	"energy capacity" 26000
 	"hull energy" -1
-	description "A compact Predecessor battery."
+	description "This Predecessor battery stores energy in the almost innumerable voids of a stellar metal foam, a technology now unfortunately lost to time."
 
 outfit `"Jiita" Heirloom Shielding`
 	category "Systems"
@@ -659,7 +633,7 @@ outfit `"Jiita" Heirloom Shielding`
 outfit "Point Drive"
 	category "Systems"
 	series "Drives"
-	index 60
+	index 31
 	cost 1000000
 	thumbnail "outfit/unknown"
 	"mass" 20
@@ -676,11 +650,7 @@ outfit "Point Drive"
 	"jump effect" "jump drive 2"
 	"jump effect" "jump drive 3"
 	"jump effect" "jump drive 4"
-	#"jump effect" "jump drive 5"
-	#"jump effect" "jump drive 6"
-	#"jump effect" "jump drive 7"
-	#"jump effect" "jump drive 8"
-	description "The apex of the Myiaran Predecessors' achievement and the cause of their downfall, the few of these left in existence were smuggled in parts through the Successors' wormhole to evade the watchful eyes of the Quarg. These efficient drives scythe their way through the fabric of space in a deep and permanent way - to the Quarg, using one of these is an atrocity equal only in magnitude to the eradication of a species."
+	description `"There was a terrible emptiness inside," Resja said of the device, "like a black spot in one's vision that grew larger with every blink, that spread moment by moment until the world went away. The first time I truly understood one, I felt that absence within grow to envelop me. And long after I have died, long after the name of the Myiara fades to a future era, that pang-ridden emptiness will remain."`
 
 effect "point drive void small"
 	sprite "effect/void spark"
@@ -720,7 +690,7 @@ effect "point drive lightning"
 	"random lifetime" 25
 	"random angle" 360
 
-outfit "Stolen Cloak"
+outfit "Stolen Cloak (Deactivated)"
 	category "Unique"
 	series "Functional Unique"
 	index 11
@@ -728,9 +698,9 @@ outfit "Stolen Cloak"
 	cost 1200000
 	"mass" 15
 	"outfit space" -15
-	"cloak" .05
+	#"cloak" .05
 	"cloaking fuel" 0.04
 	"cloaking shields" 3.2
 	"unique" 1
 	"unplunderable" 1
-	description "An ancient cloaking device stolen from House Kaatrij."
+	description "An ancient cloaking device stolen from House Kaatrij. It has been temporarily deactivated by a detector device."
