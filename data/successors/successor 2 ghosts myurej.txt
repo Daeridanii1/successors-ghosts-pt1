@@ -52,6 +52,7 @@ mission "Successors: Ghosts Myurej 1"
 			label yes
 			action
 				log "People" "Riiria" "One of the most influential members of the People's Houses of the Successors. They personally control a substantial portion of Kasii-Tuur-Saqru via a mix of charismatic leadership and brute strength. Suspected of hijacking a transport of gifts for the upcoming wedding between scions of Houses Myurej and Chydiyi."
+				log "Accepted an offer by House Myurej to track down and recover a shipment of wedding gifts stolen by a member of the People's Houses."
 			`	The shimmering wave seems like it's losing energy now, growing slower and fainter with each cycle back and forth. "Excellent," says the voice. "The quarry thou should'st seek on Kasii-Tuur-Saqru is by name Riiria, a well-known thief and useful fool. Should'st thy own powers of searching fail thee, we've a friend of the House there too, a sharp-eyed merchant captain eager to get involved in things they think to be rewarding. Our agents here shall see thou recieves their details at thy ship." You hear the rustling of fabric and the faint wet slithering of a Successor moving. The guards behind you relax and, as you turn to look at them, they gesture towards the door. Before you leave, the voice speaks one last time. "Do not fail us, captain."`
 			`	You are escorted back to the edge of the residential area by the guards, who leave you to find your own way back to your ship. As the ground crew finish up their refueling and maintenance of the <ship>, one of them hands you a data-sphere containing information about Riiria and House Myurej's contact on Kasii-Tuur-Saqru.`
 				accept
@@ -217,6 +218,8 @@ mission "Successors: Ghosts Myurej 4"
 		system "Osolaa-Uuoru"
 		ship "Ejniisde-Khora (Bombed)" "Riiria-i-Nnesan"
 		conversation
+			action
+				log "Boarded Riiria's vessel, before being forced back by explosions from within that destroyed both Riiria's ship and the wedding gifts it presumably carried."
 			`You bring your ship alongside Riiria's disabled vessel, careful to line up one of your airlocks with the ship's cargo hatch. As you walk through your vessel's interior to prepare to start cutting through the hatch, however, your ship is rocked by an explosion that seems like it comes from the airlock. Seconds later, another one goes off, and then another. Racing back to your ship's bridge, you detatch from the detonating vessel just as another explosion rips through its cargo bay, no doubt destroying the precious cargo you've gone to so much effort to track down.`
 				launch
 ### Need better way to prompt return to Myurej
@@ -279,6 +282,8 @@ mission "Successors: Ghosts Myurej 4"
 			`	"Thou'rt not a tool to be thrown away, Captain, but to be cultivated, polished to a gleam. We would not send thee to thy death - how benefits the House in that? Return to the spaceport here when thou'rt ready to begin thy task."`
 				goto end
 			label yes
+			action
+				log "Accepted an offer to take on an additional mission for House Myurej to retrieve Predecessor artifacts."
 			`	"We shall," says the voice, "we always do. Return to the spaceport when thou'rt ready to begin."`
 				goto end
 			label no
@@ -402,6 +407,7 @@ mission "Successors: Ghosts Myurej 6"
 		dialog `Ijaset instructs you to land on the uninhabited world here to hand over the Predecessor artifacts.`
 	on complete
 		payment 400000
+		log "Handed off the jewelry House Myurej wanted after being chased out of Predecessor space by a pair of long-ranged warships."
 		conversation
 			`The <ship> comes to rest on the gentle hills of <planet> next to an unassuming-looking Myaede freighter. Though the air here is too rarefied for you to breathe, Ijaset and the two Successor soldiers seem to handle it well enough, transferring their haul of little boxes over to the freighter. As you watch from your ship, you think you recognize the captain of the freighter as the same merchant captain you spoke to back on Kasii-Tuur-Saqru. The two soldiers board the freighter, while Ijaset returns to your ship to speak with you.`
 			`	"Well done, <last>," they say. "Thou kept thy calm very well."`
@@ -465,6 +471,7 @@ mission "Successors: Ghosts Myurej 8"
 	on complete
 		"successors: ghosts houses dealt with" ++
 		set "successors: ghosts dealt with myurej"
+		log "Spoke with Khiajsore, a scion of House Myurej, at an underwater venue where inter-House wedding is set to occur."
 		conversation
 			`The <ship> settles down in one of the metal bubbles of the <planet> spaceport and before long, as the ground crew is unloading your ship's cargo, a pair of House Myurej's soldiers comes to lead you through the facility. They take you to an elevator outside of the spaceport's public area; you step in, and a few seconds after it begins moving, it clears the bulk of the spaceport complex and shows you a fantastic view of the planet's ocean as it descends deeper into the water. Unfortunately you're on the wrong side of the planet to see the "Ribbons of Iret," but even the relatively dark sea is impressive in its scale and in the vastness of the underwater infrastructure the Successors have built within it.`
 			`	Eventually the elevator nestles into a complex on the seafloor, and the two guards guide you through a number of transparent halls to a large central area. Fish swim above you, schooling behind a circular oculus. Another Successor approaches from one of the side corridors, and it is immediately apparent that this is one of Myurej's scions - they are draped in enough red gold and jewels that it's a wonder they can hold their body upright. When they speak, it's not the voice you heard behind the waving screen before, but one that's smoother and more inquisitive.`
