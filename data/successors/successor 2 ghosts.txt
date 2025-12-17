@@ -731,17 +731,11 @@ mission "Successors: Ghosts 7a"
 				`	"And where is 'here?'"`
 				`	"It's a pretty spot."`
 				`	(Stay silent.)`
-			`	"An ancestor of mine lived here briefly," they say. "Sejra Asata Saajret - "`
-			choice
-				`	"Wait, they had your name?"`
-				`	(Let Saajret continue.)`
-					goto continue
-			`	Saajret looks at you. "Dids't thou not know?" they say. "Our third names we choose upon adulthood for ourselves - in honor of our goals in life, what we find most meaningful, or for some, as I, from the names of honored ancestors. This Saajret was a person of import in the last days of House Sejra; but when they lived here, that was still to come."`
-				goto house
-			label continue
-			`	" - one of import in the last days of House Sejra. But when they lived here, all that was still to come."`
-				goto house
-			label house
+					goto building
+			
+			`	"An ancestor of mine lived here briefly," they say. "One of import in the last days of House Sejra. But when they lived here, all that was still to come."`
+
+			label building
 			`	Saajret walks inside the largest building, entering a code onto a spherical terminal beside the door. You move to go after them, but they hold out an arm to stop you. "This last part, I would prefer to go alone," they say. They point to a high bench outside.`
 			`	They stay inside for about half an hour; you watch the snow fall on the square and the terraces. When Saajret returns, they are carrying a data-sphere and a small wooden box that they carry cradled in one of their arms. There's a color on their face you can't quite place.`
 			choice
@@ -1300,8 +1294,12 @@ mission "Successors: Ghosts 13"
 			label "questions 1"
 			choice
 				`	"'Security?' Not sure I like the sound of that."`
+					to display
+						not "Successors: security"
 					goto security
 				`	"How could it have been revealed in the first place?"`
+					to display
+						not "Successors: revealed"
 					goto revealed
 				`	"What's the second task?"`
 					goto second
@@ -1366,13 +1364,14 @@ mission "Successors: Ghosts 13"
 			choice
 				`	(Rip off the translation device.)`
 				`	(Try to block out the sounds.)`
-			`	As soon as you move, something punches against your inner ear and you crumple to the ground. The seething voice continues, "Thou cometh again and again to raid and pillage, again and again to prod what should for all time be left in peace!" Saajret is standing over you speaking, but you can't make out their words. "First Kaatrij's little beasts, then on stars and the homeworld, and now thou cometh again with thy gleaming herald, a dread heirloom!"`
+			`	As soon as you move, something punches against your inner ear and you crumple to the ground. The screaming voice stops, and another one takes its place, less pointed but no less painful. "We recognize thy kind," it says. "And the other with thee, too. Saajret?" As their name is spoken, Saajret stands over you, their words unintelligible. The voice shifts again. "Deceiver!" it screams. "Thou who hast plundered beast and bone from where they should'st forever lie!"`
 			choice
 				`	"I'm trying to stop the thieves!"`
 				`	"How are you in my head!?"`
-			`	The rage of the artificial voice chills. "Insignificant," it says. "Thou has now passed the threshold for destruction." Something else is now interleaving with the words, something sharp and painful. You cry out in pain, and then suddenly it all stops. The pressure fades away from your head and the world resounds with silence. Saajret looks down at you, the translation device plucked from you and held in their arm. They help you to your feet and return it to you; you store it in a pocket, deactivated.`
-			`	Saajret confers with their guards for a moment, unintelligibly. "Tilruu-nne nuj. Veusa." One of them interacts with the elevator controls and the carriage starts to move upwards again.` # We need to go up now. Quickly. 
-			`	They continue talking with their guards as the elevator travels back up. The com system shrieks again to no avail. Saajret comes to speak to you, gently poking your chest with the tip of one of their arms; they say something that sounds a bit like your name. Suddenly the elevator is shaken by an impact from outside and soon after, dozens more. It finally deposits you back in the landing bay as you see the shape of a ship in the distance firing on the station. You dash back to your own ship and prepare to flee or fight.`
+				`	"What about Saajret?"`
+			`	The rage of the artificial voice chills. "Insignificant," it shouts, and as something else begins to interleave with the sound, something sharp and painful, there comes a quiet final phrase: "I missed thee," the voice says. "I missed thee."`
+			`	And all of a sudden it stops; the pain, the voice. The pressure fades away from your head and Saajret looks down at you, the translation device plucked from your body and held in their arm. They help you to your feet and return it to you; you store it in a pocket, deactivated.`
+			`	Saajret confers with their guards for a moment, their words a mess of unintelligible sound. One of them interacts with the elevator controls and the carriage starts to move upwards again, the station's com system shrieking to no avail. Saajret comes to speak to you, gently poking your chest with the tip of one of their arms; they say something that sounds a bit like your name. Suddenly the elevator is shaken by an impact from outside and soon after, dozens more. The four of you are deposited back in the landing bay just as you catch a glimpse of a ship in the distance firing on the station. You dash back to your own craft and prepare to flee or fight.`
 				launch
 
 	on fail
@@ -1686,6 +1685,7 @@ mission "Successors: Ghosts Black Box"
 		attributes "successor"
 	to offer
 		has "Successors: Ghosts 17: done"
+		has "Successors: Ghosts Resja transmission"
 	on offer
 		conversation
 			`The license you have received from House Kaatrij includes some cryptographic information that you might be able to use to decode the transmission you received from the drone ship. Would you like to do so?`
