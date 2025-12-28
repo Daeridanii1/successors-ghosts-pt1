@@ -21,7 +21,7 @@ mission "Successors: Ghosts Prelude Timer"
 	to offer
 		has "trusted by the successors"
 	on offer
-		event "successors: ghosts initial timer" 20
+		event "successors: ghosts initial timer" 10
 		fail
 
 mission "Successors: Ghosts Prelude Wedding"
@@ -235,11 +235,12 @@ mission "Successors: Ghosts 1"
 	source
 		attributes "successor"
 		not attributes "uninhabited"
+		not planet "Shassa-Wyra-Orrou"
 	destination "Shassa-Wyra-Orrou"
 	description "House Seineq would like to meet you at <destination>."
 	to offer
 		has "Successors: Ghosts Prelude Incident: offered"
-		random < 20
+		random < 50
 	on offer
 		conversation
 			`Soon after you exit your ship on this planet, you are discreetly pulled aside by a trio of Successor military officers. Their leader gives you a gentle bow. "Honored captain," they say, "We've come to inform thee that the noble House Seineq requests thy presence for the purposes of lending aid to their ally, the wounded House Kaatrij."`
