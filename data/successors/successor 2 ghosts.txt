@@ -257,6 +257,7 @@ mission "Successors: Ghosts 1"
 				accept
 			label where
 			`	The lead officer hands you a Successor data-sphere from a pocket in their uniform; it splashes open as soon as you touch it to highlight the <system> system. "More details shall be provided t'thee upon thine arrival," the officer says, before splaying their arms in a polite goodbye.`
+				accept
 
 mission "Successors: Ghosts 2"
 	landing
