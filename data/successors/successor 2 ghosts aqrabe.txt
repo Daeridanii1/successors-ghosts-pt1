@@ -1,7 +1,7 @@
 mission "Successors: Ghosts Aqrabe 1"
 	landing
 	name "Keystone delivery"
-	description "House Aqrabe wants 50 tons of quantum keystones at <destination>."
+	description "House Aqrabe wants 50 quantum keystones at <destination>."
 	source "Kasii-Cavasaa-Oa"
 	destination "Kasii-Cavasaa-Oa"
 	to offer
@@ -143,6 +143,7 @@ mission "Successors: Ghosts Aqrabe 2"
 
 mission "Successors: Ghosts Aqrabe 3"
 	name "Visit stellar garden"
+	description "Attempt to land on the star of the <system> system."
 	source "Kasii-Cavasaa-Oa"
 	stopover "Exotic Metal Garden"
 	destination "Kasii-Cavasaa-Oa"
@@ -194,6 +195,7 @@ mission "Successors: Ghosts Aqrabe 3"
 
 mission "Successors: Ghosts Aqrabe 4"
 	name "Pick up ship from Kaatrij"
+	description "Pick up a modified Vujlet from House Kaatrij at <destination>."
 	clearance
 	source "Kasii-Cavasaa-Oa"
 	destination "Raaqa-Puan-Uuoru"
@@ -232,6 +234,7 @@ mission "Successors: Ghosts Aqrabe 4"
 
 mission "Successors: Ghosts Aqrabe 5"
 	name "Return to Kasii-Cavasaa-Oa"
+	description "Escort the Nnesa ti-a-Oj back to <destination>."
 	landing
 	source "Raaqa-Puan-Uuoru"
 	destination "Kasii-Cavasaa-Oa"
@@ -348,6 +351,7 @@ mission "Successors: Ghosts Aqrabe 5"
 
 mission "Successors: Ghosts Aqrabe 6"
 	name "Visit exotic metal garden again"
+	description "Attempt a landing on the <system> stellar metal garden using the modified Vujlet."
 	source "Kasii-Cavasaa-Oa"
 	destination "Exotic Metal Garden"
 	passengers 2
@@ -364,6 +368,7 @@ mission "Successors: Ghosts Aqrabe 6"
 
 mission "Successors: Ghosts Aqrabe 7"
 	name "Return to Kasii-Cavasaa-Oa"
+	description "Escape the drone ship and return to <destination> with the stellar metal."
 	landing
 	source "Exotic Metal Garden"
 	destination "Kasii-Cavasaa-Oa"
