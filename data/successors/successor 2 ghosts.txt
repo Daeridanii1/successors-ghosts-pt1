@@ -1173,6 +1173,7 @@ mission "Successors: Ghosts 10"
 
 mission "Successors: Ghosts 11"
 	name "Destroy sensor probes"
+	description "House Kaatrij is concerned that the sensor probes in Predecessor space are being used against them, and have asked you to destroy them in <waypoints>."
 	passengers 1
 	source "Qasa-Sija-Iri"
 	waypoint "Khasola-Ryuit"
@@ -1248,6 +1249,7 @@ mission "Successors: Ghosts 12"
 	passengers 1
 	entering
 	name "Destroy final sensor probe"
+	description "Having destroyed the other sensor probes, go to <waypoints> to destroy the fourth and final one before returning to <destination>."
 	waypoint "Kasii-Sola"
 	destination "Qasa-Sija-Iri"
 	to offer
@@ -1294,6 +1296,7 @@ mission "Successors: Saajret Remarks"
 
 mission "Successors: Ghosts 13"
 	name "Investigate mysterious station"
+	description "Return to the mysterious station in <system> with Saajret to investigate what has happened to it."
 	source "Qasa-Sija-Iri"
 	destination "Ijra-Ea, Shimmering Veil"
 	to offer
@@ -1401,6 +1404,7 @@ mission "Successors: Ghosts 13"
 mission "Successors: Ghosts 14"
 	landing
 	name "Flee to Successor space"
+	description "Escape the drone ship and return to <destination>."
 	source "Ijra-Ea, Shimmering Veil"
 	destination "Qasa-Sija-Iri"
 	to offer
@@ -1424,6 +1428,7 @@ mission "Successors: Ghosts 14"
 mission "Successors: Ghosts 15"
 	landing
 	name "Set up cloak detectors"
+	description "Set up the Quarg cloak detectors on the far side of the Successors' wormhole before landing on <destination> to lay in wait for the heirloom warship."
 	source "Qasa-Sija-Iri"
 	destination "Myiara-Aret-Iir"
 	cargo "Cloak detection node" 10
@@ -1509,6 +1514,7 @@ mission "Successors: Ghosts 15"
 mission "Successors: Ghosts 16"
 	landing
 	name "Defeat the heirloom warship"
+	description "Destroy the Myiaran heirloom warship with the help of House Kaatrij before returning to their base on <destination> for debriefing."
 	source "Myiara-Aret-Iir"
 	destination "Qasa-Sija-Iri"
 	to offer
