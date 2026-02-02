@@ -1695,7 +1695,7 @@ mission "Successors: Ghosts Black Box"
 			choice
 				`	(Yes.)`
 				`	(No.)`
-				decline
+					decline
 			
 			label files
 			action
