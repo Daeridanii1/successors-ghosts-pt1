@@ -438,7 +438,7 @@ mission "Successors: Ghosts Myurej 7"
 	destination Raaqa-Kvelq-Ryuit
 	to offer
 		has "Successors: Ghosts Myurej 6: done"
-		random < 15
+		random < 40
 	on offer
 		conversation
 			`Shortly after you land at the spaceport here, you recieve a message delivered via data-sphere:`
