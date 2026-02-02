@@ -110,7 +110,7 @@ mission "Successors: Ghosts Myurej 2"
 		has "Successors: Ghosts Myurej 1: done"
 	on complete
 		conversation
-			`You enter <planet>'s vast spaceport to find it almost deserted. There is, however, plenty of evidence to support your contact's suggestion. A number of empty but recently-opened cargo containers are strsewn against one of the far walls of the space; beside one of them there's even a small cache of what looks like personal gear: a durable fabric pack, a small sidearm, even some packages of dried food. Someone must have left here in a hurry.`
+			`You enter <planet>'s vast spaceport to find it almost deserted. There is, however, plenty of evidence to support your contact's suggestion. A number of empty but recently-opened cargo containers are strewn against one of the far walls of the space; beside one of them there's even a small cache of what looks like personal gear: a durable fabric pack, a small sidearm, even some packages of dried food. Someone must have left here in a hurry.`
 			choice
 				`	(Rummage through the pack.)`
 				`	(Prepare to leave.)`
