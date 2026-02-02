@@ -243,14 +243,30 @@ mission "Successors: Ghosts 1"
 		random < 50
 	on offer
 		conversation
+			branch raaqa-puan-uuoru
+				has "flagship planet: Raaqa-Puan-Uuoru"
+			
 			`Soon after you exit your ship on this planet, you are discreetly pulled aside by a trio of Successor military officers. Their leader gives you a gentle bow. "Honored captain," they say, "We've come to inform thee that the noble House Seineq requests thy presence for the purposes of lending aid to their ally, the wounded House Kaatrij."`
+				goto questions
+			
+			label raaqa-puan-uuoru
+			`Soon after you exit your ship, you are pulled aside by a trio of Successor military officers; unlike most here, they are not wearing House Kaatrij's colors. Their leader offers you a gentle bow. "Honored captain," they say, "and friend to Kaatrij. The noble House Seineq would request thy presence at a nearby offworld staging post to aid our assistance efforts to our mutual ally."`
+
+			label questions
 			choice
-				`	"Where should I meet them?"`
+				`	"Wouldn't it be easier if you coordinated your efforts from here?"`
+					to display
+						has "flagship planet: Raaqa-Puan-Uuoru"
+					goto here
+				`	"Where do I need to go?"`
 					goto where
 				`	"What sort of aid?"`
 					goto aid
 				`	"What's in it for me?"`
 			`	"Naturally," says the lead officer, their skin bristling a little, "thou can expect payment for thy services. The details shall be discussed with thee upon arrival." They hand over a data-sphere which highlights the <system> system and leave you to your business with a curt goodbye.`
+				accept
+			label here
+			`	"Indeed," says the lead officer, "but Kaatrij is presently understandably reluctant to permit the other Houses even temporary constructions on their homeworld. Details shall be provided upon thine arrival." They hand over a data-sphere which highlights the <system> system and leave you to your business with a curt but expectant goodbye.`
 				accept
 			label aid
 			`	"'Tisn't for us to say," says the lead officer. "The details of thy task shall be revealed to thee upon thy visit." They hand you a data-sphere from a pocket in their uniform; it splashes to highlight the <system> system and the officers bid you a curt goodbye.`
