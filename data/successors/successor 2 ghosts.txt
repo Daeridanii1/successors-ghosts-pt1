@@ -749,6 +749,7 @@ mission "Successors: Ghosts 7a"
 
 			label nosy
 			`	They hum. "One thing I had hoped for and another I had dreaded. So often those two go arm-in-arm, do they not?" The color on their face fades. "I have what I came for," they say. "My thanks to thee for indulging me in this."`
+				goto end
 
 			label stay
 			`	Saajret splays their arms as farewell and tells you to expect them back before nightfall. You look over your ship's systems, take in the views, and watch the snow clump in the joints of the <ship>'s hull.`
