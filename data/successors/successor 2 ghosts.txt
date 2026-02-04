@@ -1763,6 +1763,7 @@ mission "Successors: Ghosts 20"
 		log "Attended the wedding between scions of Houses Chydiyi and Myurej. Was presented with a license to purchase advanced Successor technology."
 		set "license: High Houses"
 		event "successors: ghosts intermission timer" 40
+		event "successors: ghosts kaatrij expansion"
 		conversation
 			branch waterlining
 				has "flagship attribute: waterlining"

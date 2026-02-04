@@ -6,3 +6,6 @@ outfitter "Multimodal Armor (Harmonic Keystone)"
 	"Multimodal Armor: Light"
 	"Multimodal Armor: Heavy"
 	"Multimodal Armor: Regen"
+
+shipyard "Kaatrij Light"
+	"Vujlet-Usaqri"

@@ -74,3 +74,7 @@ event "successors: military escalation"
 		government "House Kaatrij"
 
 event "successors: ghosts intermission timer"
+
+event "successors: ghosts kaatrij expansion"
+	planet "Raaqa-Puan-Uuoru"
+		add shipyard "Kaatrij Light"
