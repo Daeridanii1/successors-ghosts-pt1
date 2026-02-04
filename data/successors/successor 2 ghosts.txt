@@ -1682,7 +1682,7 @@ mission "Successors: Ghosts 19"
 		payment 10000000
 		log "Fought and destroyed an heirloom warship of the High Houses with the support of House Kaatrij, likely the same ship that attacked their base on Qasa-Sija-Iri."
 		conversation
-			`	Saajret runs off soon after you land, only returning a while later with Kampa as the ground crew work on repairing the <ship>'s battle damage. The two take you to one of the rooms overlooking the landing pad.`
+			`	Saajret slithers off soon after you land, only returning a while later with Kampa as the ground crew work on repairing the <ship>'s battle damage. The two take you to one of the rooms overlooking the landing pad.`
 			`	Kampa speaks first, their skin betraying some satisfaction. "'Tis good that thou prevail'd," they say. "'Twas a fraught battle, I trust?"`
 			choice
 				`	"Indeed."`
@@ -1691,7 +1691,7 @@ mission "Successors: Ghosts 19"
 			`	"Indeed?" Kampa says. "Later thou shalt have to tell us more of this."`
 			label next
 			`	They produce a data-sphere from their outfit and offer it to you. As you take it, they continue, "Since thou has yet to receive the ability to purchase our technologies, Kaatrij's reward to thee here is a purely monetary one. The sphere authorizes the transfer of <payment> to thee for thine efforts."`
-			`	"And what of the right to purchase your technology?"`
+			`	"And what of the right to purchase your technology?" you ask.`
 			`	Saajret nods here. "That wedding 'tween Myurej and Chydiyi is likely to happen soon," they say. "Thy time of shrouded service to Kaatrij has come to its close; with all the Houses there, 'tis a fair opportunity to present thee with our license."`
 			`	"Thou hast done service to other Houses, too," Kampa says, "so it should be without much resistance."`
 			choice
