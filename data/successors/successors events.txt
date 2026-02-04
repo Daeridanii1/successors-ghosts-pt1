@@ -63,5 +63,12 @@ event "successors: ghosts ijra-ea decloak"
 event "successors: ghosts abandoned kaatrij"
 
 event "successors: military escalation"
+	"reputation: House Kaatrij" <?= 0
+	planet Shassa-Wyra-Orrou
+		government "House Kaatrij"
+	planet Uo-Oraa-Vayya
+		government "House Kaatrij"
+	planet Kasi-Osolaa-Sossa
+		government "House Kaatrij"
 
 event "successors: ghosts intermission timer"
