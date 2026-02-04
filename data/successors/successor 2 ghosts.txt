@@ -1859,7 +1859,6 @@ mission "Successors: Ghosts 20"
 
 
 
-
 mission "Successors: Ghosts Black Box"
 	landing
 	minor
@@ -1931,7 +1930,39 @@ mission "Successors: Ghosts Black Box"
 
 			label lacuna
 			`	[...] I am starting to understand how much I [...] so I must tell Saajret while [...]`
+			action
+				set "Successors: Ghosts Messages from the Past"
 				goto files
+
+
+
+mission "Successors: Ghosts Reincarnation"
+	landing
+	minor
+	invisible
+	source "Raaqa-Puan-Uuoru"
+	to offer
+		has "Successors: Ghosts Messages from the Past"
+	on offer
+		conversation
+			`Would you like to speak to Saajret about finding their name in the file transmitted from Resja, of the Nine Eyes?`
+			choice
+				`	(Yes.)`
+				`	(No.)`
+					decline
+			
+			action
+				"Successors: Ghosts Saajret Forgiveness" --
+				"Successors: Ghosts Saajret Openness" ++
+			`	Though it's a few minutes before your data-sphere missive is answered, Saajret soon invites you to join them in a nearby town, which proves to be only a half-hour away by spaceport shuttle. It is built into an amphitheatre-shaped cutout of a seaside cliff, terraced homes and shops emerging from the rock with their curious flowing Kaatrij architecture. Many share the sail-like projections of the main spaceport, some decorated with iridescent patterns that shimmer as the wind tosses them.`
+			`	Saajret meets you at the regional spaceport, explaining that you caught them on a day off. They lead you through the town to one of the more elegant homes. It's shaped like a series of concentric semicircles, and they invite you into the outermost one, what you might call a receiving area with benches and indoor gardens. Small robots slither over the floors, attending to dust and water.`
+			`	After a while, they turn to matters at hand. "Thou said that thou discover'd something about me in a transmission from the drone craft?" they ask. Though their tone is curious, something like a shade of fear lurks on their skin.`
+			choice
+				`	"It's probably just someone who shared your name, but I thought I'd tell you anyway. The transmissions included what seem like journals, and one of them mentions a 'Saajret.'"`
+				`	"The transmissions included journals, and one of them mentions a 'Saajret.' Do you think they could have been an ancestor of yours?"`
+			`	Something about hearing their name in this context seems to strike a discordant chord within Saajret. All at once confusion and anger and sorrow flit over them before they tense and their skin becomes a steely grey. They say nothing more on the matter, instead striking up a conversation about your recent experiences and never slowing. After an hour or so of catching up, they've finally had enough and let the conversation die.`
+			`	As you leave, Saajret turns to you a final time. "Thou hast my deepest thanks, my friend," they say, and close the door.`
+				decline
 
 
 
