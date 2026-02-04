@@ -377,7 +377,7 @@ mission "Successors: Ghosts 2"
 		conversation
 			`Docking control at the <planet> spaceport directs the <ship> to a protected, fabric-shrouded hangar on the western side of the new facility. A pair of Successor ground crew supervise the automated refueling and maintenance processes, and one of them waves you down from the cockpit, where they hand you a data-sphere. A few seconds after it touches your skin, it plays a message from Rijatet:`
 			`	"Our thanks to thee for setting the sensors, Captain. We saw their first reports only shortly after as thy own craft jumped away, and nothing since. We shall remain as watchful as we ought to be. For thine efforts, Seineq's credited thee the agreed payment of <payment>. If thou wish't for further, join us at the port here tonight for another task."`
-			`	I attest this, C- R- Rijatet.`
+			`	I attest this, A- T- Rijatet.`
 		payment 223000
 		log "Deployed Successor sensor drones throughout Predecessor space to scan for ships using jump drives, cloaked or not."
 
@@ -504,11 +504,36 @@ mission "Successors: Ghosts Seineq Attacked"
 	to offer
 		has "event: successors: ghosts seineq attacked"
 	on offer
+		event "successors: ghosts seineq memorial" 50
 		conversation
 			`As you disembark into this planet's spaceport, you can feel a new and heightened tension in the air. In an unsettling mirror of the immediate aftermath of the attack on Kaatrij's base, the Successors here all stand crowded around the spaceport's screens, watching as news comes in of a second attack. This time, however, the image shown on the displays is one you recognize: it's the base on Shassa-Wyra-Orrou from which you worked with House Seineq.`
 			`	"...reports, yet confirmed, that several ships were seen, soonafter retreating under veil of cloak," the reporter on the displays says. "Much suspicion now falls to noble House Kaatrij for using such technol'gies in the past, ones they once had sworn they left behind."`
 			`	The Successors around the screen murmur and slither around each other. As the broadcast goes on and the crowd grows and the first casualty numbers begin to come in, the overlapping translated speech in your ears starts to smear together; you find yourself stumbling against a wall in the spaceport, only able to get up once you've momentarily plucked the translation device from your jacket.`
 				decline
+
+
+
+mission "Successors: Ghosts Seineq Memorial"
+	invisible
+	source "Yoqqa-Vasa-Vasa"
+	to offer
+		has "event: successors: ghosts seineq memorial"
+	on offer
+		conversation
+			`While exploring House Seineq's spaceport here on <origin>, you take notice of an series of obelisks erected in the middle of one of the concourses; they weren't here the last time you visited. As you draw nearer, you can make out an inscription on a plaque that stands before them:`
+			`	"In remembrance and grief we stand,`
+			`	reminders of the deaths of the`
+			`	eighteen killed in service of`
+			`	our noble House off'ring succor`
+			`	to its ally House Kaatrij."`
+			choice
+				`	(Pay your respects.)`
+				`	(Walk on.)`
+					decline
+			`	You offer the memorial a few moments of quiet contemplation. On each of the pillars a name is engraved; though most you do not recognize, one is labeled "Asirij T- Rijatet."`
+				decline
+
+
 
 # Suspicion
 
@@ -1615,7 +1640,7 @@ mission "Successors: Ghosts 18"
 			label expect
 			action
 				set "Successors: expect"
-			`	Saajret is the one who speaks now. "'Tis a proper battlecruiser of our Predecessors' age, most likely," they say. "Our warships in their day were second only to those of the Quarg; one could not doubt stand against a fleet of lesser craft handily."`
+			`	Saajret is the one who speaks now. "'Tis a proper battlecruiser of our Predecessors' age," they say. "Our warships in their day were second only to those of the Quarg; one could not doubt stand against a fleet of lesser craft handily."`
 				goto questions
 
 			label end
