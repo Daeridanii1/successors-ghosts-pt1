@@ -401,6 +401,9 @@ mission "Successors: Ghosts Myurej 6"
 		ship "Queru, Luminous Gaze" "Maki, Recalling 11-2"
 		government "Solitude Enforcer" 
 		personality waiting heroic nemesis unconstrained vindictive
+		on kill
+			set "Successors: Ghosts Queru transmission"
+			dialog "As the second drone ship explodes it transmits some data to your own vessel. It cannot be deciphered at this time."
 	on enter "Myruet-Kvelq"
 		"successors: ghosts met solitude enforcers" ++
 		"successors: ghosts suspicion" ++

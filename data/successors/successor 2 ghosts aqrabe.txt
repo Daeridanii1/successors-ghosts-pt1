@@ -395,13 +395,19 @@ mission "Successors: Ghosts Aqrabe 7"
 			label asked
 			`	"Either way," they say, "we must hasten back t'bring this news to Aqrabe."`
 				accept
+
 	on enter "Kasii-Cavaasa"
 		"successors: ghosts met solitude enforcers" ++
 		dialog `As you take off from the stellar metal garden, your ship's proximity alarms begin to sound. Another ship is taking off too - and its weapons are aimed right at you!`
+
 	npc evade
 		ship "Hasur, Vowsworn" "Hasur-riita 4-1"
 		government "Solitude Enforcer" 
 		personality launching heroic nemesis unconstrained
+		on kill
+			set "Successors: Ghosts Hasur transmission"
+			dialog "As the drone ship explodes it transmits some data to your own vessel. It cannot be deciphered at this time."
+
 	on complete
 		outfit "Radiant Shield Shunt" -1
 		event "successors: ghosts keystones finished" 50
