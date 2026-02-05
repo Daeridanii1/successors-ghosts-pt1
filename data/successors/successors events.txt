@@ -72,9 +72,49 @@ event "successors: military escalation"
 		government "House Kaatrij"
 	planet Kasi-Osolaa-Sossa
 		government "House Kaatrij"
+	system "Luue-Saqru"
+		fleet "Kaatrij Home" 2000
+	system "Maspa-Cavasaa"
+		fleet "Kaatrij Home" 1500
+	system "Osolaa-Uuoru"
+		fleet "Kaatrij Home" 2000
+	system "Pelaa-Muora"
+		fleet "Kaatrij Home" 1500
+	system "Myruet-Kvelq"
+		fleet "Kaatrij Expeditionary" 2000
+	system "Oublaa-Khora"
+		fleet "Kaatrij Expeditionary" 2000
+	system "Aaura-Kaska"
+		fleet "Large Old Houses" 2000
+	planet "Raaqa-Puan-Uuoru"
+		add shipyard "Kaatrij Light"
+	fleet "Kaatrij Home"
+		add variant 4
+			"Vujlet-Usaqri"
+		add variant 2
+			"Vujlet-Usaqri" 2
+		add variant 2
+			"Aaulqra"
+		add variant 2
+			"Aaulqra (Sniper)"
 
 event "successors: ghosts intermission timer"
 
 event "successors: ghosts kaatrij expansion"
+	system "Luue-Saqru"
+		fleet "Kaatrij Home" 3000
+	system "Maspa-Cavasaa"
+		fleet "Kaatrij Home" 3000
+	system "Osolaa-Uuoru"
+		fleet "Kaatrij Home" 3000
+	system "Myruet-Kvelq"
+		fleet "Kaatrij Expeditionary" 3000
+	system "Oublaa-Khora"
+		fleet "Kaatrij Expeditionary" 3000
 	planet "Raaqa-Puan-Uuoru"
 		add shipyard "Kaatrij Light"
+	fleet "Kaatrij Home"
+		add variant 4
+			"Vujlet-Usaqri"
+		add variant 2
+			"Vujlet-Usaqri" 2
