@@ -1987,8 +1987,8 @@ mission "Successors: Ghosts Black Box"
 			branch "no resja"
 				not "Successors: Ghosts Resja transmission"
 			action
-				log "People" "Resja" `(FILE "Poem"): [...] hastily, through the red chyme of the gullet of death [...] avian and [...] undefeated except in the battle over Avasaa-Novaa, which [...] and they have composed another in honor [...] named for the [...] of which there are nine, "four for the [...] and a final one missing, lost [...] lost [...]`
-				log "People" "Resja" `(FILE "Death"): [...] the destroyer whispers to the hero, "Not always was I what I am now [...] and took a spear and drove it deep into [...] heart [...] death [...] I find myself thinking much of this story [...] responsibility of knowing which thou art [...]`
+				log "People" "Resja" `(FILE "Lost"): [...] hastily, through the red chyme of the gullet of death [...] avian and [...] undefeated except in the battle over Avasaa-Novaa, which [...] and they have composed another in honor [...] named for the [...] of which there are nine, "four for the [...] and a final one missing, lost [...] lost [...]`
+				log "People" "Resja" `(FILE "Heart"): [...] the destroyer whispers to the hero, "Not always was I what I am now [...] and took a spear and drove it deep into [...] heart [...] death [...] I find myself thinking much of this story [...] responsibility of knowing which thou art [...]`
 				log "People" "Resja" `(FILE [...]): [...] I am starting to understand [...] which I why I must tell Saajret while [...]`
 
 			label "no resja"
@@ -2010,14 +2010,14 @@ mission "Successors: Ghosts Black Box"
 			`	In addition to the ship's flight telemetry and internal systems logs, the data recorder seems to contain a small number of text datablocks, badly degraded:`
 			label files
 			choice
-				`	(FILE "Poem")`
+				`	(FILE "Lost")`
 					to display
 						has "Successors: Ghosts Resja transmission"
-					goto poem
-				`	(FILE "Death")`
+					goto lost
+				`	(FILE "Heart")`
 					to display
 						has "Successors: Ghosts Resja transmission"
-					goto death
+					goto heart
 				`	(FILE "Trial")`
 					to display
 						has "Successors: Ghosts Queru transmission"
@@ -2033,11 +2033,11 @@ mission "Successors: Ghosts Black Box"
 				`	(Exit.)`
 					decline
 
-			label poem
+			label lost
 			`	[...] hastily, through the red chyme of the gullet of death [...] avian and [...] undefeated except in the battle over Avasaa-Novaa, which [...] and they have composed another in honor [...] named for the [...] of which there are nine, "four for the [...] and a final one missing, lost [...] lost [...]`
 				goto files
 
-			label death
+			label heart
 			`	[...] the destroyer whispers to the hero, "Not always was I what I am now [...] and took a spear and drove it deep into [...] heart [...] death [...] I find myself thinking much of this story [...] responsibility of knowing which thou art [...]`
 				goto files
 			
