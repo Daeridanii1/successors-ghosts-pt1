@@ -420,15 +420,15 @@ outfit `"Torji," Lethal Sight`
 		"inaccuracy" 3
 		"velocity" 40
 		"lifetime" 45
-		"reload" 12
-		"firing energy" 260
-		"firing heat" 680
-		"firing shields" 155
-		"firing force" 200
-		"shield damage" 320
-		"hull damage" 355
-		"slowing damage" 1.4
-		"hit force" 200
+		"reload" 24
+		"firing energy" 520
+		"firing heat" 1360
+		"firing shields" 310
+		"firing force" 400
+		"shield damage" 520
+		"hull damage" 720
+		"slowing damage" 2.0
+		"hit force" 400
 	description `Resja designed a complex loading system to enable this weapon to fire as quickly as it does. The drone ship Queru was built around it, a paired ship and weapon to surpass at range all prior designs of the Myiara.`
 
 
