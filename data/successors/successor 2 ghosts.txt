@@ -1308,22 +1308,22 @@ mission "Successors: Ghosts 13"
 			branch "prototypes only"
 				not "event: successors: ghosts keystones finished"
 			
-			`Not long after disembarking you are met by Tilkaat, the Aqrabe engineer you worked with before. They bow courteously to you while, behind them, crates of keystones are carried by and soon loaded into the <ship>.`
-			`	"I thought it fair to see this shipment off myself," Tilkaat says by way of introduction. "Though it pleaseth me to see thee again as well, Captain."`
+			`Not long after disembarking you are met by Tiliia, the Aqrabe engineer you worked with before. They bow courteously to you while, behind them, crates of keystones are carried by and soon loaded into the <ship>.`
+			`	"I thought it fair to see this shipment off myself," Tiliia says by way of introduction. "Though it pleaseth me to see thee again as well, Captain."`
 			choice
 				`	"Likewise."`
 					goto short
 				`	"I'm surprised you're letting go of the keystones so easily."`
 			
-			`	Some mirth seems to come over Tilkaat. "We've enough to do so now. And I imagine House Kaatrij has offered Aqrabe generous compensation for them, too. It's good they're trading with us at all now. If only I could work fast enough to satisfy that appetite for novelty!"`
+			`	Some mirth seems to come over Tiliia. "We've enough to do so now. And I imagine House Kaatrij has offered Aqrabe generous compensation for them, too. It's good they're trading with us at all now. If only I could work fast enough to satisfy that appetite for novelty!"`
 			
 			label short
 
-			`	The two of you chat for a few more minutes as the keystones are loaded. Eventually, Tilkaat offers you a "farewell" before returning to their work and leaving you to prepare your ship for departure.`
+			`	The two of you chat for a few more minutes as the keystones are loaded. Eventually, Tiliia offers you a "farewell" before returning to their work and leaving you to prepare your ship for departure.`
 				accept
 
 			label "prototypes only"
-			`Not long after disembarking you are met by Tilkaat, the Aqrabe engineer you worked with recently. They bow, courteously but with some haste. "Thou'rt here for the keystone shipment, I take it?" they say in a clipped tone. You nod in reply. "Well, Kaatrij will get their sixteen tons, but let them know they're only prototypes. Politics moves faster than my work." They turn to depart, clearly eager to get back to it, before stopping and offering you a quick "good to see thee, Captain," before they leave you to oversee the loading of the keystones.`
+			`Not long after disembarking you are met by Tiliia, the Aqrabe engineer you worked with recently. They bow, courteously but with some haste. "Thou'rt here for the keystone shipment, I take it?" they say in a clipped tone. You nod in reply. "Well, Kaatrij will get their sixteen tons, but let them know they're only prototypes. Politics moves faster than my work." They turn to depart, clearly eager to get back to it, before stopping and offering you a quick "good to see thee, Captain," before they leave you to oversee the loading of the keystones.`
 				accept
 
 	on complete
@@ -1892,15 +1892,15 @@ mission "Successors: Ghosts 20"
 				`	(Take it.)`
 			scene "outfit/high houses license"
 			`	"Let this gift make clear to all thy responsibilities and privileges, and may thou have free access to all our House and allies offer..." Kampa says, "<first> <last>, Honored Knight-Vassal of the High House Kaatrij."`
-			`	With this, the meeting concludes, the various members exiting in turn - the ones you've met before offering some short words of congratulations. You eventually exit as well, finding your way back through the facility. By a floral display you spy Saajret, apparently deep in conversation with Tilkaat, the House Seineq engineer.`
+			`	With this, the meeting concludes, the various members exiting in turn - the ones you've met before offering some short words of congratulations. You eventually exit as well, finding your way back through the facility. By a floral display you spy Saajret, apparently deep in conversation with Tiliia, the House Seineq engineer.`
 			choice
 				`	(Go speak with them.)`
 				`	(Leave.)`
 					goto end
 			
-			`	Tilkaat spots you first, their skin breaking out in colors of excitement. "Saajret tells me of thy assent to Kaatrij's ranks," they say. "Excellent that thou might be a concerted ally to my own House as well."`
-			`	Saajret hums and nods. "The captain is a canny sort," they say. "Capable of surviving our wiles, I believe." Tilkaat laughs at that, Saajret continuing. "And Tilkaat tells me thou were't of help to them as well, the reason by which our craft now gain an advantage through the wormhole."`
-			label "saajret and tilkaat"
+			`	Tiliia spots you first, their skin breaking out in colors of excitement. "Saajret tells me of thy assent to Kaatrij's ranks," they say. "Excellent that thou might be a concerted ally to my own House as well."`
+			`	Saajret hums and nods. "The captain is a canny sort," they say. "Capable of surviving our wiles, I believe." Tiliia laughs at that, Saajret continuing. "And Tiliia tells me thou were't of help to them as well, the reason by which our craft now gain an advantage through the wormhole."`
+			label "saajret and tiliia"
 			choice
 				`	"It's good to see you two getting along."`
 					to display
@@ -1921,25 +1921,25 @@ mission "Successors: Ghosts 20"
 			action
 				"Successors: Ghosts Saajret Openness" ++
 				set "Successors: getting along"
-			`	Saajret nods. "Tilkaat's work on the keystones that thou provided intrigues me greatly. It bears some resemblance to technologies I've studied in our archives - though the stellar metal shells are a wholly inventive solution, I believe."`
-			`	Tilkaat interjects at this, a hint of embarrassment on their skin. "T'was a matter of managing with what could be done," they say.`
-			`	"Nonetheless," says Saajret, now to Tilkaat, "A worthy achivement. I am glad for this little lull if only for the sake of collaboration."`
-				goto "saajret and tilkaat"
+			`	Saajret nods. "Tiliia's work on the keystones that thou provided intrigues me greatly. It bears some resemblance to technologies I've studied in our archives - though the stellar metal shells are a wholly inventive solution, I believe."`
+			`	Tiliia interjects at this, a hint of embarrassment on their skin. "T'was a matter of managing with what could be done," they say.`
+			`	"Nonetheless," says Saajret, now to Tiliia, "A worthy achivement. I am glad for this little lull if only for the sake of collaboration."`
+				goto "saajret and tiliia"
 			
 			label "collaboration"
 			action
 				set "Successors: collaboration"
 			
-			`	"'T'would be fruitful, doubtless," Tilkaat says. "And now Kaatrij opens up a little for the first time since their wound, perhaps 'tis not beyond the realm of possibility."`			
+			`	"'T'would be fruitful, doubtless," Tiliia says. "And now Kaatrij opens up a little for the first time since their wound, perhaps 'tis not beyond the realm of possibility."`			
 			branch "low openness"
 				"Successors: Ghosts Saajret Openness" < 0
 
 			`	"I, too, would welcome it," Saajret adds. Their skin betrays a genuine satisfaction.`
-				goto "saajret and tilkaat"
+				goto "saajret and tiliia"
 
 			label "low openness"
 			`	"I shall welcome it while it lasts," Saajret adds. "Though I fear Kaatrij's openness may be but a fleeting thing."`
-				goto "saajret and tilkaat"
+				goto "saajret and tiliia"
 
 			label "uncertain"
 			action
@@ -1948,11 +1948,11 @@ mission "Successors: Ghosts 20"
 				"Successors: Ghosts Saajret Forgiveness" > 0
 
 			`	Saajret hums deeply. "For us," they say, "our Houses are our families, and family is always a complicated thing. Perhaps I understand thee, captain, better than thou might imagine."`
-				goto "saajret and tilkaat"
+				goto "saajret and tiliia"
 
 			label "high forgiveness"
 			`	Saajret hums, a shade of curiosity coming over them. "Perhaps 'tis more uncertain for thee," they say. "For us, our Houses are our families - we must endeavor to live with them, eccentricities and all."`
-				goto "saajret and tilkaat"
+				goto "saajret and tiliia"
 
 			label end
 			action
