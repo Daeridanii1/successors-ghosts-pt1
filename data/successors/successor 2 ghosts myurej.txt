@@ -162,7 +162,7 @@ mission "Successors: Ghosts Myurej 3"
 			`	As you disconnect from the terminal, you think about any planets nearby that might fit the storage requirements of these filters, but nothing comes to mind. It looks like you'll have to check the nearby worlds manually.`
 				goto end
 			label mvk
-			`	As you disconnect from the terminal, you think about any planets nearby that might fit the storage requirements of these filters, and one springs to mind: Maspa-Viir-Kella, an uninhabited world in the Osolaa-Uuoru system to the north. Landing there before was a challenge on account of the dense atmosphere; if the elusive Riirira is storing their spoils somehwere, that would be a good place for it.`
+			`	As you disconnect from the terminal, you think about any planets nearby that might fit the storage requirements of these filters, and one springs to mind: Maspa-Viir-Kella, an uninhabited world in the Osolaa-Uuoru system to the north. Landing there before was a challenge on account of the dense atmosphere; if the elusive Riirira is storing their spoils somewhere, that would be a good place for it.`
 			label end
 
 
@@ -198,7 +198,7 @@ mission "Successors: Ghosts Myurej 3 Checking"
 mission "Successors: Ghosts Myurej 4"
 	landing
 	name "Defeat Riiria and return"
-	description "Retrieve the stolen wedding gifts from Riiria and return to House Myurej at <destination>."
+	description "If possible, retrieve the stolen wedding gifts from Riiria and return, gifts or not, to House Myurej at <destination>."
 	source Maspa-Viir-Kella
 	destination Raaqa-Kvelq-Ryuit
 	to offer
@@ -220,9 +220,8 @@ mission "Successors: Ghosts Myurej 4"
 		conversation
 			action
 				log "Boarded Riiria's vessel, before being forced back by explosions from within that destroyed both Riiria's ship and the wedding gifts it presumably carried."
-			`You bring your ship alongside Riiria's disabled vessel, careful to line up one of your airlocks with the ship's cargo hatch. As you walk through your vessel's interior to prepare to start cutting through the hatch, however, your ship is rocked by an explosion that seems like it comes from the airlock. Seconds later, another one goes off, and then another. Racing back to your ship's bridge, you detatch from the detonating vessel just as another explosion rips through its cargo bay, no doubt destroying the precious cargo you've gone to so much effort to track down.`
+			`You bring your ship alongside Riiria's disabled vessel, careful to line up one of your airlocks with the ship's cargo hatch. As you walk through your vessel's interior to prepare to start cutting through the hatch, however, your ship is rocked by an explosion that seems like it comes from the airlock. Seconds later, another one goes off, and then another. Racing back to your ship's bridge, you detatch from the detonating vessel just as another explosion rips through its cargo bay, no doubt destroying the precious cargo you've gone to so much effort to track down. This is going to be unpleasant to explain to House Myurej.`
 				launch
-### Need better way to prompt return to Myurej
 	npc
 		government `People's Houses (Hostile)`
 		personality staying launching

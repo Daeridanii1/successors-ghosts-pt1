@@ -718,7 +718,9 @@ mission "Successors: Ghosts 6"
 
 			label inside
 			branch "killed riiria"
-				has "Successors: Ghosts Myurej 4: done"
+				or
+					has "Successors: Ghosts Myurej 4: done"
+					has "Successors: Ghosts Myurej 4: active"
 
 			`	You check over the <ship>'s various internal systems, making sure its power couplings are operating within normal parameters and taking a long moment to admire its jump drive, which hums away inside its housing, inscrutable as always.`
 				goto saajret
@@ -840,7 +842,7 @@ conversation "saajret returns"
 	choice
 		`	"I beg your pardon?"`
 		`	"A little too closely, actually."`
-	`	They continue, the color continuing to sparkle on their skin. "Beautiful beasts, aren't they? Truly aspirational; adept at camouflage, hiding themselves beyond all but the most scrutinizing gaze before closing in on their quarry. In the early days of Kaatrij, when the Kijran were still new, some particularly well-cloaked ones slipped into a weather-control tower. Perhaps," they say, "one might learn from their example."`
+	`	They continue, the color continuing to sparkle on their skin. "Beautiful beasts, aren't they? Truly aspirational; adept at camouflage, hiding themselves beyond all but the most scrutinizing gaze before closing in on their quarry. In the early days of Kaatrij, when the Kijran were still new, some particularly well-cloaked ones slipped into a weather-control tower. Perhaps," they say, "one might learn from their example, were there somewhere notable one wished to go."`
 	choice
 		`	"Why are you telling me this?"`
 		`	"Are you trying to tell me something?"`
@@ -956,7 +958,7 @@ mission "Successors: Ghosts 10"
 	destination "Qasa-Sija-Iri"
 	to offer
 		has "Successors: Ghosts 9: declined"
-		has "successors: dealt with aqrabe"
+		has "successors: ghosts dealt with aqrabe"
 	on offer
 		conversation
 			`As disembark from your ship, you notice a group of Successor soldiers emerging from another craft in the spaceport, a Seiitej bearing House Kaatrij's colors. They meet you outside your own vessel, their weapons held at attention.`
@@ -1197,7 +1199,7 @@ mission "Successors: Ghosts 10"
 
 mission "Successors: Ghosts 11"
 	name "Visit Kaatrij archive"
-	description "Take Saajret to <stopover planets> so they can consult one of House Kaatrij's offworld archives, before returning them to <planet>."
+	description "Take Saajret to <planet stopovers> so they can consult one of House Kaatrij's offworld archives, before returning them to <planet>."
 	source "Qasa-Sija-Iri"
 	stopover "Kasi-Osolaa-Sossa"
 	passengers 1
@@ -1220,7 +1222,7 @@ mission "Successors: Ghosts 11"
 			`	Saajret hums, colors of preoccupation dancing over their skin. "Well enough to focus on what's before us," they say. "I shall thank thee again for indulging my little trip into the past. The sense of it stays with me." They shake their head and offer you another gentle bow.`
 
 			label task
-			`	"Kaatrij maintains a number of offworld archives for our files since the time of our Predecessors. I've a certain angle I'd like to investigate at our archive on <stopover planets>. Would'st thou transport me?"`
+			`	"Kaatrij maintains a number of offworld archives for our files since the time of our Predecessors. I've a certain angle I'd like to investigate at our archive on <planet stopovers>. Would'st thou transport me?"`
 			choice
 				`	"What sort of angle?"`
 				`	"I can't right now."`
@@ -1438,8 +1440,8 @@ mission "Successors: Saajret Remarks"
 	destination "Earth"
 	to offer
 		or
-			has "Successors: Ghosts Suspicion 14: active"
-			has "Successors: Ghosts Suspicion 15: active"
+			has "Successors: Ghosts 14: active"
+			has "Successors: Ghosts 15: active"
 	on offer
 		"Successors: Ghosts Saajret Openness" ++ # Increases as Saajret experiences new, interesting, and joyful things.
 		conversation
@@ -1461,7 +1463,7 @@ mission "Successors: Ghosts 16"
 		has "Successors: Ghosts 15: done"
 	npc save
 		government `House Kaatrij`
-		personality launching heroic
+		personality launching heroic escort
 		ship "Vujlet-Usaqri (Jump)" "o-Sapi, Brilliant Voice"
 	on offer
 		conversation
@@ -1602,6 +1604,7 @@ mission "Successors: Ghosts Scout Escorts"
 
 
 mission "Successors: Ghosts 18"
+	landing
 	name "Set up cloak detectors"
 	description "Set up the Quarg cloak detectors on the far side of the Successors' wormhole before landing on <destination> to lay in wait for the heirloom warship."
 	source "Qasa-Sija-Iri"
@@ -1776,7 +1779,7 @@ mission "Successors: Ghosts 19"
 			`	Kampa bows and Saajret interjects. "That wedding 'tween Myurej and Chydiyi is likely to happen soon," they say. "And with it, the end to thy shrouded service to Kaatrij. 'Tis a fair time to present thee with our license, as much as it may interest thee."`
 			`	"Thou hast done service to other Houses, too," Kampa says, "so it should be 'thout much resistance."`
 
-			goto "what now"
+			label "what now"
 			choice
 				`	"What now?"`
 				`	"Do you have anything else for me?"`
@@ -1810,7 +1813,7 @@ mission "Successors: Ghosts 20"
 	to offer
 		random < 33
 		has "Successors: Ghosts 19: done"
-		has "successors: ghosts houses dealt with" >= 2
+		has "successors: ghosts dealt with myurej"
 	destination "Iyra-Ijasa-Iret"
 	deadline 10
 	on offer
@@ -1846,7 +1849,7 @@ mission "Successors: Ghosts 20"
 				goto khiajsore
 
 			label appreciate
-			`	"For such a unique and industrious figure, 'twould've been an unbearable snub not!"`
+			`	"For such a unique and industrious figure, 'twould've been an unbearable snub not to!"`
 
 			label khiajsore
 			`	They rattle one of their arms a little, red gold and sparkling stones swinging through the air. "I just spoke of thee, in fact, with a delegate of House Seineq here, who confirmed what I've heard that thou were't of use to them as well! I think," they say, "thou set a good example for future aliens - benevolent, equitable, humble. Though I hear now Kaatrij has obtained thy vassalage? A boon to them, no doubt." Their face sparkles with color, eyes alight with furtive interest. "Though I hope for our efforts, Myurej has earned some measure of thy favor."`
@@ -1915,7 +1918,7 @@ mission "Successors: Ghosts 20"
 			
 			label "getting along"
 			action
-				set "Successors: Ghosts Saajret Openness" ++
+				"Successors: Ghosts Saajret Openness" ++
 				set "Successors: getting along"
 			`	Saajret nods. "Tilra's work on the keystones that thou provided intrigues me greatly. It bears some resemblance to technologies I've studied in our archives - though the stellar metal shells are a wholly inventive solution, I believe."`
 			`	Tilra interjects at this, a hint of embarrassment on their skin. "T'was a matter of managing with what could be done," they say.`
@@ -1926,6 +1929,7 @@ mission "Successors: Ghosts 20"
 			action
 				set "Successors: collaboration"
 			`	"'T'would be fruitful, doubtless," Tilra says. "And now Kaatrij opens up a little for the first time since their wound, perhaps 'tis not beyond the realm of possibility."`
+			`	"I, too, would welcome it," Saajret adds. Their skin betrays a genuine satisfaction.`
 				goto "saajret and tilra"
 
 			label "uncertain"
@@ -1965,8 +1969,6 @@ mission "Successors: Ghosts Black Box"
 				`	(No.)`
 					decline
 			
-			label files
-
 			branch "no resja"
 				not "Successors: Ghosts Resja transmission"
 			action
@@ -1991,6 +1993,7 @@ mission "Successors: Ghosts Black Box"
 			label "no hasur"
 
 			`	In addition to the ship's flight telemetry and internal systems logs, the data recorder seems to contain a small number of text datablocks, badly degraded:`
+			label files
 			choice
 				`	(FILE "Poem")`
 					to display
@@ -2032,9 +2035,9 @@ mission "Successors: Ghosts Black Box"
 				goto files
 
 			label lacuna
-			`	[...] I am starting to understand how much I [...] so I must tell Saajret while [...]`
 			action
 				set "Successors: Ghosts Messages from the Past"
+			`	[...] I am starting to understand how much I [...] so I must tell Saajret while [...]`
 				goto files
 
 

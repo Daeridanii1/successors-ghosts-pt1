@@ -113,6 +113,11 @@ event "successors: ghosts kaatrij expansion"
 		fleet "Kaatrij Expeditionary" 3000
 	planet "Raaqa-Puan-Uuoru"
 		add shipyard "Kaatrij Light"
+		add outfitter "Harmonic Keystone"
+	planet "Yoqqa-Vasa-Vasa"
+		add outfitter "Harmonic Keystone"
+	planet "O-Vasa-Oa"
+		add outfitter "Harmonic Keystone"
 	fleet "Kaatrij Home"
 		add variant 4
 			"Vujlet-Usaqri"
