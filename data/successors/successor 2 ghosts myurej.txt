@@ -295,6 +295,7 @@ mission "Successors: Ghosts Myurej 4"
 mission "Successors: Ghosts Myurej 5"
 	priority
 	name "Locate hidden vault"
+	description "Enter House Myurej's hidden vault on <destination>, accompanied by Ijaset and two of House Myurej's soldiers."
 	source Raaqa-Kvelq-Ryuit
 	destination Kella-Uuoru-Sossa
 	passengers 3
