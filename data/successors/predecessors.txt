@@ -337,29 +337,53 @@ outfit `"Kis," Lethal Wish`
 	"gun ports" -1
 	unique 1
 	weapon
-		sprite "projectile/bimodal"
-		#sound "bimodal"
-		#"hit effect" "bimodal impact"
-		#"fire effect" "lethal word haze"
+		sound "drag cannon"
+		"hit effect" "kis impact" 12
+		"fire effect" "moonbeam fleck" 4
+		"range override" 180
+		"reload" 90
+		"firing energy" 400
+		"firing heat" 600
+		"firing shields" 120
+		"submunition" "kis short range" 4
+	description `Like a cold and ravenous beast, the frightful Kis tears through the defenses of anything that dares stride close enough to its jaws. At long range this weapon loses its high shield penetration but continues to output respectable damage, encouraging retreat while continuing to harry foes.`
+
+outfit "kis short range"
+	weapon
+		sprite "projectile/kis"
+			"frame time" 3
+			"no repeat"
+		"hit effect" "small explosion"
+		"hit effect" "kis impact" 3
 		"range override" 180
 		"inaccuracy" 3
 		"velocity" 10
 		"lifetime" 20
-		"reload" 90
-		"firing energy" 400
-		"firing heat" 600
-		"piercing" 0.8
-		"firing shields" 120
-		"submunition" "kis long range"
-	description `Like a cold and ravenous beast, the frightful Kis tears through the defenses of anything that dares stride close enough to its jaws. At long range this weapon loses its high shield penetration but continues to output respectable damage, encouraging retreat while continuing to harry foes.`
+		"piercing" 0.5
+		"inaccuracy" 6
+		"submunition" "kis long range" 3
 
 outfit "kis long range"
 	weapon
-		sprite "projectile/bimodal switch"
+		sprite "projectile/drag cannon"
+			"start frame" 1
+			"frame rate" 20
+			"no repeat"
+		"hit effect" "kis impact"
 		"velocity" 10
 		"lifetime" 100
-		"shield damage" 400
-		"hull damage" 650
+		"random lifetime" 30
+		"shield damage" 43
+		"hull damage" 58
+
+effect "kis impact"
+	sprite "effect/kis impact"
+		"frame rate" 10
+		"no repeat"
+	lifetime 20
+	"velocity scale" 0
+	"random velocity" 1
+
 
 outfit `Visions of Rime`
 	# 1 of these is obtainable by defeating Queru, Luminous Gaze
@@ -370,7 +394,7 @@ outfit `Visions of Rime`
 	thumbnail "outfit/unknown"
 	mass 10
 	"outfit space" -10
-	cooling 26
+	cooling 28
 	"shield generation" -0.6
 	unique 1
 	description `Radiating excess heat through a starship's shield matrix, this compact, ancient cooling system is strikingly efficient. On Resja's furious drone ships, the shield strength that this saps is all but insignificant, but on lesser craft it may come with a certain cost to endurance.`
