@@ -75,9 +75,9 @@ conversation "successor keystone delivery"
 	`	You ask around at the spaceport, and you are soon directed to a side outfitting bay that seems to be the domain of some of House Aqrabe's more unorthodox efforts - the walls are draped with strange-looking fabrics, and a couple of unusual, abstract statues dot the facility. In the center, a ship-mounted scanner is in the midst of being deconstructed; as you walk in, a Successor pops their head around from behind it.`
 	`	"Captain <last>?" they ask.`
 	`	"Yes?"`
-	`	They slither forward towards you and splay their arms in the traditional gesture. "Tilra," they offer as an introduction. "I was told to expect thine arrival. Thou'st brought," and they pause to pronounce the word, "keystones, yes?"`
-	`	"I have," you say. "Fifty tons, as was requested." Tilra joins you in walking back to the <ship> to examine the cargo; when they're sufficiently satisfied that you've brought the proper amount, they pull out a data-pad and enter a couple of values. Though their eyes widen when you provide them with your receipts, they nonetheless confirm a few moments later that House Aqrabe has credited you to offset the purchase price of the keystones, plus a three hundred thousand-credit bonus.`
-	`	As they begin directing ground crews to offload the keystones, Tilra turns to you for a moment and requests that you meet them back at the spaceport by the end of the day: "thine assistance might be a boon to us in the next part of this journey," they say.`
+	`	They slither forward towards you and splay their arms in the traditional gesture. "Tilkaat," they offer as an introduction. "I was told to expect thine arrival. Thou'st brought," and they pause to pronounce the word, "keystones, yes?"`
+	`	"I have," you say. "Fifty tons, as was requested." Tilkaat joins you in walking back to the <ship> to examine the cargo; when they're sufficiently satisfied that you've brought the proper amount, they pull out a data-pad and enter a couple of values. Though their eyes widen when you provide them with your receipts, they nonetheless confirm a few moments later that House Aqrabe has credited you to offset the purchase price of the keystones, plus a three hundred thousand-credit bonus.`
+	`	As they begin directing ground crews to offload the keystones, Tilkaat turns to you for a moment and requests that you meet them back at the spaceport by the end of the day: "thine assistance might be a boon to us in the next part of this journey," they say.`
 		decline
 
 mission "Successors: Ghosts Aqrabe Remnant"
@@ -117,17 +117,17 @@ mission "Successors: Ghosts Aqrabe 2"
 			has "Successors: Ghosts Aqrabe Remnant: declined"
 			has "Successors: Ghosts Aqrabe Hai: declined"
 	on offer
-		log "People" "Tilra" "Tilra is an engineer belonging to the Successor House Aqrabe."
+		log "People" "Tilkaat" "Tilkaat is an engineer belonging to the Successor House Aqrabe."
 		conversation
-			`Tilra meets you in a tucked-away part of the spaceport that's filled with strange statuary, where they stand in conversation with a small group of Successors. They brighten as they see you approach and offer a perfunctory splay of the arms. "Captain, captain," they say. "Thou returneth with no time to squander. We mean to ply a journey of understanding cross the wormhole; one fellow captain here means to use one of thy keystones, the other, our weft-weaving armor. Thy own craft would be valuable as a place to gather data from the other two, to see how they perform across the rift."`
+			`Tilkaat meets you in a tucked-away part of the spaceport that's filled with strange statuary, where they stand in conversation with a small group of Successors. They brighten as they see you approach and offer a perfunctory splay of the arms. "Captain, captain," they say. "Thou returneth with no time to squander. We mean to ply a journey of understanding cross the wormhole; one fellow captain here means to use one of thy keystones, the other, our weft-weaving armor. Thy own craft would be valuable as a place to gather data from the other two, to see how they perform across the rift."`
 			choice
 				`	"Couldn't you do that without me?"`
 				`	"Where exactly are we going?"`
 					goto destination
-			`	Tilra shimmers with mirth. "Of course," they say. "But were we to find ourselves with questions, needing knowledge that though might'st provide, 'twould be val'ble to have thee at our sides then. We plan to convene upon the dusty world just the other side of the gate; I shall hope to see thee there."`
+			`	Tilkaat shimmers with mirth. "Of course," they say. "But were we to find ourselves with questions, needing knowledge that though might'st provide, 'twould be val'ble to have thee at our sides then. We plan to convene upon the dusty world just the other side of the gate; I shall hope to see thee there."`
 				accept
 			label destination
-			`	Ripples of blue envelop Tilra's body. "As short a distance as we might. We may convene upon the burned world the other side of the wormhole."`
+			`	Ripples of blue envelop Tilkaat's body. "As short a distance as we might. We may convene upon the burned world the other side of the wormhole."`
 				accept
 	npc save
 		government "House Aqrabe"
@@ -136,9 +136,9 @@ mission "Successors: Ghosts Aqrabe 2"
 		ship "Seiitej (Armor Keystone)" "Airi-o-Ijta"
 	on stopover
 		conversation
-			`The two Seiitejen set down along with the <ship> along the edge of a dried lake, and Tilra immediately goes to communicate with their captains over comms. After a couple of minutes, they return to you on the bridge, noting down some data on a metallic pad. "The other craft report little issue with their journeys," they say. "And a minor quiver'f differences 'tween thy stones and our armor. But 'twill require us t'return t'make sense of them - I dare not do so here."`
+			`The two Seiitejen set down along with the <ship> along the edge of a dried lake, and Tilkaat immediately goes to communicate with their captains over comms. After a couple of minutes, they return to you on the bridge, noting down some data on a metallic pad. "The other craft report little issue with their journeys," they say. "And a minor quiver'f differences 'tween thy stones and our armor. But 'twill require us t'return t'make sense of them - I dare not do so here."`
 	on complete
-		dialog `Tilra offers a quick goodbye and asks you to meet them back in the spaceport later, once they've had time to process their data.`
+		dialog `Tilkaat offers a quick goodbye and asks you to meet them back in the spaceport later, once they've had time to process their data.`
 		log "Escorted a keystone-equipped and multimodal armor ship through the Successors' wormhole."
 
 mission "Successors: Ghosts Aqrabe 3"
@@ -153,44 +153,44 @@ mission "Successors: Ghosts Aqrabe 3"
 	on offer
 		event "successors: ghosts star unrestrict"
 		conversation
-			`You meet Tilra at their workshop, where they wave you inside. The scanner on their table has now been replaced by a collection of quantum keystones suspended in a variety of machines that prod and scan the stones incessantly. "Good news for thee, Captain, for all of us," Tilra says. "The data from our expedition hath revealed some measure of the mystery of thy stones. They're oscillators of a sort, ones that sing in tune with the wavers of the wormhole..." Tilra stops for a moment. "But we will have time to discuss that later. For now, what thou needs know is this: with the right materials, we may be able to magnify their effect. Hast though visited Kasii-Cavaasa?"`
+			`You meet Tilkaat at their workshop, where they wave you inside. The scanner on their table has now been replaced by a collection of quantum keystones suspended in a variety of machines that prod and scan the stones incessantly. "Good news for thee, Captain, for all of us," Tilkaat says. "The data from our expedition hath revealed some measure of the mystery of thy stones. They're oscillators of a sort, ones that sing in tune with the wavers of the wormhole..." Tilkaat stops for a moment. "But we will have time to discuss that later. For now, what thou needs know is this: with the right materials, we may be able to magnify their effect. Hast though visited Kasii-Cavaasa?"`
 			choice
 				`	"I have."`
 				`	"Where are you going with this?"`
-			`	Tilra continues. "The star of that system is borne upon by a number of stellar metal gardens, or at least 'twas fifteen hundred years ago. Their bounty is here the key to our success. Forty tons or so would be enough to subdivide those keystones to supply all of the New Houses. We could render our wormhole-crossing armor obsolete - improve our probes, perform more archaeology." They pause, and a wave of color bounds down their limbs. "It could even help solve this present mystery of ours. So what thinks thou?"`
+			`	Tilkaat continues. "The star of that system is borne upon by a number of stellar metal gardens, or at least 'twas fifteen hundred years ago. Their bounty is here the key to our success. Forty tons or so would be enough to subdivide those keystones to supply all of the New Houses. We could render our wormhole-crossing armor obsolete - improve our probes, perform more archaeology." They pause, and a wave of color bounds down their limbs. "It could even help solve this present mystery of ours. So what thinks thou?"`
 			choice
 				`	"You want me to fly into a star? Are you crazy?"`
 					goto shocked
 				`	"And how do you plan for us to get close enough to collect that?"`
-			`	"The shields of thy craft may be sufficient to the task," Tilra says, purple dotting their face. "And if not, we will have warning before they fail. We shall have to act with care and see for ourselves what is possible."`
+			`	"The shields of thy craft may be sufficient to the task," Tilkaat says, purple dotting their face. "And if not, we will have warning before they fail. We shall have to act with care and see for ourselves what is possible."`
 				accept
 			
 			label shocked
-			`	Purple dots spot Tilra's face. "Not 'into,' not strictly. But yes, I do not know if thy craft is worthy to the task. We shall have to see for ourselves what is possible."`
+			`	Purple dots spot Tilkaat's face. "Not 'into,' not strictly. But yes, I do not know if thy craft is worthy to the task. We shall have to see for ourselves what is possible."`
 				accept
 	on stopover
 		event "successors: ghosts star restrict"
 		conversation
 			branch "no shields"
 				"flagship shields" <= 0
-			`Your ship protests even as you near Kasii-Cavaasa, alarms ringing incessantly and heat meters spiking. The stellar metal garden is still little more than a dot against the roiling mass of the star. As you descend to it, the cockpit grows uncomfortably hot and is thick with the scent of ozone; Tilra looks even more miserable than you in the heat. Suddenly, something happens with the shields, and the intense heat of the star begins scouring bits of the <ship>'s hull. Tilra finally speaks: "Enough, captain. We shall have to regroup and find a different strategy."`
+			`Your ship protests even as you near Kasii-Cavaasa, alarms ringing incessantly and heat meters spiking. The stellar metal garden is still little more than a dot against the roiling mass of the star. As you descend to it, the cockpit grows uncomfortably hot and is thick with the scent of ozone; Tilkaat looks even more miserable than you in the heat. Suddenly, something happens with the shields, and the intense heat of the star begins scouring bits of the <ship>'s hull. Tilkaat finally speaks: "Enough, captain. We shall have to regroup and find a different strategy."`
 			choice
 				`	(Retreat.)`
 				`	(Press on.)`
 					goto onward
-			`	You order the <ship> upward from the star, and the alarms eventually quiet. "Take us back to <origin>," says Tilra, looking a little dejected. "We must decide what is to be done there."`
+			`	You order the <ship> upward from the star, and the alarms eventually quiet. "Take us back to <origin>," says Tilkaat, looking a little dejected. "We must decide what is to be done there."`
 				flee
 			label onward
-			`	The <ship> braves the heat a minute or so longer, despite Tilra's protests. The shields don't give out completely until a solar flare suddenly engulfs the ship, instantly vaporizing the <ship>, you, and Tilra and scattering your atoms among the cold and indifferent stars.`
+			`	The <ship> braves the heat a minute or so longer, despite Tilkaat's protests. The shields don't give out completely until a solar flare suddenly engulfs the ship, instantly vaporizing the <ship>, you, and Tilkaat and scattering your atoms among the cold and indifferent stars.`
 				die
 			
 			label "no shields"
-			`	Even approaching the Kasii-Cavaasa star is enough to bring the inside of the <ship> to an uncomfortably sweltering temperature. Without shielding of any sort, its hull rapidly approaches the point of thermal failure and, at Tilra's insistence, you are forced to return to a higher orbit.`
+			`	Even approaching the Kasii-Cavaasa star is enough to bring the inside of the <ship> to an uncomfortably sweltering temperature. Without shielding of any sort, its hull rapidly approaches the point of thermal failure and, at Tilkaat's insistence, you are forced to return to a higher orbit.`
 				flee
 	on complete
 		log "Attempted to retrieve stellar metal from Predecessor space for House Aqrabe, but was driven back by the intense heat."
 		conversation
-			`Tilra has spent most of the journey holed away, poring over data gathered from your stardiving expedition, but it's not long after the <ship>'s landing gear touch the ground of the <planet> spaceport that they are out and about, stretching their arms in the air. They remain nearby until you've finished post-flight checks and thank you for transporting them, now surrounded by several scholarly-dressed Successors. Before they head off, they ask you to return to the spaceport by sundown.`
+			`Tilkaat has spent most of the journey holed away, poring over data gathered from your stardiving expedition, but it's not long after the <ship>'s landing gear touch the ground of the <planet> spaceport that they are out and about, stretching their arms in the air. They remain nearby until you've finished post-flight checks and thank you for transporting them, now surrounded by several scholarly-dressed Successors. Before they head off, they ask you to return to the spaceport by sundown.`
 			`	Shortly before you depart into the port yourself, you overhear some of the ground crew remarking on the <ship>'s scorched hull.`
 
 mission "Successors: Ghosts Aqrabe 4"
@@ -203,13 +203,13 @@ mission "Successors: Ghosts Aqrabe 4"
 		has	"Successors: Ghosts Aqrabe 3: done"
 	on offer
 		conversation
-			`Tilra stands waiting for you in the same statue garden they met you earlier, though this time they are alone, tapping at a metallic pad under an overhanging light. They offer a curt greeting of colors when they see you. "I've news both foul and fair for thee," they say. "Thy craft shall not suit for our task. Perhaps with a year of study it could be adapted to our aims, but Aqrabe and I agree that would not do."`
+			`Tilkaat stands waiting for you in the same statue garden they met you earlier, though this time they are alone, tapping at a metallic pad under an overhanging light. They offer a curt greeting of colors when they see you. "I've news both foul and fair for thee," they say. "Thy craft shall not suit for our task. Perhaps with a year of study it could be adapted to our aims, but Aqrabe and I agree that would not do."`
 			choice
 				`	"So what is the good news?"`
 				`	"So is that it for this?"`
 			`	"Fortunately," they continue, "we may be able to outfit one of our own craft for this purpose. Or rather, one of House Kaatrij's."`
 			`	They offer the pad to you. It displays a schematic that you struggle to make any sense of; some small device is shown implanted in a Vujlet, its long tendrils snaking into various ship systems like some sort of infection. If you were to make a guess at its function, you might describe it as some sort of cloaking device - it's clearly shown reflecting and refracting light somehow, but the details of what exactly it is achieving escape your reckoning.`
-			`	"I've conferred with our fleet liason," says Tilra, "who conferred with Kaatrij's, and they've agree to dispense thee with a modified Vujlet." They pause before adding, in a softer and more cynical tone, "no doubt extracting some favor from Aqrabe along the way. We need thee to retrieve it from <planet> and bring it back here for outfitting. Once prepared with our armor and thy jump drive, we may return to Kasii-Cavaasa."`
+			`	"I've conferred with our fleet liason," says Tilkaat, "who conferred with Kaatrij's, and they've agree to dispense thee with a modified Vujlet." They pause before adding, in a softer and more cynical tone, "no doubt extracting some favor from Aqrabe along the way. We need thee to retrieve it from <planet> and bring it back here for outfitting. Once prepared with our armor and thy jump drive, we may return to Kasii-Cavaasa."`
 			choice
 				`	"These look like some complex modifications."`
 					goto suspicious
@@ -222,14 +222,14 @@ mission "Successors: Ghosts Aqrabe 4"
 			label suspicious
 			action
 				"successors: ghosts suspicion" ++
-			`	A gentle ripple of orange passes over Tilra. "They are, Captain. I am told Kaatrij keep some Vujleten for research - no, 'tis not for me to say."`
-			`	Though you try to push them further, Tilra offers no more information on Kaatrij's modifications.`
+			`	A gentle ripple of orange passes over Tilkaat. "They are, Captain. I am told Kaatrij keep some Vujleten for research - no, 'tis not for me to say."`
+			`	Though you try to push them further, Tilkaat offers no more information on Kaatrij's modifications.`
 				goto end
 			label tense
-			`	Tilra burbles in a gentle display of laughter, pink spots breaking out on the tips of their arms. "Who is?" they say. "Now most of all."`
+			`	Tilkaat burbles in a gentle display of laughter, pink spots breaking out on the tips of their arms. "Who is?" they say. "Now most of all."`
 				goto end
 			label end
-			`	"Oh," Tilra says just before you leave, "and also, Kaatrij wishes to send along an observer. Perhaps they have cause to be suspicious. Ugh, perhaps they're just suspicious by nature."`
+			`	"Oh," Tilkaat says just before you leave, "and also, Kaatrij wishes to send along an observer. Perhaps they have cause to be suspicious. Ugh, perhaps they're just suspicious by nature."`
 				accept
 
 mission "Successors: Ghosts Aqrabe 5"
@@ -272,7 +272,7 @@ mission "Successors: Ghosts Aqrabe 5"
 	on complete
 		give ship "Vujlet (Stellar)" "Nnesa ti-a-Oj"
 		conversation
-			`Both your ship and the Vujlet are directed to an enormous outfitting bay at <planet>'s spaceport, easily large enough for both craft ten times over. As you disembark, you notice several Successors are entering the landed Vujlet with large carts of equipment in tow, much of which is locked away in unmarked metallic cases. Notably, Kaatrij's representative remains onboard, keeping their distance from the Aqrabe ground crews. Tilra spots you from an overhanging balcony and waves you over.`
+			`Both your ship and the Vujlet are directed to an enormous outfitting bay at <planet>'s spaceport, easily large enough for both craft ten times over. As you disembark, you notice several Successors are entering the landed Vujlet with large carts of equipment in tow, much of which is locked away in unmarked metallic cases. Notably, Kaatrij's representative remains onboard, keeping their distance from the Aqrabe ground crews. Tilkaat spots you from an overhanging balcony and waves you over.`
 			`	"A lovely craft, is it not, Captain? Thou hast not flown one of our martial craft before, hast thou?."`
 			choice
 				`	"A ship is a ship, really."`
@@ -288,36 +288,38 @@ mission "Successors: Ghosts Aqrabe 5"
 							has "ship model (all): Ojde"
 							has "ship model (all): Stolsaqra"
 					goto experienced
-			`	Tilra makes a short humming sound. "Perhaps," they say. "Thou shalt have the opportunity to decide for thyself soon enough."`
+			`	Tilkaat makes a short humming sound. "Perhaps," they say. "Thou shalt have the opportunity to decide for thyself soon enough."`
 				goto next
 			label experienced
-			`	Tilra ripples with an emotion that's difficult to place, one tinted with shades of pride.`
+			`	Tilkaat ripples with an emotion that's difficult to place, one tinted with shades of pride.`
 			label next
-			`	The re-armoring process begins soon after, massive metallic arms folding down from the top of the bay to scan over the surface of the ship. At certain points, flying drones emerge from the sides of the hangar to dispense some additional material onto the vessel or to perform scans, projecting shape after shape onto the warbling hull in many-colored laser light. After a while of watching, Tilra leans over to you. "The process will take some more hours," they say. "The armor to cross the wormhole is a more complicated kind than the others. I'll leave thee to thine own pursuits for now - though, I plan to go among the statue garden for a while, and if it pleases thee, thou may'st join me there."`
+			`	The re-armoring process begins soon after, massive metallic arms folding down from the top of the bay to scan over the surface of the ship. At certain points, flying drones emerge from the sides of the hangar to dispense some additional material onto the vessel or to perform scans, projecting shape after shape onto the warbling hull in many-colored laser light. After a while of watching, Tilkaat leans over to you. "The process will take some more hours," they say. "The armor to cross the wormhole is a more complicated kind than the others. I'll leave thee to thine own pursuits for now - though, I plan to go among the statue garden for a while, and if it pleases thee, thou may'st join me there."`
 			choice
 				`	"I'd be happy to."`
 				`	"Thanks, but I have my own preparations to make."`
 					goto alone
+			action
+				log "People" "Tilkaat" "Tilkaat sees their role in current events as offering them the opportunity to make their mark on future generations."
 			`	The statue garden isn't very far from the outfitting bay where the Vujlet is parked. It's a circular area, cut out of the structure of the spaceport and exposed to the elements - the early-morning light shines through the light snowfall and glitters on the eerie metallic forms of the statues. Most of them are purely abstract, but one in every ten or so has some organic form emerging from the smooth metal as if it were trapped behind a sheet: leaves of plants, faces of animals, or even what look like Successor body parts.`
-			`	"I'm curious, captain," Tilra says. "What motivates thee to do this? Flying into a star, I mean to say. Last we visited, 'twas on thine own ship that thou knowest well - now, thou placeth thy life in alien engineering thou'st never seem perform. Why consider it?"`
+			`	"I'm curious, captain," Tilkaat says. "What motivates thee to do this? Flying into a star, I mean to say. Last we visited, 'twas on thine own ship that thou knowest well - now, thou placeth thy life in alien engineering thou'st never seem perform. Why consider it?"`
 			choice
 				`	"I've done other dangerous things before and they've always worked out."`
 					goto lucky
 				`	"I've seen enough of Successor engineering to be confident in it."`
 					goto confident
 				`	"Maybe I like the danger."`
-			`	"Danger, danger," Tilra says, rolling the word around in their mouth. "Our youths will dream of being valiant pilots, proving their valor in strings of peril, and then in adulthood instead awake to find themselves at the helm of a cargo ship disguised as something diff'rent by House armor. Perhaps I understand that for thee, captain."`
+			`	"Danger, danger," Tilkaat says, rolling the word around in their mouth. "Our youths will dream of being valiant pilots, proving their valor in strings of peril, and then in adulthood instead awake to find themselves at the helm of a cargo ship disguised as something diff'rent by House armor. Perhaps I understand that for thee, captain."`
 				goto hbu
 			label lucky
-			`	A mirthful blush passes over Tilra. "No doubt thou hast," they say. "To've traveled as far as thou hast, through such perilous voids... let us hope thy luck holds, then, captain."`
+			`	A mirthful blush passes over Tilkaat. "No doubt thou hast," they say. "To've traveled as far as thou hast, through such perilous voids... let us hope thy luck holds, then, captain."`
 				goto hbu
 			label confident
-			`	"Truly?" Tilra says. They look around at the sculptures, taking them in. "That's fair for thee. We may not be what we were long ago, but we do retain some subtle arts. Thou'rt right, if it matters, to trust us in this. Nothing endures as long as we have by being fickle."`
+			`	"Truly?" Tilkaat says. They look around at the sculptures, taking them in. "That's fair for thee. We may not be what we were long ago, but we do retain some subtle arts. Thou'rt right, if it matters, to trust us in this. Nothing endures as long as we have by being fickle."`
 			label hbu
 			`	"And you," you ask, "why are you doing this?"`
-			`	Tilra hums a long drone as they contemplate. "We've a tradition here - at least at Aqrabe, but I know others've sim'lar ones, too. In the late hour of their life, a parent's children will decide for them a task they are t'accomplish: a work of art to make, a journey to travel, a change of the self to effect, or another of that sort. Much of our lives are formed already by the acts and station of our ancestors, so 'tis fair t'offer some shaping to our progeny in return."`
+			`	Tilkaat hums a long drone as they contemplate. "We've a tradition here - at least at Aqrabe, but I know others've sim'lar ones, too. In the late hour of their life, a parent's children will decide for them a task they are t'accomplish: a work of art to make, a journey to travel, a change of the self to effect, or another of that sort. Much of our lives are formed already by the acts and station of our ancestors, so 'tis fair t'offer some shaping to our progeny in return."`
 			`	"So your children are asking you to fly into a star?"`
-			`	An explosion of humor consumes Tilra, and they lean against one of the statues for support. "No, no," they say, "I'm far too young, and 'twouldn't be the right thing to ask, besides. No, I mention it because the task I decided for my eldest parent is this around us." They gesture to the sculptures. "For ten years they formed the pillars standing here and now, even dead, a bit of their existence lingers 'tween those, and in the air. If we succeed, then likewise parts of us shall live in the future of this House."`
+			`	An explosion of humor consumes Tilkaat, and they lean against one of the statues for support. "No, no," they say, "I'm far too young, and 'twouldn't be the right thing to ask, besides. No, I mention it because the task I decided for my eldest parent is this around us." They gesture to the sculptures. "For ten years they formed the pillars standing here and now, even dead, a bit of their existence lingers 'tween those, and in the air. If we succeed, then likewise parts of us shall live in the future of this House."`
 			choice
 				`	"I can understand wanting to make a difference."`
 					goto difference
@@ -332,24 +334,24 @@ mission "Successors: Ghosts Aqrabe 5"
 					to display
 						has "Successors: People's Houses: First Contact: offered"
 			action
-				set "successors confronted tilra"
-			`	Tilra looks down at you with interest. "Perhaps I guess what thou mean'st, but tell me more, if it pleases thee."`
+				set "successors confronted tlikaat"
+			`	Tilkaat looks down at you with interest. "Perhaps I guess what thou mean'st, but tell me more, if it pleases thee."`
 			`	"Well," you say, "the People's Houses don't seem happy with their lot, nor do the Predecessor planets I've seen look very comfortable. Not that humans don't have our own problems, but it seems like even thousands of years of 'waves upon the bright shore' haven't made the Successors totally enlightened. Supplying you with keystones might help us both right now, but who knows what'll come of it in the future?"`
-			`	A spark of anger flashes over Tilra's face, but only briefly, and they seem to push their skin back to its most neutral color. "There's no undoing what's already wrought," they say. "Sad as it might be." They pause for a moment. "I'll hope to see thee in the spaceport nonetheless, captain."`
+			`	A spark of anger flashes over Tilkaat's face, but only briefly, and they seem to push their skin back to its most neutral color. "There's no undoing what's already wrought," they say. "Sad as it might be." They pause for a moment. "I'll hope to see thee in the spaceport nonetheless, captain."`
 				goto end
 			label far-fetched
-			`	Mirth once again sparkles Tilra's skin. "Probably so," they say, and after a pause, "my thanks to thee for joining me, captain. Thou should'st prepare now - join us back at the spaceport when thou'rt ready."`
+			`	Mirth once again sparkles Tilkaat's skin. "Probably so," they say, and after a pause, "my thanks to thee for joining me, captain. Thou should'st prepare now - join us back at the spaceport when thou'rt ready."`
 				goto end
 			label egoist
-			`	Tilra keeps a contemplative look on their face. "Somehow I suspected that," they say, and after a pause, "my thanks to thee for joining me, captain. Thou should'st prepare now - join us back at the spaceport when thou'rt ready."`
+			`	Tilkaat keeps a contemplative look on their face. "Somehow I suspected that," they say, and after a pause, "my thanks to thee for joining me, captain. Thou should'st prepare now - join us back at the spaceport when thou'rt ready."`
 				goto end
 			label difference
-			`	"It's quite a feeling," they say, "isn't it?" They pause for a short while, looking up at the sky. The clouds overhead are starting to part and the snowfall is thinning. You notice for the first time that the ground is slightly heated - none of the snow that's falling has accumulated, instead just melting away into tiny channels in the rock. "My thanks to thee for joining me, captain," says Tilra. "Thou should'st prepare now - join us back at the spaceport when thou'rt ready."`
+			`	"It's quite a feeling," they say, "isn't it?" They pause for a short while, looking up at the sky. The clouds overhead are starting to part and the snowfall is thinning. You notice for the first time that the ground is slightly heated - none of the snow that's falling has accumulated, instead just melting away into tiny channels in the rock. "My thanks to thee for joining me, captain," says Tilkaat. "Thou should'st prepare now - join us back at the spaceport when thou'rt ready."`
 				goto end
 			label alone
 			`	"Of course. Join me back here in the spaceport, then, four hours hence."`
 			label end
-			`	With that, Tilra heads off. You should make sure that the Vujlet you have been loaned is equipped for the upcoming voyage.`
+			`	With that, Tilkaat heads off. You should make sure that the Vujlet you have been loaned is equipped for the upcoming voyage.`
 
 mission "Successors: Ghosts Aqrabe 6"
 	name "Visit exotic metal garden again"
@@ -361,11 +363,11 @@ mission "Successors: Ghosts Aqrabe 6"
 		has	"Successors: Ghosts Aqrabe 5: done"
 	on offer
 		conversation
-			`You meet Tilra and House Kaatrij's observer back in the hangar bay with the specially-equipped Vujlet, which now gleams all over with an oily, iridescent sheen. Tilra and the observer are in the middle of a heated conversation; you catch a bit of something ending " - foolish to trust an alien," from the observer.`
-			`	Tilra waves you over. "Good, captain. Our ally was just expressing the importance of thy promptness in this task. Kaatrij longs not to be parted from their trinket for long."`
+			`You meet Tilkaat and House Kaatrij's observer back in the hangar bay with the specially-equipped Vujlet, which now gleams all over with an oily, iridescent sheen. Tilkaat and the observer are in the middle of a heated conversation; you catch a bit of something ending " - foolish to trust an alien," from the observer.`
+			`	Tilkaat waves you over. "Good, captain. Our ally was just expressing the importance of thy promptness in this task. Kaatrij longs not to be parted from their trinket for long."`
 			`	"Fine," you say. "Anything else I need to know?"`
 			`	The observer looks you over with an emotionless gaze. "Our efforts shall protect the craft from the star's heat, but little else. 'T'would be wise not to linger in the Tangles."`
-			`	Tilra rubs their arms together and an pulse of electric blue passes over them. "Time to go, then, captain!"`
+			`	Tilkaat rubs their arms together and an pulse of electric blue passes over them. "Time to go, then, captain!"`
 				accept
 
 mission "Successors: Ghosts Aqrabe 7"
@@ -381,7 +383,7 @@ mission "Successors: Ghosts Aqrabe 7"
 	on offer
 		conversation
 			`Several minutes pass after landing before the hull of the <ship> has cooled enough to make it safe for exit - despite Kaatrij's loaned technology, the ship's armor still glows red-hot. The interior of the garden's loading bay is cavernous, the tangled metal strands drawn inside onto giant spools each many meters in diameter.`
-			`	Your crew gets to work under the supervision of Tilra and Kaatrij's observer, removing small bits of metal from the rolls and carting them, one by one, onto the ship. Soon, Tilra calls you over to a side section of the facility, and points out one of spools - unlike the others, this one is entirely empty.`
+			`	Your crew gets to work under the supervision of Tilkaat and Kaatrij's observer, removing small bits of metal from the rolls and carting them, one by one, onto the ship. Soon, Tilkaat calls you over to a side section of the facility, and points out one of spools - unlike the others, this one is entirely empty.`
 			`	"It would seem to me that our visit here is not the first, Captain," they say.`
 			choice
 				`	"Who might have done this?"`
@@ -391,7 +393,7 @@ mission "Successors: Ghosts Aqrabe 7"
 			`	"'Tis impossible to know. Perhaps they had some shield as we had, or perhaps their craft was sturdy enough itself to bear the star's ire. Either one bodes poorly."`
 				goto asked
 			label who
-			`	Tilra shudders with color. "Were we fortunate, 'twas the Quarg or some of their nature, inspecting here in solitude. But lacking fortune, it may be that Kaatrij's aggressor seeks this bounty too - and has beaten us to it."`
+			`	Tilkaat shudders with color. "Were we fortunate, 'twas the Quarg or some of their nature, inspecting here in solitude. But lacking fortune, it may be that Kaatrij's aggressor seeks this bounty too - and has beaten us to it."`
 			label asked
 			`	"Either way," they say, "we must hasten back t'bring this news to Aqrabe."`
 				accept
@@ -416,7 +418,7 @@ mission "Successors: Ghosts Aqrabe 7"
 		set "successors: ghosts dealt with aqrabe"
 		log "Retrieved stellar metal for House Kaatrij using a specially-equipped vessel, narrowly escaping pursuing warships."
 		conversation
-			`You set the ship down on <planet> in the midst of a sea of dockworkers, who begin removing the precious stellar metal from the <ship>'s cargo hold almost immediately, under the watchful gaze of the Kaatrij observer. Tilra, after entering a bit of data on their pad, finally relaxes, quietly reciting a series of harsh-sounding and apparently untranslatable words.`
+			`You set the ship down on <planet> in the midst of a sea of dockworkers, who begin removing the precious stellar metal from the <ship>'s cargo hold almost immediately, under the watchful gaze of the Kaatrij observer. Tilkaat, after entering a bit of data on their pad, finally relaxes, quietly reciting a series of harsh-sounding and apparently untranslatable words.`
 			`	"Do you know something about those ships?" you ask them, eliciting a long groan and a wave of oily black over their skin.`
 			`	"This is what we earn for tearing up a nest; going where we shouldn't," they say. "'Twas a drone, an automated guardian from the days that garden was new. No doubt meant to chase off interlopers, as ourselves. But-"`
 			choice
@@ -433,11 +435,11 @@ mission "Successors: Ghosts Aqrabe 7"
 			choice
 				`	"What about this ship? Do I get to keep it?`
 			label ship
-			`	Tilra nods. "Before we left, I heard from our fleet liason with Kaatrij. The ship lacks weapons or anything too perilous for thou to keep, and Kaatrij has no doubt already started removing their device. Thou might'st consider it a bonus to thy fee, a favor from the House to thee."`
+			`	Tilkaat nods. "Before we left, I heard from our fleet liason with Kaatrij. The ship lacks weapons or anything too perilous for thou to keep, and Kaatrij has no doubt already started removing their device. Thou might'st consider it a bonus to thy fee, a favor from the House to thee."`
 			branch "not confronted"
-				not "successors confronted tilra"
+				not "successors confronted tilkaat"
 			label confronted
-			`	Tilra turns to go away but stops themself. "I've an apology to offer thee 'fore we part, captain," they say. "I showed thee some disrespect when we spoke before leaving. 'Tis strange to be accused by one so foreign to our ways. But we've been cut off a long time now, I think, hearing only from ourselves and the ghosts of others. Greater things are moving than either of us now, but thou may'st trust that I'll be careful with our treasure. I can promise thee nothing more, but thou'rt right to remind me of that, at least."`
+			`	Tilkaat turns to go away but stops themself. "I've an apology to offer thee 'fore we part, captain," they say. "I showed thee some disrespect when we spoke before leaving. 'Tis strange to be accused by one so foreign to our ways. But we've been cut off a long time now, I think, hearing only from ourselves and the ghosts of others. Greater things are moving than either of us now, but thou may'st trust that I'll be careful with our treasure. I can promise thee nothing more, but thou'rt right to remind me of that, at least."`
 			label "not confronted"
-			`	The two of you are interrupted by Kaatrij's observer, who informs the two of you that the metal offloading is complete. Tilra, ready to get started on the next phase of their project, leaves with them, offering you a quick bow and courteous "goodbye."`
+			`	The two of you are interrupted by Kaatrij's observer, who informs the two of you that the metal offloading is complete. Tilkaat, ready to get started on the next phase of their project, leaves with them, offering you a quick bow and courteous "goodbye."`
 			`	A few minutes later, you are notified that you have received a payment of <payment> credits from House Aqrabe.`
