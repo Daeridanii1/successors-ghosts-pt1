@@ -946,6 +946,7 @@ mission "Successors: Ghosts 9"
 	on decline
 		set "successors: myiara name"
 		log "Spoke with the Quarg, who revealed that they have kept a base on Qasa-Sija-Iri to monitor the Successors. It has remained cloaked by House Kaatrij, who has collaborated with the Quarg since the collapse of the Predecessors."
+		log "Factions" "Successors" "The Successor species is properly referred to as the Myiara, though this term has fallen out of favor since the collapse of their old empire."
 
 
 
@@ -1951,19 +1952,18 @@ mission "Successors: Ghosts 20"
 
 mission "Successors: Ghosts Black Box"
 	landing
-	minor
 	invisible
 	source
 		attributes "successor"
 	to offer
-		has "Successors: Ghosts 17: done"
+		has "Successors: Ghosts 20: done"
 		or
 			has "Successors: Ghosts Resja transmission"
 			has "Successors: Ghosts Queru transmission"
 			has "Successors: Ghosts Hasur transmission"
 	on offer
 		conversation
-			`The license you have received from House Kaatrij includes some cryptographic information that you might be able to use to decode the transmission you received from the drone ship. Would you like to do so?`
+			`The license you have received from House Kaatrij includes some cryptographic information that you might be able to use to decode the transmission you received from the drone ships. Would you like to do so?`
 			choice
 				`	(Yes.)`
 				`	(No.)`
@@ -2044,7 +2044,6 @@ mission "Successors: Ghosts Black Box"
 
 mission "Successors: Ghosts Reincarnation"
 	landing
-	minor
 	invisible
 	source "Raaqa-Puan-Uuoru"
 	to offer
@@ -2068,7 +2067,7 @@ mission "Successors: Ghosts Reincarnation"
 				`	"It's probably just someone who shared your name, but I thought I'd tell you anyway. The transmissions included what seem like journals, and one of them mentions a 'Saajret.'"`
 				`	"The transmissions included journals, and one of them mentions a 'Saajret.' Do you think they could have been an ancestor of yours?"`
 			`	Something about hearing their name in this context seems to strike a discordant chord within Saajret. All at once confusion and anger and sorrow flit over them before they tense and their skin becomes a steely grey. They say nothing more on the matter, instead striking up a conversation about your recent experiences and never slowing. After an hour or so of catching up, they've finally had enough and let the conversation die.`
-			`	As you leave, Saajret turns to you a final time. "Thou hast my deepest thanks, my friend," they say, and close the door.`
+			`	As you leave, Saajret turns to you a final time. A strange expression is sitting on their face, and their skin seems incapable of resolving into a single color display. "Thou hast my deepest thanks, my friend," they say, sounding a little haunted, and close the door.`
 				decline
 
 
