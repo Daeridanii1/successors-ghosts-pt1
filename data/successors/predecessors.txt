@@ -17,7 +17,7 @@ ship "Resja, of the Nine Eyes"
 		"heat dissipation" 0.5
 		"fuel capacity" 400
 		"cargo space" 10
-		"outfit space" 381
+		"outfit space" 382
 		"weapon capacity" 153
 		"hull repair rate" 1.25
 		"hull energy" 1.75
