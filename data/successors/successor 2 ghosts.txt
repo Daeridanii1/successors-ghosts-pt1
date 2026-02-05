@@ -1929,14 +1929,29 @@ mission "Successors: Ghosts 20"
 			label "collaboration"
 			action
 				set "Successors: collaboration"
-			`	"'T'would be fruitful, doubtless," Tilra says. "And now Kaatrij opens up a little for the first time since their wound, perhaps 'tis not beyond the realm of possibility."`
+			
+			`	"'T'would be fruitful, doubtless," Tilra says. "And now Kaatrij opens up a little for the first time since their wound, perhaps 'tis not beyond the realm of possibility."`			
+			branch "low openness"
+				"Successors: Ghosts Saajret Openness" < 0
+
 			`	"I, too, would welcome it," Saajret adds. Their skin betrays a genuine satisfaction.`
+				goto "saajret and tilra"
+
+			label "low openness"
+			`	"I shall welcome it while it lasts," Saajret adds. "Though I fear Kaatrij's openness may be but a fleeting thing."`
 				goto "saajret and tilra"
 
 			label "uncertain"
 			action
 				set "Successors: uncertain"
-			`	Saajret hums deeply. "For us," they say, "our Houses are our families, and family is always a complicated thing. Perhaps I understand thee, captain."`
+			branch "high forgiveness"
+				"Successors: Ghosts Saajret Forgiveness" > 0
+
+			`	Saajret hums deeply. "For us," they say, "our Houses are our families, and family is always a complicated thing. Perhaps I understand thee, captain, better than thou might imagine."`
+				goto "saajret and tilra"
+
+			label "high forgiveness"
+			`	Saajret hums, a shade of curiosity coming over them. "Perhaps 'tis more uncertain for thee," they say. "For us, our Houses are our families - we must endeavor to live with them, eccentricities and all."`
 				goto "saajret and tilra"
 
 			label end
