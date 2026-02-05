@@ -17,15 +17,12 @@ ship "Resja, of the Nine Eyes"
 		"heat dissipation" 0.5
 		"fuel capacity" 400
 		"cargo space" 10
-		"outfit space" 481
+		"outfit space" 381
 		"weapon capacity" 153
-		"engine capacity" 100
 		"hull repair rate" 1.25
 		"hull energy" 1.75
 		"hull heat" 1.75
 		"multimodal armor" 1
-		"exclusive: Resja" 1
-		"unremovable" -1
 		# Resja uses their shields for attack, not defense.
 		"shield generation multiplier" 1
 		"high shield permeability" 1
@@ -41,6 +38,25 @@ ship "Resja, of the Nine Eyes"
 		# For protection against missiles
 		"radar jamming" 80
 		"optical jamming" 80
+		# Engines
+		"thrusting shields" 1.4
+		"thrusting heat" 3.15
+		"flare sprite" "effect/resja flare"
+			"frame rate" 3
+			"rewind"
+		"flare sound" "ion large"
+
+		"turn" 1850
+		"turning shields" 0.95
+		"turning energy" 3.15
+		"turning heat" 2.54
+		"steering flare sound" "ion large"
+
+		"afterburner thrust" 123.0
+		"afterburner shields" 12.2
+		"afterburner heat" 8.3
+		"afterburner energy" 4.8
+		"afterburner effect" "resja afterburner"
 		weapon
 			"blast radius" 100
 			"shield damage" 1000
@@ -51,13 +67,11 @@ ship "Resja, of the Nine Eyes"
 
 		`Hyperdrive`
 		`"Jiita" Heirloom Shielding`
-		`Successor Cooling` 3
+		`Heirloom Cooling`
 
 		`"Ija" Heirloom Reactor` 2
 		`Heirloom Power Reserve`
 		`Auxiliary Power Reserve`
-
-		`Resja Engine Block`
 
 		`Multimodal Armor: Regen`
 	gun 4 -73
@@ -77,6 +91,14 @@ ship "Resja, of the Nine Eyes"
 	description `Two for the bitter rings, blinking with light,`
 	description `And a final one missing, lost to the night.`
 
+effect "resja afterburner"
+	sprite "effect/resja afterburner"
+		"frame rate" 60
+		"no repeat"
+	sound "successor afterburner tiny"
+	"sound category" "afterburner"
+	lifetime 7
+
 ship "Hasur, Vowsworn"
 	plural "Hasuran, Vowsworn"
 	sprite "ship/hasur vowsworn"
@@ -94,15 +116,12 @@ ship "Hasur, Vowsworn"
 		"heat dissipation" 0.6
 		"fuel capacity" 400
 		"cargo space" 10
-		"outfit space" 370
+		"outfit space" 310
 		"weapon capacity" 96
-		"engine capacity" 60
 		"hull repair rate" 1.25
 		"hull energy" 1.75
 		"hull heat" 1.75
 		"multimodal armor" 1
-		"exclusive: Hasur" 1
-		"unremovable" -1
 		# Hasur uses their shields for attack, not defense.
 		"shield generation multiplier" 1
 		"high shield permeability" 1
@@ -118,12 +137,31 @@ ship "Hasur, Vowsworn"
 		# For protection against missiles
 		"radar jamming" 80
 		"optical jamming" 80
+		# Engines
+		"thrust" 49
+		"thrusting shields" 0.84
+		"thrusting heat" 1.9
+		#"flare sprite" "effect/hasur afterburner"
+		#	"frame rate" 3
+		#	"rewind"
+		"flare sound" "ion large"
+
+		"turn" 1110
+		"turning shields" 0.55
+		"turning energy" 1.9
+		"turning heat" 1.5
+		"steering flare sound" "ion large"
+
+		"afterburner thrust" 74
+		"afterburner shields" 7.3
+		"afterburner heat" 5
+		"afterburner energy" 2.9
+		"afterburner effect" "hasur afterburner"
 		weapon
 			"blast radius" 100
 			"shield damage" 1000
 			"hull damage" 500
 			"hit force" 1500
-	outfits
 	outfits
 		`"Kis," Lethal Wish` 4
 
@@ -134,16 +172,22 @@ ship "Hasur, Vowsworn"
 		`"Ija" Heirloom Reactor` 2
 		`Heirloom Power Reserve`
 
-		`Hasur Engine Block`
-
 		`Multimodal Armor: Regen`
 	gun -12 -64
 	gun -7 -60
 	gun 7 -60
 	gun 12 -64
-	engine 0 38
+	engine 0 0
 	description `One would think that, immured deep within those hostile, rotting abcesses of the stars, the constructs of that foolish race would prove themselves inadequate; that their artificial minds would splinter and falter and crumble like their so-false flesh, festering on the bone. And yet they remain, eternally dying but never dead, consumed by programmed rage and unknowable perception. The constructs will keep their promises, interloper:`
 	description `	They'll kill you. They'll do it quick.`
+
+effect "hasur afterburner"
+	sprite "effect/hasur afterburner"
+		"frame rate" 60
+		"no repeat"
+	sound "successor afterburner tiny"
+	"sound category" "afterburner"
+	lifetime 5
 
 ship "Queru, Luminous Gaze"
 	plural "Querun, Luminous Gazes"
@@ -162,15 +206,12 @@ ship "Queru, Luminous Gaze"
 		"heat dissipation" 0.65
 		"fuel capacity" 400
 		"cargo space" 10
-		"outfit space" 380
+		"outfit space" 320
 		"weapon capacity" 116
-		"engine capacity" 60
 		"hull repair rate" 1.25
 		"hull energy" 1.75
 		"hull heat" 1.75
 		"multimodal armor" 1
-		"exclusive: Hasur" 1
-		"unremovable" -1
 		# Hasur uses their shields for attack, not defense.
 		"shield generation multiplier" 1
 		"high shield permeability" 1
@@ -186,6 +227,26 @@ ship "Queru, Luminous Gaze"
 		# For protection against missiles
 		"radar jamming" 80
 		"optical jamming" 80
+		# Engines
+		"thrust" 49
+		"thrusting shields" 0.84
+		"thrusting heat" 1.9
+		#"flare sprite" "effect/hasur afterburner"
+		#	"frame rate" 3
+		#	"rewind"
+		"flare sound" "ion large"
+
+		"turn" 1110
+		"turning shields" 0.55
+		"turning energy" 1.9
+		"turning heat" 1.5
+		"steering flare sound" "ion large"
+
+		"afterburner thrust" 74
+		"afterburner shields" 7.3
+		"afterburner heat" 5
+		"afterburner energy" 2.9
+		"afterburner effect" "queru afterburner"
 		weapon
 			"blast radius" 100
 			"shield damage" 1000
@@ -198,19 +259,26 @@ ship "Queru, Luminous Gaze"
 		`Hyperdrive`
 		`"Jiita" Heirloom Shielding`
 		`Visions of Rime`
+		`Successor Cooling`
 
 		`"Ija" Heirloom Reactor` 2
 		`Heirloom Power Reserve`
-
-		`Hasur Engine Block`
 
 		`Multimodal Armor: Regen`
 	gun 0 -70
 		under
 	turret 32 -21
 	turret -32 -21
-	engine 0 38
+	engine 0 0
 	description `Queru came last, and was the most inspired of the three, eviscerating at a distance before it could even be seen. For their part, Resja hated it - but by then, Resja's fate had been long sealed.`
+
+effect "queru afterburner"
+	sprite "effect/queru afterburner"
+		"frame rate" 60
+		"no repeat"
+	sound "successor afterburner tiny"
+	"sound category" "afterburner"
+	lifetime 6
 
 # Solitude Enforcer Outfits (Obtainable)
 
@@ -351,82 +419,13 @@ outfit `Crimson Halo`
 	"shield connection point" 1
 	description `Resja's ships didn't need shields for defence - only as fuel for attacking their foes. Thus, their favored shield cortex is an unusually powerful one, emitting a staggering amount of energy that is much less useful for intercepting damage than it is when fed back into a starship's systems.`
 
-outfit `Resja Engine Block`
-	category "Engines"
-	series "Engines"
-	index 11061
-	"unremovable" 1
-	"exclusive: Resja" -1
-	"unplunderable" 1
-	"cost" 3550000
-	"mass" 100
-	"outfit space" -100
-	"engine capacity" -100
-	"thrust" 82.0
-	"thrusting shields" 1.4
-	"thrusting heat" 3.15
-	"flare sprite" "effect/resja flare"
-		"frame rate" 3
-		"rewind"
-	"flare sound" "ion large"
-
-	"turn" 1850
-	"turning shields" 0.95
-	"turning energy" 3.15
-	"turning heat" 2.54
-	"steering flare sound" "ion large"
-
-	"afterburner thrust" 123.0
-	"afterburner shields" 12.2
-	"afterburner heat" 8.3
-	"afterburner energy" 4.8
-	"afterburner effect" "resja afterburner"
-
-outfit `Hasur Engine Block`
-	category "Engines"
-	series "Engines"
-	index 11051
-	"unremovable" 1
-	"exclusive: Hasur" -1
-	"unplunderable"
-	"cost" 3550000
-	"mass" 60
-	"outfit space" -60
-	"engine capacity" -60
-	"thrust" 49
-	"thrusting shields" 0.84
-	"thrusting heat" 1.9
-#	"flare sprite" "effect/hasur flare"
-#		"frame rate" 3
-#		"rewind"
-	"flare sound" "ion large"
-
-	"turn" 1110
-	"turning shields" 0.55
-	"turning energy" 1.9
-	"turning heat" 1.5
-	"steering flare sound" "ion large"
-
-	"afterburner thrust" 74
-	"afterburner shields" 7.3
-	"afterburner heat" 5
-	"afterburner energy" 2.9
-#	"afterburner effect" "hasur afterburner"
-
-effect "resja afterburner"
-	sprite "effect/resja afterburner"
-		"frame rate" 60
-		"no repeat"
-	sound "successor afterburner tiny"
-	"sound category" "afterburner"
-	lifetime 7
-
 # Heirloom Ships
 
 ship "Valkkyiara-Khorasaqra"
 	sprite "ship/valkkyiara-khorasaqra"
 	thumbnail "thumbnail/valkkyiara-khorasaqra"
 	"plural" "Valkkyiara-Khorasaqran"
+	"never disabled"
 	attributes
 		category "Medium Warship"
 		"cost" 400000000
@@ -459,7 +458,7 @@ ship "Valkkyiara-Khorasaqra"
 		`"Ija" Heirloom Reactor` 3
 		`Heirloom Power Reserve`
 		`"Jiita" Heirloom Shielding`
-		"Successor Cooling" 3
+		"Heirloom Cooling"
 		`"Sarija" Heirloom Coilgun` 6
 		`"Tijra" Heirloom Lance`
 		"High-Velocity Spike" 30
@@ -596,8 +595,8 @@ outfit `"Ija" Heirloom Reactor`
 	index 11051
 	cost 65500000
 	thumbnail "outfit/unknown"
-	"mass" 60
-	"outfit space" -60
+	"mass" 58
+	"outfit space" -58
 	"energy generation" 10.7
 	"heat generation" 15
 	"shield energy multiplier" -0.15
@@ -615,6 +614,19 @@ outfit "Heirloom Power Reserve"
 	"energy capacity" 26000
 	"hull energy" -1
 	description "This Predecessor battery stores energy in the almost innumerable voids of a stellar metal foam, a technology now unfortunately lost to time."
+
+outfit "Heirloom Cooling"
+	category "Systems"
+	series "Cooling"
+	index 11020
+	cost 220000
+	thumbnail "outfit/unknown"
+	"mass" 30
+	"outfit space" -30
+	"cooling" 24
+	"active cooling" 60
+	"cooling energy" 4.4
+	description "The Successors' modern equipment does not produce nearly enough heat to necessitate the large and powerful cooling units their Predecessors used in the past."
 
 outfit `"Jiita" Heirloom Shielding`
 	category "Systems"
